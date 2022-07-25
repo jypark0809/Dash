@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float _jumpCount = 2;
     public float _jumpSpeed = 4f;
-    bool _isJump = false;
+    private bool _isJump = false;
 
     Rigidbody2D _rigid;
     Animator _anim;
