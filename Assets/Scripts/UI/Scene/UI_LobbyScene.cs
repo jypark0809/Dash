@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapController : MovingObject
+public class UI_LobbyScene : UI_Scene
 {
+    void Start()
+    {
+        
+    }
+
     void Update()
     {
-        Moving();
+        
     }
 }
