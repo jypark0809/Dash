@@ -1,28 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseController
 {
     public float _jumpCount = 2;
     public float _jumpPower = 10.0f;
     public bool _isJump = false;
-    public MovingObject[] movingObjects;
+    public int _health = 3;
 
-    public Rigidbody2D _rigid;
-    public BoxCollider2D _collider;
+    public Define.PlayerState _state;
+
+    public MapController[] mapControllers;
+    public Move move;
+
     Animator _anim;
-    public enum PlayerState { Run, Jump, Die }
-    public PlayerState _state = PlayerState.Run;
 
-    void Start()
+    public override void Init()
     {
-        // Managers.Input.KeyAction -= Jump;
-        // Managers.Input.KeyAction += Jump;
-
-        _rigid = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<BoxCollider2D>();
+        WorldObjectType = Define.WorldObject.Player;
+        mapControllers = new MapController[2];
+        _state = Define.PlayerState.Run;
         _anim = GetComponent<Animator>();
     }
 
@@ -30,13 +27,13 @@ public class PlayerController : MonoBehaviour
     {
         switch (_state)
         {
-            case PlayerState.Die:
+            case Define.PlayerState.Die:
                 UpdateDie();
                 break;
-            case PlayerState.Run:
+            case Define.PlayerState.Run:
                 UpdateRun();
                 break;
-            case PlayerState.Jump:
+            case Define.PlayerState.Jump:
                 UpdateJump();
                 break;
         }
@@ -51,7 +48,7 @@ public class PlayerController : MonoBehaviour
             // 발판 충돌로직
             _jumpCount = 2;
             _isJump = false;
-            _state = PlayerState.Run;
+            _state = Define.PlayerState.Run;
         }
     }
 
@@ -59,11 +56,32 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle")
         {
+            if (_health > 1)
+            {
+                _health--;
+
+                // 피격 코루틴
+            }
+            else
+            {
+                _health--;
+                _state = Define.PlayerState.Die;
+            }
+
             if (collision.gameObject.name == "VaultingHorse")
             {
                 Debug.Log("Collide VaultingHorse");
+            }
 
-                // 장애물 충돌 로직
+            if (collision.gameObject.name == "Signage")
+            {
+                Debug.Log("Collide Signage");
+            }
+
+            if (collision.gameObject.name == "Pool")
+            { 
+                Debug.Log("Collide Pool");
+                StartCoroutine(SpeedDown());
             }
         }
 
@@ -73,6 +91,7 @@ public class PlayerController : MonoBehaviour
             {
                 // TODO
                 Debug.Log("Collide Letter");
+                _health++;
             }
 
             if (collision.gameObject.name == "Coffee")
@@ -108,17 +127,38 @@ public class PlayerController : MonoBehaviour
 
     void UpdateDie()
     {
-        // 체력이 0이면 Die
+        // Die
+        Time.timeScale = 0;
     }
 
     IEnumerator SpeedUp()
     {
-        foreach(MovingObject item in movingObjects)
+        foreach(MapController item in mapControllers)
             item._speed *= 2;
+        move._speed *= 2;
 
         yield return new WaitForSeconds(3f);
 
-        foreach (MovingObject item in movingObjects)
+        foreach (MapController item in mapControllers)
             item._speed /= 2;
+        move._speed /= 2;
+    }
+
+    IEnumerator SpeedDown()
+    {
+        foreach (MapController item in mapControllers)
+            item._speed /= 2;
+        move._speed /= 2;
+
+        yield return new WaitForSeconds(3f);
+
+        foreach (MapController item in mapControllers)
+            item._speed *= 2;
+        move._speed *= 2;
+    }
+
+    IEnumerator OnDamage()
+    {
+        yield return null;
     }
 }

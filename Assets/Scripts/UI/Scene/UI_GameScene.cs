@@ -6,9 +6,14 @@ using UnityEngine.UI;
 
 public class UI_GameScene : UI_Scene
 {
-    public PlayerController player;
+    GameObject _player = null;
+    PlayerController pc = null;
+
     enum Buttons { JumpButton, PauseButton }
     enum Images { Letter1, Letter2, Letter3 }
+    public Image[] healthUI;
+
+    public void SetPlayer(GameObject player) { _player = player; }
 
     void Start()
     {
@@ -17,33 +22,55 @@ public class UI_GameScene : UI_Scene
 
     void Update()
     {
-        
+        switch (pc._health)
+        {
+            case 0:
+                healthUI[0].color = new Color(1, 0, 0, 1);
+                healthUI[1].color = new Color(1, 0, 0, 1);
+                healthUI[2].color = new Color(1, 0, 0, 1);
+                break;
+            case 1:
+                healthUI[0].color = new Color(0, 0, 0, 1);
+                healthUI[1].color = new Color(1, 0, 0, 1);
+                healthUI[2].color = new Color(1, 0, 0, 1);
+                break;
+            case 2:
+                healthUI[0].color = new Color(0, 0, 0, 1);
+                healthUI[1].color = new Color(0, 0, 0, 1);
+                healthUI[2].color = new Color(1, 0, 0, 1);
+                break;
+            case 3:
+                healthUI[0].color = new Color(0, 0, 0, 1);
+                healthUI[1].color = new Color(0, 0, 0, 1);
+                healthUI[2].color = new Color(0, 0, 0, 1);
+                break;
+        }
     }
 
     public override void Init()
     {
         base.Init();
+        pc = _player.GetComponent<PlayerController>();
 
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
         GetButton((int)Buttons.JumpButton).gameObject.BindEvent(JumpButtonClicked);
         GetButton((int)Buttons.PauseButton).gameObject.BindEvent(PauseButtonClicked);
 
-        Managers.Game.healthUI[0] = GetImage((int)Images.Letter1);
-        Image image2 = GetImage((int)Images.Letter2);
-        Image image3 = GetImage((int)Images.Letter3);
-        Managers.Game.healthUI[1] = image2;
-        Managers.Game.healthUI[2] = image3;
+        healthUI = new Image[3];
+        healthUI[0] = GetImage((int)Images.Letter1);
+        healthUI[1] = GetImage((int)Images.Letter2);
+        healthUI[2] = GetImage((int)Images.Letter3);
     }
 
     public void JumpButtonClicked(PointerEventData data)
     {
-        player._isJump = true;
-        player._state = PlayerController.PlayerState.Jump;
-        if (player._jumpCount > 0)
+        pc._isJump = true;
+        pc._state = Define.PlayerState.Jump;
+        if (pc._jumpCount > 0)
         {
-            player._rigid.velocity = Vector2.up * player._jumpPower;
-            player._jumpCount--;
+            pc.GetComponent<Rigidbody2D>().velocity = Vector2.up * pc._jumpPower;
+            pc._jumpCount--;
         }
     }
 
@@ -52,5 +79,10 @@ public class UI_GameScene : UI_Scene
         Time.timeScale = 0;
 
         // TODO : UI
+    }
+
+    public void HealthDown()
+    {
+
     }
 }

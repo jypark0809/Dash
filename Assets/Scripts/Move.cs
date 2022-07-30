@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObject : MonoBehaviour
+public class Move : MonoBehaviour
 {
-    public float _speed;
+    public float _speed = 3;
 
     void Start()
     {
-
+        
     }
 
-    protected void Moving()
+    void Update()
     {
         transform.Translate(Vector2.left * _speed * Time.deltaTime);
     }
