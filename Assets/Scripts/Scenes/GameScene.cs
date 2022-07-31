@@ -16,7 +16,7 @@ public class GameScene : BaseScene
         PlayerController pc = player.GetOrAddComponent<PlayerController>();
         gs.SetPlayer(player);
 
-        GameObject stage = Managers.Game.Spawn(Define.WorldObject.Map, "Stages/Stage_1_1"); // TODO : Stage에 따른 맵 Spawn
+        GameObject stage = Managers.Game.Spawn(Define.WorldObject.Map, "Stages/Stage_0_0"); // 스테이지를 생성한다.
         MapController mc1 = GameObject.Find("Class Group").GetComponent<MapController>();
         MapController mc2 = GameObject.Find("Hall Group").GetComponent<MapController>();
 

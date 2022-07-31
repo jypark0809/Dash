@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
+    // public float _gravity = 0.8f;
+    // float _heightMovement;
+    // bool _isGrounded;
+
     public float _jumpCount = 2;
     public float _jumpPower = 10.0f;
     public bool _isJump = false;
@@ -25,6 +29,9 @@ public class PlayerController : BaseController
 
     void Update()
     {
+        CheckPlatform();
+        // UpdateHeight();
+
         switch (_state)
         {
             case Define.PlayerState.Die:
@@ -36,6 +43,35 @@ public class PlayerController : BaseController
             case Define.PlayerState.Jump:
                 UpdateJump();
                 break;
+        }
+    }
+
+    //void UpdateHeight()
+    //{
+    //    _heightMovement += _gravity * Time.deltaTime * -1;
+    //    transform.Translate(0, _heightMovement, 0);
+    //}
+
+    //void Land(float height)
+    //{
+    //    transform.position = new Vector3(transform.position.x, height, transform.position.z);
+    //    _heightMovement = 0;
+    //}
+
+    void CheckPlatform()
+    {
+        Vector2 playerPos = new Vector2(transform.position.x, transform.position.y - 1.3f);
+        Debug.DrawRay(playerPos, Vector2.down * 1f, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.down, 1f, LayerMask.GetMask("Platform"));
+        if (hit)
+        {
+            // if (hit.rigidbody.simulated == false)
+            // {
+            //     hit.rigidbody.simulated = true;
+            //     Debug.Log("rigidbody.simulated == false");
+            // }
+            // else
+            //     Debug.Log("rigidbody.simulated == true");
         }
     }
 
