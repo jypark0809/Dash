@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UI_LobbyScene : UI_Scene
 {
-    enum Buttons { OptionButton, HelpButton, ShopButton, AchievementButton, PlayButton }
+    enum Buttons { TipButton, TargetButton, ShopButton, EndingBookButton, OptionButton,  PlayButton }
 
     void Start()
     {
@@ -19,9 +19,9 @@ public class UI_LobbyScene : UI_Scene
 
         Bind<Button>(typeof(Buttons));
         GetButton((int)Buttons.OptionButton).gameObject.BindEvent(OptionButtonClicked);
-        GetButton((int)Buttons.HelpButton).gameObject.BindEvent(HelpButtonClicked);
+        GetButton((int)Buttons.TargetButton).gameObject.BindEvent(TargetButtonButtonClicked);
         GetButton((int)Buttons.ShopButton).gameObject.BindEvent(ShopButtonClicked);
-        GetButton((int)Buttons.AchievementButton).gameObject.BindEvent(AchievementButtonClicked);
+        GetButton((int)Buttons.EndingBookButton).gameObject.BindEvent(EndingBookButtonButtonClicked);
         GetButton((int)Buttons.PlayButton).gameObject.BindEvent(PlayButtonClicked);
 
     }
@@ -32,7 +32,7 @@ public class UI_LobbyScene : UI_Scene
         Debug.Log("OptionButtonClicked");
     }
 
-    public void HelpButtonClicked(PointerEventData data)
+    public void TargetButtonButtonClicked(PointerEventData data)
     {
         // 도움말 Popup UI
         Debug.Log("HelpButtonClicked");
@@ -44,7 +44,7 @@ public class UI_LobbyScene : UI_Scene
         Debug.Log("ShopButtonClicked");
     }
 
-    public void AchievementButtonClicked(PointerEventData data)
+    public void EndingBookButtonButtonClicked(PointerEventData data)
     {
         // 도감 Popup UI
         Debug.Log("AchievementButtonClicked");

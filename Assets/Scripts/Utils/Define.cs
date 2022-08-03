@@ -9,7 +9,7 @@ public class Define
         Unknown,
         Background,
         Player,
-        Map,
+        Stage,
         Obstacle,
     }
 
@@ -17,7 +17,8 @@ public class Define
     { 
         Run,
         Jump,
-        Die
+        Die,
+        Clear,
     }
 
     public enum Scene

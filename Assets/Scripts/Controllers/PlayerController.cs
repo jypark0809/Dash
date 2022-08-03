@@ -29,9 +29,6 @@ public class PlayerController : BaseController
 
     void Update()
     {
-        CheckPlatform();
-        // UpdateHeight();
-
         switch (_state)
         {
             case Define.PlayerState.Die:
@@ -43,35 +40,9 @@ public class PlayerController : BaseController
             case Define.PlayerState.Jump:
                 UpdateJump();
                 break;
-        }
-    }
-
-    //void UpdateHeight()
-    //{
-    //    _heightMovement += _gravity * Time.deltaTime * -1;
-    //    transform.Translate(0, _heightMovement, 0);
-    //}
-
-    //void Land(float height)
-    //{
-    //    transform.position = new Vector3(transform.position.x, height, transform.position.z);
-    //    _heightMovement = 0;
-    //}
-
-    void CheckPlatform()
-    {
-        Vector2 playerPos = new Vector2(transform.position.x, transform.position.y - 1.3f);
-        Debug.DrawRay(playerPos, Vector2.down * 1f, Color.red);
-        RaycastHit2D hit = Physics2D.Raycast(playerPos, Vector2.down, 1f, LayerMask.GetMask("Platform"));
-        if (hit)
-        {
-            // if (hit.rigidbody.simulated == false)
-            // {
-            //     hit.rigidbody.simulated = true;
-            //     Debug.Log("rigidbody.simulated == false");
-            // }
-            // else
-            //     Debug.Log("rigidbody.simulated == true");
+            case Define.PlayerState.Clear:
+                StageClear();
+                break;
         }
     }
 
@@ -125,20 +96,17 @@ public class PlayerController : BaseController
         {
             if (collision.gameObject.name == "Letter")
             {
-                // TODO
-                Debug.Log("Collide Letter");
-                _health++;
+                if (_health < 3)
+                    _health++;
             }
 
             if (collision.gameObject.name == "Coffee")
             {
-                // TODO : 코루틴 호출
                 StartCoroutine(SpeedUp());
             }
 
             if (collision.gameObject.name == "JumpingShoes")
             {
-                // TODO
                 _jumpCount++;
             }
 
@@ -147,7 +115,7 @@ public class PlayerController : BaseController
 
         if (collision.gameObject.tag == "Finish")
         {
-            Time.timeScale = 0;
+            _state = Define.PlayerState.Clear;
         }
     }
 
@@ -165,6 +133,11 @@ public class PlayerController : BaseController
     {
         // Die
         Time.timeScale = 0;
+    }
+
+    public void StageClear()
+    {
+        transform.position += Vector3.right * 6.0f * Time.deltaTime;
     }
 
     IEnumerator SpeedUp()

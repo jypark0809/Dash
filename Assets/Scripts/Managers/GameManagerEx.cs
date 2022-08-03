@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManagerEx
 {
     public GameObject _player;
-    GameObject _map;
+    GameObject _stage;
 
     public GameObject Spawn(Define.WorldObject type, string path, Transform parent = null)
     {
@@ -17,8 +17,8 @@ public class GameManagerEx
             case Define.WorldObject.Player:
                 _player = go;
                 break;
-            case Define.WorldObject.Map:
-                _map = go;
+            case Define.WorldObject.Stage:
+                _stage = go;
                 break;
             case Define.WorldObject.Background:
                 // TODO
