@@ -58,7 +58,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 74301b5295df98b4c8307692a783e40b, type: 3}
   - {fileID: 21300000, guid: 94611577b3e6880448d31ad8cf9fd586, type: 3}
   - {fileID: 21300000, guid: a2b51b87b44605d41a89d2d776723175, type: 3}
-  - {fileID: 21300000, guid: 26bd8cb74a12a454ca921781bf82ef40, type: 3}
+  - {fileID: 1974796985, guid: 26bd8cb74a12a454ca921781bf82ef40, type: 3}
   - {fileID: 21300000, guid: 43282259e6d64e649abe99d5b76403b8, type: 3}
   - {fileID: 21300000, guid: 07f0d6b91f67fd642b17f49180df39ed, type: 3}
   - {fileID: 21300000, guid: 55bd794d48609fe4ea181c2176abc89e, type: 3}
@@ -72,7 +72,7 @@ SpriteAtlas:
   - JumpingShoes
   - Desk 2
   - Books
-  - Pool
+  - Pool_0
   - VaultingHorse
   - Signage
   - Coffee
