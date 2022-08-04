@@ -88,10 +88,6 @@ public class UI_GameScene : UI_Scene
         Time.timeScale = 0;
 
         // TODO : UI
-    }
-
-    public void HealthDown()
-    {
-
+        Managers.UI.ShowPopupUI<UI_Pause>();
     }
 }

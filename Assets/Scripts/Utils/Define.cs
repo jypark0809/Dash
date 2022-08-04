@@ -24,9 +24,9 @@ public class Define
     public enum Scene
     {
         Unknown,
-        Login,
         Lobby,
         Game,
+        Ending,
     }
 
     public enum UIEvent
@@ -53,4 +53,7 @@ public class Define
         Coffee,
         JumpingShoes,
     }
+
+    public static string[] maleStat = { "외모", "집중력", "진실" };
+    public static string[] femaleStat = { "섬세함", "안정감", "끈기" };
 }

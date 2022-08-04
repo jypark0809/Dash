@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UI_LobbyScene : UI_Scene
 {
-    enum Buttons { TipButton, TargetButton, ShopButton, EndingBookButton, OptionButton,  PlayButton }
+    enum Buttons { TipButton, TargetButton, ShopButton, EndingBookButton, OptionButton,  PlayButton, InitButton, }
 
     void Start()
     {
@@ -18,41 +18,52 @@ public class UI_LobbyScene : UI_Scene
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+        GetButton((int)Buttons.TipButton).gameObject.BindEvent(TipButtonClicked);
         GetButton((int)Buttons.OptionButton).gameObject.BindEvent(OptionButtonClicked);
-        GetButton((int)Buttons.TargetButton).gameObject.BindEvent(TargetButtonButtonClicked);
+        GetButton((int)Buttons.TargetButton).gameObject.BindEvent(TargetButtonClicked);
         GetButton((int)Buttons.ShopButton).gameObject.BindEvent(ShopButtonClicked);
-        GetButton((int)Buttons.EndingBookButton).gameObject.BindEvent(EndingBookButtonButtonClicked);
+        GetButton((int)Buttons.EndingBookButton).gameObject.BindEvent(EndingBookButtonClicked);
         GetButton((int)Buttons.PlayButton).gameObject.BindEvent(PlayButtonClicked);
+        GetButton((int)Buttons.InitButton).gameObject.BindEvent(InitButtonClicked);
 
+    }
+
+    public void TipButtonClicked(PointerEventData data)
+    {
+        Debug.Log("TipButtonClicked");
     }
 
     public void OptionButtonClicked(PointerEventData data)
     {
-        // 옵션 Popup UI
         Debug.Log("OptionButtonClicked");
     }
 
-    public void TargetButtonButtonClicked(PointerEventData data)
+    public void TargetButtonClicked(PointerEventData data)
     {
-        // 도움말 Popup UI
-        Debug.Log("HelpButtonClicked");
+        Debug.Log("TargetButtonClicked");
     }
 
     public void ShopButtonClicked(PointerEventData data)
     {
-        // 상점 Popup UI
         Debug.Log("ShopButtonClicked");
     }
 
-    public void EndingBookButtonButtonClicked(PointerEventData data)
+    public void EndingBookButtonClicked(PointerEventData data)
     {
-        // 도감 Popup UI
-        Debug.Log("AchievementButtonClicked");
+        Debug.Log("EndingBookButtonClicked");
     }
 
     public void PlayButtonClicked(PointerEventData data)
     {
         // TODO
-        Debug.Log("PlayButtonClicked");
+        if (Managers.Data.UserData.user.gender == "unselected")
+            Managers.UI.ShowPopupUI<UI_SelectGender>();
+        else
+            Managers.Scene.LoadScene(Define.Scene.Game);
+    }
+
+    public void InitButtonClicked(PointerEventData data)
+    {
+        Managers.Data.InitData();
     }
 }

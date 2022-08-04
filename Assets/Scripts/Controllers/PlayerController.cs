@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
-    // public float _gravity = 0.8f;
-    // float _heightMovement;
-    // bool _isGrounded;
-
     public float _jumpCount = 2;
     public float _jumpPower = 10.0f;
     public bool _isJump = false;
@@ -50,8 +46,6 @@ public class PlayerController : BaseController
     {
         if (collision.gameObject.tag == "Platform")
         {
-            Debug.Log("Collide Platform");
-
             // 발판 충돌로직
             _jumpCount = 2;
             _isJump = false;
@@ -77,17 +71,16 @@ public class PlayerController : BaseController
 
             if (collision.gameObject.name == "VaultingHorse")
             {
-                Debug.Log("Collide VaultingHorse");
+
             }
 
             if (collision.gameObject.name == "Signage")
             {
-                Debug.Log("Collide Signage");
+
             }
 
             if (collision.gameObject.name == "Pool")
-            { 
-                Debug.Log("Collide Pool");
+            {
                 StartCoroutine(SpeedDown());
             }
         }
@@ -131,13 +124,13 @@ public class PlayerController : BaseController
 
     void UpdateDie()
     {
-        // Die
-        Time.timeScale = 0;
+        StartCoroutine(GameOver());
     }
 
     public void StageClear()
     {
         transform.position += Vector3.right * 6.0f * Time.deltaTime;
+        StartCoroutine(StageClearUI());
     }
 
     IEnumerator SpeedUp()
@@ -169,5 +162,24 @@ public class PlayerController : BaseController
     IEnumerator OnDamage()
     {
         yield return null;
+    }
+
+    IEnumerator StageClearUI()
+    {
+        yield return new WaitForSeconds(2.5f);
+        Time.timeScale = 0;
+        Managers.UI.ShowPopupUI<UI_Goal>();
+    }
+
+    IEnumerator GameOver()
+    {
+        mapControllers[0]._speed = 0;
+        mapControllers[1]._speed = 0;
+        move._speed = 0;
+        _anim.speed = 0f;
+
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 0;
+        Managers.UI.ShowPopupUI<UI_GameOver>();
     }
 }

@@ -18,4 +18,9 @@ public class SceneManagerEx
         string name = System.Enum.GetName(typeof(Define.Scene), type);
         return name;
     }
+
+    public void Clear()
+    {
+        CurrentScene.Clear();
+    }
 }

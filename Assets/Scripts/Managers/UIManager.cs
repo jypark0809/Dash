@@ -7,7 +7,7 @@ public class UIManager
     int _order = 10;
 
     Stack<UI_Popup> _popupStack = new Stack<UI_Popup>();
-    UI_Scene _Scene = null;
+    UI_Scene _sceneUI = null;
 
     public GameObject Root
     {
@@ -58,7 +58,7 @@ public class UIManager
 
         GameObject go = Managers.Resource.Instantiate($"UI/Scene/{name}");
         T sceneUI = Util.GetOrAddComponent<T>(go);
-        _Scene = sceneUI;
+        _sceneUI = sceneUI;
         go.transform.SetParent(Root.transform);
 
         return sceneUI;
@@ -107,5 +107,11 @@ public class UIManager
     {
         while (_popupStack.Count > 0)
             ClosePopupUI();
+    }
+
+    public void Clear()
+    {
+        CloseAllPopupUI();
+        _sceneUI = null;
     }
 }

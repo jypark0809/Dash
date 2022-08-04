@@ -15,19 +15,21 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.Game;
 
-        UI_GameScene gs = Managers.UI.ShowSceneUI<UI_GameScene>();
+        UI_GameScene gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
 
         player = Managers.Game.Spawn(Define.WorldObject.Player, "Player");
         pc = player.GetOrAddComponent<PlayerController>();
-        gs.SetPlayer(player);
+        gameScene.SetPlayer(player);
 
-        GameObject stage = Managers.Game.Spawn(Define.WorldObject.Stage, "Stages/Stage_3_1"); // 스테이지를 생성한다.
-        mc1 = GameObject.Find("Class Group").GetComponent<MapController>();
-        mc2 = GameObject.Find("Hall Group").GetComponent<MapController>();
+        GameObject stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_{Managers.Data.UserData.user.stage}");
+        mc1 = GameObject.Find("SubBackground Group").GetComponent<MapController>();
+        mc2 = GameObject.Find("Background Group").GetComponent<MapController>();
 
         pc.move = stage.GetComponent<Move>();
         pc.mapControllers[0] = mc1;
         pc.mapControllers[1] = mc2;
+
+        UserData user = Managers.Data.UserData;
     }
 
     private void Update()

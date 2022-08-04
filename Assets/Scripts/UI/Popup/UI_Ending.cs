@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class UI_Ending : UI_Scene
+{
+    enum Buttons { LobbyButton, }
+
+    void Start()
+    {
+        Init();
+    }
+
+    public override void Init()
+    {
+        base.Init();
+        Bind<Button>(typeof(Buttons));
+
+        GetButton((int)Buttons.LobbyButton).gameObject.BindEvent(LobbyButtonClicked);
+    }
+
+    public void LobbyButtonClicked(PointerEventData data)
+    {
+        Managers.Scene.LoadScene(Define.Scene.Lobby);
+    }
+}
