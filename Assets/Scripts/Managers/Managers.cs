@@ -12,11 +12,13 @@ public class Managers : MonoBehaviour
 
     #region
     // InputManager _input = new InputManager();
+    DataManager _data = new DataManager();
     ResourceManager _resource = new ResourceManager();
     SceneManagerEx _scene = new SceneManagerEx();
     UIManager _ui = new UIManager();
 
     // public static InputManager Input { get { return Instance._input; } }
+    public static DataManager Data { get { return Instance._data; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static UIManager UI { get { return Instance._ui; } }
@@ -47,6 +49,13 @@ public class Managers : MonoBehaviour
 
             DontDestroyOnLoad(go);
             instance = go.GetComponent<Managers>();
+
+            instance._data.Init();
         }
+    }
+
+    public static void Clear()
+    {
+
     }
 }

@@ -21,7 +21,7 @@ public class GameScene : BaseScene
         pc = player.GetOrAddComponent<PlayerController>();
         gs.SetPlayer(player);
 
-        GameObject stage = Managers.Game.Spawn(Define.WorldObject.Stage, "Stages/Stage_2_1"); // 스테이지를 생성한다.
+        GameObject stage = Managers.Game.Spawn(Define.WorldObject.Stage, "Stages/Stage_3_1"); // 스테이지를 생성한다.
         mc1 = GameObject.Find("Class Group").GetComponent<MapController>();
         mc2 = GameObject.Find("Hall Group").GetComponent<MapController>();
 

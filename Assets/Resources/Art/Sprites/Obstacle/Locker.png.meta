@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc4b2980b59a0a241a869599ce03279d
+guid: bbd973f1c1f41264388bc117d10787cb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -140,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Letter_0
+      name: Locker_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 68
-        height: 50
+        x: 7
+        y: 5
+        width: 290
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cbe1eb4f7c297649aebe89bbedbbbd8
-      internalID: 139385516
+      spriteID: 1d69f222c9e00204aae8f567940fda03
+      internalID: -1039584078
       vertices: []
       indices: 
       edges: []
@@ -171,7 +171,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Letter_0: 139385516
+      Locker_0: -1039584078
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

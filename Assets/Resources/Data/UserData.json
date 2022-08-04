@@ -1,0 +1,13 @@
+{
+  "user": {
+    "id": null,
+    "nickname": null,
+    "sex": null,
+    "stat1": 0,
+    "stat2": 0,
+    "stat3": 0,
+    "stage": 1,
+    "amber": 0,
+    "ruby": 0
+  }
+}
