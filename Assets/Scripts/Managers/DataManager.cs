@@ -10,6 +10,7 @@ public class DataManager
 
     public void Init()
     {
+        Debug.Log(Path.Combine(Application.dataPath, "Resources/Data/UserData.json"));
         UserData = LoadJson<UserData>("UserData");
     }
 
@@ -40,5 +41,6 @@ public class DataManager
         UserData.user.ruby = 0;
 
         SaveUserDataToJson(UserData);
+        Debug.Log(JsonUtility.ToJson(UserData));
     }
 }
