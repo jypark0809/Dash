@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 512
+      m_MaxTextureSize: 1024
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 1
@@ -52,28 +52,52 @@ SpriteAtlas:
     - {fileID: 2800000, guid: d80c0bd38d2eefe499c7ca07bffca180, type: 3}
     - {fileID: 2800000, guid: 92489f271b587a04f809dfabe37d2e85, type: 3}
     - {fileID: 2800000, guid: 2ee6d14a465a9cf4089958e04c9b92b6, type: 3}
+    - {fileID: 2800000, guid: b388f6b0d6cef4043a0d978b2c6b3791, type: 3}
+    - {fileID: 2800000, guid: 08a5422a26e2353438db3c2c49510506, type: 3}
+    - {fileID: 2800000, guid: 48a6ff4b9eeb3d545bb56e485dd2bd80, type: 3}
+    - {fileID: 2800000, guid: 5dcb83ad313760c45a0c3aa07c4686ec, type: 3}
+    - {fileID: 2800000, guid: d781dd4dece8e1b46b90274911ff2082, type: 3}
+    - {fileID: 2800000, guid: a23d9c6994610424397572d99124a79c, type: 3}
+    - {fileID: 2800000, guid: f3323d925d826fa439495c47085ba0dd, type: 3}
+    - {fileID: 2800000, guid: d0f51610cdeb61f49a3273d24f0cd4a9, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: d0f51610cdeb61f49a3273d24f0cd4a9, type: 3}
+  - {fileID: 21300000, guid: b388f6b0d6cef4043a0d978b2c6b3791, type: 3}
   - {fileID: 21300000, guid: 80045982789f28e4784bb724a852d8bb, type: 3}
+  - {fileID: 21300000, guid: f3323d925d826fa439495c47085ba0dd, type: 3}
   - {fileID: 21300000, guid: d80c0bd38d2eefe499c7ca07bffca180, type: 3}
   - {fileID: 21300000, guid: 92489f271b587a04f809dfabe37d2e85, type: 3}
+  - {fileID: 21300000, guid: a23d9c6994610424397572d99124a79c, type: 3}
+  - {fileID: 21300000, guid: 08a5422a26e2353438db3c2c49510506, type: 3}
   - {fileID: 21300000, guid: 2a86d32a7d3915e4fb9966151c433584, type: 3}
   - {fileID: 21300000, guid: 2ee6d14a465a9cf4089958e04c9b92b6, type: 3}
   - {fileID: 21300000, guid: 1232c50bd24ed8b4ab5284c610931d71, type: 3}
+  - {fileID: 21300000, guid: 48a6ff4b9eeb3d545bb56e485dd2bd80, type: 3}
   - {fileID: 21300000, guid: 90fa86ec8f110174aa2cc505f1849d5d, type: 3}
+  - {fileID: 21300000, guid: d781dd4dece8e1b46b90274911ff2082, type: 3}
   - {fileID: 21300000, guid: d090275d484dd9e48b7047481d83cfd8, type: 3}
+  - {fileID: 21300000, guid: 5dcb83ad313760c45a0c3aa07c4686ec, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Run_16
+  - Run_09
   - Run_04
+  - Run_15
   - Run_06
   - Run_07
+  - Run_14
+  - Run_10
   - Run_01
   - Run_08
   - Run_02
+  - Run_11
   - Run_05
+  - Run_13
   - Run_03
+  - Run_12
   m_RenderDataMap: {}
   m_Tag: Run
   m_IsVariant: 0

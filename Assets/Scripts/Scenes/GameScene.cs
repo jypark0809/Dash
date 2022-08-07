@@ -17,7 +17,7 @@ public class GameScene : BaseScene
 
         UI_GameScene gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
 
-        player = Managers.Game.Spawn(Define.WorldObject.Player, "Player");
+        player = Managers.Game.Spawn(Define.WorldObject.Player, "Female");
         pc = player.GetOrAddComponent<PlayerController>();
         gameScene.SetPlayer(player);
 

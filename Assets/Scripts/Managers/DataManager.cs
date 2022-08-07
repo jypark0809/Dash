@@ -10,8 +10,8 @@ public class DataManager
 
     public void Init()
     {
-        Debug.Log(Path.Combine(Application.dataPath, "Resources/Data/UserData.json"));
         UserData = LoadJson<UserData>("UserData");
+        // Debug.Log(Path.Combine(Application.persistentDataPath, "UserData.json"));
     }
 
     Loader LoadJson<Loader>(string path)

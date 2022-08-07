@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 512
+      m_MaxTextureSize: 1024
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 1
@@ -48,19 +48,31 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 8f7c2ce7fdab6384f84ecd9492edc930, type: 3}
     - {fileID: 2800000, guid: 0fad54c9516d01b4e83d3110f5c6e5d4, type: 3}
     - {fileID: 2800000, guid: da36792e0adf8864883b63d67a7509ca, type: 3}
+    - {fileID: 2800000, guid: 3408f09ce4b20f449815c6f2c66c3d61, type: 3}
+    - {fileID: 2800000, guid: 7dfb838b0b359c54da19ef2985dfd77b, type: 3}
+    - {fileID: 2800000, guid: 173dbdc27bcde6c42b682fe2058c1d4d, type: 3}
+    - {fileID: 2800000, guid: 5ac60688ab52f0a46bcb637ac09129d7, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 21a83bf018223fa4ab41e547fadcabe6, type: 3}
+  - {fileID: 21300000, guid: 173dbdc27bcde6c42b682fe2058c1d4d, type: 3}
   - {fileID: 21300000, guid: 8f7c2ce7fdab6384f84ecd9492edc930, type: 3}
+  - {fileID: 21300000, guid: 5ac60688ab52f0a46bcb637ac09129d7, type: 3}
   - {fileID: 21300000, guid: 0fad54c9516d01b4e83d3110f5c6e5d4, type: 3}
+  - {fileID: 21300000, guid: 7dfb838b0b359c54da19ef2985dfd77b, type: 3}
+  - {fileID: 21300000, guid: 3408f09ce4b20f449815c6f2c66c3d61, type: 3}
   - {fileID: 21300000, guid: da36792e0adf8864883b63d67a7509ca, type: 3}
   m_PackedSpriteNamesToIndex:
   - Jump_01
+  - Jump_07
   - Jump_02
+  - Jump_08
   - Jump_03
+  - Jump_06
+  - Jump_05
   - Jump_04
   m_RenderDataMap: {}
   m_Tag: Jump
