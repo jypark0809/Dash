@@ -8,6 +8,7 @@ public class GameScene : BaseScene
     PlayerController pc;
     MapController mc1;
     MapController mc2;
+    AudioClip audioClip;
 
     protected override void Init()
     {
@@ -16,8 +17,15 @@ public class GameScene : BaseScene
         SceneType = Define.Scene.Game;
 
         UI_GameScene gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
+        Managers.Sound.Play("bgmtest", Define.Sound.Bgm);
 
-        player = Managers.Game.Spawn(Define.WorldObject.Player, "Female");
+        if (Managers.Data.UserData.user.gender == "male")
+            player = Managers.Game.Spawn(Define.WorldObject.Player, "male");
+        else if (Managers.Data.UserData.user.gender == "female")
+            player = Managers.Game.Spawn(Define.WorldObject.Player, "female");
+        else
+            Debug.Log("Failed to load character : GameScene.cs");
+
         pc = player.GetOrAddComponent<PlayerController>();
         gameScene.SetPlayer(player);
 

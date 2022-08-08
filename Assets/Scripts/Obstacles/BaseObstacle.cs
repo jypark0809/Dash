@@ -12,4 +12,6 @@ public abstract class BaseObstacle : MonoBehaviour
     }
 
     public abstract void Init();
+
+    
 }

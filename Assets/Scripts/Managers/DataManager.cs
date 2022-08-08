@@ -10,8 +10,16 @@ public class DataManager
 
     public void Init()
     {
-        UserData = LoadJson<UserData>("UserData");
-        // Debug.Log(Path.Combine(Application.persistentDataPath, "UserData.json"));
+        if(File.Exists(Path.Combine(Application.persistentDataPath, "UserData.json")))
+        {
+            UserData = LoadUserDataFromJson<UserData>();
+        }
+        else
+        {
+            UserData = new UserData();
+            InitData();
+        }
+        // UserData = LoadJson<UserData>("UserData");
     }
 
     Loader LoadJson<Loader>(string path)
@@ -20,10 +28,18 @@ public class DataManager
         return JsonUtility.FromJson<Loader>(textAsset.text);
     }
 
+    public T LoadUserDataFromJson<T>()
+    {
+        string path = Path.Combine(Application.persistentDataPath, "UserData.json");
+        string userData = File.ReadAllText(path);
+        return JsonUtility.FromJson<T>(userData);
+        
+    }
+
     public void SaveUserDataToJson(UserData user)
     {
-        string jsonData = JsonUtility.ToJson(user);
-        string path = Path.Combine(Application.dataPath, "Resources/Data/UserData.json");
+        string jsonData = JsonUtility.ToJson(user, true);
+        string path = Path.Combine(Application.persistentDataPath, "UserData.json");
         File.WriteAllText(path, jsonData);
     }
 

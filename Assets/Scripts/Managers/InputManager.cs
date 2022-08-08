@@ -16,4 +16,9 @@ public class InputManager
         if (KeyAction != null)
             KeyAction.Invoke();
     }
+
+    void Clear()
+    {
+        KeyAction = null;
+    }
 }
