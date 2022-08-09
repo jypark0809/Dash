@@ -57,36 +57,53 @@ public class PlayerController : BaseController
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            if (_health > 1)
-            {
-                _health--;
-
-                // 피격 코루틴
-            }
-            else
-            {
-                _health--;
-                _state = Define.PlayerState.Die;
-            }
-
-            if (collision.gameObject.name == "VaultingHorse")
-            {
-
-            }
-
+            // 표지판
             if (collision.gameObject.name == "Signage")
             {
-
+                DecreaseHealth(1);
             }
 
+            // 벌
             if (collision.gameObject.name == "Bee")
             {
-
+                DecreaseHealth(1);
             }
 
+            // 뜀틀
+            if (collision.gameObject.name == "VaultingHorse")
+            {
+                DecreaseHealth(1);
+            }
+
+            // 사물함
+            if (collision.gameObject.name == "Locker")
+            {
+                DecreaseHealth(1);
+            }
+
+            // 압정
             if (collision.gameObject.name == "Pool")
             {
                 StartCoroutine(SpeedDown());
+                DecreaseHealth(2);
+            }
+
+            // 책
+            if (collision.gameObject.name == "Books")
+            {
+                DecreaseHealth(1);
+            }
+
+            // 거미
+            if (collision.gameObject.name == "Spider")
+            {
+                DecreaseHealth(2);
+            }
+
+            // 학주
+            if (collision.gameObject.name == "Teacher")
+            {
+                DecreaseHealth(3);
             }
         }
 
@@ -114,6 +131,16 @@ public class PlayerController : BaseController
         if (collision.gameObject.tag == "Finish")
         {
             _state = Define.PlayerState.Clear;
+        }
+    }
+
+    void DecreaseHealth(int count)
+    {
+        _health -= count;
+        if (_health <= 0)
+        {
+            _health = 0;
+            _state = Define.PlayerState.Die;
         }
     }
 

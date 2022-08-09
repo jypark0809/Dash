@@ -9,8 +9,7 @@ public class UI_GameScene : UI_Scene
 {
     GameObject _player = null;
     PlayerController pc = null;
-    public float countdownSeconds = 30;
-    // int healthCursor;
+    public float countdownSeconds = 40;
 
     enum Buttons { JumpButton, PauseButton }
     enum Images { Letter1, Letter2, Letter3, Clock }
@@ -33,7 +32,7 @@ public class UI_GameScene : UI_Scene
         switch (pc._health)
         {
             case 0:
-                healthUI[0].gameObject.SetActive(true);
+                healthUI[0].gameObject.SetActive(false);
                 healthUI[1].gameObject.SetActive(false);
                 healthUI[2].gameObject.SetActive(false);
                 break;

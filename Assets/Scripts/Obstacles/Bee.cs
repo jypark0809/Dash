@@ -9,7 +9,6 @@ public class Bee : BaseObstacle
 
     public override void Init()
     {
-        Debug.Log("screenRightWorldPos : " + Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
         _anim = GetComponent<Animator>();
         screenRightWorldPos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x;
     }
