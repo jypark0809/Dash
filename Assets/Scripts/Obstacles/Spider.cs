@@ -10,7 +10,9 @@ public class Spider : BaseObstacle
 
     public override void Init()
     {
-        _destPos = new Vector2(0, transform.position.y - 3); 
+        _destPos = new Vector2(0, transform.position.y - 3);
+        _anim = GetComponent<Animator>();
+        _anim.Play("Spider");
     }
 
     void Update()

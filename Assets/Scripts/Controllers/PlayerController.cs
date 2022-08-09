@@ -79,6 +79,11 @@ public class PlayerController : BaseController
 
             }
 
+            if (collision.gameObject.name == "Bee")
+            {
+
+            }
+
             if (collision.gameObject.name == "Pool")
             {
                 StartCoroutine(SpeedDown());

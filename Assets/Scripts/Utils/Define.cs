@@ -11,6 +11,7 @@ public class Define
         Player,
         Stage,
         Obstacle,
+        Item,
     }
 
     public enum PlayerState

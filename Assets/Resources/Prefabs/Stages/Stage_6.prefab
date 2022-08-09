@@ -243,7 +243,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 477806188208003729, guid: 5912158a54390504a981c89a92b0fa04, type: 3}
       propertyPath: m_Name
-      value: Locker (1)
+      value: Locker
       objectReference: {fileID: 0}
     - target: {fileID: 477806188208003735, guid: 5912158a54390504a981c89a92b0fa04, type: 3}
       propertyPath: m_RootOrder
