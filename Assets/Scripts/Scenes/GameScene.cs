@@ -19,6 +19,7 @@ public class GameScene : BaseScene
         UI_GameScene gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
         Managers.Sound.Play("bgmtest", Define.Sound.Bgm);
 
+        // TODO : 다른 함수로 빼기
         if (Managers.Data.UserData.user.gender == "male")
             player = Managers.Game.Spawn(Define.WorldObject.Player, "male");
         else if (Managers.Data.UserData.user.gender == "female")

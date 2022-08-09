@@ -21,6 +21,9 @@ public class UI_StageClear : UI_Popup
         StatValue1,
         StatValue2,
         StatValue3,
+        StatButtonText1,
+        StatButtonText2,
+        StatButtonText3,
     }
 
     void Start()
@@ -42,14 +45,21 @@ public class UI_StageClear : UI_Popup
         if (Managers.Data.UserData.user.gender == "male")
         {
             GetText((int)Texts.Stat1).text = Define.maleStat[0];
+            GetText((int)Texts.StatButtonText1).text = Define.maleStat[0];
             GetText((int)Texts.Stat2).text = Define.maleStat[1];
+            GetText((int)Texts.StatButtonText2).text = Define.maleStat[1];
             GetText((int)Texts.Stat3).text = Define.maleStat[2];
+            GetText((int)Texts.StatButtonText3).text = Define.maleStat[2];
+
         }
         else if (Managers.Data.UserData.user.gender == "female")
         {
             GetText((int)Texts.Stat1).text = Define.femaleStat[0];
+            GetText((int)Texts.StatButtonText1).text = Define.femaleStat[0];
             GetText((int)Texts.Stat2).text = Define.femaleStat[1];
+            GetText((int)Texts.StatButtonText2).text = Define.femaleStat[1];
             GetText((int)Texts.Stat3).text = Define.femaleStat[2];
+            GetText((int)Texts.StatButtonText3).text = Define.femaleStat[2];
         }
         else
             Debug.Log("Failed to bind Text : Managers.Data.UserData.user.gender");

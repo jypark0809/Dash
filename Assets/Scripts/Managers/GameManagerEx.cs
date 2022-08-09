@@ -49,7 +49,6 @@ public class GameManagerEx
                 }
                 break;
         }
-
         Managers.Resource.Destroy(go);
     }
 }

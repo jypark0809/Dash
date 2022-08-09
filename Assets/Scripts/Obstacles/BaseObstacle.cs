@@ -14,11 +14,19 @@ public abstract class BaseObstacle : MonoBehaviour
 
     public abstract void Init();
 
-    void SetActiceOff()
+    public void SetActiceOff()
     {
         if (transform.position.x < -20)
         {
             gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Managers.Sound.Play("Itemtest", Define.Sound.Effect);
         }
     }
 }

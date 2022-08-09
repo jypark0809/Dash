@@ -19,5 +19,7 @@ public class Spider : BaseObstacle
         {
             _anim.Play("Spider");
         }
+
+        SetActiceOff();
     }
 }

@@ -6,7 +6,16 @@ using UnityEngine.UI;
 
 public class UI_LobbyScene : UI_Scene
 {
-    enum Buttons { TipButton, TargetButton, ShopButton, EndingBookButton, OptionButton,  PlayButton, InitButton, }
+    enum Buttons
+    {
+        TipButton,
+        TargetButton,
+        ShopButton,
+        EndingBookButton,
+        OptionButton,
+        PlayButton,
+        InitButton,
+    }
 
     void Start()
     {
@@ -18,6 +27,7 @@ public class UI_LobbyScene : UI_Scene
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+
         GetButton((int)Buttons.TipButton).gameObject.BindEvent(TipButtonClicked);
         GetButton((int)Buttons.OptionButton).gameObject.BindEvent(OptionButtonClicked);
         GetButton((int)Buttons.TargetButton).gameObject.BindEvent(TargetButtonClicked);
@@ -25,7 +35,6 @@ public class UI_LobbyScene : UI_Scene
         GetButton((int)Buttons.EndingBookButton).gameObject.BindEvent(EndingBookButtonClicked);
         GetButton((int)Buttons.PlayButton).gameObject.BindEvent(PlayButtonClicked);
         GetButton((int)Buttons.InitButton).gameObject.BindEvent(InitButtonClicked);
-
     }
 
     public void TipButtonClicked(PointerEventData data)
@@ -64,6 +73,6 @@ public class UI_LobbyScene : UI_Scene
 
     public void InitButtonClicked(PointerEventData data)
     {
-        Managers.Data.InitData();
+        Managers.UI.ShowPopupUI<UI_Test>();
     }
 }
