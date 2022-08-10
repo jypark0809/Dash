@@ -86,7 +86,7 @@ public class PlayerController : BaseController
             }
 
             // ¾ÐÁ¤
-            if (collision.gameObject.name == "Pool")
+            if (collision.gameObject.name == "Pin")
             {
                 StartCoroutine(SpeedDown());
                 DecreaseHealth(2);

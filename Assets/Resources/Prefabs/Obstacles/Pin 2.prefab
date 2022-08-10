@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1645100208575576918}
   - component: {fileID: 1645100208575576916}
   m_Layer: 9
-  m_Name: Pool 1
+  m_Name: Pin 2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 21300000, guid: 90e1788b37cf336469817d268d6f25f5, type: 3}
+  m_Sprite: {fileID: -1138620962, guid: e4f226b3557bff542b264ef5ee69b29d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,16 +98,16 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.026318848, y: -0.23687088}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.8, y: 0.77}
+    oldSize: {x: 6.66, y: 0.35}
     newSize: {x: 3.82, y: 0.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5792627, y: 0.15779185}
+  m_Size: {x: 6.65, y: 0.34}
   m_EdgeRadius: 0
