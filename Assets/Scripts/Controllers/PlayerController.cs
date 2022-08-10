@@ -196,14 +196,14 @@ public class PlayerController : BaseController
     IEnumerator SpeedDown()
     {
         foreach (MapController item in mapControllers)
-            item._speed /= 2;
-        move._speed /= 2;
+            item._speed = 2;
+        move._speed = 2;
 
         yield return new WaitForSeconds(3f);
 
         foreach (MapController item in mapControllers)
-            item._speed *= 2;
-        move._speed *= 2;
+            item._speed = 4;
+        move._speed = 4;
     }
 
     IEnumerator DamageRecovered()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Teacher : BaseObstacle
 {
-    public int _range = 15;
+    public float _range = 15f;
     public int _speed = 5;
 
     public override void Init()

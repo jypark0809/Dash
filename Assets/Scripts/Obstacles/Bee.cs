@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Bee : BaseObstacle
 {
-    float screenRightWorldPos;
+    public float _range = 11.6f;
     public int _speed = 3;
 
     public override void Init()
     {
         _anim = GetComponent<Animator>();
-        screenRightWorldPos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x;
     }
 
     void Update()
     {
-        if (transform.position.x < screenRightWorldPos)
+        if (transform.position.x - Managers.Game._player.transform.position.x < _range)
         {
             transform.Translate(Vector2.left * _speed * Time.deltaTime);
             _anim.Play("Bee");
