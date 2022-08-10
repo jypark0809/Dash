@@ -37,20 +37,17 @@ SpriteAtlas:
     - {fileID: 2800000, guid: e826b3c9340035f46bb8012957873b7c, type: 3}
     - {fileID: 2800000, guid: 0cb647f2765d7d94e8bdeada6ae5e7d2, type: 3}
     - {fileID: 2800000, guid: 42c082a2e8dac15489e235d7977f7839, type: 3}
-    - {fileID: 2800000, guid: f25a0e6013cbee4418298429c402af37, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: -376025025, guid: f25a0e6013cbee4418298429c402af37, type: 3}
   - {fileID: 21300000, guid: 42c082a2e8dac15489e235d7977f7839, type: 3}
   - {fileID: 21300000, guid: 0cb647f2765d7d94e8bdeada6ae5e7d2, type: 3}
   - {fileID: 21300000, guid: bd2da964acdbefb4ebfa3c2ecb4aed5c, type: 3}
   - {fileID: 21300000, guid: 64c60b55239831941926cf704f442090, type: 3}
   - {fileID: 21300000, guid: e826b3c9340035f46bb8012957873b7c, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Play_0
   - Shop
   - Target
   - Option

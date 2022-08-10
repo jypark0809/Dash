@@ -14,6 +14,7 @@ public class PlayerController : BaseController
     public Move move;
 
     Animator _anim;
+    SpriteRenderer _sprite;
 
     public override void Init()
     {
@@ -21,6 +22,7 @@ public class PlayerController : BaseController
         mapControllers = new MapController[2];
         _state = Define.PlayerState.Run;
         _anim = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -57,6 +59,8 @@ public class PlayerController : BaseController
     {
         if (collision.gameObject.tag == "Obstacle")
         {
+            OnDamaged();
+
             // Ç¥ÁöÆÇ
             if (collision.gameObject.name == "Signage")
             {
@@ -130,6 +134,7 @@ public class PlayerController : BaseController
 
         if (collision.gameObject.tag == "Finish")
         {
+            Managers.Data.PrintLog();
             _state = Define.PlayerState.Clear;
         }
     }
@@ -142,6 +147,16 @@ public class PlayerController : BaseController
             _health = 0;
             _state = Define.PlayerState.Die;
         }
+    }
+
+    void OnDamaged()
+    {
+        gameObject.layer = 8; // PlayerDamaged
+        _sprite.color = new Color(1, 1, 1, 0.4f);
+
+        // animation
+
+        StartCoroutine(DamageRecovered());
     }
 
     void UpdateRun()
@@ -191,9 +206,12 @@ public class PlayerController : BaseController
         move._speed *= 2;
     }
 
-    IEnumerator OnDamage()
+    IEnumerator DamageRecovered()
     {
-        yield return null;
+        yield return new WaitForSeconds(1f);
+
+        gameObject.layer = 7;
+        _sprite.color = new Color(1, 1, 1, 1);
     }
 
     IEnumerator StageClearUI()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 477806188208003735}
   - component: {fileID: 477806188208003734}
   - component: {fileID: 477806188208003732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Locker
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

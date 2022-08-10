@@ -15,9 +15,9 @@ TagManager:
   - Water
   - UI
   - Platform
-  - 
-  - 
-  - 
+  - Player
+  - PlayerDamaged
+  - Obstacle
   - 
   - 
   - 

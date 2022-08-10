@@ -56,16 +56,17 @@ public class UI_CheckStat : UI_Popup
         {
             Managers.Data.UserData.user.stage++;
             Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            Managers.Data.PrintLog();
             ClosePopupUI();
             Managers.UI.ShowPopupUI<UI_NextStage>();
         }
         else
         {
             Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // Ω∫≈› ¿˙¿Â
+            Managers.Data.PrintLog();
             ClosePopupUI();
             Managers.Scene.LoadScene(Define.Scene.Ending);
         }
-            
     }
 
     public void CancleButtonClicked(PointerEventData data)
@@ -85,7 +86,7 @@ public class UI_CheckStat : UI_Popup
                 Debug.Log("Fail to Save Json : Managers.Data.UserData.user.prevStat");
                 break;
         }
-
+        Managers.Data.PrintLog();
         ClosePopupUI();
     }
 }

@@ -74,6 +74,7 @@ public class UI_StageClear : UI_Popup
         Managers.Data.UserData.user.stat1++;
         Managers.Data.UserData.user.prevStat = 1;
         Managers.UI.ShowPopupUI<UI_CheckStat>();
+        Managers.Data.PrintLog();
     }
 
     public void StatButton2Clicked(PointerEventData data)
@@ -81,6 +82,7 @@ public class UI_StageClear : UI_Popup
         Managers.Data.UserData.user.stat2++;
         Managers.Data.UserData.user.prevStat = 2;
         Managers.UI.ShowPopupUI<UI_CheckStat>();
+        Managers.Data.PrintLog();
     }
 
     public void StatButton3Clicked(PointerEventData data)
@@ -88,5 +90,6 @@ public class UI_StageClear : UI_Popup
         Managers.Data.UserData.user.stat3++;
         Managers.Data.UserData.user.prevStat = 3;
         Managers.UI.ShowPopupUI<UI_CheckStat>();
+        Managers.Data.PrintLog();
     }
 }

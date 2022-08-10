@@ -31,13 +31,15 @@ public class UI_SelectGender : UI_Popup
     {
         Managers.Data.UserData.user.gender = "male";
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-        Managers.Scene.LoadScene(Define.Scene.Game);
+        Managers.UI.ShowPopupUI<UI_CheckGender>();
+        Managers.Data.PrintLog();
     }
 
     public void FemaleButtonClicked(PointerEventData data)
     {
         Managers.Data.UserData.user.gender = "female";
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-        Managers.Scene.LoadScene(Define.Scene.Game);
+        Managers.UI.ShowPopupUI<UI_CheckGender>();
+        Managers.Data.PrintLog();
     }
 }

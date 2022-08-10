@@ -57,6 +57,12 @@ public class DataManager
         UserData.user.ruby = 0;
 
         SaveUserDataToJson(UserData);
-        Debug.Log(JsonUtility.ToJson(UserData));
+        Debug.Log(JsonUtility.ToJson(UserData, true));
+    }
+
+    public void PrintLog()
+    {
+        string jsonData = JsonUtility.ToJson(UserData, true);
+        Debug.Log(jsonData);
     }
 }
