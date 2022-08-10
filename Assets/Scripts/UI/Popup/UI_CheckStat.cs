@@ -57,6 +57,7 @@ public class UI_CheckStat : UI_Popup
             Managers.Data.UserData.user.stage++;
             Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
             Managers.Data.PrintLog();
+            Managers.Sound.Play("Button", Define.Sound.Effect);
             ClosePopupUI();
             Managers.UI.ShowPopupUI<UI_NextStage>();
         }
@@ -64,6 +65,7 @@ public class UI_CheckStat : UI_Popup
         {
             Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // Ω∫≈› ¿˙¿Â
             Managers.Data.PrintLog();
+            Managers.Sound.Play("Button", Define.Sound.Effect);
             ClosePopupUI();
             Managers.Scene.LoadScene(Define.Scene.Ending);
         }
@@ -87,6 +89,7 @@ public class UI_CheckStat : UI_Popup
                 break;
         }
         Managers.Data.PrintLog();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
     }
 }

@@ -73,23 +73,26 @@ public class UI_StageClear : UI_Popup
     {
         Managers.Data.UserData.user.stat1++;
         Managers.Data.UserData.user.prevStat = 1;
-        Managers.UI.ShowPopupUI<UI_CheckStat>();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.PrintLog();
+        Managers.UI.ShowPopupUI<UI_CheckStat>();
     }
 
     public void StatButton2Clicked(PointerEventData data)
     {
         Managers.Data.UserData.user.stat2++;
         Managers.Data.UserData.user.prevStat = 2;
-        Managers.UI.ShowPopupUI<UI_CheckStat>();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.PrintLog();
+        Managers.UI.ShowPopupUI<UI_CheckStat>();
     }
 
     public void StatButton3Clicked(PointerEventData data)
     {
         Managers.Data.UserData.user.stat3++;
         Managers.Data.UserData.user.prevStat = 3;
-        Managers.UI.ShowPopupUI<UI_CheckStat>();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.PrintLog();
+        Managers.UI.ShowPopupUI<UI_CheckStat>();
     }
 }

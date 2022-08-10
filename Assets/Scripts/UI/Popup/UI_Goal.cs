@@ -30,6 +30,7 @@ public class UI_Goal : UI_Popup
         Managers.Data.UserData.user.amber += 10;
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         Managers.Data.PrintLog();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
         Managers.UI.ShowPopupUI<UI_StageClear>();
     }

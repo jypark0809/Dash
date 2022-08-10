@@ -49,17 +49,20 @@ public class UI_Test : UI_Popup
         Managers.Data.UserData.user.amber = int.Parse(GetText((int)Texts.AmberText).text);
         Managers.Data.UserData.user.ruby = int.Parse(GetText((int)Texts.RubyText).text);
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
     }
 
     public void InitButtonClicked(PointerEventData data)
     {
         Managers.Data.InitData();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
     }
 
     public void CancleButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
     }
 }

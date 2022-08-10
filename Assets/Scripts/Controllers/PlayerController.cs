@@ -48,10 +48,13 @@ public class PlayerController : BaseController
     {
         if (collision.gameObject.tag == "Platform")
         {
-            // 발판 충돌로직
-            _jumpCount = 2;
-            _isJump = false;
-            _state = Define.PlayerState.Run;
+            if (_state != Define.PlayerState.Die)
+            {
+                // 발판 충돌로직
+                _jumpCount = 2;
+                _isJump = false;
+                _state = Define.PlayerState.Run;
+            }
         }
     }
 
@@ -70,7 +73,7 @@ public class PlayerController : BaseController
             // 벌
             if (collision.gameObject.name == "Bee")
             {
-                DecreaseHealth(1);
+                DecreaseHealth(2);
             }
 
             // 뜀틀
@@ -89,7 +92,7 @@ public class PlayerController : BaseController
             if (collision.gameObject.name == "Pin")
             {
                 StartCoroutine(SpeedDown());
-                DecreaseHealth(2);
+                DecreaseHealth(1);
             }
 
             // 책
@@ -101,7 +104,7 @@ public class PlayerController : BaseController
             // 거미
             if (collision.gameObject.name == "Spider")
             {
-                DecreaseHealth(2);
+                DecreaseHealth(1);
             }
 
             // 학주
@@ -115,7 +118,7 @@ public class PlayerController : BaseController
         {
             if (collision.gameObject.name == "Letter")
             {
-                if (_health < 3)
+                if (_health < 3 && _state != Define.PlayerState.Die)
                     _health++;
             }
 
@@ -199,7 +202,7 @@ public class PlayerController : BaseController
             item._speed = 2;
         move._speed = 2;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         foreach (MapController item in mapControllers)
             item._speed = 4;
@@ -208,7 +211,7 @@ public class PlayerController : BaseController
 
     IEnumerator DamageRecovered()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         gameObject.layer = 7;
         _sprite.color = new Color(1, 1, 1, 1);
@@ -218,11 +221,14 @@ public class PlayerController : BaseController
     {
         yield return new WaitForSeconds(2.5f);
         Time.timeScale = 0;
+        Managers.Sound.Clear();
+        Managers.Sound.Play("StageClear", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Goal>();
     }
 
     IEnumerator GameOver()
     {
+        gameObject.layer = 8; // PlayerDamaged
         mapControllers[0]._speed = 0;
         mapControllers[1]._speed = 0;
         move._speed = 0;
@@ -230,6 +236,8 @@ public class PlayerController : BaseController
 
         yield return new WaitForSeconds(1f);
         Time.timeScale = 0;
+        Managers.Sound.Clear();
+        Managers.Sound.Play("GameOver", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_GameOver>();
     }
 }

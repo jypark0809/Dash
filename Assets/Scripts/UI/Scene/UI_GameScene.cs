@@ -87,7 +87,7 @@ public class UI_GameScene : UI_Scene
 
     public void JumpButtonClicked(PointerEventData data)
     {
-        if (pc._state != Define.PlayerState.Clear)
+        if (pc._state != Define.PlayerState.Clear && pc._state != Define.PlayerState.Die)
         {
             pc._isJump = true;
             pc._state = Define.PlayerState.Jump;
@@ -95,6 +95,7 @@ public class UI_GameScene : UI_Scene
             {
                 pc.GetComponent<Rigidbody2D>().velocity = Vector2.up * pc._jumpPower;
                 pc._jumpCount--;
+                Managers.Sound.Play("Jump", Define.Sound.Effect);
             }
         }
     }
@@ -102,6 +103,8 @@ public class UI_GameScene : UI_Scene
     public void PauseButtonClicked(PointerEventData data)
     {
         Time.timeScale = 0;
+
+        Managers.Sound.Play("Button", Define.Sound.Effect);
 
         // TODO : UI
         Managers.UI.ShowPopupUI<UI_Pause>();

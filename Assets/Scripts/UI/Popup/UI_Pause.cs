@@ -30,6 +30,7 @@ public class UI_Pause : UI_Popup
     public void KeepGoingButtonClicked(PointerEventData data)
     {
         // 게임으로 돌아가기
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
         Time.timeScale = 1;
     }
@@ -39,5 +40,6 @@ public class UI_Pause : UI_Popup
         // 게임 그만하기
         Time.timeScale = 1;
         Managers.Scene.LoadScene(Define.Scene.Lobby);
+        Managers.Sound.Play("Button", Define.Sound.Effect);
     }
 }

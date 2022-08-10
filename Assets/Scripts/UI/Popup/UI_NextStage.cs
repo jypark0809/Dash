@@ -31,6 +31,7 @@ public class UI_NextStage : UI_Popup
     {
         Time.timeScale = 1;
         Managers.Scene.LoadScene(Define.Scene.Game);
+        Managers.Sound.Play("Button", Define.Sound.Effect);
     }
 
     public void CancleButtonClicked(PointerEventData data)
@@ -38,5 +39,6 @@ public class UI_NextStage : UI_Popup
         Time.timeScale = 1;
         ClosePopupUI();
         Managers.Scene.LoadScene(Define.Scene.Lobby);
+        Managers.Sound.Play("Button", Define.Sound.Effect);
     }
 }

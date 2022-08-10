@@ -39,26 +39,31 @@ public class UI_LobbyScene : UI_Scene
 
     public void TipButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Debug.Log("TipButtonClicked");
     }
 
     public void OptionButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Debug.Log("OptionButtonClicked");
     }
 
     public void TargetButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Debug.Log("TargetButtonClicked");
     }
 
     public void ShopButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Debug.Log("ShopButtonClicked");
     }
 
     public void EndingBookButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Debug.Log("EndingBookButtonClicked");
     }
 
@@ -69,10 +74,13 @@ public class UI_LobbyScene : UI_Scene
             Managers.UI.ShowPopupUI<UI_SelectGender>();
         else
             Managers.Scene.LoadScene(Define.Scene.Game);
+
+        Managers.Sound.Play("Button", Define.Sound.Effect);
     }
 
     public void InitButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Test>();
     }
 }

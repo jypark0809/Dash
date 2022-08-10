@@ -50,6 +50,7 @@ public class UI_CheckGender : UI_Popup
     {
         ClosePopupUI();
         Managers.Data.PrintLog();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Scene.LoadScene(Define.Scene.Game);
     }
 
@@ -58,6 +59,7 @@ public class UI_CheckGender : UI_Popup
         Managers.Data.UserData.user.gender = "unselected";
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         Managers.Data.PrintLog();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
     }
 }

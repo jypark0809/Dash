@@ -40,7 +40,6 @@ public class SoundManager
     public void Play(string path, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
     {
         AudioClip audioClip = GetOrAddAudioClip(path, type);
-        _audioSources[0].volume = 0.01f;
         Play(audioClip, type, pitch);
     }
 

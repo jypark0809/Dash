@@ -25,12 +25,14 @@ public class UI_GameOver : UI_Popup
     public void RetryButtonClicked(PointerEventData data)
     {
         Time.timeScale = 1;
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Scene.LoadScene(Define.Scene.Game);
     }
 
     public void StopButtonClicked(PointerEventData data)
     {
         Time.timeScale = 1;
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Scene.LoadScene(Define.Scene.Lobby);
     }
 }

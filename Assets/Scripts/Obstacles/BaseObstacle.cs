@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseObstacle : MonoBehaviour
+public class BaseObstacle : MonoBehaviour
 {
     public Define.WorldObject WorldObjectType { get; protected set; } = Define.WorldObject.Obstacle;
     protected Animator _anim;
@@ -12,7 +12,10 @@ public abstract class BaseObstacle : MonoBehaviour
         Init();
     }
 
-    public abstract void Init();
+    public virtual void Init()
+    {
+
+    }
 
     public void SetActiceOff()
     {
@@ -26,7 +29,7 @@ public abstract class BaseObstacle : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Managers.Sound.Play("Itemtest", Define.Sound.Effect);
+            Managers.Sound.Play("Obstacle", Define.Sound.Effect);
         }
     }
 }

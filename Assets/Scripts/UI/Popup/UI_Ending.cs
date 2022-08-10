@@ -23,6 +23,7 @@ public class UI_Ending : UI_Scene
 
     public void LobbyButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Scene.LoadScene(Define.Scene.Lobby);
     }
 }
