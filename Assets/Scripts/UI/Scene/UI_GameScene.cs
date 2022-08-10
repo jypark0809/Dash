@@ -109,8 +109,8 @@ public class UI_GameScene : UI_Scene
 
     string CalStage()
     {
-        int upperStage = (Managers.Data.UserData.user.stage + 3) / 4;
-        int lowerStage = (Managers.Data.UserData.user.stage + 3) % 4 + 1;
+        int upperStage = (Managers.Data.UserData.user.stage + 3) / 3;
+        int lowerStage = (Managers.Data.UserData.user.stage + 3) % 3 + 1;
         return upperStage.ToString() + "-" + lowerStage.ToString();
     }
 }

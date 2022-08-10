@@ -52,7 +52,7 @@ public class UI_CheckStat : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
-        if (Managers.Data.UserData.user.stage < 12)
+        if (Managers.Data.UserData.user.stage < 9)
         {
             Managers.Data.UserData.user.stage++;
             Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
