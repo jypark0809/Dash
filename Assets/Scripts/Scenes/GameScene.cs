@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GameScene : BaseScene
 {
+    UI_GameScene gameScene;
     GameObject player;
     PlayerController pc;
     MapController mc1;
     MapController mc2;
+    Finish finish;
 
     protected override void Init()
     {
@@ -15,7 +17,7 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.Game;
 
-        UI_GameScene gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
+        gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
         Managers.Sound.Play("GameScene", Define.Sound.Bgm);
 
         // TODO : 다른 함수로 빼기
@@ -29,11 +31,11 @@ public class GameScene : BaseScene
         pc = player.GetOrAddComponent<PlayerController>();
         gameScene.SetPlayer(player);
 
-        //GameObject finish = GameObject.Find("Finish");
-        //gameScene.SetFinish(finish);
-
         GameObject stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_{Managers.Data.UserData.user.stage}");
-        
+
+        GameObject finishObj = GameObject.Find("Finish");
+        finish = finishObj.GetComponent<Finish>();
+
         mc1 = GameObject.Find("SubBackground Group").GetComponent<MapController>();
         mc2 = GameObject.Find("Background Group").GetComponent<MapController>();
 
@@ -46,8 +48,13 @@ public class GameScene : BaseScene
 
     private void Update()
     {
-        if(pc._state == Define.PlayerState.Clear)
+        if(pc._state != Define.PlayerState.Clear)
         {
+            gameScene.Ratio = finish.CalculateDistance();
+        }
+        else
+        {
+            // Background 및 Stage 장애물 스크롤링 정지
             mc1._speed = 0;
             mc2._speed = 0;
             pc.move._speed = 0;

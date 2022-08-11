@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Background
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: c028edee79b8f61438015149a70ec36d, type: 3}
+    - {fileID: 2800000, guid: acc0702f9bcab0f4dbe4383ac3b9e6a2, type: 3}
+    - {fileID: 2800000, guid: 3749971ea7569794ea966203f06546fa, type: 3}
+    - {fileID: 2800000, guid: f076c3dcd6e295b4b96ad15db5ff7114, type: 3}
+    - {fileID: 2800000, guid: 9ef9d9e6a87c1254b9f8b869ae2213b9, type: 3}
+    - {fileID: 2800000, guid: 5b05d9bd2451ec64b8fdb32dfca50baf, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 9ef9d9e6a87c1254b9f8b869ae2213b9, type: 3}
+  - {fileID: 21300000, guid: f076c3dcd6e295b4b96ad15db5ff7114, type: 3}
+  - {fileID: 21300000, guid: 5b05d9bd2451ec64b8fdb32dfca50baf, type: 3}
+  - {fileID: 21300000, guid: 3749971ea7569794ea966203f06546fa, type: 3}
+  - {fileID: 21300000, guid: c028edee79b8f61438015149a70ec36d, type: 3}
+  - {fileID: 21300000, guid: acc0702f9bcab0f4dbe4383ac3b9e6a2, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - SubBackground_01
+  - Background_04
+  - Floor
+  - Background_03
+  - Background_01
+  - Background_02
+  m_RenderDataMap: {}
+  m_Tag: Background
+  m_IsVariant: 0

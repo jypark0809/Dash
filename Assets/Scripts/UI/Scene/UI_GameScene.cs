@@ -9,12 +9,23 @@ public class UI_GameScene : UI_Scene
 {
     GameObject _player = null;
     PlayerController pc = null;
-    //GameObject _finish = null;
-    //float _startFinishPos;
-    //float _playerPos = -4;
+    public float Ratio { get; set; }
 
-    enum Buttons { JumpButton, PauseButton }
-    enum Images { Letter1, Letter2, Letter3, }
+    enum Buttons
+    {
+        JumpButton,
+        PauseButton
+    }
+
+    enum Images
+    {
+        Letter1,
+        Letter2,
+        Letter3,
+        Bar_Position,
+        MalePinImage,
+        FemalePinImage,
+    }
     enum Texts
     {
         StegeDigitText,
@@ -23,7 +34,6 @@ public class UI_GameScene : UI_Scene
     public Image[] healthUI;
 
     public void SetPlayer(GameObject player) { _player = player; }
-    // public void SetFinish(GameObject finish) { _finish = finish; }
 
     void Start()
     {
@@ -39,10 +49,17 @@ public class UI_GameScene : UI_Scene
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
         Bind<Text>(typeof(Texts));
+
         GetButton((int)Buttons.JumpButton).gameObject.BindEvent(JumpButtonClicked);
         GetButton((int)Buttons.PauseButton).gameObject.BindEvent(PauseButtonClicked);
 
         GetText((int)Texts.StegeDigitText).text = CalStage();
+
+        if (Managers.Data.UserData.user.gender == "male")
+            GetImage((int)Images.FemalePinImage).gameObject.SetActive(false);
+
+        if (Managers.Data.UserData.user.gender == "female")
+            GetImage((int)Images.MalePinImage).gameObject.SetActive(false);
 
         healthUI = new Image[3];
         healthUI[0] = GetImage((int)Images.Letter1);
@@ -75,6 +92,10 @@ public class UI_GameScene : UI_Scene
                 healthUI[2].gameObject.SetActive(true);
                 break;
         }
+
+        GetImage((int)Images.Bar_Position).rectTransform.sizeDelta = new Vector2(Ratio * 400, 30);
+        GetImage((int)Images.MalePinImage).rectTransform.anchoredPosition = new Vector2(Ratio * 400 - 200, 0);
+        GetImage((int)Images.FemalePinImage).rectTransform.anchoredPosition = new Vector2(Ratio * 400 - 200, 0);
     }
 
     public void JumpButtonClicked(PointerEventData data)
@@ -109,14 +130,4 @@ public class UI_GameScene : UI_Scene
         int lowerStage = (Managers.Data.UserData.user.stage + 2) % 3 + 1;
         return upperStage.ToString() + "-" + lowerStage.ToString();
     }
-
-    //void CalPlayerPosition()
-    //{
-    //    float stageDistance = _startFinishPos - _playerPos;
-    //    float remainDistance = _finish.transform.position.x - _playerPos;
-    //    float curPosition = stageDistance - remainDistance;
-
-
-
-    //}
 }
