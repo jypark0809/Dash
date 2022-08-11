@@ -69,13 +69,21 @@ public class UI_LobbyScene : UI_Scene
 
     public void PlayButtonClicked(PointerEventData data)
     {
-        // TODO
-        if (Managers.Data.UserData.user.gender == "unselected")
-            Managers.UI.ShowPopupUI<UI_SelectGender>();
-        else
-            Managers.Scene.LoadScene(Define.Scene.Game);
+        if (Managers.Data.UserData.user.stat1 + Managers.Data.UserData.user.stat2 + Managers.Data.UserData.user.stat3 < 9)
+        {
+            if (Managers.Data.UserData.user.gender == "unselected")
+                Managers.UI.ShowPopupUI<UI_SelectGender>();
+            else
+                Managers.Scene.LoadScene(Define.Scene.Game);
 
-        Managers.Sound.Play("Button", Define.Sound.Effect);
+            Managers.Sound.Play("Button", Define.Sound.Effect);
+        }
+        else
+        {
+            Managers.Data.PrintLog();
+            Managers.Scene.LoadScene(Define.Scene.Ending);
+            Managers.Sound.Play("Button", Define.Sound.Effect);
+        }
     }
 
     public void InitButtonClicked(PointerEventData data)

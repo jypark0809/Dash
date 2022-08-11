@@ -62,6 +62,24 @@ public class Define
         JumpingShoes,
     }
 
+    public enum EndingId
+    {
+        Npc0_HappyEnding,
+        Npc0_BadEnding,
+        Npc1_HappyEnding,
+        Npc1_BadEnding,
+        Npc2_HappyEnding,
+        Npc2_BadEnding,
+        Npc3_HappyEnding,
+        Npc3_BadEnding,
+        Npc4_HappyEnding,
+        Npc4_BadEnding,
+        Npc5_HappyEnding,
+        Npc5_BadEnding,
+    }
+
     public static string[] maleStat = { "외모", "집중력", "진실" };
     public static string[] femaleStat = { "섬세함", "안정감", "끈기" };
+    public static string[] maleTarget = { "모범생", "소꿉친구", "후배" };
+    public static string[] femaleTarget = { "학생회장", "체육부장", "선도부장" };
 }

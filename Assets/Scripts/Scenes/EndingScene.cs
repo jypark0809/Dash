@@ -9,7 +9,7 @@ public class EndingScene : BaseScene
         base.Init();
 
         SceneType = Define.Scene.Ending;
-        UI_Ending endingScene = Managers.UI.ShowSceneUI<UI_Ending>();
+        Managers.UI.ShowPopupUI<UI_SelectNpc>();
     }
 
     public override void Clear()

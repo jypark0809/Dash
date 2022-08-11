@@ -35,13 +35,28 @@ public class UI_CheckStat : UI_Popup
         switch (Managers.Data.UserData.user.prevStat)
         {
             case 1:
-                GetText((int)Texts.StatText).text = Define.maleStat[0];
+                if (Managers.Data.UserData.user.gender == "male")
+                    GetText((int)Texts.StatText).text = Define.maleStat[0];
+                else if (Managers.Data.UserData.user.gender == "female")
+                    GetText((int)Texts.StatText).text = Define.femaleStat[0];
+                else
+                    Debug.Log("Failed to load Userdata : UI_CheckStat.cs");
                 break;
             case 2:
-                GetText((int)Texts.StatText).text = Define.maleStat[1];
+                if (Managers.Data.UserData.user.gender == "male")
+                    GetText((int)Texts.StatText).text = Define.maleStat[1];
+                else if (Managers.Data.UserData.user.gender == "female")
+                    GetText((int)Texts.StatText).text = Define.femaleStat[1];
+                else
+                    Debug.Log("Failed to load Userdata : UI_CheckStat.cs");
                 break;
             case 3:
-                GetText((int)Texts.StatText).text = Define.maleStat[2];
+                if (Managers.Data.UserData.user.gender == "male")
+                    GetText((int)Texts.StatText).text = Define.maleStat[2];
+                else if (Managers.Data.UserData.user.gender == "female")
+                    GetText((int)Texts.StatText).text = Define.femaleStat[2];
+                else
+                    Debug.Log("Failed to load Userdata : UI_CheckStat.cs");
                 break;
             default:
                 Debug.Log("Parsing Error : UI_CheakStat");
@@ -63,10 +78,11 @@ public class UI_CheckStat : UI_Popup
         }
         else
         {
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // Ω∫≈› ¿˙¿Â
+            Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // √÷¡æ Ω∫≈› ¿˙¿Â
             Managers.Data.PrintLog();
             Managers.Sound.Play("Button", Define.Sound.Effect);
             ClosePopupUI();
+            Time.timeScale = 1;
             Managers.Scene.LoadScene(Define.Scene.Ending);
         }
     }

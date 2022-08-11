@@ -62,7 +62,7 @@ public class UI_StageClear : UI_Popup
             GetText((int)Texts.StatButtonText3).text = Define.femaleStat[2];
         }
         else
-            Debug.Log("Failed to bind Text : Managers.Data.UserData.user.gender");
+            Debug.Log("Failed to bind Text : UI_StageClear.cs");
 
         GetText((int)Texts.StatValue1).text = Managers.Data.UserData.user.stat1.ToString();
         GetText((int)Texts.StatValue2).text = Managers.Data.UserData.user.stat2.ToString();

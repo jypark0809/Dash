@@ -67,6 +67,16 @@ public class SoundManager
         }
     }
 
+    public void Pause()
+    {
+        _audioSources[(int)Define.Sound.Bgm].Pause();
+    }
+
+    public void RePlay()
+    {
+        _audioSources[(int)Define.Sound.Bgm].Play();
+    }
+
     AudioClip GetOrAddAudioClip(string path, Define.Sound type = Define.Sound.Effect)
     {
         if (path.Contains("Sounds/") == false)

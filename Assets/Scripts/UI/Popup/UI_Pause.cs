@@ -31,6 +31,7 @@ public class UI_Pause : UI_Popup
     {
         // 게임으로 돌아가기
         Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Sound.RePlay();
         ClosePopupUI();
         Time.timeScale = 1;
     }

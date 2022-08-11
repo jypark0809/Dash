@@ -9,13 +9,11 @@ public class UI_GameScene : UI_Scene
 {
     GameObject _player = null;
     PlayerController pc = null;
-    float countdownSeconds = 40;
 
     enum Buttons { JumpButton, PauseButton }
-    enum Images { Letter1, Letter2, Letter3, Clock }
+    enum Images { Letter1, Letter2, Letter3, }
     enum Texts
     {
-        TimeText,
         StegeDigitText,
     }
 
@@ -49,17 +47,6 @@ public class UI_GameScene : UI_Scene
 
     void Update()
     {
-        if (countdownSeconds > 0)
-        {
-            countdownSeconds -= Time.deltaTime;
-            var span = new TimeSpan(0, 0, (int)countdownSeconds);
-            GetText((int)Texts.TimeText).text = span.ToString(@"mm\:ss");
-        }
-        else
-        {
-            pc._state = Define.PlayerState.Die;
-        }
-
         switch (pc._health)
         {
             case 0:
@@ -105,6 +92,7 @@ public class UI_GameScene : UI_Scene
         Time.timeScale = 0;
 
         Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Sound.Pause();
 
         // TODO : UI
         Managers.UI.ShowPopupUI<UI_Pause>();
