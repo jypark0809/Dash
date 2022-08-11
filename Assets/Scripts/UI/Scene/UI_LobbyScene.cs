@@ -40,7 +40,7 @@ public class UI_LobbyScene : UI_Scene
     public void TipButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Debug.Log("TipButtonClicked");
+        Managers.UI.ShowPopupUI<UI_Tip>();
     }
 
     public void OptionButtonClicked(PointerEventData data)

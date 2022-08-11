@@ -56,7 +56,8 @@ public class UI_Scripts : UI_Popup
     {
         if (_stat1 == 0 || _stat2 == 0 || _stat3 == 0)
         {
-            Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+            Managers.Data.ScriptData.TryGetValue(12, out _scripts);
+            return;
         }
 
         switch (_npcId)

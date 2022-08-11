@@ -48,7 +48,7 @@ public class PlayerController : BaseController
     {
         if (collision.gameObject.tag == "Platform")
         {
-            if (_state != Define.PlayerState.Die)
+            if (_state != Define.PlayerState.Die && _state != Define.PlayerState.Clear)
             {
                 // 발판 충돌로직
                 _jumpCount = 2;
@@ -179,6 +179,7 @@ public class PlayerController : BaseController
 
     public void StageClear()
     {
+        _anim.SetBool("isJump", false);
         transform.position += Vector3.right * 6.0f * Time.deltaTime;
         StartCoroutine(StageClearUI());
     }

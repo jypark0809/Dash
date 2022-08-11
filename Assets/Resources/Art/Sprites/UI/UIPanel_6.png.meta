@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b06087c7ebb42e4191c889f911044ca
+guid: d75d462f50aaa4a4488002461c6f3cc5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -140,22 +140,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Panel 1_0
+      name: UIPanel_6_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 6
         y: 2
-        width: 542
-        height: 487
+        width: 1321
+        height: 594
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 18, y: 19, z: 18, w: 20}
+      border: {x: 30, y: 30, z: 49, w: 27}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2a5e0f33eaed6645be4e6cdd6c77500
-      internalID: 438112838
+      spriteID: c7fcc6da9e0918d43b9c98323a0bba5d
+      internalID: -1655520631
       vertices: []
       indices: 
       edges: []
@@ -171,7 +171,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Panel 1_0: 438112838
+      UIPanel_6_0: -1655520631
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -34,7 +34,6 @@ public class UI_SelectGender : UI_Popup
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.PrintLog();
         Managers.UI.ShowPopupUI<UI_CheckGender>();
-        
     }
 
     public void FemaleButtonClicked(PointerEventData data)

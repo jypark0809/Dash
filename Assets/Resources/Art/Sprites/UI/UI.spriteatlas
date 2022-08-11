@@ -52,7 +52,7 @@ SpriteAtlas:
   - Target
   - Option
   - EndingBook_old
-  - tip
+  - Tip
   m_RenderDataMap: {}
   m_Tag: UI
   m_IsVariant: 0

@@ -121,5 +121,9 @@ public class DataManager
         ScriptData.Add(11, new string[] { "선도부장 Bad Ending 대사 스크립트 입니다.(1/3)",
             "선도부장 Bad Ending 대사 스크립트 입니다.(2/3)",
             "선도부장 Bad Ending 대사 스크립트 입니다.(3/3)"});
+
+        ScriptData.Add(12, new string[] { "GaveOver 대사 스크립트 입니다.(1/3)",
+            "GaveOver 대사 스크립트 입니다.(2/3)",
+            "GaveOver 대사 스크립트 입니다.(3/3)"});
     }
 }

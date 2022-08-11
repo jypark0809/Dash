@@ -8,7 +8,6 @@ public class GameScene : BaseScene
     PlayerController pc;
     MapController mc1;
     MapController mc2;
-    AudioClip audioClip;
 
     protected override void Init()
     {
@@ -30,7 +29,11 @@ public class GameScene : BaseScene
         pc = player.GetOrAddComponent<PlayerController>();
         gameScene.SetPlayer(player);
 
+        //GameObject finish = GameObject.Find("Finish");
+        //gameScene.SetFinish(finish);
+
         GameObject stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_{Managers.Data.UserData.user.stage}");
+        
         mc1 = GameObject.Find("SubBackground Group").GetComponent<MapController>();
         mc2 = GameObject.Find("Background Group").GetComponent<MapController>();
 

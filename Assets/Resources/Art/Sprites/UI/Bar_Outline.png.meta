@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b06087c7ebb42e4191c889f911044ca
+guid: b86e0845be8b61642938ccea003e5b08
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -140,22 +140,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Panel 1_0
+      name: Bar_3_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 2
         y: 2
-        width: 542
-        height: 487
+        width: 410
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 18, y: 19, z: 18, w: 20}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2a5e0f33eaed6645be4e6cdd6c77500
-      internalID: 438112838
+      spriteID: 30e7db6a60c2a1542abc524f0b0f87d5
+      internalID: -297597965
       vertices: []
       indices: 
       edges: []
@@ -171,7 +171,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Panel 1_0: 438112838
+      Bar_3_0: -297597965
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

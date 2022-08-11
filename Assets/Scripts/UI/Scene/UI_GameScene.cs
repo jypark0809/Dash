@@ -9,6 +9,9 @@ public class UI_GameScene : UI_Scene
 {
     GameObject _player = null;
     PlayerController pc = null;
+    //GameObject _finish = null;
+    //float _startFinishPos;
+    //float _playerPos = -4;
 
     enum Buttons { JumpButton, PauseButton }
     enum Images { Letter1, Letter2, Letter3, }
@@ -20,6 +23,7 @@ public class UI_GameScene : UI_Scene
     public Image[] healthUI;
 
     public void SetPlayer(GameObject player) { _player = player; }
+    // public void SetFinish(GameObject finish) { _finish = finish; }
 
     void Start()
     {
@@ -29,6 +33,7 @@ public class UI_GameScene : UI_Scene
     public override void Init()
     {
         base.Init();
+
         pc = _player.GetComponent<PlayerController>();
 
         Bind<Button>(typeof(Buttons));
@@ -74,7 +79,7 @@ public class UI_GameScene : UI_Scene
 
     public void JumpButtonClicked(PointerEventData data)
     {
-        if (pc._state != Define.PlayerState.Clear && pc._state != Define.PlayerState.Die)
+        if ( pc._state != Define.PlayerState.Clear && pc._state != Define.PlayerState.Die)
         {
             pc._isJump = true;
             pc._state = Define.PlayerState.Jump;
@@ -104,4 +109,14 @@ public class UI_GameScene : UI_Scene
         int lowerStage = (Managers.Data.UserData.user.stage + 2) % 3 + 1;
         return upperStage.ToString() + "-" + lowerStage.ToString();
     }
+
+    //void CalPlayerPosition()
+    //{
+    //    float stageDistance = _startFinishPos - _playerPos;
+    //    float remainDistance = _finish.transform.position.x - _playerPos;
+    //    float curPosition = stageDistance - remainDistance;
+
+
+
+    //}
 }
