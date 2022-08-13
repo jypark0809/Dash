@@ -17,9 +17,13 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.Game;
 
-        gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
+        // Sound
         Managers.Sound.Play("GameScene", Define.Sound.Bgm);
 
+        // Load UI
+        gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
+
+        // Load Player
         // TODO : 다른 함수로 빼기
         if (Managers.Data.UserData.user.gender == "male")
             player = Managers.Game.Spawn(Define.WorldObject.Player, "male");
@@ -31,18 +35,21 @@ public class GameScene : BaseScene
         pc = player.GetOrAddComponent<PlayerController>();
         gameScene.SetPlayer(player);
 
+        // Load Stage
         GameObject stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_{Managers.Data.UserData.user.stage}");
 
+        // Load Finish Object
         GameObject finishObj = GameObject.Find("Finish");
         finish = finishObj.GetComponent<Finish>();
 
+        // Load Background
         mc1 = GameObject.Find("SubBackground Group").GetComponent<MapController>();
         mc2 = GameObject.Find("Background Group").GetComponent<MapController>();
-
         pc.move = stage.GetComponent<Move>();
         pc.mapControllers[0] = mc1;
         pc.mapControllers[1] = mc2;
 
+        // Load Data
         UserData user = Managers.Data.UserData;
     }
 

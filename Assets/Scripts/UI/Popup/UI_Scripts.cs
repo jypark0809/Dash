@@ -7,15 +7,21 @@ using UnityEngine.UI;
 public class UI_Scripts : UI_Popup
 {
     // 모범생, 소꿉친구, 후배, 학생회장, 체육부장, 선도부장
-
     int _npcId;
     int _scriptIndex = 0;
     int _stat1, _stat2, _stat3;
-    string[] _scripts;
+    Script _script;
+
+    string _targetLine; // dictionary에서 꺼내온 대사 1줄
+    public int _charPerSecend;
+    float interval;
+    int _index;
+    bool _isType;
 
     enum Images
     {
         Panel,
+        CursurImage,
     }
 
     enum Texts
@@ -32,6 +38,7 @@ public class UI_Scripts : UI_Popup
     {
         base.Init();
 
+        interval = 1.0f / _charPerSecend;
         _npcId = PlayerPrefs.GetInt("npcId");
         LoadUserData();
         branchEnding();
@@ -40,8 +47,9 @@ public class UI_Scripts : UI_Popup
         Bind<Image>(typeof(Images));
 
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
-        GetText((int)Texts.ScriptText).text = _scripts[_scriptIndex];
-        _scriptIndex++;
+        GetImage((int)Images.CursurImage).gameObject.SetActive(false);
+
+        SetLine(_script.lines[_scriptIndex]);
     }
 
     void LoadUserData()
@@ -56,7 +64,7 @@ public class UI_Scripts : UI_Popup
     {
         if (_stat1 == 0 || _stat2 == 0 || _stat3 == 0)
         {
-            Managers.Data.ScriptData.TryGetValue(12, out _scripts);
+            Managers.Data.ScriptDict.TryGetValue(12, out _script);
             return;
         }
 
@@ -67,12 +75,12 @@ public class UI_Scripts : UI_Popup
                 if (_stat1 > _stat2 && _stat1 > _stat3)
                 {
                     if (_stat2 > _stat3)
-                        Managers.Data.ScriptData.TryGetValue(GetHappyEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetHappyEndingId(_npcId), out _script);
                     else
-                        Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
                 }
                 else
-                    Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                    Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
 
                 break;
 
@@ -81,12 +89,12 @@ public class UI_Scripts : UI_Popup
                 if (_stat3 > _stat1 && _stat3 > _stat2)
                 {
                     if (_stat1 > _stat2)
-                        Managers.Data.ScriptData.TryGetValue(GetHappyEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetHappyEndingId(_npcId), out _script);
                     else
-                        Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
                 }
                 else
-                    Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                    Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
 
                 break;
 
@@ -95,12 +103,12 @@ public class UI_Scripts : UI_Popup
                 if (_stat2 > _stat1 && _stat2 > _stat3)
                 {
                     if (_stat3 > _stat1)
-                        Managers.Data.ScriptData.TryGetValue(GetHappyEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetHappyEndingId(_npcId), out _script);
                     else
-                        Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
                 }
                 else
-                    Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                    Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
 
                 break;
 
@@ -109,12 +117,12 @@ public class UI_Scripts : UI_Popup
                 if (_stat1 > _stat2 && _stat1 > _stat3)
                 {
                     if (_stat2 > _stat3)
-                        Managers.Data.ScriptData.TryGetValue(GetHappyEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetHappyEndingId(_npcId), out _script);
                     else
-                        Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
                 }
                 else
-                    Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                    Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
 
                 break;
 
@@ -123,12 +131,12 @@ public class UI_Scripts : UI_Popup
                 if (_stat3 > _stat1 && _stat3 > _stat2)
                 {
                     if (_stat1 > _stat2)
-                        Managers.Data.ScriptData.TryGetValue(GetHappyEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetHappyEndingId(_npcId), out _script);
                     else
-                        Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
                 }
                 else
-                    Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                    Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
 
                 break;
 
@@ -137,12 +145,12 @@ public class UI_Scripts : UI_Popup
                 if (_stat2 > _stat1 && _stat2 > _stat3)
                 {
                     if (_stat3 > _stat1)
-                        Managers.Data.ScriptData.TryGetValue(GetHappyEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetHappyEndingId(_npcId), out _script);
                     else
-                        Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                        Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
                 }
                 else
-                    Managers.Data.ScriptData.TryGetValue(GetBadEndingId(_npcId), out _scripts);
+                    Managers.Data.ScriptDict.TryGetValue(GetBadEndingId(_npcId), out _script);
 
                 break;
 
@@ -166,15 +174,70 @@ public class UI_Scripts : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
 
-        if (_scriptIndex < _scripts.Length)
-        {
-            GetText((int)Texts.ScriptText).text = _scripts[_scriptIndex];
+        if (_isType == false)
             _scriptIndex++;
+
+        if (_scriptIndex < _script.lines.Length)
+        {
+            SetLine(_script.lines[_scriptIndex]);
         }
         else
         {
             Managers.Data.InitData();
             Managers.UI.ShowPopupUI<UI_Ending>();
         }
+    }
+
+    void SetLine(string line)
+    {
+        if (_isType)
+        {
+            StopCoroutine(Typing());
+            GetText((int)Texts.ScriptText).text = _targetLine;
+            EndTyping();
+        }
+        else
+        {
+            _targetLine = line;
+            StartCoroutine(StartTyping());
+        }
+    }
+
+    IEnumerator StartTyping()
+    {
+        GetText((int)Texts.ScriptText).text = "";
+        _index = 0;
+        GetImage((int)Images.CursurImage).gameObject.SetActive(false);
+        _isType = true;
+
+        yield return new WaitForSeconds(interval);
+        StartCoroutine(Typing());
+    }
+
+    IEnumerator Typing()
+    {
+        if (GetText((int)Texts.ScriptText).text == _targetLine)
+        {
+            EndTyping();
+            yield break;
+        }
+
+        GetText((int)Texts.ScriptText).text += _targetLine[_index];
+        
+
+        //Sound
+        if (_targetLine[_index] != ' ' || _targetLine[_index] != '.')
+            Managers.Sound.Play("Keyboard", Define.Sound.Effect);
+
+        _index++;
+
+        yield return new WaitForSeconds(interval);
+        StartCoroutine(Typing());
+    }
+
+    void EndTyping()
+    {
+        GetImage((int)Images.CursurImage).gameObject.SetActive(true);
+        _isType = false;
     }
 }

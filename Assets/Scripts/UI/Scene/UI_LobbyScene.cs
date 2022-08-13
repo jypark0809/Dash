@@ -74,12 +74,15 @@ public class UI_LobbyScene : UI_Scene
             if (Managers.Data.UserData.user.gender == "unselected")
                 Managers.UI.ShowPopupUI<UI_SelectGender>();
             else
+            {
                 Managers.Scene.LoadScene(Define.Scene.Game);
+            }
 
             Managers.Sound.Play("Button", Define.Sound.Effect);
         }
         else
         {
+            // 스텟이 9 이상이면 바로 EndingScene
             Managers.Data.PrintLog();
             Managers.Scene.LoadScene(Define.Scene.Ending);
             Managers.Sound.Play("Button", Define.Sound.Effect);
