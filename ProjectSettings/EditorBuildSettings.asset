@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/Ending.unity
     guid: 8eda8c9ac4a6c5a4c8bf7c4bdaa09433
+  - enabled: 1
+    path: Assets/Resources/Scenes/ReplayEnding.unity
+    guid: 75ecf016c6ee4cd47a903987ef8238a0
   m_configObjects: {}

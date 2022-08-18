@@ -12,11 +12,11 @@ public interface ILoader<Key, Value>
 public class DataManager
 {
     public UserData UserData { get; set; }
-    public Dictionary<int, Script> ScriptDict { get; private set; } = new Dictionary<int, Script>();
+    public Dictionary<int, Ending> EndingDict { get; private set; } = new Dictionary<int, Ending>();
 
     public void Init()
     {
-        ScriptDict = LoadJson<ScriptTempData, int, Script>("EndingScript").MakeDictionary();
+        EndingDict = LoadJson<EndingData, int, Ending>("EndingScript").MakeDictionary();
 
         // User Data Load
         if (File.Exists(Path.Combine(Application.persistentDataPath, "UserData.json")))
@@ -51,6 +51,20 @@ public class DataManager
         File.WriteAllText(path, jsonData);
     }
 
+    public void ClearAllStage()
+    {
+        UserData.user.id = "";
+        UserData.user.nickname = "";
+        UserData.user.gender = "unselected";
+        UserData.user.stat1 = 0;
+        UserData.user.stat2 = 0;
+        UserData.user.stat3 = 0;
+        UserData.user.stage = 1;
+
+        SaveUserDataToJson(UserData);
+        Debug.Log(JsonUtility.ToJson(UserData, true));
+    }
+
     public void InitData()
     {
         UserData.user.id = "";
@@ -59,10 +73,12 @@ public class DataManager
         UserData.user.stat1 = 0;
         UserData.user.stat2 = 0;
         UserData.user.stat3 = 0;
-        UserData.user.prevStat = 0;
         UserData.user.stage = 1;
         UserData.user.amber = 0;
         UserData.user.ruby = 0;
+        UserData.user.ending = new bool[12];
+        for (int i = 0; i < 12; i++)
+            UserData.user.ending[i] = false;
 
         SaveUserDataToJson(UserData);
         Debug.Log(JsonUtility.ToJson(UserData, true));

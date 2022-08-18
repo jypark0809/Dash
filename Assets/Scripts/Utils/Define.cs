@@ -28,6 +28,7 @@ public class Define
         Lobby,
         Game,
         Ending,
+        ReplayEnding,
     }
 
     public enum Sound
@@ -64,8 +65,7 @@ public class Define
 
     public enum EndingId
     {
-        Npc0_HappyEnding,
-        Npc0_BadEnding,
+        GameOver,
         Npc1_HappyEnding,
         Npc1_BadEnding,
         Npc2_HappyEnding,
@@ -76,6 +76,20 @@ public class Define
         Npc4_BadEnding,
         Npc5_HappyEnding,
         Npc5_BadEnding,
+        Npc6_HappyEnding,
+        Npc6_BadEnding,
+    }
+
+    public enum NpcId
+    {
+        Self, // 주인공
+        Npc1 = 1, // 모범생
+        Npc2, // 소꿉친구
+        Npc3, // 후배
+        Npc4, // 학생회장
+        Npc5, // 체육부장
+        Npc6, // 선도부장
+        Nerd // 오타쿠
     }
 
     public static string[] maleStat = { "외모", "집중력", "진실" };

@@ -14,10 +14,10 @@ public class User
     public int stat1;
     public int stat2;
     public int stat3;
-    public int prevStat;
     public int stage; // 지금까지 클리어한 스테이지
     public int amber; // 무료 재화
     public int ruby; // 유료 재화
+    public bool[] ending; // 엔딩
 }
 
 [Serializable]
@@ -31,23 +31,31 @@ public class UserData
 #region Script
 
 [Serializable]
-public class Script
+public class Ending
 {
-    public int id;
-    public string[] lines;
+    public int endingId;
+    public Script[] scripts;
 }
 
 [Serializable]
-public class ScriptTempData : ILoader<int, Script>
+public class Script
 {
-    public List<Script> scripts = new List<Script>();
+    public int npcId;
+    public int imageId;
+    public string line;
+}
 
-    public Dictionary<int, Script> MakeDictionary()
+[Serializable]
+public class EndingData : ILoader<int, Ending>
+{
+    public List<Ending> endings = new List<Ending>();
+
+    public Dictionary<int, Ending> MakeDictionary()
     {
-        Dictionary<int, Script> dict = new Dictionary<int, Script>();
+        Dictionary<int, Ending> dict = new Dictionary<int, Ending>();
 
-        foreach (Script script in scripts)
-            dict.Add(script.id, script);
+        foreach (Ending ending in endings)
+            dict.Add(ending.endingId, ending);
 
         return dict;
     }

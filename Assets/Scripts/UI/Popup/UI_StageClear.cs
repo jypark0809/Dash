@@ -72,7 +72,7 @@ public class UI_StageClear : UI_Popup
     public void StatButton1Clicked(PointerEventData data)
     {
         Managers.Data.UserData.user.stat1++;
-        Managers.Data.UserData.user.prevStat = 1;
+        PlayerPrefs.SetInt("prevStat", 1);
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.PrintLog();
         Managers.UI.ShowPopupUI<UI_CheckStat>();
@@ -81,7 +81,7 @@ public class UI_StageClear : UI_Popup
     public void StatButton2Clicked(PointerEventData data)
     {
         Managers.Data.UserData.user.stat2++;
-        Managers.Data.UserData.user.prevStat = 2;
+        PlayerPrefs.SetInt("prevStat", 2);
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.PrintLog();
         Managers.UI.ShowPopupUI<UI_CheckStat>();
@@ -90,7 +90,7 @@ public class UI_StageClear : UI_Popup
     public void StatButton3Clicked(PointerEventData data)
     {
         Managers.Data.UserData.user.stat3++;
-        Managers.Data.UserData.user.prevStat = 3;
+        PlayerPrefs.SetInt("prevStat", 3);
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.PrintLog();
         Managers.UI.ShowPopupUI<UI_CheckStat>();

@@ -9,6 +9,7 @@ public class EndingScene : BaseScene
         base.Init();
 
         SceneType = Define.Scene.Ending;
+
         Managers.UI.ShowPopupUI<UI_SelectNpc>();
     }
 

@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 7847678341148157756}
   - component: {fileID: 7847678341148157747}
   m_Layer: 5
-  m_Name: EndingBookButton
+  m_Name: CollectionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

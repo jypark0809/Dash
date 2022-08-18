@@ -275,7 +275,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d24669608947447bb2b6c80eef6f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthUI: []
+  healthUI:
+  - {fileID: 616897678715746249}
+  - {fileID: 616897678440885017}
+  - {fileID: 616897679506756943}
+  - {fileID: 5072415716639974322}
+  - {fileID: 4580373493579966698}
 --- !u!1 &616897678715746251
 GameObject:
   m_ObjectHideFlags: 0

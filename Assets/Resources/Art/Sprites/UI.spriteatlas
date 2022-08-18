@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 2048
+      m_MaxTextureSize: 1024
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 0
@@ -46,115 +46,76 @@ SpriteAtlas:
     packables:
     - {fileID: 2800000, guid: 6b47529cae610514c8cd6ea8d3e47ae6, type: 3}
     - {fileID: 2800000, guid: 6b08d102e84d24749a7668a53efcaf91, type: 3}
-    - {fileID: 2800000, guid: c88dce00922e3834b820796224be7229, type: 3}
+    - {fileID: 2800000, guid: bd2da964acdbefb4ebfa3c2ecb4aed5c, type: 3}
     - {fileID: 2800000, guid: 064188d57ee550a47ab4adc682d9cb24, type: 3}
     - {fileID: 2800000, guid: 975393963ea869148aa3861f264c09ad, type: 3}
-    - {fileID: 2800000, guid: 4147beea6020d644082c3d079bcab47d, type: 3}
+    - {fileID: 2800000, guid: 6e213064a6556354c89e451f7df30577, type: 3}
     - {fileID: 2800000, guid: 2c4591d29fec5aa4780ea2e8b1859b26, type: 3}
     - {fileID: 2800000, guid: e19f3dcdd0a32fd4cb33e51dc42d092a, type: 3}
     - {fileID: 2800000, guid: 2b8299e40609efc4da4b31f604d950c7, type: 3}
     - {fileID: 2800000, guid: b3496763720967145b050e8de1e1a147, type: 3}
     - {fileID: 2800000, guid: 3a2939e845dbf98469cc85deb92f3636, type: 3}
     - {fileID: 2800000, guid: 24a789683865f864b8c491186988c1c0, type: 3}
-    - {fileID: 2800000, guid: b6a35a6bad9243146b6c86308403c420, type: 3}
+    - {fileID: 2800000, guid: cc6cfd6186a941641bf7cc8f2dfad36d, type: 3}
     - {fileID: 2800000, guid: 43ef710136f4acd4093e0804d40af1db, type: 3}
     - {fileID: 2800000, guid: 85eee0ba6a1992f4c9aee6cb1f3522cf, type: 3}
     - {fileID: 2800000, guid: 1048f7b0ff300c24fb49f6344dc0ce3a, type: 3}
     - {fileID: 2800000, guid: 823d9330ae3d6634587140e6c430186a, type: 3}
-    - {fileID: 2800000, guid: 555df01308687b14bbce33c0a96315d8, type: 3}
-    - {fileID: 2800000, guid: b86e0845be8b61642938ccea003e5b08, type: 3}
-    - {fileID: 2800000, guid: 6c4c174efb40f3c47ae450a0a7c3ae3e, type: 3}
-    - {fileID: 2800000, guid: 9f985d8efc1baeb41b66155ec51decf0, type: 3}
-    - {fileID: 2800000, guid: c36490e0fafd8024ab6097a014ed5a7b, type: 3}
-    - {fileID: 2800000, guid: e85688e6208f74342a592a685435f7c2, type: 3}
-    - {fileID: 2800000, guid: daa0e6284c44e2a48aba2bd14493fbb7, type: 3}
-    - {fileID: 2800000, guid: 6a564c63f81b99d4c95cc0fe82acf80e, type: 3}
-    - {fileID: 2800000, guid: bd2da964acdbefb4ebfa3c2ecb4aed5c, type: 3}
-    - {fileID: 2800000, guid: 6e213064a6556354c89e451f7df30577, type: 3}
-    - {fileID: 2800000, guid: 42c082a2e8dac15489e235d7977f7839, type: 3}
-    - {fileID: 2800000, guid: 285ee9bf14f9985428837a1c42a1384d, type: 3}
-    - {fileID: 2800000, guid: 75fc0e8460c73b94c9fc861a090f7ee7, type: 3}
-    - {fileID: 2800000, guid: b15d915996c9dd043af061eccd9acbc1, type: 3}
-    - {fileID: 2800000, guid: 5743b1501c611804db809a555906590f, type: 3}
     - {fileID: 2800000, guid: 0cb647f2765d7d94e8bdeada6ae5e7d2, type: 3}
     - {fileID: 2800000, guid: e826b3c9340035f46bb8012957873b7c, type: 3}
-    - {fileID: 2800000, guid: cc6cfd6186a941641bf7cc8f2dfad36d, type: 3}
+    - {fileID: 2800000, guid: 42c082a2e8dac15489e235d7977f7839, type: 3}
+    - {fileID: 2800000, guid: 9f985d8efc1baeb41b66155ec51decf0, type: 3}
+    - {fileID: 2800000, guid: daa0e6284c44e2a48aba2bd14493fbb7, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: c88dce00922e3834b820796224be7229, type: 3}
   - {fileID: 21300000, guid: 823d9330ae3d6634587140e6c430186a, type: 3}
-  - {fileID: -447027687, guid: 5743b1501c611804db809a555906590f, type: 3}
   - {fileID: 21300000, guid: 1048f7b0ff300c24fb49f6344dc0ce3a, type: 3}
-  - {fileID: 21300000, guid: c36490e0fafd8024ab6097a014ed5a7b, type: 3}
   - {fileID: 21300000, guid: 43ef710136f4acd4093e0804d40af1db, type: 3}
   - {fileID: 21300000, guid: cc6cfd6186a941641bf7cc8f2dfad36d, type: 3}
   - {fileID: 21300000, guid: 6b08d102e84d24749a7668a53efcaf91, type: 3}
   - {fileID: 21300000, guid: 42c082a2e8dac15489e235d7977f7839, type: 3}
   - {fileID: 21300000, guid: 2c4591d29fec5aa4780ea2e8b1859b26, type: 3}
   - {fileID: 21300000, guid: 0cb647f2765d7d94e8bdeada6ae5e7d2, type: 3}
-  - {fileID: -1219109865, guid: 555df01308687b14bbce33c0a96315d8, type: 3}
   - {fileID: 21300000, guid: b3496763720967145b050e8de1e1a147, type: 3}
-  - {fileID: 21300000, guid: 6a564c63f81b99d4c95cc0fe82acf80e, type: 3}
   - {fileID: 21300000, guid: 6e213064a6556354c89e451f7df30577, type: 3}
   - {fileID: 21300000, guid: bd2da964acdbefb4ebfa3c2ecb4aed5c, type: 3}
-  - {fileID: 1348779208, guid: 75fc0e8460c73b94c9fc861a090f7ee7, type: 3}
   - {fileID: 1806351803, guid: 2b8299e40609efc4da4b31f604d950c7, type: 3}
-  - {fileID: -297597965, guid: b86e0845be8b61642938ccea003e5b08, type: 3}
   - {fileID: -816213497, guid: 064188d57ee550a47ab4adc682d9cb24, type: 3}
   - {fileID: 230919767, guid: 975393963ea869148aa3861f264c09ad, type: 3}
-  - {fileID: 21300000, guid: e85688e6208f74342a592a685435f7c2, type: 3}
   - {fileID: 21300000, guid: daa0e6284c44e2a48aba2bd14493fbb7, type: 3}
   - {fileID: 898132121, guid: 24a789683865f864b8c491186988c1c0, type: 3}
   - {fileID: 1748989476, guid: 3a2939e845dbf98469cc85deb92f3636, type: 3}
-  - {fileID: -1749178225, guid: b15d915996c9dd043af061eccd9acbc1, type: 3}
   - {fileID: 21300000, guid: e826b3c9340035f46bb8012957873b7c, type: 3}
   - {fileID: 21300000, guid: 85eee0ba6a1992f4c9aee6cb1f3522cf, type: 3}
-  - {fileID: 21300000, guid: 4147beea6020d644082c3d079bcab47d, type: 3}
-  - {fileID: 176858207, guid: b6a35a6bad9243146b6c86308403c420, type: 3}
   - {fileID: -1348066308, guid: 6b47529cae610514c8cd6ea8d3e47ae6, type: 3}
   - {fileID: 1848104455, guid: e19f3dcdd0a32fd4cb33e51dc42d092a, type: 3}
-  - {fileID: 652711282, guid: 6c4c174efb40f3c47ae450a0a7c3ae3e, type: 3}
   - {fileID: 21300000, guid: 9f985d8efc1baeb41b66155ec51decf0, type: 3}
-  - {fileID: 1192217120, guid: 285ee9bf14f9985428837a1c42a1384d, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Jump
   - ArrowRight
-  - StatButton_0
   - ArrowLeft
-  - Face_Female
   - TipText
   - Warning
   - Close
   - Shop
   - Play
   - Target
-  - Bar_1_0
   - GameOver
-  - Letter2
   - Ruby
   - Option
-  - Stat_2_0
   - Stop_0
-  - Bar_3_0
   - KeepGoing_0
   - Okay_0
-  - Face_Male
   - Hourglass
   - SelectSex_0
   - Goal_0
-  - Stat_3_0
   - Tip
   - Amber
-  - Pause
-  - "\uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4_0"
   - Cancle_0
   - Retry_0
-  - Bar_2_0
-  - EndingBook
-  - Stat_1_0
+  - Collection
   m_RenderDataMap: {}
   m_Tag: UI
   m_IsVariant: 0

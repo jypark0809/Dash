@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,8 +21,8 @@ public class LobbyScene : BaseScene
         _female = Managers.Game.Spawn(Define.WorldObject.Player, "female");
         _female.transform.Translate(-0.5f, 0, 0);
 
-        // TODO : µµ°¨ ¿£µù
-        // Dictionary<int, Script> dict = Managers.Data.ScriptDict;
+        // TODO : í…ŒìŠ¤íŠ¸
+        // Dictionary<int, Script> dict = Managers.Data.EndingDict;
     }
 
     public override void Clear()

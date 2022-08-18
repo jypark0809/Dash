@@ -60,11 +60,6 @@ public class UI_GameScene : UI_Scene
 
         if (Managers.Data.UserData.user.gender == "female")
             GetImage((int)Images.MalePinImage).gameObject.SetActive(false);
-
-        healthUI = new Image[3];
-        healthUI[0] = GetImage((int)Images.Letter1);
-        healthUI[1] = GetImage((int)Images.Letter2);
-        healthUI[2] = GetImage((int)Images.Letter3);
     }
 
     void Update()
@@ -75,21 +70,43 @@ public class UI_GameScene : UI_Scene
                 healthUI[0].gameObject.SetActive(false);
                 healthUI[1].gameObject.SetActive(false);
                 healthUI[2].gameObject.SetActive(false);
+                healthUI[3].gameObject.SetActive(false);
+                healthUI[4].gameObject.SetActive(false);
                 break;
             case 1:
                 healthUI[0].gameObject.SetActive(true);
                 healthUI[1].gameObject.SetActive(false);
                 healthUI[2].gameObject.SetActive(false);
+                healthUI[3].gameObject.SetActive(false);
+                healthUI[4].gameObject.SetActive(false);
                 break;
             case 2:
                 healthUI[0].gameObject.SetActive(true);
                 healthUI[1].gameObject.SetActive(true);
                 healthUI[2].gameObject.SetActive(false);
+                healthUI[3].gameObject.SetActive(false);
+                healthUI[4].gameObject.SetActive(false);
                 break;
             case 3:
                 healthUI[0].gameObject.SetActive(true);
                 healthUI[1].gameObject.SetActive(true);
                 healthUI[2].gameObject.SetActive(true);
+                healthUI[3].gameObject.SetActive(false);
+                healthUI[4].gameObject.SetActive(false);
+                break;
+            case 4:
+                healthUI[0].gameObject.SetActive(true);
+                healthUI[1].gameObject.SetActive(true);
+                healthUI[2].gameObject.SetActive(true);
+                healthUI[3].gameObject.SetActive(true);
+                healthUI[4].gameObject.SetActive(false);
+                break;
+            case 5:
+                healthUI[0].gameObject.SetActive(true);
+                healthUI[1].gameObject.SetActive(true);
+                healthUI[2].gameObject.SetActive(true);
+                healthUI[3].gameObject.SetActive(true);
+                healthUI[4].gameObject.SetActive(true);
                 break;
         }
 

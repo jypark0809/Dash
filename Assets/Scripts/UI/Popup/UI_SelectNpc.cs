@@ -72,19 +72,6 @@ public class UI_SelectNpc : UI_Popup
     public void NpcButton1ButtonClicked(PointerEventData data)
     {
         if (Managers.Data.UserData.user.gender == "male")
-            PlayerPrefs.SetInt("npcId", 0);
-        else if (Managers.Data.UserData.user.gender == "female")
-            PlayerPrefs.SetInt("npcId", 3);
-        else
-            Debug.Log("Failed to save PlayerPrefs of npcId : UI_SelectNpc.cs");
-        ClosePopupUI();
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.UI.ShowPopupUI<UI_Scripts>();
-    }
-
-    public void NpcButton2ButtonClicked(PointerEventData data)
-    {
-        if (Managers.Data.UserData.user.gender == "male")
             PlayerPrefs.SetInt("npcId", 1);
         else if (Managers.Data.UserData.user.gender == "female")
             PlayerPrefs.SetInt("npcId", 4);
@@ -95,7 +82,7 @@ public class UI_SelectNpc : UI_Popup
         Managers.UI.ShowPopupUI<UI_Scripts>();
     }
 
-    public void NpcButton3ButtonClicked(PointerEventData data)
+    public void NpcButton2ButtonClicked(PointerEventData data)
     {
         if (Managers.Data.UserData.user.gender == "male")
             PlayerPrefs.SetInt("npcId", 2);
@@ -108,4 +95,16 @@ public class UI_SelectNpc : UI_Popup
         Managers.UI.ShowPopupUI<UI_Scripts>();
     }
 
+    public void NpcButton3ButtonClicked(PointerEventData data)
+    {
+        if (Managers.Data.UserData.user.gender == "male")
+            PlayerPrefs.SetInt("npcId", 3);
+        else if (Managers.Data.UserData.user.gender == "female")
+            PlayerPrefs.SetInt("npcId", 6);
+        else
+            Debug.Log("Failed to save PlayerPrefs of npcId : UI_SelectNpc.cs");
+        ClosePopupUI();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.UI.ShowPopupUI<UI_Scripts>();
+    }
 }

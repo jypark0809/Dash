@@ -91,7 +91,7 @@ public class PlayerController : BaseController
             // ¾ÐÁ¤
             if (collision.gameObject.name == "Pin")
             {
-                StartCoroutine(SpeedDown());
+                StartCoroutine("SpeedDown");
                 DecreaseHealth(1);
             }
 
@@ -124,7 +124,7 @@ public class PlayerController : BaseController
 
             if (collision.gameObject.name == "Coffee")
             {
-                StartCoroutine(SpeedUp());
+                StartCoroutine("SpeedUp");
             }
 
             if (collision.gameObject.name == "JumpingShoes")
@@ -159,7 +159,7 @@ public class PlayerController : BaseController
 
         // animation
 
-        StartCoroutine(DamageRecovered());
+        StartCoroutine("DamageRecovered");
     }
 
     void UpdateRun()
@@ -174,40 +174,42 @@ public class PlayerController : BaseController
 
     void UpdateDie()
     {
-        StartCoroutine(GameOver());
+        StartCoroutine("GameOver");
     }
 
     public void StageClear()
     {
         _anim.SetBool("isJump", false);
         transform.position += Vector3.right * 6.0f * Time.deltaTime;
-        StartCoroutine(StageClearUI());
+        StartCoroutine("StageClearUI");
     }
 
     IEnumerator SpeedUp()
     {
-        foreach(MapController item in mapControllers)
-            item._speed = 8;
-        move._speed = 8;
+        StopCoroutine("SpeedDown");
+        foreach (MapController item in mapControllers)
+            item._speed = 6f;
+        move._speed = 6f;
 
         yield return new WaitForSeconds(3f);
 
         foreach (MapController item in mapControllers)
-            item._speed = 4;
-        move._speed = 4;
+            item._speed = 4f;
+        move._speed = 4f;
     }
 
     IEnumerator SpeedDown()
     {
+        StopCoroutine("SpeedUp");
         foreach (MapController item in mapControllers)
             item._speed = 2;
-        move._speed = 2;
+        move._speed = 2f;
 
         yield return new WaitForSeconds(1.5f);
 
         foreach (MapController item in mapControllers)
-            item._speed = 4;
-        move._speed = 4;
+            item._speed = 4f;
+        move._speed = 4f;
     }
 
     IEnumerator DamageRecovered()

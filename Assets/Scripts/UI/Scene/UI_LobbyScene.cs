@@ -11,7 +11,7 @@ public class UI_LobbyScene : UI_Scene
         TipButton,
         TargetButton,
         ShopButton,
-        EndingBookButton,
+        CollectionButton,
         OptionButton,
         PlayButton,
         InitButton,
@@ -32,7 +32,7 @@ public class UI_LobbyScene : UI_Scene
         GetButton((int)Buttons.OptionButton).gameObject.BindEvent(OptionButtonClicked);
         GetButton((int)Buttons.TargetButton).gameObject.BindEvent(TargetButtonClicked);
         GetButton((int)Buttons.ShopButton).gameObject.BindEvent(ShopButtonClicked);
-        GetButton((int)Buttons.EndingBookButton).gameObject.BindEvent(EndingBookButtonClicked);
+        GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(CollectionButtonClicked);
         GetButton((int)Buttons.PlayButton).gameObject.BindEvent(PlayButtonClicked);
         GetButton((int)Buttons.InitButton).gameObject.BindEvent(InitButtonClicked);
     }
@@ -61,10 +61,10 @@ public class UI_LobbyScene : UI_Scene
         Debug.Log("ShopButtonClicked");
     }
 
-    public void EndingBookButtonClicked(PointerEventData data)
+    public void CollectionButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Debug.Log("EndingBookButtonClicked");
+        Managers.UI.ShowPopupUI<UI_Collection>();
     }
 
     public void PlayButtonClicked(PointerEventData data)
@@ -92,6 +92,7 @@ public class UI_LobbyScene : UI_Scene
     public void InitButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Data.PrintLog();
         Managers.UI.ShowPopupUI<UI_Test>();
     }
 }

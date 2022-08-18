@@ -32,7 +32,7 @@ public class UI_CheckStat : UI_Popup
         GetButton((int)Buttons.OkayButton).gameObject.BindEvent(OkayButtonClicked);
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CancleButtonClicked);
 
-        switch (Managers.Data.UserData.user.prevStat)
+        switch (PlayerPrefs.GetInt("prevStat"))
         {
             case 1:
                 if (Managers.Data.UserData.user.gender == "male")
@@ -89,7 +89,7 @@ public class UI_CheckStat : UI_Popup
 
     public void CancleButtonClicked(PointerEventData data)
     {
-        switch (Managers.Data.UserData.user.prevStat)
+        switch (PlayerPrefs.GetInt("prevStat"))
         {
             case 1:
                 Managers.Data.UserData.user.stat1--;
