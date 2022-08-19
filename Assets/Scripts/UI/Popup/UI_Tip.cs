@@ -73,8 +73,8 @@ public class UI_Tip : UI_Popup
             _curPage--;
             GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
             GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
-            GetImage((int)Images.ItemPage).gameObject.SetActive(true);
             GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
+            GetImage((int)Images.ItemPage).gameObject.SetActive(true);
             GetImage((int)Images.ObstaclePage).gameObject.SetActive(false);
             Managers.Sound.Play("Button", Define.Sound.Effect);
         }

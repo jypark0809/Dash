@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 385711299}
   - component: {fileID: 385711300}
   m_Layer: 0
-  m_Name: SubBackground Group
+  m_Name: SubMap Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 697274801}
   - component: {fileID: 697274802}
   m_Layer: 0
-  m_Name: Background Group
+  m_Name: MainMap Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

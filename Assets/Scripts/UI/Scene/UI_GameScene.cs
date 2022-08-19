@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class UI_GameScene : UI_Scene
 {
-    GameObject _player = null;
-    PlayerController pc = null;
+    PlayerController pc;
     public float Ratio { get; set; }
 
     enum Buttons
@@ -33,8 +32,6 @@ public class UI_GameScene : UI_Scene
 
     public Image[] healthUI;
 
-    public void SetPlayer(GameObject player) { _player = player; }
-
     void Start()
     {
         Init();
@@ -44,7 +41,8 @@ public class UI_GameScene : UI_Scene
     {
         base.Init();
 
-        pc = _player.GetComponent<PlayerController>();
+        // pc = _player.GetComponent<PlayerController>();
+        pc = Managers.Game._player.GetComponent<PlayerController>();
 
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));

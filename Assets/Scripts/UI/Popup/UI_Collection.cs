@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class UI_Collection : UI_Popup
 {
     int _curPage = 1;
-    public Toggle _toggle1, _toggle2;
+    public Toggle _toggleCostume, _toggleCollection;
+    public Toggle _toggleMale, _toggleFemale;
+    public Toggle _toggleMale2, _toggleFemale2;
+    public Sprite[] _Textsprites;
 
     enum Buttons
     {
@@ -33,6 +36,13 @@ public class UI_Collection : UI_Popup
         PageText,
     }
 
+    enum Images
+    {
+        TextImage,
+        CollectionPanel,
+        CostumePanel,
+    }
+
     enum GameObjects
     {
         MaleHappyEnding,
@@ -51,12 +61,18 @@ public class UI_Collection : UI_Popup
         LockGroup10,
         LockGroup11,
         LockGroup12,
+        MaleCostume,
+        FemaleCostume,
     }
 
     void Awake()
     {
-        _toggle1.onValueChanged.AddListener(OnMaleToggleValueChangedEvent);
-        _toggle2.onValueChanged.AddListener(OnFemaleToggleValueChangedEvent);
+        _toggleMale.onValueChanged.AddListener(OnMaleToggleValueChangedEvent);
+        _toggleFemale.onValueChanged.AddListener(OnFemaleToggleValueChangedEvent);
+        _toggleMale2.onValueChanged.AddListener(OnMaleToggle2ValueChangedEvent);
+        _toggleFemale2.onValueChanged.AddListener(OnFemaleToggle2ValueChangedEvent);
+        _toggleCostume.onValueChanged.AddListener(OnCostumeToggleValueChangedEvent);
+        _toggleCollection.onValueChanged.AddListener(OnCollectionToggleValueChangedEvent);
     }
 
     void Start()
@@ -70,11 +86,14 @@ public class UI_Collection : UI_Popup
 
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
+        Bind<Image>(typeof(Images));
         Bind<GameObject>(typeof(GameObjects));
 
         GetObject((int)GameObjects.MaleBadEnding).SetActive(false);
         GetObject((int)GameObjects.FemaleHappyEnding).SetActive(false);
         GetObject((int)GameObjects.FemaleBadEnding).SetActive(false);
+        GetObject((int)GameObjects.FemaleCostume).SetActive(false);
+        GetImage((int)Images.CostumePanel).gameObject.SetActive(false);
 
         BindUserEndingData();
 
@@ -99,24 +118,70 @@ public class UI_Collection : UI_Popup
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
     }
 
+    // Costume Tab Toggle
+    public void OnCostumeToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        GetImage((int)Images.CostumePanel).gameObject.SetActive(boolean);
+    }
+
+    // Collection Tab Toggle
+    public void OnCollectionToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        GetImage((int)Images.CollectionPanel).gameObject.SetActive(boolean);
+    }
+
+    // Collection Male Toggle
     public void OnMaleToggleValueChangedEvent(bool boolean)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+
         GetObject((int)GameObjects.MaleHappyEnding).gameObject.SetActive(boolean);
         GetObject((int)GameObjects.FemaleBadEnding).gameObject.SetActive(false);
+
+        // TextImage 변경
+        GetImage((int)Images.TextImage).sprite = _Textsprites[0];
+        GetImage((int)Images.TextImage).SetNativeSize();
+
+        // 페이지 설정 및 화살표 버튼 활성
         _curPage = 1;
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
         GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
     }
 
+    // Collection Female Toggle
     public void OnFemaleToggleValueChangedEvent(bool boolean)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+
         GetObject((int)GameObjects.FemaleHappyEnding).gameObject.SetActive(boolean);
         GetObject((int)GameObjects.MaleBadEnding).gameObject.SetActive(false);
+
+        // TextImage 변경
+        GetImage((int)Images.TextImage).sprite = _Textsprites[0];
+        GetImage((int)Images.TextImage).SetNativeSize();
+
+        // 페이지 설정 및 화살표 버튼 활성
         _curPage = 1;
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
         GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
+    }
+    
+    // Costume Male Toggle
+    public void OnMaleToggle2ValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        GetObject((int)GameObjects.MaleCostume).gameObject.SetActive(boolean);
+    }
+
+    // Costume Female Toggle
+    public void OnFemaleToggle2ValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        GetObject((int)GameObjects.FemaleCostume).gameObject.SetActive(boolean);
     }
 
     public void CloseButtonClicked(PointerEventData data)
@@ -125,13 +190,24 @@ public class UI_Collection : UI_Popup
         ClosePopupUI();
     }
 
+    // Collection 오른쪽 화살표
     public void RightButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+
+        // 페이지 텍스트 변경
         _curPage++;
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
+
+        // TextImage 변경
+        GetImage((int)Images.TextImage).sprite = _Textsprites[1];
+        GetImage((int)Images.TextImage).SetNativeSize();
+
+        // 화살표 버튼 활성/비활성화
         GetButton((int)Buttons.RightButton).gameObject.SetActive(false);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(true);
-        if (_toggle1.isOn)
+
+        if (_toggleMale.isOn)
         {
             GetObject((int)GameObjects.MaleHappyEnding).SetActive(false);
             GetObject((int)GameObjects.MaleBadEnding).SetActive(true);
@@ -144,13 +220,24 @@ public class UI_Collection : UI_Popup
         Managers.Sound.Play("Button", Define.Sound.Effect);
     }
 
+    // Collection 왼쪽 화살표
     public void LeftButtonClicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+
+        // 페이지 텍스트 변경
         _curPage--;
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
+
+        // TextImage 변경
+        GetImage((int)Images.TextImage).sprite = _Textsprites[0];
+        GetImage((int)Images.TextImage).SetNativeSize();
+
+        // 화살표 버튼 활성/비활성화
         GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
-        if (_toggle1.isOn)
+
+        if (_toggleMale.isOn)
         {
             GetObject((int)GameObjects.MaleHappyEnding).SetActive(true);
             GetObject((int)GameObjects.MaleBadEnding).SetActive(false);

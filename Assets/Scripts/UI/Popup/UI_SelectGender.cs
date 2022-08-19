@@ -10,6 +10,7 @@ public class UI_SelectGender : UI_Popup
     {
         MaleButton,
         FemaleButton,
+        CloseButton,
     }
 
     void Start()
@@ -25,6 +26,7 @@ public class UI_SelectGender : UI_Popup
 
         GetButton((int)Buttons.MaleButton).gameObject.BindEvent(MaleButtonClicked);
         GetButton((int)Buttons.FemaleButton).gameObject.BindEvent(FemaleButtonClicked);
+        GetButton((int)Buttons.CloseButton).gameObject.BindEvent(CloseButtonClicked);
     }
 
     public void MaleButtonClicked(PointerEventData data)
@@ -43,5 +45,11 @@ public class UI_SelectGender : UI_Popup
         Managers.Data.PrintLog();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_CheckGender>();
+    }
+
+    public void CloseButtonClicked(PointerEventData data)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        ClosePopupUI();
     }
 }

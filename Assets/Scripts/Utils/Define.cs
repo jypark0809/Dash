@@ -7,7 +7,7 @@ public class Define
     public enum WorldObject
     {
         Unknown,
-        Background,
+        Map,
         Player,
         Stage,
         Obstacle,
@@ -18,6 +18,7 @@ public class Define
     { 
         Run,
         Jump,
+        Fight,
         Die,
         Clear,
     }

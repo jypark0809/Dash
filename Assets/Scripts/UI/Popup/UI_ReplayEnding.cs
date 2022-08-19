@@ -20,8 +20,7 @@ public class UI_ReplayEnding : UI_Popup
     {
         Panel,
         CursurImage,
-        CharImage_1,
-        CharImage_2,
+        CharImage,
     }
 
     enum Texts
@@ -46,8 +45,6 @@ public class UI_ReplayEnding : UI_Popup
 
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
-        GetImage((int)Images.CharImage_1).gameObject.SetActive(false);
-        GetImage((int)Images.CharImage_2).gameObject.SetActive(false);
 
         SetLine(_ending.scripts[_scriptIndex]);
     }
@@ -71,22 +68,7 @@ public class UI_ReplayEnding : UI_Popup
 
     void SetLine(Script script)
     {
-        // 이미지
-        if (script.npcId == 0)
-        {
-            GetImage((int)Images.CharImage_1).gameObject.SetActive(true);
-            GetImage((int)Images.CharImage_2).gameObject.SetActive(false);
-        }
-        else if (script.npcId == 7)
-        {
-            GetImage((int)Images.CharImage_1).gameObject.SetActive(false);
-            GetImage((int)Images.CharImage_2).gameObject.SetActive(false);
-        }
-        else
-        {
-            GetImage((int)Images.CharImage_1).gameObject.SetActive(false);
-            GetImage((int)Images.CharImage_2).gameObject.SetActive(true);
-        }
+        GetImage((int)Images.CharImage).sprite = _sprites[script.imageId];
 
         // 스크립트
         if (_isType)

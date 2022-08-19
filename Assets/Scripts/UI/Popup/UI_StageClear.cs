@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UI_StageClear : UI_Popup
 {
+    public Sprite[] _sprites;
+
     enum Buttons
     {
         StatButton1,
@@ -26,6 +28,13 @@ public class UI_StageClear : UI_Popup
         StatButtonText3,
     }
 
+    enum Images
+    {
+        StatImage1,
+        StatImage2,
+        StatImage3,
+    }
+
     void Start()
     {
         Init();
@@ -37,6 +46,7 @@ public class UI_StageClear : UI_Popup
 
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
+        Bind<Image>(typeof(Images));
 
         GetButton((int)Buttons.StatButton1).gameObject.BindEvent(StatButton1Clicked);
         GetButton((int)Buttons.StatButton2).gameObject.BindEvent(StatButton2Clicked);
@@ -50,6 +60,12 @@ public class UI_StageClear : UI_Popup
             GetText((int)Texts.StatButtonText2).text = Define.maleStat[1];
             GetText((int)Texts.Stat3).text = Define.maleStat[2];
             GetText((int)Texts.StatButtonText3).text = Define.maleStat[2];
+            GetImage((int)Images.StatImage1).sprite = _sprites[0];
+            GetImage((int)Images.StatImage1).SetNativeSize();
+            GetImage((int)Images.StatImage2).sprite = _sprites[1];
+            GetImage((int)Images.StatImage2).SetNativeSize();
+            GetImage((int)Images.StatImage3).sprite = _sprites[2];
+            GetImage((int)Images.StatImage3).SetNativeSize();
 
         }
         else if (Managers.Data.UserData.user.gender == "female")
@@ -60,6 +76,12 @@ public class UI_StageClear : UI_Popup
             GetText((int)Texts.StatButtonText2).text = Define.femaleStat[1];
             GetText((int)Texts.Stat3).text = Define.femaleStat[2];
             GetText((int)Texts.StatButtonText3).text = Define.femaleStat[2];
+            GetImage((int)Images.StatImage1).sprite = _sprites[3];
+            GetImage((int)Images.StatImage1).SetNativeSize();
+            GetImage((int)Images.StatImage2).sprite = _sprites[4];
+            GetImage((int)Images.StatImage2).SetNativeSize();
+            GetImage((int)Images.StatImage3).sprite = _sprites[5];
+            GetImage((int)Images.StatImage3).SetNativeSize();
         }
         else
             Debug.Log("Failed to bind Text : UI_StageClear.cs");

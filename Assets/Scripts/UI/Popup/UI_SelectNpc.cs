@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UI_SelectNpc : UI_Popup
 {
+    public Sprite[] _sprites;
+
     enum Buttons
     {
         NpcButton1,
@@ -26,6 +28,13 @@ public class UI_SelectNpc : UI_Popup
         NpcText3,
     }
 
+    enum Images
+    {
+        NpcImage1,
+        NpcImage2,
+        NpcImage3,
+    }
+
     void Start()
     {
         Init();
@@ -37,6 +46,7 @@ public class UI_SelectNpc : UI_Popup
 
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
+        Bind<Image>(typeof(Images));
 
         GetButton((int)Buttons.NpcButton1).gameObject.BindEvent(NpcButton1ButtonClicked);
         GetButton((int)Buttons.NpcButton2).gameObject.BindEvent(NpcButton2ButtonClicked);
@@ -50,6 +60,12 @@ public class UI_SelectNpc : UI_Popup
             GetText((int)Texts.NpcText1).text = Define.maleTarget[0];
             GetText((int)Texts.NpcText2).text = Define.maleTarget[1];
             GetText((int)Texts.NpcText3).text = Define.maleTarget[2];
+            GetImage((int)Images.NpcImage1).sprite = _sprites[0];
+            GetImage((int)Images.NpcImage1).SetNativeSize();
+            GetImage((int)Images.NpcImage2).sprite = _sprites[1];
+            GetImage((int)Images.NpcImage2).SetNativeSize();
+            GetImage((int)Images.NpcImage3).sprite = _sprites[2];
+            GetImage((int)Images.NpcImage3).SetNativeSize();
 
         }
         else if (Managers.Data.UserData.user.gender == "female")
@@ -60,6 +76,12 @@ public class UI_SelectNpc : UI_Popup
             GetText((int)Texts.NpcText1).text = Define.femaleTarget[0];
             GetText((int)Texts.NpcText2).text = Define.femaleTarget[1];
             GetText((int)Texts.NpcText3).text = Define.femaleTarget[2];
+            GetImage((int)Images.NpcImage1).sprite = _sprites[3];
+            GetImage((int)Images.NpcImage1).SetNativeSize();
+            GetImage((int)Images.NpcImage2).sprite = _sprites[4];
+            GetImage((int)Images.NpcImage2).SetNativeSize();
+            GetImage((int)Images.NpcImage3).sprite = _sprites[5];
+            GetImage((int)Images.NpcImage3).SetNativeSize();
         }
         else
             Debug.Log("Failed to bind Text : UI_SelectNpc.cs");

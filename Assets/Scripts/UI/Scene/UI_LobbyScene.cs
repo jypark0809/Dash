@@ -52,7 +52,7 @@ public class UI_LobbyScene : UI_Scene
     public void TargetButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Debug.Log("TargetButtonClicked");
+        Managers.UI.ShowPopupUI<UI_Target>();
     }
 
     public void ShopButtonClicked(PointerEventData data)

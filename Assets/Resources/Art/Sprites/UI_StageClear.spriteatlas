@@ -32,32 +32,32 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: b6a35a6bad9243146b6c86308403c420, type: 3}
     - {fileID: 2800000, guid: 285ee9bf14f9985428837a1c42a1384d, type: 3}
     - {fileID: 2800000, guid: 75fc0e8460c73b94c9fc861a090f7ee7, type: 3}
     - {fileID: 2800000, guid: b15d915996c9dd043af061eccd9acbc1, type: 3}
-    - {fileID: 2800000, guid: 5743b1501c611804db809a555906590f, type: 3}
-    - {fileID: 2800000, guid: 6cfac4396ae14ef41af1e63ffdbcba78, type: 3}
-    - {fileID: 2800000, guid: 60bfbf99928ae66458ca864ccc04a83b, type: 3}
+    - {fileID: 2800000, guid: 891cd2c88fb1af94b8d1f591548908be, type: 3}
+    - {fileID: 2800000, guid: b167a4bf77b8eef4cb79c64c71ca6612, type: 3}
+    - {fileID: 2800000, guid: c11ed2f3ace99ef4f9811f2fde9ca367, type: 3}
+    - {fileID: 2800000, guid: b6a35a6bad9243146b6c86308403c420, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: -447027687, guid: 5743b1501c611804db809a555906590f, type: 3}
+  - {fileID: 21300000, guid: c11ed2f3ace99ef4f9811f2fde9ca367, type: 3}
   - {fileID: 1348779208, guid: 75fc0e8460c73b94c9fc861a090f7ee7, type: 3}
-  - {fileID: -875922362, guid: 6cfac4396ae14ef41af1e63ffdbcba78, type: 3}
+  - {fileID: 21300000, guid: 891cd2c88fb1af94b8d1f591548908be, type: 3}
   - {fileID: -1749178225, guid: b15d915996c9dd043af061eccd9acbc1, type: 3}
-  - {fileID: -217893802, guid: 60bfbf99928ae66458ca864ccc04a83b, type: 3}
   - {fileID: 176858207, guid: b6a35a6bad9243146b6c86308403c420, type: 3}
+  - {fileID: 21300000, guid: b167a4bf77b8eef4cb79c64c71ca6612, type: 3}
   - {fileID: 1192217120, guid: 285ee9bf14f9985428837a1c42a1384d, type: 3}
   m_PackedSpriteNamesToIndex:
-  - StatButton_0
+  - Stat_6
   - Stat_2_0
-  - UI_Panel3_0
+  - Stat_4
   - Stat_3_0
-  - UIPanel_2_0
   - "\uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4_0"
+  - Stat_5
   - Stat_1_0
   m_RenderDataMap: {}
   m_Tag: UI_StageClear

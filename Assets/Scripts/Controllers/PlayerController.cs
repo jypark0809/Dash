@@ -7,12 +7,15 @@ public class PlayerController : BaseController
     public float _jumpPower = 10.0f;
     public bool _isJump = false;
     public int _health = 3;
+    public bool _isFight = false;
+    int _teacherCount = 1;
 
     public Define.PlayerState _state;
 
     public MapController[] mapControllers;
-    public Move move;
+    public StageController stageController;
 
+    Teacher _teacher;
     Animator _anim;
     SpriteRenderer _sprite;
 
@@ -35,6 +38,9 @@ public class PlayerController : BaseController
             case Define.PlayerState.Run:
                 UpdateRun();
                 break;
+            case Define.PlayerState.Fight:
+                UpdateFight();
+                break;
             case Define.PlayerState.Jump:
                 UpdateJump();
                 break;
@@ -48,7 +54,7 @@ public class PlayerController : BaseController
     {
         if (collision.gameObject.tag == "Platform")
         {
-            if (_state != Define.PlayerState.Die && _state != Define.PlayerState.Clear)
+            if (_state != Define.PlayerState.Die && _state != Define.PlayerState.Clear && _state != Define.PlayerState.Fight)
             {
                 // 발판 충돌로직
                 _jumpCount = 2;
@@ -108,9 +114,13 @@ public class PlayerController : BaseController
             }
 
             // 학주
-            if (collision.gameObject.name == "Teacher")
+            if (collision.gameObject.name == "Teacher" && _teacherCount == 1)
             {
-                DecreaseHealth(3);
+                _teacherCount--;
+                _isFight = true;
+                _state = Define.PlayerState.Fight;
+                _teacher = collision.transform.GetComponent<Teacher>();
+                Managers.UI.ShowPopupUI<UI_Teacher>();
             }
         }
 
@@ -167,6 +177,13 @@ public class PlayerController : BaseController
         _anim.SetBool("isJump", false);
     }
 
+    void UpdateFight()
+    {
+        CheckFight();
+        if (_isFight == false)
+            _state = Define.PlayerState.Run;
+    }
+
     void UpdateJump()
     {
         _anim.SetBool("isJump", true);
@@ -188,28 +205,28 @@ public class PlayerController : BaseController
     {
         StopCoroutine("SpeedDown");
         foreach (MapController item in mapControllers)
-            item._speed = 6f;
-        move._speed = 6f;
+            item._speed *= 2f;
+        stageController._speed *= 2f;
 
         yield return new WaitForSeconds(3f);
 
         foreach (MapController item in mapControllers)
-            item._speed = 4f;
-        move._speed = 4f;
+            item._speed /= 2f;
+        stageController._speed /= 2f;
     }
 
     IEnumerator SpeedDown()
     {
         StopCoroutine("SpeedUp");
         foreach (MapController item in mapControllers)
-            item._speed = 2;
-        move._speed = 2f;
+            item._speed /= 2f;
+        stageController._speed /= 2f;
 
         yield return new WaitForSeconds(1.5f);
 
         foreach (MapController item in mapControllers)
-            item._speed = 4f;
-        move._speed = 4f;
+            item._speed *= 2f;
+        stageController._speed *= 2f;
     }
 
     IEnumerator DamageRecovered()
@@ -232,15 +249,42 @@ public class PlayerController : BaseController
     IEnumerator GameOver()
     {
         gameObject.layer = 8; // PlayerDamaged
-        mapControllers[0]._speed = 0;
-        mapControllers[1]._speed = 0;
-        move._speed = 0;
-        _anim.speed = 0f;
+        StopGame();
 
         yield return new WaitForSeconds(1f);
         Time.timeScale = 0;
         Managers.Sound.Clear();
         Managers.Sound.Play("GameOver", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_GameOver>();
+    }
+
+    void CheckFight()
+    {
+        if (_isFight == true)
+        {
+            StopGame();
+        }
+        else
+        {
+            rewindSpeed();
+            _teacher.isFight = false;
+            _teacherCount = 1;
+        }
+    }
+
+    void StopGame()
+    {
+        mapControllers[0]._speed = 0;
+        mapControllers[1]._speed = 0;
+        stageController._speed = 0;
+        _anim.speed = 0f;
+    }
+
+    void rewindSpeed()
+    {
+        mapControllers[0]._speed = 4;
+        mapControllers[1]._speed = 3;
+        stageController._speed = 4;
+        _anim.speed = 1f;
     }
 }

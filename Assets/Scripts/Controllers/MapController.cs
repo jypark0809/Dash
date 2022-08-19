@@ -18,7 +18,7 @@ public class MapController : BaseController
 
     public override void Init()
     {
-        WorldObjectType = Define.WorldObject.Background;
+        WorldObjectType = Define.WorldObject.Map;
         respawnPos = new Vector3(count * 15.2f, 0, 0);
     }
 
