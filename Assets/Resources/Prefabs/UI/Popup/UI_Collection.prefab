@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 2596159297832432109}
   - component: {fileID: 3179313640877906592}
   m_Layer: 5
-  m_Name: LockGroup12
+  m_Name: LockGroup10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 130734288512190163}
   - component: {fileID: 8679808664153316800}
   m_Layer: 5
-  m_Name: LockGroup9
+  m_Name: LockGroup11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 2181559437527062112}
   - component: {fileID: 1415835970372872259}
   m_Layer: 5
-  m_Name: EndingButton12
+  m_Name: EndingButton10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 3749785907185821316}
   - component: {fileID: 8607369315647597685}
   m_Layer: 5
-  m_Name: EndingButton11
+  m_Name: EndingButton9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,7 +942,7 @@ GameObject:
   - component: {fileID: 99650545203939490}
   - component: {fileID: 5740789240014420759}
   m_Layer: 5
-  m_Name: LockGroup10
+  m_Name: LockGroup12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 4591682387254703268}
   - component: {fileID: 2877091135121277994}
   m_Layer: 5
-  m_Name: EndingButton9
+  m_Name: EndingButton11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2736,7 +2736,7 @@ GameObject:
   - component: {fileID: 1289672021003686500}
   - component: {fileID: 6013504200702844813}
   m_Layer: 5
-  m_Name: LockGroup11
+  m_Name: LockGroup9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2955,8 +2955,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3216799797236555896}
-  - {fileID: 7407840000324161528}
   - {fileID: 6831982778182516571}
+  - {fileID: 7407840000324161528}
   m_Father: {fileID: 467247645411080024}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3978,11 +3978,11 @@ RectTransform:
   - {fileID: 518963524348578016}
   - {fileID: 6499888602423929440}
   m_Father: {fileID: 6005729483318302533}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 306, y: 212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5444407356976334235
@@ -4016,11 +4016,11 @@ RectTransform:
   - {fileID: 75723202075154168}
   - {fileID: 9193145723403379588}
   m_Father: {fileID: 6005729483318302533}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 320, y: 0}
   m_SizeDelta: {x: 306, y: 212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5551566979517580658
@@ -5131,7 +5131,7 @@ GameObject:
   - component: {fileID: 3735236688431968110}
   - component: {fileID: 9101283546714837994}
   m_Layer: 5
-  m_Name: EndingButton10
+  m_Name: EndingButton12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5268,8 +5268,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4305835651505497012}
-  - {fileID: 2895573667170944218}
   - {fileID: 8366371142596985099}
+  - {fileID: 2895573667170944218}
   m_Father: {fileID: 467247645411080024}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7744,11 +7744,11 @@ RectTransform:
   - {fileID: 2769817304147758210}
   - {fileID: 9138240766275096327}
   m_Father: {fileID: 4288567320973598110}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 320, y: 0}
   m_SizeDelta: {x: 306, y: 212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7710722421715407702
@@ -7782,11 +7782,11 @@ RectTransform:
   - {fileID: 459325998152106462}
   - {fileID: 5784979292632415354}
   m_Father: {fileID: 4288567320973598110}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 306, y: 212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7826226290975964848

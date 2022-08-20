@@ -66,7 +66,7 @@ public class Define
 
     public enum EndingId
     {
-        GameOver,
+        Unknown,
         Npc1_HappyEnding,
         Npc1_BadEnding,
         Npc2_HappyEnding,
@@ -84,17 +84,19 @@ public class Define
     public enum NpcId
     {
         Self, // 주인공
-        Npc1 = 1, // 모범생
-        Npc2, // 소꿉친구
-        Npc3, // 후배
-        Npc4, // 학생회장
-        Npc5, // 체육부장
-        Npc6, // 선도부장
+        Npc1 = 1, // 모범생(백설)
+        Npc2, // 소꿉친구(차가운)
+        Npc3, // 후배(고유미)
+        Npc4, // 학생회장(서새한)
+        Npc5, // 체육부장(채대성)
+        Npc6, // 선도부장(선도진)
         Nerd // 오타쿠
     }
 
     public static string[] maleStat = { "외모", "집중력", "진실" };
-    public static string[] femaleStat = { "섬세함", "안정감", "끈기" };
-    public static string[] maleTarget = { "모범생", "소꿉친구", "후배" };
-    public static string[] femaleTarget = { "학생회장", "체육부장", "선도부장" };
+    public static string[] femaleStat = { "섬세함", "애교", "체력" };
+    public static string[] maleTarget = { "백설", "차가운", "고유미" };
+    public static string[] femaleTarget = { "서새한", "채대성", "선도진" };
+    public static string[] npcName = { Managers.Data.UserData.user.nickname, 
+        "백설", "차가운", "고유미", "서새한", "채대성", "선도진", "오탁후" };
 }

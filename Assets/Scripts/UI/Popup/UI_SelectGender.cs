@@ -31,19 +31,15 @@ public class UI_SelectGender : UI_Popup
 
     public void MaleButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.gender = "male";
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.PrintLog();
+        Managers.Data.UserData.user.gender = "male";
         Managers.UI.ShowPopupUI<UI_CheckGender>();
     }
 
     public void FemaleButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.gender = "female";
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-        Managers.Data.PrintLog();
         Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Data.UserData.user.gender = "female";
         Managers.UI.ShowPopupUI<UI_CheckGender>();
     }
 

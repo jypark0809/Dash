@@ -35,6 +35,11 @@ public class UI_LobbyScene : UI_Scene
         GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(CollectionButtonClicked);
         GetButton((int)Buttons.PlayButton).gameObject.BindEvent(PlayButtonClicked);
         GetButton((int)Buttons.InitButton).gameObject.BindEvent(InitButtonClicked);
+
+        if (PlayerPrefs.GetInt("round") == 0)
+            GetButton((int)Buttons.ShopButton).interactable = false;
+
+        Debug.Log(PlayerPrefs.GetInt("round"));
     }
 
     public void TipButtonClicked(PointerEventData data)
@@ -58,7 +63,15 @@ public class UI_LobbyScene : UI_Scene
     public void ShopButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Debug.Log("ShopButtonClicked");
+
+        if (PlayerPrefs.GetInt("round") == 0)
+        {
+
+        }
+        else
+        {
+            Managers.UI.ShowPopupUI<UI_Shop>();
+        }
     }
 
     public void CollectionButtonClicked(PointerEventData data)

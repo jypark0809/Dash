@@ -50,7 +50,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6a564c63f81b99d4c95cc0fe82acf80e, type: 3}
   - {fileID: -297597965, guid: b86e0845be8b61642938ccea003e5b08, type: 3}
   - {fileID: 1406799069, guid: b37ce63659a30d54498ecb1267033f4c, type: 3}
-  - {fileID: 21300000, guid: e85688e6208f74342a592a685435f7c2, type: 3}
+  - {fileID: 1243866779, guid: e85688e6208f74342a592a685435f7c2, type: 3}
   - {fileID: 1002057158, guid: c4fc1d6ae76b2524dbf8d31ed7b858ef, type: 3}
   - {fileID: 652711282, guid: 6c4c174efb40f3c47ae450a0a7c3ae3e, type: 3}
   m_PackedSpriteNamesToIndex:
@@ -59,7 +59,7 @@ SpriteAtlas:
   - Letter2
   - Bar_3_0
   - Pause_0
-  - Face_Male
+  - Face_Male_0
   - Jump_0
   - Bar_2_0
   m_RenderDataMap: {}

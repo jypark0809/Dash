@@ -20,12 +20,13 @@ public class UI_ReplayEnding : UI_Popup
     {
         Panel,
         CursurImage,
-        CharImage,
+        NpcImage,
     }
 
     enum Texts
     {
         ScriptText,
+        NameText,
     }
 
     void Start()
@@ -46,6 +47,7 @@ public class UI_ReplayEnding : UI_Popup
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
 
+        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_index].npcId];
         SetLine(_ending.scripts[_scriptIndex]);
     }
 
@@ -58,6 +60,7 @@ public class UI_ReplayEnding : UI_Popup
 
         if (_scriptIndex < _ending.scripts.Length)
         {
+            GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_scriptIndex].npcId];
             SetLine(_ending.scripts[_scriptIndex]);
         }
         else
@@ -68,7 +71,7 @@ public class UI_ReplayEnding : UI_Popup
 
     void SetLine(Script script)
     {
-        GetImage((int)Images.CharImage).sprite = _sprites[script.imageId];
+        GetImage((int)Images.NpcImage).sprite = _sprites[script.imageId];
 
         // 스크립트
         if (_isType)
@@ -79,7 +82,7 @@ public class UI_ReplayEnding : UI_Popup
         }
         else
         {
-            _targetLine = script.line;
+            _targetLine = string.Format(script.line, Managers.Data.UserData.user.nickname);
             StartCoroutine(StartTyping());
         }
     }

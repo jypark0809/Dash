@@ -13,6 +13,8 @@ public class UI_Teacher : UI_Popup
     int _curPos; // ÇöÀç Position
     PlayerController _playerController;
 
+    public Sprite[] _sprites;
+
     enum Buttons
     {
         RightTabButton,
@@ -23,6 +25,7 @@ public class UI_Teacher : UI_Popup
     {
         GaugeBar,
         PinImage,
+        CutScene,
     }
 
     void Start()
@@ -40,6 +43,11 @@ public class UI_Teacher : UI_Popup
 
         GetButton((int)Buttons.RightTabButton).gameObject.BindEvent(RightTabButtonClicked);
         GetButton((int)Buttons.LeftTabButton).gameObject.BindEvent(LeftTabButtonClicked);
+
+        if (Managers.Data.UserData.user.gender == "male")
+            GetImage((int)Images.CutScene).sprite = _sprites[0];
+        if (Managers.Data.UserData.user.gender == "female")
+            GetImage((int)Images.CutScene).sprite = _sprites[1];
     }
 
     void Update()

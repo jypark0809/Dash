@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spider : BaseObstacle
 {
-    public int _range = 5;
+    public int _range = 7;
     float screenRightWorldPos;
 
     public override void Init()

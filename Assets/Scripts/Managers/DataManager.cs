@@ -26,6 +26,7 @@ public class DataManager
         else
         {
             UserData = new UserData();
+            PlayerPrefs.SetInt("round", 0);
             InitData();
         }
     }
@@ -54,12 +55,13 @@ public class DataManager
     public void ClearAllStage()
     {
         UserData.user.id = "";
-        UserData.user.nickname = "";
         UserData.user.gender = "unselected";
         UserData.user.stat1 = 0;
         UserData.user.stat2 = 0;
         UserData.user.stat3 = 0;
         UserData.user.stage = 1;
+        PlayerPrefs.SetInt("extrahealth", 0);
+        PlayerPrefs.SetInt("round", PlayerPrefs.GetInt("round") + 1);
 
         SaveUserDataToJson(UserData);
         Debug.Log(JsonUtility.ToJson(UserData, true));
@@ -79,6 +81,8 @@ public class DataManager
         UserData.user.ending = new bool[12];
         for (int i = 0; i < 12; i++)
             UserData.user.ending[i] = false;
+        PlayerPrefs.SetInt("extrahealth", 0);
+        PlayerPrefs.SetInt("round", 0);
 
         SaveUserDataToJson(UserData);
         Debug.Log(JsonUtility.ToJson(UserData, true));

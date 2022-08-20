@@ -6,7 +6,7 @@ public class PlayerController : BaseController
     public float _jumpCount = 2;
     public float _jumpPower = 10.0f;
     public bool _isJump = false;
-    public int _health = 3;
+    public int _health;
     public bool _isFight = false;
     int _teacherCount = 1;
 
@@ -26,6 +26,7 @@ public class PlayerController : BaseController
         _state = Define.PlayerState.Run;
         _anim = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
+        _health += PlayerPrefs.GetInt("extrahealth");
     }
 
     void Update()

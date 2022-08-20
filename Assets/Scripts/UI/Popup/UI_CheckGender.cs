@@ -48,18 +48,24 @@ public class UI_CheckGender : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
-        ClosePopupUI();
-        Managers.Data.PrintLog();
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Scene.LoadScene(Define.Scene.Game);
+        Managers.UI.CloseAllPopupUI();
+        if (PlayerPrefs.GetInt("round") == 0)
+        {
+            Managers.UI.ShowPopupUI<UI_Nickname>();
+        }
+        else
+        {
+            // µ¹ÆÄ±Ç UI
+
+            Managers.Scene.LoadScene(Define.Scene.Game);
+        }
     }
 
     public void CancleButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.gender = "unselected";
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-        Managers.Data.PrintLog();
         Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Data.UserData.user.gender = "unselected";
         ClosePopupUI();
     }
 }
