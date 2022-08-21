@@ -2,1020 +2,1032 @@
   "endings": [
     {
       "endingId": "1",
+      "index": 5,
       "scripts": [
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(뉘 집 아들인지 모르겠지만 참 잘생겼군.)"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "무슨 일이야?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "나 오늘따라 더 잘생겨 보이지 않아?"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "... 지금 그 말 하려고 부른 거야?"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "(잠시만... 근데...)"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "(어째서 찌질한 {0}에게서 백마탄 왕자 모습이 보이는 거지...?)"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "큼, 저... 저기, 공부만 하는 거 지루하지 않아?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "나랑 매일 생과일주스 마시러 가지 않을래? 뭐 데이트... 그런 거?"
         },
         {
           "npcId": 1,
-          "imageId": 1,
+          "imageId": 2,
           "line": "... 네가 바로 내 지루한 일상을 구원해 주는 백마탄 왕자님?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "백...백마탄... 뭐? 왕자?"
         },
         {
           "npcId": 1,
-          "imageId": 1,
+          "imageId": 2,
           "line": "그렇구나! 드디어 이 공주가 일상을 부수고 도망갈 시간~!!!"
         },
         {
           "npcId": 1,
-          "imageId": 1,
+          "imageId": 2,
           "line": "공부만 시키는 악덕 왕비에게서 벗어나는 거야!! 하하하!!"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "......?"
         }
       ]
     },
     {
       "endingId": "2",
+      "index": 9,
       "scripts": [
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(뉘 집 아들인지 모르겠지만 참 잘생겼군.)"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "무슨 일이야?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(이 날을 위해 준비했지!)"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(공주 놀이에 심취해 있는 건 알고 있다!)"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "큼, 공주. 아무래도 첫눈에 반한 것 같소."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "나와 함께 지루한 일상에서 벗어나 여정을 떠나지 않겠소?"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "쿠쿡. 잠-깐"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "백마탄 왕자 행세를 하려는 {0}쿤... 마치 마녀가 보낸 사냥꾼 같군."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "아쉽지만 진.짜 왕자는 초절정 궁극의 멋을 자랑하는 나님이랄까...?"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "(뭘까... 어떤 상황에서도 나를 지켜 줄 것 같은 저 덩치...)"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "(오덕스럽지만 믿음직한 말투...)"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "(나... 이런 취향이었던 걸까?)"
         },
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 1,
           "line": "... 네가 바로 내 지루한 일상을 구원해 주는 백마탄 왕자님?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "내, 내가 아니라?!"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "훗, 역시 진짜 공주는 왕자를 알아보는 법이죠."
         },
         {
           "npcId": 1,
-          "imageId": 2,
+          "imageId": 3,
           "line": "그렇구나! 드디어 이 공주가 일상을 부수고 도망갈 시간!"
         },
         {
           "npcId": 1,
-          "imageId": 2,
+          "imageId": 3,
           "line": "악덕 왕비와 못된 사냥꾼에게서 벗어나는 거야!! 하하하!!"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "어째서 결말이 이렇게 된 거지...?"
         }
       ]
     },
     {
       "endingId": "3",
+      "index": 12,
       "scripts": [
         {
           "npcId": 2,
-          "imageId": 3,
+          "imageId": 4,
           "line": "뭐야, 오늘따라 왜 이렇게 쪼개?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "갑자기 웬 시비냐?"
         },
         {
           "npcId": 2,
-          "imageId": 3,
+          "imageId": 4,
           "line": "아, 됐고. 이거나 받아."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "뭔데?"
         },
         {
           "npcId": 2,
-          "imageId": 3,
+          "imageId": 4,
           "line": "오다 주웠어."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "...밴드?"
         },
         {
           "npcId": 2,
-          "imageId": 3,
+          "imageId": 4,
           "line": "너 오늘 복도에서 뛰어다니다 뜀틀에 걸려 넘어졌잖아."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "뭐야, 너도 드디어 나한테 반했냐?"
         },
         {
           "npcId": 2,
-          "imageId": 4,
+          "imageId": 5,
           "line": "..."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "... 왜 얼굴이 빨개져? 진심이야?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "아... 나한테 반하면 곤란한데~"
         },
         {
           "npcId": 2,
-          "imageId": 4,
+          "imageId": 5,
           "line": "그럼 너는?"
         },
         {
           "npcId": 2,
-          "imageId": 4,
+          "imageId": 5,
           "line": "넌 나한테 관심 없어?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "... 일단 이거 받아."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "내 진심이 담긴 거다."
         },
         {
           "npcId": 2,
-          "imageId": 3,
+          "imageId": 4,
           "line": "... 명찰?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "먼저 갈 테니까 알아서 따라와."
         },
         {
           "npcId": 2,
-          "imageId": 3,
+          "imageId": 4,
           "line": "야 이거 무슨 의미인데?"
         },
         {
           "npcId": 2,
-          "imageId": 4,
+          "imageId": 5,
           "line": "말해 주고 가! 야!!!!"
         }
       ]
     },
     {
       "endingId": "4",
+      "index": 5,
       "scripts": [
         {
           "npcId": 2,
-          "imageId": 5,
+          "imageId": 6,
           "line": "야 교문으로 오라며? 어디 갔어?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "나 진지하게 할 말 있어."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(어렵게 인터넷에서 찾고 찾아 공수해 온 \n고백 확률 성공 100% 방법을 쓸 때인가?)"
         },
         {
           "npcId": 2,
-          "imageId": 3,
+          "imageId": 4,
           "line": "뭔데?"
         },
         {
           "npcId": 2,
-          "imageId": 3,
+          "imageId": 4,
           "line": "?"
         },
         {
           "npcId": 2,
-          "imageId": 5,
+          "imageId": 6,
           "line": "너 뭐 해? 또 장난이냐?"
         },
         {
           "npcId": 2,
-          "imageId": 5,
+          "imageId": 6,
           "line": "일부러 내가 너 좋아하는 거 알고 그러는 거지?"
         },
         {
           "npcId": 2,
-          "imageId": 5,
+          "imageId": 6,
           "line": "...됐다. 그냥 손절 치자."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "??? 아니 내 말은 그런 게 아니라..."
         }
       ]
     },
     {
       "endingId": "5",
+      "index": 14,
       "scripts": [
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "... 수업도 끝났는데 카페 괜찮아? 할 얘기 있는데."
         },
         {
           "npcId": 3,
-          "imageId": 7,
+          "imageId": 8,
           "line": "아싸! 선배랑 데이트~?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "후... 나 좀 그만 좋아해. 피곤하다."
         },
         {
           "npcId": 3,
-          "imageId": 7,
+          "imageId": 8,
           "line": "히히 재수없어~! 그래도 내 얘기 들어 주는 건 선배뿐인데요!"
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "혹시... 내가 싫어요...?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "아니~ 뭐 그건 아닌데... 뭐야 너 울어?"
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "흐어엉 됐어요! 집에 갈래요."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "야 알았어! 너 안 싫어하니까 카페나 가자. 더워 죽겠다."
         },
         {
           "npcId": 3,
-          "imageId": 7,
+          "imageId": 8,
           "line": "그럼 저 좋은 거죠~?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "...너 우는 거 연기였지."
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "아, 확실히 대답해요! 저 좋은 거 맞아요?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "좋아하니까 같이 가는 거잖아."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "계속 네 얘기 집중해서 들어 줄 테니까 빨리 오기나 해."
         },
         {
           "npcId": 3,
-          "imageId": 7,
+          "imageId": 8,
           "line": "히히. 네 선배~"
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "진짜 어이없지 않아요? 걔가 그렇게 나오면 상식적으로 말이 안 되는 거잖아요!"
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "아 근데 개 며칠 전에 옆반 애랑 연애한다고 그랬던 것 같은데..."
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "아! 그게 문제가 아니지 참 아무튼 그래서..."
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "......"
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "애초에 초대를 했으면 약속을 지키는 게 맞잖아?"
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "근데 약속을 안 지키는 거야!"
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "그래서 내가 그날... 어... 오빠 듣고 있어?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "......"
         },
         {
           "npcId": 3,
-          "imageId": 8,
+          "imageId": 9,
           "line": "앗...! 오빠 귀... 귀에서 피가...!"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(네가 행복하면... 그걸로 됐다...)"
         }
       ]
     },
     {
       "endingId": "6",
+      "index": 12,
       "scripts": [
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "나 할 말 있는데 시간 돼?"
         },
         {
           "npcId": 3,
-          "imageId": 8,
+          "imageId": 9,
           "line": "음... 갑자기요? 아무튼 알겠어요~!"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(바로 따라 오는 걸 보니 나를 좋아하는 게 분명하군.)"
         },
         {
           "npcId": 3,
-          "imageId": 6,
+          "imageId": 7,
           "line": "근데 무슨 얘기하려는 거예요~?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(지금인가? 어제 열심히 준비한 개그들로 고백할 기회다!)"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "내가 바나나를 먹으면... 나한테 반하나?!"
         },
         {
           "npcId": 3,
-          "imageId": 8,
+          "imageId": 9,
           "line": "...네?"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "설레임을 먹으면 그렇게 설레임~?"
         },
         {
           "npcId": 3,
-          "imageId": 8,
+          "imageId": 9,
           "line": "......"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "간디가 어딜 간디? 하하하!"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "(벙찐 표정을 보니 이 정도면 완벽하게 성공한 것 같다!)"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "저기, 나랑 주말에 같이 영화 볼래?"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "어이어이, {0}쿤... 난 시간이 많은 남자가 아니라구?"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "이렇게 데이트신청을 하면... 이 몸, 절대 ★곤.란★"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "하지만 카와이한 {0}쿤의 부탁. 와타시 차마 거절할 수 없죠."
         },
         {
           "npcId": 3,
-          "imageId": 8,
+          "imageId": 9,
           "line": "(둘 다 정상은 아닌 듯)"
         },
         {
           "npcId": 3,
-          "imageId": 7,
+          "imageId": 8,
           "line": "앗 그럼 선배! 두 분이서 보러 가면 될 것 같아요! 히히"
         },
         {
           "npcId": 3,
-          "imageId": 7,
+          "imageId": 8,
           "line": "저는 그 영화 질릴 정도로 봤거든요! 먼저 갈게요! 안녕!"
         },
         {
           "npcId": 0,
-          "imageId": 18,
+          "imageId": 19,
           "line": "자, 잠시만! 나 무슨 영화인지 말도 안 했는데!!"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "그렇다면 {0}쿤은 이 몸과 함께 시간을 보내야 한다랄까...? 쿠쿡 ★"
         }
       ]
     },
     {
       "endingId": "7",
+      "index": 6,
       "scripts": [
         {
           "npcId": 4,
-          "imageId": 9,
+          "imageId": 10,
           "line": "무슨 일이야?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "선배 부탁했던 회의록 여기~♥"
         },
         {
           "npcId": 4,
-          "imageId": 9,
+          "imageId": 10,
           "line": "아, 고마워."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "(오 지금 분위기 좋은데~ 고백 공격 실시 ♥)"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "그리고 또 내가 준비한 게 있지 ♥"
         },
         {
           "npcId": 4,
-          "imageId": 9,
+          "imageId": 10,
           "line": "... 뭔데?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "이 데이트 계획서 좀 봐봐!"
         },
         {
           "npcId": 4,
-          "imageId": 9,
+          "imageId": 10,
           "line": "..."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "나 선배랑 이렇게 계속 회의 끝나고도 둘이 이야기 하고 싶은뎅~♥"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "만약 선배랑 가까운 사이가 된다면 데이트 계획은\n이런 식으로 내가 완~벽하게 짤 수 있는데"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "마음에 들면 이 계획대로 데이트해 보는 건 어때~?"
         },
         {
           "npcId": 4,
-          "imageId": 10,
+          "imageId": 11,
           "line": "방향도 목적도 분석도 완벽하네. 앞으로도 나한테 꾸준히 검사 받아."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "(어... 이, 이게 맞나?) 으... 응! ♥"
         }
       ]
     },
     {
       "endingId": "8",
+      "index": 5,
       "scripts": [
         {
           "npcId": 4,
-          "imageId": 9,
+          "imageId": 10,
           "line": "무슨 일이야?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "선배 부탁했던 회의록 여기~♥"
         },
         {
           "npcId": 4,
-          "imageId": 9,
+          "imageId": 10,
           "line": "아, 고마워."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "(오 지금 분위기 좋은데~ 고백 공격 실시 ♥)"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "그리고 또 내가..."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "여어~ 히사시부리! {0}상~ 여기 있었어~? 와타시 계속 찾고 있었다능~"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "또... 너냐..."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "와타시는 러브다이버. \n한 여자밖에 모르는 해바라기 같은 남자랄까... ★"
         },
         {
           "npcId": 7,
-          "imageId": 20,
-          "line": "그나저나 (0}쨩! 이런 기생오라비 같은 남자는 위험하다고!"
+          "imageId": 26,
+          "line": "그나저나 {0}쨩! 이런 기생오라비 같은 남자는 위험하다고!"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "감히 호... 호... 혼모노 탁후를 집착하게 만들다니~!~~!! \n후욱... 후욱..."
         },
         {
           "npcId": 4,
-          "imageId": 11,
+          "imageId": 12,
           "line": "야... 너..."
         },
         {
           "npcId": 4,
-          "imageId": 11,
+          "imageId": 12,
           "line": "아니다. 갈게."
         },
         {
           "npcId": 4,
-          "imageId": 19,
+          "imageId": 23,
           "line": "잠, 잠시만... 선배!"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "야레야레... 이별의 아픔을 겪고 있는 {0}상이라니..."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "오늘은 초.멋.진 이 몸이 여기까지 하도록 하지."
         }
       ]
     },
     {
       "endingId": "9",
+      "index": 10,
       "scripts": [
         {
           "npcId": 5,
-          "imageId": 12,
+          "imageId": 13,
           "line": "무슨 일이야?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "선배 운동하느라 목마를 거 같아서 이거 준비했지~♥"
         },
         {
           "npcId": 5,
-          "imageId": 13,
+          "imageId": 14,
           "line": "오, 고마워 목말랐는데! (벌컥벌컥)"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "사실, 나 고민이있는데 좀 들어줄래?"
         },
         {
           "npcId": 5,
-          "imageId": 12,
+          "imageId": 13,
           "line": "뭔데?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "선배도 알겠지만 내가 운동에 좀 재능이 있잖아!"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "그래서 선배의 목표인 올림픽까지 같이 함께 하고싶어~! ♥"
         },
         {
           "npcId": 5,
-          "imageId": 13,
+          "imageId": 14,
           "line": "... {0}"
         },
         {
           "npcId": 5,
-          "imageId": 13,
+          "imageId": 14,
           "line": "쉽지 않은 결정이었을텐데... 그래! 네 재능은 진작 알아봤었으니까"
         },
         {
           "npcId": 5,
-          "imageId": 13,
+          "imageId": 14,
           "line": "너만 괜찮다면... 나와 함께 준비해 볼래?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "당근 빠따지~ 금메달 올킬이다!!!! 기다려라!!♥♥"
         }
       ]
     },
     {
       "endingId": "10",
+      "index": 13,
       "scripts": [
         {
           "npcId": 5,
-          "imageId": 12,
+          "imageId": 13,
           "line": "다음 대회 연습할 시간도 아까운데 무슨 일이야..."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "...나 아무래도 운동... 포기해야 할 것 같아..."
         },
         {
           "npcId": 5,
-          "imageId": 12,
+          "imageId": 13,
           "line": "...이번 대회에서 탈락한 것 때문에 때문에 그래?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "내 체력이 국가대표 뺨치게 좋은 줄 알았는데 아니었어..."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "함께 운동은 못 하겠지만... \n그래도 선배만 괜찮으면 계속 연락하고 지내는 건..."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "5252~ 꿈도 사랑도 잃은 가녀린 소녀란 말인가...?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "...으으!! 대체 어디서 나오는 거야 저거!!!!!!!!!!!!"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "훗, 오로지 뼈와 지방으로만 구성된 나님."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "저런 단백질 덩어리따위. \n가볍게 이긴 후 {0}쨩을 차지하고 말 것입니다! 끼요옷~!"
         },
         {
           "npcId": 5,
-          "imageId": 14,
+          "imageId": 15,
           "line": "... 상대할 가치도 없는 놈이랑 놀아 줄 시간 없으니 이만 간다."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "아...? 역시 그렇단 말인가...?"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "쿠쿡... ★도.망.치.는.겁.니.까?★"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "이렇게 가 버리면 {0}쨩은 나의 것이 됩니다만?"
         },
         {
           "npcId": 5,
-          "imageId": 12,
+          "imageId": 13,
           "line": "아니, 하... "
         },
         {
           "npcId": 5,
-          "imageId": 14,
+          "imageId": 15,
           "line": "그래. 너 알아서 해라."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "뭐라고? 잠시만 선배!"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "어디 가!! 야!!!!!!!!!!!!!!!!"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "{0}쨩은 이제 공식적으로 궁극의 아름다움을 뽐내는 나만의 여자 친구... \n랄까? (후다닥)"
         }
       ]
     },
     {
       "endingId": "11",
+      "index": 7,
       "scripts": [
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "선배 어디가~♥"
         },
         {
           "npcId": 6,
-          "imageId": 15,
+          "imageId": 16,
           "line": "응 알바 가는 길이야. 무슨 일 있어?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "나 운동 끝났는데 집에 같이 가고 싶어서~!"
         },
         {
           "npcId": 6,
-          "imageId": 15,
+          "imageId": 16,
           "line": "그래. 마침 나도 심심했는데."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "(분위기 좋은데 지금이 바로... 고백...각?)"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "나 준비한 거 있어! ♥"
         },
         {
           "npcId": 6,
-          "imageId": 15,
+          "imageId": 16,
           "line": "뭔데?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "짜잔~"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "이거 쓰고 같이 알바하면... 나랑 사귀는거다~?"
         },
         {
           "npcId": 6,
-          "imageId": 15,
+          "imageId": 16,
           "line": "..."
         },
         {
           "npcId": 6,
-          "imageId": 16,
+          "imageId": 17,
           "line": "크흠, 귀엽든가 착하든가... 하나만 해라."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "뭐야~ 벌써부터 내 애교에 빠져 버리면 곤란한데~"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "아무튼, 같이 데이트하러 갈까~? ♥"
         },
         {
           "npcId": 6,
-          "imageId": 16,
+          "imageId": 17,
           "line": "하하. 그래 알았어."
         }
       ]
     },
     {
       "endingId": "12",
+      "index": 6,
       "scripts": [
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "선배 어디가~♥"
         },
         {
           "npcId": 6,
-          "imageId": 15,
+          "imageId": 16,
           "line": "응 알바 가는 길이야. 무슨 일 있어?"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "나 운동 끝났는데 집에 같이 가고 싶어서~!"
         },
         {
           "npcId": 6,
-          "imageId": 15,
+          "imageId": 16,
           "line": "그러든가."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "(단 둘이 있는 지금이 바로... 고백...각?)"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "나 사실 준비한게 있ㅇ..."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "여어~ 이 몸 등장."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "하... 어디서 나온 거야 또."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "훗, 와타시 초카와이한 {0}히메의 행적을 찾아다니는 로맨틱가이."
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "...랄까? ㅇㅅㅇ"
         },
         {
           "npcId": 6,
-          "imageId": 17,
+          "imageId": 18,
           "line": "뭐야? 너희 사귀는 사이야?"
         },
         {
           "npcId": 6,
-          "imageId": 17,
+          "imageId": 18,
           "line": "언제부터 교내 규칙을 위반하고 있었던 거지?"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "야레야레... 와타시 {0}히메랑 러브-러브한 관계를 들켜버렸을까나...? ★"
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "야!! 무슨 소리를 하는 거야!!"
         },
         {
           "npcId": 7,
-          "imageId": 20,
+          "imageId": 26,
           "line": "오레사마와 기분이 좋.지.않.으.니.까. \n더 이상 말하면 아무리 히메쨩이라도 용서치 않는다."
         },
         {
           "npcId": 6,
-          "imageId": 17,
+          "imageId": 18,
           "line": "확실하게 맞는 것 같군."
         },
         {
           "npcId": 6,
-          "imageId": 17,
+          "imageId": 18,
           "line": "너희 둘. 학칙 위반으로 교내 봉사 20시간 부여한다."
         },
         {
           "npcId": 0,
-          "imageId": 19,
+          "imageId": 23,
           "line": "잠... 잠시만 선배! 아니라니까!!! 선배!!!!"
         }
       ]

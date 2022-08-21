@@ -6,9 +6,12 @@ using UnityEngine.UI;
 
 public class UI_ReplayEnding : UI_Popup
 {
-    public Sprite[] _sprites;
+    public Sprite[] _npcSprites;
+    public Sprite[] _cutSceneSprites;
 
     int _scriptIndex = 0;
+    int _cutSceneIndex;
+
     Ending _ending;
     string _targetLine;
     public int _charPerSecend;
@@ -21,6 +24,7 @@ public class UI_ReplayEnding : UI_Popup
         Panel,
         CursurImage,
         NpcImage,
+        CutScene,
     }
 
     enum Texts
@@ -40,6 +44,7 @@ public class UI_ReplayEnding : UI_Popup
 
         interval = 1.0f / _charPerSecend;
         Managers.Data.EndingDict.TryGetValue(PlayerPrefs.GetInt("endingId"), out _ending);
+        _cutSceneIndex = _ending.index;
 
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
@@ -47,8 +52,9 @@ public class UI_ReplayEnding : UI_Popup
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
 
-        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_index].npcId];
-        SetLine(_ending.scripts[_scriptIndex]);
+        GetImage((int)Images.CutScene).sprite = _cutSceneSprites[_ending.endingId]; // ÄÆ¾À
+        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_index].npcId]; // npc ÀÌ¸§
+        SetLine(_ending.scripts[_scriptIndex]); // ´ë»ç, npc ÀÌ¹ÌÁö
     }
 
     public void PanelImageClicked(PointerEventData data)
@@ -71,7 +77,13 @@ public class UI_ReplayEnding : UI_Popup
 
     void SetLine(Script script)
     {
-        GetImage((int)Images.NpcImage).sprite = _sprites[script.imageId];
+        // ÄÆ¾À
+        if (_scriptIndex == _cutSceneIndex)
+            GetImage((int)Images.CutScene).GetComponent<Animator>().Play("CutSceneFadeIn");
+
+        // npc ÀÌ¹ÌÁö
+        GetImage((int)Images.NpcImage).sprite = _npcSprites[script.imageId];
+        GetImage((int)Images.NpcImage).SetNativeSize();
 
         // ½ºÅ©¸³Æ®
         if (_isType)

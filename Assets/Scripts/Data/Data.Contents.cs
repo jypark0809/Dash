@@ -34,6 +34,7 @@ public class UserData
 public class Ending
 {
     public int endingId;
+    public int index; // ÄÆ¾À ³ª¿À´Â index
     public Script[] scripts;
 }
 

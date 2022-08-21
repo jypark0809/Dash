@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class UI_Scripts : UI_Popup
 {
-    // 모범생, 소꿉친구, 후배, 학생회장, 체육부장, 선도부장
-    int _npcId;
-    int _scriptIndex = 0;
-    int _stat1, _stat2, _stat3;
-    Ending _ending;
+    public Sprite[] _npcSprites;
+    public Sprite[] _cutSceneSprites;
 
-    public Sprite[] _sprites;
+    int _scriptIndex = 0;
+    int _cutSceneIndex;
+    int _npcId;
+    int _stat1, _stat2, _stat3;
+
+    Ending _ending;
     string _targetLine; // dictionary에서 꺼내온 대사 1줄
     public int _charPerSecend;
     float interval;
@@ -24,6 +26,7 @@ public class UI_Scripts : UI_Popup
         Panel,
         CursurImage,
         NpcImage,
+        CutScene,
     }
 
     enum Texts
@@ -45,6 +48,7 @@ public class UI_Scripts : UI_Popup
         _npcId = PlayerPrefs.GetInt("npcId");
         LoadUserData();
         branchEnding();
+        _cutSceneIndex = _ending.index;
 
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
@@ -53,8 +57,9 @@ public class UI_Scripts : UI_Popup
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
 
         Managers.Data.ClearAllStage();
-        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_index].npcId];
-        SetLine(_ending.scripts[_scriptIndex]);
+        GetImage((int)Images.CutScene).sprite = _cutSceneSprites[_ending.endingId]; // 컷씬
+        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_index].npcId]; // npc 이름
+        SetLine(_ending.scripts[_scriptIndex]); // 대사, npc 이미지
     }
 
     void LoadUserData()
@@ -239,7 +244,13 @@ public class UI_Scripts : UI_Popup
 
     void SetLine(Script script)
     {
-        GetImage((int)Images.NpcImage).sprite = _sprites[script.imageId];
+        // 컷씬
+        if (_scriptIndex == _cutSceneIndex)
+            GetImage((int)Images.CutScene).GetComponent<Animator>().Play("CutSceneFadeIn");
+
+        // npc 이미지
+        GetImage((int)Images.NpcImage).sprite = _npcSprites[script.imageId];
+        GetImage((int)Images.NpcImage).SetNativeSize();
 
         // 스크립트
         if (_isType)
@@ -250,7 +261,7 @@ public class UI_Scripts : UI_Popup
         }
         else
         {
-            //
+            // script string 보간
             _targetLine = string.Format(script.line, Managers.Data.UserData.user.nickname);
             StartCoroutine(StartTyping());
         }
