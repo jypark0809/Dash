@@ -1,3 +1,5 @@
+using GoogleMobileAds.Api;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +8,8 @@ using UnityEngine.UI;
 
 public class UI_Shop : UI_Popup
 {
+    private RewardedAd rewardedAd;
+    string adUnitId = "ca-app-pub-3940256099942544/5224354917";
     public Toggle _toggleLoveLetter, _toggleRuby, _toggleCostume, _toggleTickek;
 
     enum Buttons
@@ -47,6 +51,18 @@ public class UI_Shop : UI_Popup
     void Start()
     {
         Init();
+
+        this.rewardedAd = new RewardedAd(adUnitId);
+
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+        // Load the rewarded ad with the request.
+        this.rewardedAd.LoadAd(request);
+
+        // Called when the user should be rewarded for interacting with the ad.
+        this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        // Called when the ad is closed.
+        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
     }
 
     public override void Init()
@@ -150,7 +166,8 @@ public class UI_Shop : UI_Popup
     public void CloseRubyItem1Clicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        // 인앱 광고
+        this.GetComponent<Canvas>().sortingOrder = -1;
+        UserChoseToWatchAd();
     }
 
     public void CloseRubyItem2Clicked(PointerEventData data)
@@ -189,4 +206,44 @@ public class UI_Shop : UI_Popup
         GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
         GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
     }
+
+    #region Admob
+
+    // 광고가 종료되었을 때
+    public void HandleRewardedAdClosed(object sender, EventArgs args)
+    {
+        ReloadAd();
+    }
+
+    // 광고를 끝까지 시청하였을 때
+    public void HandleUserEarnedReward(object sender, Reward args)
+    {
+        Managers.Data.UserData.user.ruby += 50;
+        UpdateData();
+        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+    }
+
+    private void UserChoseToWatchAd()
+    {
+        if (this.rewardedAd.IsLoaded())
+        {
+            this.rewardedAd.Show();
+        }
+    }
+
+    public RewardedAd ReloadAd()
+    {
+        rewardedAd = new RewardedAd(adUnitId);
+
+        // Called when the user should be rewarded for interacting with the ad.
+        this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        // Called when the ad is closed.
+        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+
+        AdRequest request = new AdRequest.Builder().Build();
+        rewardedAd.LoadAd(request);
+        return rewardedAd;
+    }
+
+    #endregion
 }

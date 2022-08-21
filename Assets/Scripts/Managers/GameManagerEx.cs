@@ -7,8 +7,6 @@ public class GameManagerEx
 {
     public GameObject _player;
     public GameObject _stage;
-    // public GameObject _subMap;
-    // public GameObject _mainMap;
 
     public GameObject Spawn(Define.WorldObject type, string path, Transform parent = null)
     {
