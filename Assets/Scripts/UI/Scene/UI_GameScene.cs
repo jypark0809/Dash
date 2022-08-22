@@ -48,7 +48,7 @@ public class UI_GameScene : UI_Scene
         Bind<Image>(typeof(Images));
         Bind<Text>(typeof(Texts));
 
-        GetButton((int)Buttons.JumpButton).gameObject.BindEvent(JumpButtonClicked);
+        GetButton((int)Buttons.JumpButton).gameObject.BindEvent(JumpButtonClicked, Define.UIEvent.PointerDown);
         GetButton((int)Buttons.PauseButton).gameObject.BindEvent(PauseButtonClicked);
 
         GetText((int)Texts.StegeDigitText).text = CalStage();

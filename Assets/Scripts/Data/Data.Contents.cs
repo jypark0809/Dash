@@ -30,6 +30,12 @@ public class UserData
 
 #region Script
 
+public class HintScript
+{
+    public int hintId;
+    public Script[] scripts;
+}
+
 [Serializable]
 public class Ending
 {
@@ -48,6 +54,22 @@ public class Script
 
 [Serializable]
 public class EndingData : ILoader<int, Ending>
+{
+    public List<Ending> endings = new List<Ending>();
+
+    public Dictionary<int, Ending> MakeDictionary()
+    {
+        Dictionary<int, Ending> dict = new Dictionary<int, Ending>();
+
+        foreach (Ending ending in endings)
+            dict.Add(ending.endingId, ending);
+
+        return dict;
+    }
+}
+
+[Serializable]
+public class InGameScriptData : ILoader<int, Ending>
 {
     public List<Ending> endings = new List<Ending>();
 

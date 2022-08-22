@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class UI_Shop : UI_Popup
 {
     private RewardedAd rewardedAd;
+    // string adUnitTestId = "ca-app-pub-3940256099942544/5224354917";
     string adUnitId = "ca-app-pub-3940256099942544/5224354917";
     public Toggle _toggleLoveLetter, _toggleRuby, _toggleCostume, _toggleTickek;
 
@@ -59,6 +60,8 @@ public class UI_Shop : UI_Popup
         // Load the rewarded ad with the request.
         this.rewardedAd.LoadAd(request);
 
+        // Called when an ad request failed to load.
+        this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
         // Called when the user should be rewarded for interacting with the ad.
         this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         // Called when the ad is closed.
@@ -209,6 +212,12 @@ public class UI_Shop : UI_Popup
 
     #region Admob
 
+    public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+        MonoBehaviour.print(
+            "HandleRewardedAdFailedToLoad event received");
+    }
+
     // 광고가 종료되었을 때
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
@@ -235,6 +244,8 @@ public class UI_Shop : UI_Popup
     {
         rewardedAd = new RewardedAd(adUnitId);
 
+        // Called when an ad request failed to load.
+        this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
         // Called when the user should be rewarded for interacting with the ad.
         this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         // Called when the ad is closed.

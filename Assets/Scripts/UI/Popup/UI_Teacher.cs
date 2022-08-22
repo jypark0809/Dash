@@ -52,12 +52,18 @@ public class UI_Teacher : UI_Popup
 
     void Update()
     {
-        if (_curPos == _minPos || _curPos == _maxPos)
+        if (_curPos == _maxPos)
         {
             _playerController._isFight = false;
             ClosePopupUI();
         }
-            
+
+        if (_curPos == _minPos)
+        {
+            _playerController._state = Define.PlayerState.Die;
+            ClosePopupUI();
+        }
+
         _timer += Time.deltaTime;
         if (_timer > _reduce)
         {

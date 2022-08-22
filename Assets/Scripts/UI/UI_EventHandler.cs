@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IDragHandler
+public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IDragHandler, IPointerDownHandler
 {
     public Action<PointerEventData> OnClickHandler = null;
     public Action<PointerEventData> OnDragHandler = null;
+    public Action<PointerEventData> OnPointerDownHandler = null;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -19,5 +20,11 @@ public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IDragHandler
     {
         if (OnDragHandler != null)
             OnDragHandler.Invoke(eventData);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (OnPointerDownHandler != null)
+            OnPointerDownHandler.Invoke(eventData);
     }
 }

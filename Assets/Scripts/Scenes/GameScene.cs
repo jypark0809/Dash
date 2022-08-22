@@ -49,9 +49,6 @@ public class GameScene : BaseScene
         pc.stageController = stage.GetComponent<StageController>();
         pc.mapControllers[0] = mc1;
         pc.mapControllers[1] = mc2;
-
-        // Load Data
-        UserData user = Managers.Data.UserData;
     }
 
     private void Update()

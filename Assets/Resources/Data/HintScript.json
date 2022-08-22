@@ -1,0 +1,54 @@
+{
+  "hints": [
+    {
+      "hintId": "1",
+      "scripts": [
+        {
+          "npcId": 1,
+          "imageId": 0,
+          "line": "가"
+        },
+        {
+          "npcId": 1,
+          "imageId": 0,
+          "line": "나"
+        },
+        {
+          "npcId": 1,
+          "imageId": 0,
+          "line": "다"
+        },
+        {
+          "npcId": 1,
+          "imageId": 0,
+          "line": "라"
+        }
+      ]
+    },
+    {
+      "hintId": "2",
+      "scripts": [
+        {
+          "npcId": 1,
+          "imageId": 0,
+          "line": "가"
+        },
+        {
+          "npcId": 1,
+          "imageId": 0,
+          "line": "나"
+        },
+        {
+          "npcId": 1,
+          "imageId": 0,
+          "line": "다"
+        },
+        {
+          "npcId": 1,
+          "imageId": 0,
+          "line": "라"
+        }
+      ]
+    }
+  ]
+}

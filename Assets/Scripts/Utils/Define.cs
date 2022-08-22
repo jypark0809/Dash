@@ -43,6 +43,7 @@ public class Define
     {
         Click,
         Drag,
+        PointerDown,
     }
 
     public enum ObstacleType

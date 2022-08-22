@@ -10,8 +10,10 @@ public class PlayerController : BaseController
     public bool _isFight = false;
     int _teacherCount = 1;
 
-    public Define.PlayerState _state;
+    public GameObject _shieldObj;
+    bool _shield = false;
 
+    public Define.PlayerState _state;
     public MapController[] mapControllers;
     public StageController stageController;
 
@@ -135,6 +137,8 @@ public class PlayerController : BaseController
 
             if (collision.gameObject.name == "Coffee")
             {
+                _shield = true;
+                _shieldObj.SetActive(true);
                 StartCoroutine("SpeedUp");
             }
 
@@ -155,12 +159,21 @@ public class PlayerController : BaseController
 
     void DecreaseHealth(int count)
     {
-        _health -= count;
-        if (_health <= 0)
+        if (_shield == false)
         {
-            _health = 0;
-            _state = Define.PlayerState.Die;
+            _health -= count;
+            if (_health <= 0)
+            {
+                _health = 0;
+                _state = Define.PlayerState.Die;
+            }
         }
+        else
+        {
+            _shieldObj.SetActive(false);
+            _shield = false;
+        }
+        
     }
 
     void OnDamaged()
@@ -192,6 +205,7 @@ public class PlayerController : BaseController
 
     void UpdateDie()
     {
+        _teacher.isFight = false;
         StartCoroutine("GameOver");
     }
 
