@@ -7,7 +7,9 @@ public class PlayerController : BaseController
     public float _jumpPower = 10.0f;
     public bool _isJump = false;
     public int _health;
+    int _maxHealth;
     public bool _isFight = false;
+    [SerializeField]
     int _teacherCount = 1;
 
     public GameObject _shieldObj;
@@ -28,7 +30,8 @@ public class PlayerController : BaseController
         _state = Define.PlayerState.Run;
         _anim = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
-        _health += PlayerPrefs.GetInt("extrahealth");
+        _maxHealth = _health + PlayerPrefs.GetInt("extrahealth");
+        _health = _maxHealth;
     }
 
     void Update()
@@ -60,9 +63,9 @@ public class PlayerController : BaseController
             if (_state != Define.PlayerState.Die && _state != Define.PlayerState.Clear && _state != Define.PlayerState.Fight)
             {
                 // 발판 충돌로직
+                _state = Define.PlayerState.Run;
                 _jumpCount = 2;
                 _isJump = false;
-                _state = Define.PlayerState.Run;
             }
         }
     }
@@ -119,11 +122,17 @@ public class PlayerController : BaseController
             // 학주
             if (collision.gameObject.name == "Teacher" && _teacherCount == 1)
             {
-                _teacherCount--;
+                Managers.UI.ShowPopupUI<UI_Teacher>();
                 _isFight = true;
                 _state = Define.PlayerState.Fight;
+                _teacherCount--;
                 _teacher = collision.transform.GetComponent<Teacher>();
-                Managers.UI.ShowPopupUI<UI_Teacher>();
+
+                if (_isJump)
+                {
+                    _jumpCount = 2;
+                    _isJump = false;
+                }
             }
         }
 
@@ -131,7 +140,7 @@ public class PlayerController : BaseController
         {
             if (collision.gameObject.name == "Letter")
             {
-                if (_health < 3 && _state != Define.PlayerState.Die)
+                if (_health < _maxHealth && _state != Define.PlayerState.Die)
                     _health++;
             }
 
@@ -213,7 +222,8 @@ public class PlayerController : BaseController
 
     void UpdateDie()
     {
-        _teacher.isFight = false;
+        if (_teacher != null)
+            _teacher.isFight = false;
         StartCoroutine("GameOver");
     }
 
@@ -227,29 +237,29 @@ public class PlayerController : BaseController
     IEnumerator SpeedUp()
     {
         StopCoroutine("SpeedDown");
-        foreach (MapController item in mapControllers)
-            item._speed *= 2f;
-        stageController._speed *= 2f;
+        mapControllers[0]._speed = 8;
+        mapControllers[1]._speed = 6;
+        stageController._speed = 8;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
-        foreach (MapController item in mapControllers)
-            item._speed /= 2f;
-        stageController._speed /= 2f;
+        mapControllers[0]._speed = 4;
+        mapControllers[1]._speed = 3;
+        stageController._speed = 4;
     }
 
     IEnumerator SpeedDown()
     {
         StopCoroutine("SpeedUp");
-        foreach (MapController item in mapControllers)
-            item._speed /= 2f;
-        stageController._speed /= 2f;
+        mapControllers[0]._speed = 2;
+        mapControllers[1]._speed = 1.5f;
+        stageController._speed = 2;
 
         yield return new WaitForSeconds(1.5f);
 
-        foreach (MapController item in mapControllers)
-            item._speed *= 2f;
-        stageController._speed *= 2f;
+        mapControllers[0]._speed = 4;
+        mapControllers[1]._speed = 3;
+        stageController._speed = 4;
     }
 
     IEnumerator DamageRecovered()

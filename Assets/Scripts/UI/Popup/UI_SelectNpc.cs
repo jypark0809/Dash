@@ -122,7 +122,7 @@ public class UI_SelectNpc : UI_Popup
         if (Managers.Data.UserData.user.gender == "male")
         {
             PlayerPrefs.SetInt("npcId", 2);
-            _npcId = 6;
+            _npcId = 2;
         }
         else if (Managers.Data.UserData.user.gender == "female")
         {

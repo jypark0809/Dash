@@ -57,7 +57,6 @@ public class DataManager
     public void ClearAllStage()
     {
         UserData.user.id = "";
-        UserData.user.nickname = "";
         UserData.user.gender = "unselected";
         UserData.user.stat1 = 0;
         UserData.user.stat2 = 0;

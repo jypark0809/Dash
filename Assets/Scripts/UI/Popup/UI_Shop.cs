@@ -136,9 +136,9 @@ public class UI_Shop : UI_Popup
         if (GetButton((int)Buttons.Item_Letter1).interactable == true)
         {
             Managers.Sound.Play("Button", Define.Sound.Effect);
-
-            GetButton((int)Buttons.Item_Letter2).interactable = false;
-            PlayerPrefs.SetInt("extrahealth", 1);
+            Managers.Data.UserData.user.amber -= 80;                        // Decrease Amber
+            GetButton((int)Buttons.Item_Letter2).interactable = false;      // Lock another Button
+            PlayerPrefs.SetInt("extrahealth", 1);                           // Set Character Health
         }
         else
         {
@@ -153,7 +153,7 @@ public class UI_Shop : UI_Popup
         {
             GetButton((int)Buttons.Item_Letter1).interactable = false;
             Managers.Sound.Play("Button", Define.Sound.Effect);
-
+            Managers.Data.UserData.user.ruby -= 90;
             PlayerPrefs.SetInt("extrahealth", 2);
         }
         else

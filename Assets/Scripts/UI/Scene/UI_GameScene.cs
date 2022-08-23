@@ -41,7 +41,6 @@ public class UI_GameScene : UI_Scene
     {
         base.Init();
 
-        // pc = _player.GetComponent<PlayerController>();
         pc = Managers.Game._player.GetComponent<PlayerController>();
 
         Bind<Button>(typeof(Buttons));
@@ -121,8 +120,8 @@ public class UI_GameScene : UI_Scene
             pc._state = Define.PlayerState.Jump;
             if (pc._jumpCount > 0)
             {
-                pc.GetComponent<Rigidbody2D>().velocity = Vector2.up * pc._jumpPower;
                 pc._jumpCount--;
+                pc.GetComponent<Rigidbody2D>().velocity = Vector2.up * pc._jumpPower;
                 Managers.Sound.Play("Jump", Define.Sound.Effect);
             }
         }
