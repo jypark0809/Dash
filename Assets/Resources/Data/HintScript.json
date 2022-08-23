@@ -5,7 +5,7 @@
       "scripts": [
         {
           "npcId": 1,
-          "imageId": 0,
+          "imageId": 3,
           "line": "가"
         },
         {

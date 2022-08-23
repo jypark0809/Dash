@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class UI_SelectNpc : UI_Popup
 {
+    int _npcId;
+    int _stat1, _stat2, _stat3;
+
     public Sprite[] _sprites;
 
     enum Buttons
@@ -43,6 +46,8 @@ public class UI_SelectNpc : UI_Popup
     public override void Init()
     {
         base.Init();
+
+        _npcId = PlayerPrefs.GetInt("npcId");
 
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
@@ -94,11 +99,19 @@ public class UI_SelectNpc : UI_Popup
     public void NpcButton1ButtonClicked(PointerEventData data)
     {
         if (Managers.Data.UserData.user.gender == "male")
+        {
             PlayerPrefs.SetInt("npcId", 1);
+            _npcId = 1;
+        }
         else if (Managers.Data.UserData.user.gender == "female")
+        {
             PlayerPrefs.SetInt("npcId", 4);
+            _npcId = 4;
+        }
         else
             Debug.Log("Failed to save PlayerPrefs of npcId : UI_SelectNpc.cs");
+        branchEnding();
+        Managers.Data.ClearAllStage();
         ClosePopupUI();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Scripts>();
@@ -107,11 +120,19 @@ public class UI_SelectNpc : UI_Popup
     public void NpcButton2ButtonClicked(PointerEventData data)
     {
         if (Managers.Data.UserData.user.gender == "male")
+        {
             PlayerPrefs.SetInt("npcId", 2);
+            _npcId = 6;
+        }
         else if (Managers.Data.UserData.user.gender == "female")
+        {
             PlayerPrefs.SetInt("npcId", 5);
+            _npcId = 5;
+        }
         else
             Debug.Log("Failed to save PlayerPrefs of npcId : UI_SelectNpc.cs");
+        branchEnding();
+        Managers.Data.ClearAllStage();
         ClosePopupUI();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Scripts>();
@@ -120,13 +141,185 @@ public class UI_SelectNpc : UI_Popup
     public void NpcButton3ButtonClicked(PointerEventData data)
     {
         if (Managers.Data.UserData.user.gender == "male")
+        {
             PlayerPrefs.SetInt("npcId", 3);
+            _npcId = 3;
+        }
         else if (Managers.Data.UserData.user.gender == "female")
+        {
             PlayerPrefs.SetInt("npcId", 6);
+            _npcId = 6;
+        }
         else
             Debug.Log("Failed to save PlayerPrefs of npcId : UI_SelectNpc.cs");
+        branchEnding();
+        Managers.Data.ClearAllStage();
         ClosePopupUI();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Scripts>();
+    }
+
+    void branchEnding()
+    {
+        _stat1 = Managers.Data.UserData.user.stat1;
+        _stat2 = Managers.Data.UserData.user.stat2;
+        _stat3 = Managers.Data.UserData.user.stat3;
+
+        switch (_npcId)
+        {
+            // 모범생 : sta1 > sta2 > stat3
+            case 1:
+                if (_stat1 > _stat2 && _stat1 > _stat3)
+                {
+                    if (_stat2 > _stat3)
+                    {
+                        PlayerPrefs.SetInt("endingId", 1);
+                        SaveCollection(GetHappyEndingId(_npcId));
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("endingId", 2);
+                        SaveCollection(GetBadEndingId(_npcId));
+                    }
+
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("endingId", 2);
+                    SaveCollection(GetBadEndingId(_npcId));
+                }
+                break;
+
+            //  소꿉친구 : stat3 > stat1 > stat2
+            case 2:
+                if (_stat3 > _stat1 && _stat3 > _stat2)
+                {
+                    if (_stat1 > _stat2)
+                    {
+                        PlayerPrefs.SetInt("endingId", 3);
+                        SaveCollection(GetHappyEndingId(_npcId));
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("endingId", 4);
+                        SaveCollection(GetBadEndingId(_npcId));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("endingId", 4);
+                    SaveCollection(GetBadEndingId(_npcId));
+                }
+                break;
+
+            //  후배 : stat2 > stat3 > stat1
+            case 3:
+                if (_stat2 > _stat1 && _stat2 > _stat3)
+                {
+                    if (_stat3 > _stat1)
+                    {
+                        PlayerPrefs.SetInt("endingId", 5);
+                        SaveCollection(GetHappyEndingId(_npcId));
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("endingId", 6);
+                        SaveCollection(GetBadEndingId(_npcId));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("endingId", 6);
+                    SaveCollection(GetBadEndingId(_npcId));
+                }
+                break;
+
+            // 학생회장 : stat1 > stat2 > stat3
+            case 4:
+                if (_stat1 > _stat2 && _stat1 > _stat3)
+                {
+                    if (_stat2 > _stat3)
+                    {
+                        PlayerPrefs.SetInt("endingId", 7);
+                        SaveCollection(GetHappyEndingId(_npcId));
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("endingId", 8);
+                        SaveCollection(GetBadEndingId(_npcId));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("endingId", 8);
+                    SaveCollection(GetBadEndingId(_npcId));
+                }
+                break;
+
+            // 체육부장 : stat3 > stat1 > stat2
+            case 5:
+                if (_stat3 > _stat1 && _stat3 > _stat2)
+                {
+                    if (_stat1 > _stat2)
+                    {
+                        PlayerPrefs.SetInt("endingId", 9);
+                        SaveCollection(GetHappyEndingId(_npcId));
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("endingId", 10);
+                        SaveCollection(GetBadEndingId(_npcId));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("endingId", 10);
+                    SaveCollection(GetBadEndingId(_npcId));
+                }
+
+                break;
+
+            // 선도부장 : stat2 > stat3 > stat1
+            case 6:
+                if (_stat2 > _stat1 && _stat2 > _stat3)
+                {
+                    if (_stat3 > _stat1)
+                    {
+                        PlayerPrefs.SetInt("endingId", 11);
+                        SaveCollection(GetHappyEndingId(_npcId));
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("endingId", 12);
+                        SaveCollection(GetBadEndingId(_npcId));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("endingId", 12);
+                    SaveCollection(GetBadEndingId(_npcId));
+                }
+                break;
+
+            default:
+                Debug.Log("Failed to load script data : UI_Scripts.cs");
+                break;
+        }
+    }
+
+    int GetHappyEndingId(int npcId)
+    {
+        return (npcId * 2 - 1); // 1, 3, 5, 7, 9
+    }
+
+    int GetBadEndingId(int npcId)
+    {
+        return (npcId * 2);
+    }
+
+    void SaveCollection(int endingIndex)
+    {
+        Managers.Data.UserData.user.ending[endingIndex - 1] = true;
+        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
     }
 }

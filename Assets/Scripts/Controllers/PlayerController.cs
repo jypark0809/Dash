@@ -193,9 +193,17 @@ public class PlayerController : BaseController
 
     void UpdateFight()
     {
-        CheckFight();
-        if (_isFight == false)
+        if (_isFight == true)
+        {
+            StopGame();
+        }
+        else
+        {
             _state = Define.PlayerState.Run;
+            rewindSpeed();
+            _teacher.isFight = false;
+            _teacherCount++;
+        }
     }
 
     void UpdateJump()
@@ -271,20 +279,6 @@ public class PlayerController : BaseController
         Managers.Sound.Clear();
         Managers.Sound.Play("GameOver", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_GameOver>();
-    }
-
-    void CheckFight()
-    {
-        if (_isFight == true)
-        {
-            StopGame();
-        }
-        else
-        {
-            rewindSpeed();
-            _teacher.isFight = false;
-            _teacherCount = 1;
-        }
     }
 
     void StopGame()

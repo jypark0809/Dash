@@ -13,10 +13,12 @@ public class DataManager
 {
     public UserData UserData { get; set; }
     public Dictionary<int, Ending> EndingDict { get; private set; } = new Dictionary<int, Ending>();
+    public Dictionary<int, Hint> HintDict { get; private set; } = new Dictionary<int, Hint>();
 
     public void Init()
     {
         EndingDict = LoadJson<EndingData, int, Ending>("EndingScript").MakeDictionary();
+        HintDict = LoadJson<HintData, int, Hint>("HintScript").MakeDictionary();
 
         // User Data Load
         if (File.Exists(Path.Combine(Application.persistentDataPath, "UserData.json")))
@@ -55,10 +57,12 @@ public class DataManager
     public void ClearAllStage()
     {
         UserData.user.id = "";
+        UserData.user.nickname = "";
         UserData.user.gender = "unselected";
         UserData.user.stat1 = 0;
         UserData.user.stat2 = 0;
         UserData.user.stat3 = 0;
+        UserData.user.extraStat = 0;
         UserData.user.stage = 1;
         PlayerPrefs.SetInt("extrahealth", 0);
         PlayerPrefs.SetInt("round", PlayerPrefs.GetInt("round") + 1);
@@ -76,6 +80,7 @@ public class DataManager
         UserData.user.stat2 = 0;
         UserData.user.stat3 = 0;
         UserData.user.stage = 1;
+        UserData.user.extraStat = 0;
         UserData.user.amber = 0;
         UserData.user.ruby = 0;
         UserData.user.ending = new bool[12];

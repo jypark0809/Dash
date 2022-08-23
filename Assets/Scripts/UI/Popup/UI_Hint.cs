@@ -4,15 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_ReplayEnding : UI_Popup
+public class UI_Hint : UI_Popup
 {
     public Sprite[] _npcSprites;
-    public Sprite[] _cutSceneSprites;
-
     int _scriptIndex = 0;
-    int _cutSceneIndex;
 
-    Ending _ending;
+    Hint _hint;
     string _targetLine;
     public int _charPerSecend;
     float interval;
@@ -24,7 +21,6 @@ public class UI_ReplayEnding : UI_Popup
         Panel,
         CursurImage,
         NpcImage,
-        CutScene,
     }
 
     enum Texts
@@ -43,8 +39,7 @@ public class UI_ReplayEnding : UI_Popup
         base.Init();
 
         interval = 1.0f / _charPerSecend;
-        Managers.Data.EndingDict.TryGetValue(PlayerPrefs.GetInt("endingId"), out _ending);
-        _cutSceneIndex = _ending.index;
+        Managers.Data.HintDict.TryGetValue(GetHintId(), out _hint);
 
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
@@ -52,9 +47,8 @@ public class UI_ReplayEnding : UI_Popup
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
 
-        GetImage((int)Images.CutScene).sprite = _cutSceneSprites[_ending.endingId]; // 컷씬
-        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_index].npcId]; // npc 이름
-        SetLine(_ending.scripts[_scriptIndex]); // 대사, npc 이미지
+        GetText((int)Texts.NameText).text = Define.npcName[_hint.scripts[_scriptIndex].npcId]; // npc 이름
+        SetLine(_hint.scripts[_scriptIndex]); // 대사, npc 이미지
     }
 
     public void PanelImageClicked(PointerEventData data)
@@ -64,10 +58,10 @@ public class UI_ReplayEnding : UI_Popup
         if (_isType == false)
             _scriptIndex++;
 
-        if (_scriptIndex < _ending.scripts.Length)
+        if (_scriptIndex < _hint.scripts.Length)
         {
-            GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_scriptIndex].npcId];
-            SetLine(_ending.scripts[_scriptIndex]);
+            GetText((int)Texts.NameText).text = Define.npcName[_hint.scripts[_scriptIndex].npcId];
+            SetLine(_hint.scripts[_scriptIndex]);
         }
         else
         {
@@ -77,10 +71,6 @@ public class UI_ReplayEnding : UI_Popup
 
     void SetLine(Script script)
     {
-        // 컷씬
-        if (_scriptIndex == _cutSceneIndex)
-            GetImage((int)Images.CutScene).GetComponent<Animator>().Play("CutSceneFadeIn");
-
         // npc 이미지
         GetImage((int)Images.NpcImage).sprite = _npcSprites[script.imageId];
         GetImage((int)Images.NpcImage).SetNativeSize();
@@ -94,6 +84,7 @@ public class UI_ReplayEnding : UI_Popup
         }
         else
         {
+            // script string 보간
             _targetLine = string.Format(script.line, Managers.Data.UserData.user.nickname);
             StartCoroutine(StartTyping());
         }
@@ -120,7 +111,6 @@ public class UI_ReplayEnding : UI_Popup
 
         GetText((int)Texts.ScriptText).text += _targetLine[_index];
 
-
         //Sound
         if (_targetLine[_index] != ' ' || _targetLine[_index] != '.')
             Managers.Sound.Play("Keyboard", Define.Sound.Effect);
@@ -135,5 +125,11 @@ public class UI_ReplayEnding : UI_Popup
     {
         GetImage((int)Images.CursurImage).gameObject.SetActive(true);
         _isType = false;
+    }
+
+    int GetHintId()
+    {
+        int hintId = 0;
+        return hintId;
     }
 }

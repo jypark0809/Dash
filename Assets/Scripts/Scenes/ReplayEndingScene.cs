@@ -9,7 +9,7 @@ public class ReplayEndingScene : BaseScene
         base.Init();
 
         SceneType = Define.Scene.ReplayEnding;
-        Managers.UI.ShowPopupUI<UI_ReplayEnding>();
+        Managers.UI.ShowPopupUI<UI_Scripts>();
     }
 
     public override void Clear()

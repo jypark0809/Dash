@@ -85,7 +85,7 @@ public class Define
     public enum NpcId
     {
         Self, // 주인공
-        Npc1 = 1, // 모범생(백설)
+        Npc1, // 모범생(백설)
         Npc2, // 소꿉친구(차가운)
         Npc3, // 후배(고유미)
         Npc4, // 학생회장(서새한)

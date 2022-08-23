@@ -11,14 +11,12 @@ public class UI_Scripts : UI_Popup
 
     int _scriptIndex = 0;
     int _cutSceneIndex;
-    int _npcId;
-    int _stat1, _stat2, _stat3;
 
     Ending _ending;
-    string _targetLine; // dictionary에서 꺼내온 대사 1줄
+    string _targetLine;
     public int _charPerSecend;
     float interval;
-    int _index; // 텍스트 애니메이션
+    int _index;
     bool _isType;
 
     enum Images
@@ -45,9 +43,7 @@ public class UI_Scripts : UI_Popup
         base.Init();
 
         interval = 1.0f / _charPerSecend;
-        _npcId = PlayerPrefs.GetInt("npcId");
-        LoadUserData();
-        branchEnding();
+        Managers.Data.EndingDict.TryGetValue(PlayerPrefs.GetInt("endingId"), out _ending);
         _cutSceneIndex = _ending.index;
 
         Bind<Text>(typeof(Texts));
@@ -56,172 +52,9 @@ public class UI_Scripts : UI_Popup
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
 
-        Managers.Data.ClearAllStage();
         GetImage((int)Images.CutScene).sprite = _cutSceneSprites[_ending.endingId]; // 컷씬
-        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_index].npcId]; // npc 이름
+        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_scriptIndex].npcId]; // npc 이름
         SetLine(_ending.scripts[_scriptIndex]); // 대사, npc 이미지
-    }
-
-    void LoadUserData()
-    {
-        _stat1 = Managers.Data.UserData.user.stat1;
-        _stat2 = Managers.Data.UserData.user.stat2;
-        _stat3 = Managers.Data.UserData.user.stat3;
-    }
-
-    // Ending 결말
-    void branchEnding()
-    {
-        switch (_npcId)
-        {
-            // 모범생 : sta1 > sta2 > stat3
-            case 1:
-                if (_stat1 > _stat2 && _stat1 > _stat3)
-                {
-                    if (_stat2 > _stat3)
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetHappyEndingId(_npcId), out _ending);
-                        SaveCollection(GetHappyEndingId(_npcId));
-                    }
-                    else
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                        SaveCollection(GetBadEndingId(_npcId));
-                    }
-                        
-                }
-                else
-                {
-                    Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                    SaveCollection(GetBadEndingId(_npcId));
-                }
-                break;
-
-            //  소꿉친구 : stat3 > stat1 > stat2
-            case 2:
-                if (_stat3 > _stat1 && _stat3 > _stat2)
-                {
-                    if (_stat1 > _stat2)
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetHappyEndingId(_npcId), out _ending);
-                        SaveCollection(GetHappyEndingId(_npcId));
-                    }
-                    else
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                        SaveCollection(GetBadEndingId(_npcId));
-                    }
-                }
-                else
-                {
-                    Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                    SaveCollection(GetBadEndingId(_npcId));
-                }
-                break;
-
-            //  후배 : stat2 > stat3 > stat1
-            case 3:
-                if (_stat2 > _stat1 && _stat2 > _stat3)
-                {
-                    if (_stat3 > _stat1)
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetHappyEndingId(_npcId), out _ending);
-                        SaveCollection(GetHappyEndingId(_npcId));
-                    }
-                    else
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                        SaveCollection(GetBadEndingId(_npcId));
-                    }
-                }
-                else
-                {
-                    Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                    SaveCollection(GetBadEndingId(_npcId));
-                }
-                break;
-
-            // 학생회장 : stat1 > stat2 > stat3
-            case 4:
-                if (_stat1 > _stat2 && _stat1 > _stat3)
-                {
-                    if (_stat2 > _stat3)
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetHappyEndingId(_npcId), out _ending);
-                        SaveCollection(GetHappyEndingId(_npcId));
-                    }
-                    else
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                        SaveCollection(GetBadEndingId(_npcId));
-                    } 
-                }
-                else
-                {
-                    Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                    SaveCollection(GetBadEndingId(_npcId));
-                }
-                break;
-
-            // 체육부장 : stat3 > stat1 > stat2
-            case 5:
-                if (_stat3 > _stat1 && _stat3 > _stat2)
-                {
-                    if (_stat1 > _stat2)
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetHappyEndingId(_npcId), out _ending);
-                        SaveCollection(GetHappyEndingId(_npcId));
-                    }
-                    else
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                        SaveCollection(GetBadEndingId(_npcId));
-                    }
-                }
-                else
-                {
-                    Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                    SaveCollection(GetBadEndingId(_npcId));
-                }
-
-                break;
-
-            // 선도부장 : stat2 > stat3 > stat1
-            case 6:
-                if (_stat2 > _stat1 && _stat2 > _stat3)
-                {
-                    if (_stat3 > _stat1)
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetHappyEndingId(_npcId), out _ending);
-                        SaveCollection(GetHappyEndingId(_npcId));
-                    }
-                    else
-                    {
-                        Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                        SaveCollection(GetBadEndingId(_npcId));
-                    }
-                }
-                else
-                {
-                    Managers.Data.EndingDict.TryGetValue(GetBadEndingId(_npcId), out _ending);
-                    SaveCollection(GetBadEndingId(_npcId));
-                }
-                break;
-
-            default:
-                Debug.Log("Failed to load script data : UI_Scripts.cs");
-                break;
-        }
-    }
-
-    int GetHappyEndingId(int npcId)
-    {
-        return (npcId * 2 - 1); // 1, 3, 5, 7, 9
-    }
-
-    int GetBadEndingId(int npcId)
-    {
-        return (npcId * 2);
     }
 
     public void PanelImageClicked(PointerEventData data)
@@ -302,11 +135,5 @@ public class UI_Scripts : UI_Popup
     {
         GetImage((int)Images.CursurImage).gameObject.SetActive(true);
         _isType = false;
-    }
-
-    void SaveCollection(int endingIndex)
-    {
-        Managers.Data.UserData.user.ending[endingIndex-1] = true;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
     }
 }

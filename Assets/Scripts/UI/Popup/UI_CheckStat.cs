@@ -71,15 +71,16 @@ public class UI_CheckStat : UI_Popup
         {
             Managers.Data.UserData.user.stage++;
             Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-            Managers.Data.PrintLog();
+            Managers.Data.UserData.user.extraStat--;
             Managers.Sound.Play("Button", Define.Sound.Effect);
             ClosePopupUI();
-            Managers.UI.ShowPopupUI<UI_NextStage>();
+
+            if (Managers.Data.UserData.user.extraStat == 0)
+                Managers.UI.ShowPopupUI<UI_NextStage>();
         }
         else
         {
             Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // 최종 스텟 저장
-            Managers.Data.PrintLog();
             Managers.Sound.Play("Button", Define.Sound.Effect);
             ClosePopupUI();
             Time.timeScale = 1;

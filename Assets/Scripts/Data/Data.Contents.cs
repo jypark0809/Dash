@@ -14,6 +14,7 @@ public class User
     public int stat1;
     public int stat2;
     public int stat3;
+    public int extraStat;
     public int stage; // 지금까지 클리어한 스테이지
     public int amber; // 무료 재화
     public int ruby; // 유료 재화
@@ -30,7 +31,7 @@ public class UserData
 
 #region Script
 
-public class HintScript
+public class Hint
 {
     public int hintId;
     public Script[] scripts;
@@ -69,16 +70,16 @@ public class EndingData : ILoader<int, Ending>
 }
 
 [Serializable]
-public class InGameScriptData : ILoader<int, Ending>
+public class HintData : ILoader<int, Hint>
 {
-    public List<Ending> endings = new List<Ending>();
+    public List<Hint> hints = new List<Hint>();
 
-    public Dictionary<int, Ending> MakeDictionary()
+    public Dictionary<int, Hint> MakeDictionary()
     {
-        Dictionary<int, Ending> dict = new Dictionary<int, Ending>();
+        Dictionary<int, Hint> dict = new Dictionary<int, Hint>();
 
-        foreach (Ending ending in endings)
-            dict.Add(ending.endingId, ending);
+        foreach (Hint hint in hints)
+            dict.Add(hint.hintId, hint);
 
         return dict;
     }
