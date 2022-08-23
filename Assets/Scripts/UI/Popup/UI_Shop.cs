@@ -11,13 +11,11 @@ public class UI_Shop : UI_Popup
     private RewardedAd rewardedAd;
     // string adUnitTestId = "ca-app-pub-3940256099942544/5224354917";
     string adUnitId = "ca-app-pub-3940256099942544/5224354917";
-    public Toggle _toggleLoveLetter, _toggleRuby, _toggleCostume, _toggleTickek;
+    public Toggle _toggleLoveLetter, _toggleRuby;
 
     enum Buttons
     {
         CloseButton,
-        //RightButton,
-        //LeftButton,
         Item_Letter1,
         Item_Letter2,
         Item_Ruby1,
@@ -28,7 +26,6 @@ public class UI_Shop : UI_Popup
 
     enum Texts
     {
-        // PageText,
         AmberText,
         RubyText,
     }
@@ -45,8 +42,6 @@ public class UI_Shop : UI_Popup
     {
         _toggleLoveLetter.onValueChanged.AddListener(OnLoveLetterToggleValueChangedEvent);
         _toggleRuby.onValueChanged.AddListener(OnRubyToggleValueChangedEvent);
-        _toggleCostume.onValueChanged.AddListener(OnCostumeToggleValueChangedEvent);
-        _toggleTickek.onValueChanged.AddListener(OnTickekToggleValueChangedEvent);
     }
 
     void Start()
@@ -114,18 +109,6 @@ public class UI_Shop : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
         GetImage((int)Images.RubyPanel).gameObject.SetActive(boolean);
-    }
-
-    public void OnCostumeToggleValueChangedEvent(bool boolean)
-    {
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        GetImage((int)Images.CostumePanel).gameObject.SetActive(boolean);
-    }
-
-    public void OnTickekToggleValueChangedEvent(bool boolean)
-    {
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        GetImage((int)Images.TickekPanel).gameObject.SetActive(boolean);
     }
     #endregion
 

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class UI_StageClear : UI_Popup
 {
     public Sprite[] _sprites;
+    bool _isTicket;
 
     enum Buttons
     {
@@ -55,6 +56,7 @@ public class UI_StageClear : UI_Popup
         Bind<Image>(typeof(Images));
 
         Managers.Data.UserData.user.extraStat++;
+        _isTicket = (Managers.Data.UserData.user.extraStat == 9);
 
         GetButton((int)Buttons.StatButton1).gameObject.BindEvent(StatButton1Clicked);
         GetButton((int)Buttons.StatButton2).gameObject.BindEvent(StatButton2Clicked);
@@ -125,10 +127,32 @@ public class UI_StageClear : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
+        // 9 스테이지 클리어 했을 때
+        if (Managers.Data.UserData.user.stage == 9 && StatSum() == 8)
+        {
+            switch (PlayerPrefs.GetInt("prevStat"))
+            {
+                case 1:
+                    Managers.Data.UserData.user.stat1++;
+                    break;
+                case 2:
+                    Managers.Data.UserData.user.stat2++;
+                    break;
+                case 3:
+                    Managers.Data.UserData.user.stat3++;
+                    break;
+            }
+
+            Managers.Data.UserData.user.extraStat--;
+            Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // 최종 스텟 저장
+            Managers.Sound.Play("Button", Define.Sound.Effect);
+            ClosePopupUI();
+            Time.timeScale = 1;
+            Managers.Scene.LoadScene(Define.Scene.Ending);
+        }
+        // 1~8 스테이지 클리어 했을 때
         if (Managers.Data.UserData.user.stage < 9)
         {
-            Managers.Data.UserData.user.stage++;
-
             switch (PlayerPrefs.GetInt("prevStat"))
             {
                 case 1:
@@ -154,9 +178,10 @@ public class UI_StageClear : UI_Popup
                 Managers.UI.ShowPopupUI<UI_NextStage>();
             }
         }
-        else
+        // 돌파권 썼을 때
+        if (Managers.Data.UserData.user.stage == 9 && _isTicket)
         {
-            switch(PlayerPrefs.GetInt("prevStat"))
+            switch (PlayerPrefs.GetInt("prevStat"))
             {
                 case 1:
                     Managers.Data.UserData.user.stat1++;
@@ -170,11 +195,16 @@ public class UI_StageClear : UI_Popup
             }
 
             Managers.Data.UserData.user.extraStat--;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // 최종 스텟 저장
+            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
             Managers.Sound.Play("Button", Define.Sound.Effect);
-            ClosePopupUI();
-            Time.timeScale = 1;
-            Managers.Scene.LoadScene(Define.Scene.Ending);
+            UpdateUserStat();
+            GetImage((int)Images.CheckPanel).gameObject.SetActive(false);
+
+            if (Managers.Data.UserData.user.extraStat == 0)
+            {
+                ClosePopupUI();
+                Managers.UI.ShowPopupUI<UI_SelectNpc>();
+            }
         }
     }
 
@@ -224,5 +254,10 @@ public class UI_StageClear : UI_Popup
         GetText((int)Texts.StatValue2).text = Managers.Data.UserData.user.stat2.ToString();
         GetText((int)Texts.StatValue3).text = Managers.Data.UserData.user.stat3.ToString();
         GetText((int)Texts.PrevStatText).text = GetText((int)Texts.RemainStatText).text = "남은 스텟 포인트 : " + Managers.Data.UserData.user.extraStat;
+    }
+
+    int StatSum()
+    {
+        return Managers.Data.UserData.user.stat1 + Managers.Data.UserData.user.stat2 + Managers.Data.UserData.user.stat3;
     }
 }

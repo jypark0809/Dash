@@ -363,7 +363,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "10 \uAC1C"
+  m_Text: "20 \uAC1C"
 --- !u!114 &8312327049823342411
 MonoBehaviour:
   m_ObjectHideFlags: 0

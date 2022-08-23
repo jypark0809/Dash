@@ -29,6 +29,8 @@ public class UI_NextStage : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
+        Managers.Data.UserData.user.stage++;
+        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         Time.timeScale = 1;
         Managers.Scene.LoadScene(Define.Scene.Game);
         Managers.Sound.Play("Button", Define.Sound.Effect);

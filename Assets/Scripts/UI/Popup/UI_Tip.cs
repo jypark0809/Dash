@@ -24,6 +24,7 @@ public class UI_Tip : UI_Popup
     {
         ItemPage,
         ObstaclePage,
+        TeacherPage,
     }
 
     void Start()
@@ -44,6 +45,7 @@ public class UI_Tip : UI_Popup
         GetButton((int)Buttons.LeftButton).gameObject.BindEvent(LeftButtonClicked);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
         GetImage((int)Images.ObstaclePage).gameObject.SetActive(false);
+        GetImage((int)Images.TeacherPage).gameObject.SetActive(false);
     }
 
     public void CloseButtonClicked(PointerEventData data)
@@ -57,26 +59,45 @@ public class UI_Tip : UI_Popup
         if (_curPage == 1)
         {
             _curPage++;
-            GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
-            GetButton((int)Buttons.RightButton).gameObject.SetActive(false);
+            GetText((int)Texts.PageText).text = _curPage.ToString() + " / 3";
             GetButton((int)Buttons.LeftButton).gameObject.SetActive(true);
             GetImage((int)Images.ItemPage).gameObject.SetActive(false);
             GetImage((int)Images.ObstaclePage).gameObject.SetActive(true);
+            Managers.Sound.Play("Button", Define.Sound.Effect);
+        }
+        else if (_curPage == 2)
+        {
+            _curPage++;
+            GetText((int)Texts.PageText).text = _curPage.ToString() + " / 3";
+            GetButton((int)Buttons.RightButton).gameObject.SetActive(false);
+            GetImage((int)Images.ObstaclePage).gameObject.SetActive(false);
+            GetImage((int)Images.TeacherPage).gameObject.SetActive(true);
             Managers.Sound.Play("Button", Define.Sound.Effect);
         }
     }
 
     public void LeftButtonClicked(PointerEventData data)
     {
-        if (_curPage == 2)
+        if (_curPage == 3)
         {
             _curPage--;
-            GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
+            GetText((int)Texts.PageText).text = _curPage.ToString() + " / 3";
+            GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
+            GetImage((int)Images.ItemPage).gameObject.SetActive(false);
+            GetImage((int)Images.ObstaclePage).gameObject.SetActive(true);
+            GetImage((int)Images.TeacherPage).gameObject.SetActive(false);
+            Managers.Sound.Play("Button", Define.Sound.Effect);
+        }
+        else if (_curPage == 2)
+        {
+            _curPage--;
+            GetText((int)Texts.PageText).text = _curPage.ToString() + " / 3";
             GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
             GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
             GetImage((int)Images.ItemPage).gameObject.SetActive(true);
             GetImage((int)Images.ObstaclePage).gameObject.SetActive(false);
             Managers.Sound.Play("Button", Define.Sound.Effect);
         }
+        
     }
 }

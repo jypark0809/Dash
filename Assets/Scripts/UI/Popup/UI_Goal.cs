@@ -27,7 +27,7 @@ public class UI_Goal : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.amber += 10;
+        Managers.Data.UserData.user.amber += 20;
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();

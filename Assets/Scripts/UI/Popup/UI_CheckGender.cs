@@ -57,8 +57,7 @@ public class UI_CheckGender : UI_Popup
         else
         {
             // µ¹ÆÄ±Ç UI
-
-            Managers.Scene.LoadScene(Define.Scene.Game);
+            Managers.UI.ShowPopupUI<UI_Ticket>();
         }
     }
 

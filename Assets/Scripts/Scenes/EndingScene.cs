@@ -10,7 +10,14 @@ public class EndingScene : BaseScene
 
         SceneType = Define.Scene.Ending;
 
-        Managers.UI.ShowPopupUI<UI_SelectNpc>();
+        if (Managers.Data.UserData.user.extraStat == 8)
+        {
+            Managers.UI.ShowPopupUI<UI_StageClear>();
+        }
+        else
+        {
+            Managers.UI.ShowPopupUI<UI_SelectNpc>();
+        }
     }
 
     public override void Clear()

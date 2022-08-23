@@ -7,9 +7,7 @@ using UnityEngine.UI;
 public class UI_Collection : UI_Popup
 {
     int _curPage = 1;
-    public Toggle _toggleCostume, _toggleCollection;
     public Toggle _toggleMale, _toggleFemale;
-    public Toggle _toggleMale2, _toggleFemale2;
     public Sprite[] _Textsprites;
 
     enum Buttons
@@ -40,7 +38,6 @@ public class UI_Collection : UI_Popup
     {
         TextImage,
         CollectionPanel,
-        CostumePanel,
     }
 
     enum GameObjects
@@ -61,18 +58,12 @@ public class UI_Collection : UI_Popup
         LockGroup10,
         LockGroup11,
         LockGroup12,
-        MaleCostume,
-        FemaleCostume,
     }
 
     void Awake()
     {
         _toggleMale.onValueChanged.AddListener(OnMaleToggleValueChangedEvent);
         _toggleFemale.onValueChanged.AddListener(OnFemaleToggleValueChangedEvent);
-        _toggleMale2.onValueChanged.AddListener(OnMaleToggle2ValueChangedEvent);
-        _toggleFemale2.onValueChanged.AddListener(OnFemaleToggle2ValueChangedEvent);
-        _toggleCostume.onValueChanged.AddListener(OnCostumeToggleValueChangedEvent);
-        _toggleCollection.onValueChanged.AddListener(OnCollectionToggleValueChangedEvent);
     }
 
     void Start()
@@ -92,8 +83,6 @@ public class UI_Collection : UI_Popup
         GetObject((int)GameObjects.MaleBadEnding).SetActive(false);
         GetObject((int)GameObjects.FemaleHappyEnding).SetActive(false);
         GetObject((int)GameObjects.FemaleBadEnding).SetActive(false);
-        GetObject((int)GameObjects.FemaleCostume).SetActive(false);
-        GetImage((int)Images.CostumePanel).gameObject.SetActive(false);
 
         BindUserEndingData();
 
@@ -116,20 +105,6 @@ public class UI_Collection : UI_Popup
         GetButton((int)Buttons.RightButton).gameObject.BindEvent(RightButtonClicked);
         GetButton((int)Buttons.LeftButton).gameObject.BindEvent(LeftButtonClicked);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
-    }
-
-    // Costume Tab Toggle
-    public void OnCostumeToggleValueChangedEvent(bool boolean)
-    {
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        GetImage((int)Images.CostumePanel).gameObject.SetActive(boolean);
-    }
-
-    // Collection Tab Toggle
-    public void OnCollectionToggleValueChangedEvent(bool boolean)
-    {
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        GetImage((int)Images.CollectionPanel).gameObject.SetActive(boolean);
     }
 
     // Collection Male Toggle
@@ -168,20 +143,6 @@ public class UI_Collection : UI_Popup
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
         GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
-    }
-    
-    // Costume Male Toggle
-    public void OnMaleToggle2ValueChangedEvent(bool boolean)
-    {
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        GetObject((int)GameObjects.MaleCostume).gameObject.SetActive(boolean);
-    }
-
-    // Costume Female Toggle
-    public void OnFemaleToggle2ValueChangedEvent(bool boolean)
-    {
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        GetObject((int)GameObjects.FemaleCostume).gameObject.SetActive(boolean);
     }
 
     public void CloseButtonClicked(PointerEventData data)
