@@ -31,13 +31,21 @@ public class GameScene : BaseScene
         else if (Managers.Data.UserData.user.gender == "female")
             player = Managers.Game.Spawn(Define.WorldObject.Player, "female");
         else
-            Debug.Log("Failed to load character : GameScene.cs");
+            player = Managers.Game.Spawn(Define.WorldObject.Player, "male");
         player.name = "Player";
 
         pc = player.GetOrAddComponent<PlayerController>();
 
         // Load Stage
-        stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_{Managers.Data.UserData.user.stage}");
+        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
+        {
+            stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_0");
+        }
+        else
+        {
+            stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_{Managers.Data.UserData.user.stage}");
+        }
+        
 
         // Load Finish Object
         GameObject finishObj = GameObject.Find("Finish");
@@ -49,6 +57,8 @@ public class GameScene : BaseScene
         pc.stageController = stage.GetComponent<StageController>();
         pc.mapControllers[0] = mc1;
         pc.mapControllers[1] = mc2;
+
+        Managers.UI.ShowPopupUI<UI_Hint>();
     }
 
     private void Update()
@@ -60,14 +70,26 @@ public class GameScene : BaseScene
         else
         {
             // Background 및 Stage 장애물 스크롤링 정지
-            mc1._speed = 0;
-            mc2._speed = 0;
-            pc.stageController._speed = 0;
+            StopScrolling();
         }
     }
 
     public override void Clear()
     {
 
+    }
+
+    public void StopScrolling()
+    {
+        mc1._speed = 0;
+        mc2._speed = 0;
+        pc.stageController._speed = 0;
+    }
+
+    public void StartScrolling()
+    {
+        mc1._speed = 4;
+        mc2._speed = 3;
+        pc.stageController._speed = 4;
     }
 }

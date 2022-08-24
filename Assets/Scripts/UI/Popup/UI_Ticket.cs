@@ -15,6 +15,12 @@ public class UI_Ticket : UI_Popup
         TicketItem4,
     }
 
+    enum Texts
+    {
+        AmberText,
+        RubyText,
+    }
+
     void Start()
     {
         Init();
@@ -25,12 +31,16 @@ public class UI_Ticket : UI_Popup
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
 
         GetButton((int)Buttons.CloseButton).gameObject.BindEvent(CloseButtonClicked);
         GetButton((int)Buttons.TicketItem1).gameObject.BindEvent(TicketItem1ButtonClicked);
         GetButton((int)Buttons.TicketItem2).gameObject.BindEvent(TicketItem2ButtonClicked);
         GetButton((int)Buttons.TicketItem3).gameObject.BindEvent(TicketItem3ButtonClicked);
         GetButton((int)Buttons.TicketItem4).gameObject.BindEvent(TicketItem4ButtonClicked);
+
+        GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
+        GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
     }
 
     public void CloseButtonClicked(PointerEventData data)

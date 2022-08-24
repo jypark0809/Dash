@@ -87,6 +87,7 @@ public class DataManager
             UserData.user.ending[i] = false;
         PlayerPrefs.SetInt("extrahealth", 0);
         PlayerPrefs.SetInt("round", 0);
+        PlayerPrefs.SetInt("isAccessFirst", 0);
 
         SaveUserDataToJson(UserData);
         Debug.Log(JsonUtility.ToJson(UserData, true));

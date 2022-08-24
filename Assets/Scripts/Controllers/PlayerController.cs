@@ -31,7 +31,15 @@ public class PlayerController : BaseController
         _anim = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
         _maxHealth = _health + PlayerPrefs.GetInt("extrahealth");
-        _health = _maxHealth;
+        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
+        {
+            _health = 99;
+        }
+        else
+        {
+            _health = _maxHealth;
+        }
+        
     }
 
     void Update()
@@ -272,11 +280,20 @@ public class PlayerController : BaseController
 
     IEnumerator StageClearUI()
     {
-        yield return new WaitForSeconds(2.5f);
-        Time.timeScale = 0;
-        Managers.Sound.Clear();
-        Managers.Sound.Play("StageClear", Define.Sound.Effect);
-        Managers.UI.ShowPopupUI<UI_Goal>();
+        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
+        {
+            yield return new WaitForSeconds(2.5f);
+            Managers.Scene.LoadScene(Define.Scene.Lobby);
+            PlayerPrefs.SetInt("isAccessFirst",1);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2.5f);
+            Time.timeScale = 0;
+            Managers.Sound.Clear();
+            Managers.Sound.Play("StageClear", Define.Sound.Effect);
+            Managers.UI.ShowPopupUI<UI_Goal>();
+        }
     }
 
     IEnumerator GameOver()

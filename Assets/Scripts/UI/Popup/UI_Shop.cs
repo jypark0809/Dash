@@ -86,10 +86,7 @@ public class UI_Shop : UI_Popup
 
         GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
         GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
-
-        GetImage((int)Images.CostumePanel).gameObject.SetActive(false);
         GetImage((int)Images.RubyPanel).gameObject.SetActive(false);
-        GetImage((int)Images.TickekPanel).gameObject.SetActive(false);
     }
 
     public void CloseButtonClicked(PointerEventData data)

@@ -9,6 +9,12 @@ public class UI_Goal : UI_Popup
     enum Buttons
     {
         OkayButton,
+        AdRewardButton,
+    }
+
+    enum GameObjects
+    {
+        Effect,
     }
 
     void Start()

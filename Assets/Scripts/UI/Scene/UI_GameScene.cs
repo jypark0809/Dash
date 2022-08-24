@@ -27,6 +27,7 @@ public class UI_GameScene : UI_Scene
     }
     enum Texts
     {
+        StegeText,
         StegeDigitText,
     }
 
@@ -50,13 +51,26 @@ public class UI_GameScene : UI_Scene
         GetButton((int)Buttons.JumpButton).gameObject.BindEvent(JumpButtonClicked, Define.UIEvent.PointerDown);
         GetButton((int)Buttons.PauseButton).gameObject.BindEvent(PauseButtonClicked);
 
-        GetText((int)Texts.StegeDigitText).text = CalStage();
+        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
+        {
+            healthUI[0].gameObject.SetActive(false);
+            healthUI[1].gameObject.SetActive(false);
+            healthUI[2].gameObject.SetActive(false);
+            GetButton((int)Buttons.PauseButton).gameObject.SetActive(false);
+            GetText((int)Texts.StegeText).gameObject.SetActive(false);
+            GetText((int)Texts.StegeDigitText).gameObject.SetActive(false);
+        }
+        else
+        {
+            GetText((int)Texts.StegeDigitText).text = CalStage();
+        }
 
         if (Managers.Data.UserData.user.gender == "male")
             GetImage((int)Images.FemalePinImage).gameObject.SetActive(false);
-
-        if (Managers.Data.UserData.user.gender == "female")
+        else if (Managers.Data.UserData.user.gender == "female")
             GetImage((int)Images.MalePinImage).gameObject.SetActive(false);
+        else
+            GetImage((int)Images.FemalePinImage).gameObject.SetActive(false);
     }
 
     void Update()

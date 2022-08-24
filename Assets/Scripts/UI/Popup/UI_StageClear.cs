@@ -128,7 +128,7 @@ public class UI_StageClear : UI_Popup
     public void OkayButtonClicked(PointerEventData data)
     {
         // 9 스테이지 클리어 했을 때
-        if (Managers.Data.UserData.user.stage == 9 && StatSum() == 8)
+        if (Managers.Data.UserData.user.stage == 9 && StatSum() == 8 && _isTicket == false)
         {
             switch (PlayerPrefs.GetInt("prevStat"))
             {
@@ -151,7 +151,7 @@ public class UI_StageClear : UI_Popup
             Managers.Scene.LoadScene(Define.Scene.Ending);
         }
         // 1~8 스테이지 클리어 했을 때
-        if (Managers.Data.UserData.user.stage < 9)
+        else if (Managers.Data.UserData.user.stage < 9)
         {
             switch (PlayerPrefs.GetInt("prevStat"))
             {
@@ -167,7 +167,7 @@ public class UI_StageClear : UI_Popup
             }
 
             Managers.Data.UserData.user.extraStat--;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            // Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
             Managers.Sound.Play("Button", Define.Sound.Effect);
             UpdateUserStat();
             GetImage((int)Images.CheckPanel).gameObject.SetActive(false);
@@ -179,7 +179,7 @@ public class UI_StageClear : UI_Popup
             }
         }
         // 돌파권 썼을 때
-        if (Managers.Data.UserData.user.stage == 9 && _isTicket)
+        else if (Managers.Data.UserData.user.stage == 9 && _isTicket)
         {
             switch (PlayerPrefs.GetInt("prevStat"))
             {

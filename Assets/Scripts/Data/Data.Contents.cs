@@ -31,6 +31,7 @@ public class UserData
 
 #region Script
 
+[Serializable]
 public class Hint
 {
     public int hintId;

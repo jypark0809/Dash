@@ -2435,8 +2435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toggleLoveLetter: {fileID: 1254070257169099039}
   _toggleRuby: {fileID: 2425088654307275909}
-  _toggleCostume: {fileID: 0}
-  _toggleTickek: {fileID: 0}
 --- !u!1 &5687731154685614382
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,6 +26,7 @@ public class Define
     public enum Scene
     {
         Unknown,
+        Title,
         Lobby,
         Game,
         Ending,
@@ -94,6 +95,7 @@ public class Define
         Nerd, // 오타쿠
         Npc7, // 남학생
         Npc8, // 여학생
+        Teacher, // 학주
     }
 
     public static string[] maleStat = { "외모", "집중력", "진실" };
@@ -101,5 +103,5 @@ public class Define
     public static string[] maleTarget = { "백설", "차가운", "고유미" };
     public static string[] femaleTarget = { "서새한", "채대성", "선도진" };
     public static string[] npcName = { Managers.Data.UserData.user.nickname, 
-        "백설", "차가윤", "고유미", "서새한", "채대성", "선도진", "오탁후", "남학생", "여학생" };
+        "백설", "차가윤", "고유미", "서새한", "채대성", "선도진", "오탁후", "남학생", "여학생", "???" };
 }
