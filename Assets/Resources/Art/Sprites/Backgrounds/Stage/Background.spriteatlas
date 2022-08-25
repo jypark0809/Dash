@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings: []
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 8
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
@@ -36,26 +36,47 @@ SpriteAtlas:
     - {fileID: 2800000, guid: acc0702f9bcab0f4dbe4383ac3b9e6a2, type: 3}
     - {fileID: 2800000, guid: 3749971ea7569794ea966203f06546fa, type: 3}
     - {fileID: 2800000, guid: f076c3dcd6e295b4b96ad15db5ff7114, type: 3}
-    - {fileID: 2800000, guid: 9ef9d9e6a87c1254b9f8b869ae2213b9, type: 3}
+    - {fileID: 2800000, guid: 8b790e4c7820ad84c82edd77d6a37bf6, type: 3}
+    - {fileID: 2800000, guid: d8d0491074ac7e64aa486be086b4f895, type: 3}
+    - {fileID: 2800000, guid: 6c856c3f3f3b44043a4d1c064c3b4838, type: 3}
+    - {fileID: 2800000, guid: da647c64277fc9a49a255230ac9b380d, type: 3}
+    - {fileID: 2800000, guid: 8011a35d611321c458f3b0ca1bea7120, type: 3}
+    - {fileID: 2800000, guid: d4d796f129d0b9d43b78e93793e08ae9, type: 3}
     - {fileID: 2800000, guid: 5b05d9bd2451ec64b8fdb32dfca50baf, type: 3}
+    - {fileID: 2800000, guid: 9ef9d9e6a87c1254b9f8b869ae2213b9, type: 3}
+    - {fileID: 2800000, guid: 598bb35bd512179468e550a901446f58, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: d8d0491074ac7e64aa486be086b4f895, type: 3}
+  - {fileID: 21300000, guid: d4d796f129d0b9d43b78e93793e08ae9, type: 3}
+  - {fileID: 21300000, guid: da647c64277fc9a49a255230ac9b380d, type: 3}
   - {fileID: 21300000, guid: 9ef9d9e6a87c1254b9f8b869ae2213b9, type: 3}
+  - {fileID: 21300000, guid: 598bb35bd512179468e550a901446f58, type: 3}
+  - {fileID: 21300000, guid: 8b790e4c7820ad84c82edd77d6a37bf6, type: 3}
   - {fileID: 21300000, guid: f076c3dcd6e295b4b96ad15db5ff7114, type: 3}
+  - {fileID: 21300000, guid: 8011a35d611321c458f3b0ca1bea7120, type: 3}
   - {fileID: 21300000, guid: 5b05d9bd2451ec64b8fdb32dfca50baf, type: 3}
   - {fileID: 21300000, guid: 3749971ea7569794ea966203f06546fa, type: 3}
   - {fileID: 21300000, guid: c028edee79b8f61438015149a70ec36d, type: 3}
   - {fileID: 21300000, guid: acc0702f9bcab0f4dbe4383ac3b9e6a2, type: 3}
+  - {fileID: 21300000, guid: 6c856c3f3f3b44043a4d1c064c3b4838, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Background_06
+  - Background_10
+  - Background_08
   - SubBackground_01
+  - SubBackground_02
+  - Background_05
   - Background_04
+  - Background_09
   - Floor
   - Background_03
   - Background_01
   - Background_02
+  - Background_07
   m_RenderDataMap: {}
   m_Tag: Background
   m_IsVariant: 0

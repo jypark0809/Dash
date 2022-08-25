@@ -52,13 +52,56 @@ public class GameScene : BaseScene
         finish = finishObj.GetComponent<Finish>();
         
         // Load Background
-        mc1 = GameObject.Find("MainMap Group").GetComponent<MapController>();
-        mc2 = GameObject.Find("SubMap Group").GetComponent<MapController>();
+        if (Managers.Data.UserData.user.stage == 0 || Managers.Data.UserData.user.stage == 1 ||
+            Managers.Data.UserData.user.stage == 2 || Managers.Data.UserData.user.stage == 3)
+        {
+            Managers.Resource.Instantiate("BackGround/MainMap_Stage1");
+            Managers.Resource.Instantiate("BackGround/SubMap_Stage1");
+            mc1 = GameObject.Find("MainMap_Stage1").GetComponent<MapController>();
+            mc2 = GameObject.Find("SubMap_Stage1").GetComponent<MapController>();
+        }
+        else if ((Managers.Data.UserData.user.stage == 4 || Managers.Data.UserData.user.stage == 5 ||
+            Managers.Data.UserData.user.stage == 6))
+        {
+            Managers.Resource.Instantiate("BackGround/MainMap_Stage2");
+            Managers.Resource.Instantiate("BackGround/SubMap_Stage2");
+            mc1 = GameObject.Find("MainMap_Stage2").GetComponent<MapController>();
+            mc2 = GameObject.Find("SubMap_Stage2").GetComponent<MapController>();
+        }
+        else if ((Managers.Data.UserData.user.stage == 7 || Managers.Data.UserData.user.stage == 8 ||
+            Managers.Data.UserData.user.stage == 9))
+        {
+            Managers.Resource.Instantiate("BackGround/MainMap_Stage3");
+            Managers.Resource.Instantiate("BackGround/SubMap_Stage3");
+            mc1 = GameObject.Find("MainMap_Stage3").GetComponent<MapController>();
+            mc2 = GameObject.Find("SubMap_Stage3").GetComponent<MapController>();
+        }
+
+        // mc1 = GameObject.Find("MainMap Group").GetComponent<MapController>();
+        // mc2 = GameObject.Find("SubMap Group").GetComponent<MapController>();
         pc.stageController = stage.GetComponent<StageController>();
         pc.mapControllers[0] = mc1;
         pc.mapControllers[1] = mc2;
 
-        Managers.UI.ShowPopupUI<UI_Hint>();
+        
+
+        if (Managers.Data.UserData.user.stage == 1 && PlayerPrefs.GetInt("isAccessFirst") != 0)
+        {
+            if (Managers.Data.UserData.user.gender == "male")
+                Managers.UI.ShowPopupUI<UI_Prologue>("UI_Prologue_FeMale");
+            else if (Managers.Data.UserData.user.gender == "female")
+                Managers.UI.ShowPopupUI<UI_Prologue>("UI_Prologue_Male");
+        }
+        else if (Managers.Data.UserData.user.stage != 1 && PlayerPrefs.GetInt("isAccessFirst") != 0)
+        {
+            Managers.UI.ShowPopupUI<UI_Hint>();
+        }
+
+        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
+        {
+            PlayerPrefs.SetInt("Tutorial", 0);
+            Managers.UI.ShowPopupUI<UI_Hint>();
+        }
     }
 
     private void Update()

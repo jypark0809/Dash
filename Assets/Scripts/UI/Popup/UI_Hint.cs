@@ -9,6 +9,7 @@ public class UI_Hint : UI_Popup
     GameScene _gameScene;
 
     public Sprite[] _npcSprites;
+    string[] _npcName;
     int _scriptIndex = 0;
 
     Hint _hint;
@@ -44,7 +45,39 @@ public class UI_Hint : UI_Popup
         _gameScene = (GameScene)Managers.Scene.CurrentScene;
         GetHintId();
         interval = 1.0f / _charPerSecend;
-        Managers.Data.HintDict.TryGetValue(hintId, out _hint);
+        switch(PlayerPrefs.GetInt("Tutorial"))
+        {
+            case 0:
+                Managers.Data.HintDict.TryGetValue(hintId, out _hint);
+                break;
+            case 1:
+                Managers.Data.HintDict.TryGetValue(91, out _hint);
+                break;
+            case 2:
+                Managers.Data.HintDict.TryGetValue(92, out _hint);
+                break;
+            case 3:
+                Managers.Data.HintDict.TryGetValue(93, out _hint);
+                break;
+            case 4:
+                Managers.Data.HintDict.TryGetValue(94, out _hint);
+                break;
+            case 5:
+                Managers.Data.HintDict.TryGetValue(95, out _hint);
+                break;
+            case 6:
+                Managers.Data.HintDict.TryGetValue(96, out _hint);
+                break;
+            case 7:
+                Managers.Data.HintDict.TryGetValue(97, out _hint);
+                break;
+            case 8:
+                Managers.Data.HintDict.TryGetValue(98, out _hint);
+                break;
+        }
+        _npcName = new string[]{
+            Managers.Data.UserData.user.nickname, 
+        "백설", "차가윤", "고유미", "서새한", "채대성", "선도진", "오탁후", "남학생", "여학생", "학주쌤" };
 
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
@@ -52,14 +85,7 @@ public class UI_Hint : UI_Popup
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
 
-        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
-        {
-            GetText((int)Texts.NameText).text = "주인공"; // npc 이름
-        }
-        else
-        {
-            GetText((int)Texts.NameText).text = Define.npcName[_hint.scripts[_scriptIndex].npcId]; // npc 이름
-        }
+        GetText((int)Texts.NameText).text = _npcName[_hint.scripts[_scriptIndex].npcId]; // npc 이름
         SetLine(_hint.scripts[_scriptIndex]); // 대사, npc 이미지
 
         Managers.Game._player.GetComponent<Animator>().speed = 0;
@@ -75,14 +101,7 @@ public class UI_Hint : UI_Popup
 
         if (_scriptIndex < _hint.scripts.Length)
         {
-            if (PlayerPrefs.GetInt("isAccessFirst") == 0)
-            {
-                GetText((int)Texts.NameText).text = "주인공"; // npc 이름
-            }
-            else
-            {
-                GetText((int)Texts.NameText).text = Define.npcName[_hint.scripts[_scriptIndex].npcId]; // npc 이름
-            }
+            GetText((int)Texts.NameText).text = _npcName[_hint.scripts[_scriptIndex].npcId]; // npc 이름
             SetLine(_hint.scripts[_scriptIndex]);
         }
         else
@@ -169,22 +188,22 @@ public class UI_Hint : UI_Popup
             case 1:
                 if (Managers.Data.UserData.user.gender == "female")
                 {
-                    hintId = Random.Range(44, 51); // 44~50
+                    hintId = Random.Range(44, 47); // 44~46
                 }
                 else if (Managers.Data.UserData.user.gender == "male")
                 {
-                    hintId = Random.Range(14, 21); // 14~20
+                    hintId = Random.Range(14, 17); // 14~16
                 }
                 break;
 
             case 2:
                 if (Managers.Data.UserData.user.gender == "female")
                 {
-                    hintId = Random.Range(54, 61); // 54~60
+                    hintId = Random.Range(54, 58); // 54~57
                 }
                 else if (Managers.Data.UserData.user.gender == "male")
                 {
-                    hintId = Random.Range(25, 31); // 25~30
+                    hintId = Random.Range(25, 28); // 25~27
                 }
                 break;
 
@@ -202,22 +221,22 @@ public class UI_Hint : UI_Popup
             case 4:
                 if (Managers.Data.UserData.user.gender == "female")
                 {
-                    hintId = Random.Range(34, 41); // 34~40
+                    hintId = Random.Range(34, 37); // 34~36
                 }
                 else if (Managers.Data.UserData.user.gender == "male")
                 {
-                    hintId = Random.Range(25, 31); // 25~30
+                    hintId = Random.Range(28, 31); // 28~30
                 }
                 break;
 
             case 5:
                 if (Managers.Data.UserData.user.gender == "female")
                 {
-                    hintId = Random.Range(54, 61); // 54~60
+                    hintId = Random.Range(58, 61); // 58~60
                 }
                 else if (Managers.Data.UserData.user.gender == "male")
                 {
-                    hintId = Random.Range(5, 11); // 5~10
+                    hintId = Random.Range(5, 8); // 5~7
                 }
                 break;
 
@@ -235,22 +254,22 @@ public class UI_Hint : UI_Popup
             case 7:
                 if (Managers.Data.UserData.user.gender == "female")
                 {
-                    hintId = Random.Range(34, 41); // 34~40
+                    hintId = Random.Range(37, 41); // 37~40
                 }
                 else if (Managers.Data.UserData.user.gender == "male")
                 {
-                    hintId = Random.Range(5, 11); // 5~10
+                    hintId = Random.Range(8, 11); // 8~10
                 }
                 break;
 
             case 8:
                 if (Managers.Data.UserData.user.gender == "female")
                 {
-                    hintId = Random.Range(44, 51); // 44~50
+                    hintId = Random.Range(47, 51); // 47~50
                 }
                 else if (Managers.Data.UserData.user.gender == "male")
                 {
-                    hintId = Random.Range(14, 21); // 14~20
+                    hintId = Random.Range(17, 21); // 17~20
                 }
                 break;
 

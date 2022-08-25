@@ -8,7 +8,7 @@ public class MapController : BaseController
     public int startIndex;
     public int endIndex;
     public int count;
-    public Transform[] sprites;
+    public Transform[] spritesPosition;
     Vector3 respawnPos;
 
     void Start()
@@ -31,10 +31,10 @@ public class MapController : BaseController
     void RespawnMap()
     {
         // end [0] [] [] [] [] [] [] [7] start
-        if (sprites[endIndex].position.x < -15.2)
+        if (spritesPosition[endIndex].position.x < -30.4)
         {
             // Sprite 재사용
-            sprites[endIndex].localPosition = sprites[endIndex].localPosition + respawnPos;
+            spritesPosition[endIndex].localPosition = spritesPosition[endIndex].localPosition + respawnPos;
 
             // 커서 인덱스 갱신
             startIndex = endIndex;

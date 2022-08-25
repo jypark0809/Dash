@@ -21,7 +21,7 @@ public class UI_Swipe : MonoBehaviour
     private float           startTouchX;
     private float           endTouchX;
     private bool            isSwipeMode = false;
-    private float           circleContentScale = 1.6f;
+    private float           circleContentScale = 1.4f;
 
     void Awake()
     {
@@ -157,7 +157,7 @@ public class UI_Swipe : MonoBehaviour
                 scrollBar.value > scrollPageValues[i] - (valueDistance / 2))
             {
                 circleContents[i].localScale = Vector2.one * circleContentScale;
-                circleContents[i].GetComponent<Image>().color = Color.black;
+                circleContents[i].GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f, 1);
             }
         }
     }

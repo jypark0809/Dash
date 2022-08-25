@@ -285,6 +285,7 @@ public class PlayerController : BaseController
             yield return new WaitForSeconds(2.5f);
             Managers.Scene.LoadScene(Define.Scene.Lobby);
             PlayerPrefs.SetInt("isAccessFirst",1);
+            PlayerPrefs.SetInt("Tutorial", 0);
         }
         else
         {

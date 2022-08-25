@@ -73,7 +73,7 @@ public class DataManager
     public void InitData()
     {
         UserData.user.id = "";
-        UserData.user.nickname = "";
+        UserData.user.nickname = "ÁÖÀÎ°ø";
         UserData.user.gender = "unselected";
         UserData.user.stat1 = 0;
         UserData.user.stat2 = 0;
@@ -85,6 +85,7 @@ public class DataManager
         UserData.user.ending = new bool[12];
         for (int i = 0; i < 12; i++)
             UserData.user.ending[i] = false;
+        PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt("extrahealth", 0);
         PlayerPrefs.SetInt("round", 0);
         PlayerPrefs.SetInt("isAccessFirst", 0);

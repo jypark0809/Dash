@@ -34,8 +34,6 @@ public class UI_Shop : UI_Popup
     {
         LoveLetterPanel,
         RubyPanel,
-        CostumePanel,
-        TickekPanel,
     }
 
     void Awake()
