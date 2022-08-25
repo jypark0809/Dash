@@ -52,31 +52,59 @@ public class UI_Ticket : UI_Popup
     public void TicketItem1ButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.extraStat = 3;
-        Managers.Data.UserData.user.stage = 4;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-        Managers.Scene.LoadScene(Define.Scene.Game);
-        ClosePopupUI();
+
+        if (Managers.Data.UserData.user.amber >= 120)
+        {
+            Managers.Data.UserData.user.amber -= 120;
+            Managers.Data.UserData.user.extraStat = 3;
+            Managers.Data.UserData.user.stage = 4;
+            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            Managers.Scene.LoadScene(Define.Scene.Game);
+            ClosePopupUI();
+        }
+        else
+        {
+            
+        }
     }
 
     public void TicketItem2ButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.extraStat = 6;
-        Managers.Data.UserData.user.stage = 7;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-        Managers.Scene.LoadScene(Define.Scene.Game);
-        ClosePopupUI();
+
+        if (Managers.Data.UserData.user.amber >= 240)
+        {
+            Managers.Data.UserData.user.amber -= 240;
+            Managers.Data.UserData.user.extraStat = 6;
+            Managers.Data.UserData.user.stage = 7;
+            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            Managers.Scene.LoadScene(Define.Scene.Game);
+            ClosePopupUI();
+        }
+        else
+        {
+
+        }
+        
     }
 
     public void TicketItem3ButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.extraStat = 8;
-        Managers.Data.UserData.user.stage = 9;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-        Managers.Scene.LoadScene(Define.Scene.Ending);
-        ClosePopupUI();
+
+        if (Managers.Data.UserData.user.amber >= 100)
+        {
+            Managers.Data.UserData.user.ruby -= 100;
+            Managers.Data.UserData.user.extraStat = 8;
+            Managers.Data.UserData.user.stage = 9;
+            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            Managers.Scene.LoadScene(Define.Scene.Ending);
+            ClosePopupUI();
+        }
+        else
+        {
+
+        }
     }
 
     public void TicketItem4ButtonClicked(PointerEventData data)

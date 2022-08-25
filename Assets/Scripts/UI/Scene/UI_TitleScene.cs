@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UI_TitleScene : UI_Scene
 {
+    float time;
+
     enum Images
     {
         MainImage,
@@ -15,6 +17,7 @@ public class UI_TitleScene : UI_Scene
     void Start()
     {
         Init();
+        StartCoroutine(BlinkImage());
     }
 
     public override void Init()
@@ -36,6 +39,17 @@ public class UI_TitleScene : UI_Scene
         else
         {
             Managers.Scene.LoadScene(Define.Scene.Lobby);
+        }
+    }
+
+    IEnumerator BlinkImage()
+    {
+        while (true)
+        {
+            GetImage((int)Images.TextImage).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            GetImage((int)Images.TextImage).gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

@@ -22,6 +22,8 @@ public class UI_Shop : UI_Popup
         Item_Ruby2,
         Item_Ruby3,
         Item_Ruby4,
+        AmberButton,
+        RubyButton,
     }
 
     enum Texts
@@ -34,6 +36,8 @@ public class UI_Shop : UI_Popup
     {
         LoveLetterPanel,
         RubyPanel,
+        AmberBlocker,
+        RubyBlocker,
     }
 
     void Awake()
@@ -76,6 +80,10 @@ public class UI_Shop : UI_Popup
         GetButton((int)Buttons.Item_Ruby2).gameObject.BindEvent(CloseRubyItem2Clicked);
         GetButton((int)Buttons.Item_Ruby3).gameObject.BindEvent(CloseRubyItem3Clicked);
         GetButton((int)Buttons.Item_Ruby4).gameObject.BindEvent(CloseRubyItem4Clicked);
+        GetButton((int)Buttons.AmberButton).gameObject.BindEvent(AmberPopupClicked);
+        GetButton((int)Buttons.RubyButton).gameObject.BindEvent(RubyPopupClicked);
+        GetImage((int)Images.AmberBlocker).gameObject.SetActive(false);
+        GetImage((int)Images.RubyBlocker).gameObject.SetActive(false);
 
         if (PlayerPrefs.GetInt("extrahealth") == 1)
             GetButton((int)Buttons.Item_Letter2).interactable = false;
@@ -91,6 +99,18 @@ public class UI_Shop : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
+    }
+
+    public void AmberPopupClicked(PointerEventData data)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        GetImage((int)Images.AmberBlocker).gameObject.SetActive(false);
+    }
+
+    public void RubyPopupClicked(PointerEventData data)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        GetImage((int)Images.RubyBlocker).gameObject.SetActive(false);
     }
 
     #region Tab Toggle
@@ -111,12 +131,20 @@ public class UI_Shop : UI_Popup
 
     public void LetterItem1Clicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         if (GetButton((int)Buttons.Item_Letter1).interactable == true)
         {
-            Managers.Sound.Play("Button", Define.Sound.Effect);
-            Managers.Data.UserData.user.amber -= 80;                        // Decrease Amber
-            GetButton((int)Buttons.Item_Letter2).interactable = false;      // Lock another Button
-            PlayerPrefs.SetInt("extrahealth", 1);                           // Set Character Health
+            if (Managers.Data.UserData.user.amber >= 80)
+            {
+                Managers.Sound.Play("Button", Define.Sound.Effect);
+                Managers.Data.UserData.user.amber -= 80;                        // Decrease Amber
+                GetButton((int)Buttons.Item_Letter2).interactable = false;      // Lock another Button
+                PlayerPrefs.SetInt("extrahealth", 1);                           // Set Character Health
+            }
+            else
+            {
+                GetImage((int)Images.AmberBlocker).gameObject.SetActive(true);
+            }
         }
         else
         {
@@ -127,12 +155,20 @@ public class UI_Shop : UI_Popup
 
     public void LetterItem2Clicked(PointerEventData data)
     {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
         if (GetButton((int)Buttons.Item_Letter2).interactable == true)
         {
-            GetButton((int)Buttons.Item_Letter1).interactable = false;
-            Managers.Sound.Play("Button", Define.Sound.Effect);
-            Managers.Data.UserData.user.ruby -= 90;
-            PlayerPrefs.SetInt("extrahealth", 2);
+            if (Managers.Data.UserData.user.ruby >= 90)
+            {
+                GetButton((int)Buttons.Item_Letter1).interactable = false;
+                Managers.Sound.Play("Button", Define.Sound.Effect);
+                Managers.Data.UserData.user.ruby -= 90;
+                PlayerPrefs.SetInt("extrahealth", 2);
+            }
+            else
+            {
+                GetImage((int)Images.RubyBlocker).gameObject.SetActive(true);
+            }
         }
         else
         {
@@ -147,8 +183,8 @@ public class UI_Shop : UI_Popup
     public void CloseRubyItem1Clicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        this.GetComponent<Canvas>().sortingOrder = -1;
-        UserChoseToWatchAd();
+        // this.GetComponent<Canvas>().sortingOrder = -1;
+        // UserChoseToWatchAd();
     }
 
     public void CloseRubyItem2Clicked(PointerEventData data)
@@ -164,7 +200,7 @@ public class UI_Shop : UI_Popup
         }
         else
         {
-            Debug.Log("Not enough ruby");
+            GetImage((int)Images.AmberBlocker).gameObject.SetActive(true);
         }
     }
 

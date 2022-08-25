@@ -38,6 +38,7 @@ public class UI_NextStage : UI_Popup
 
     public void CancleButtonClicked(PointerEventData data)
     {
+        Managers.Data.UserData.user.stage++;
         Time.timeScale = 1;
         ClosePopupUI();
         Managers.Scene.LoadScene(Define.Scene.Lobby);

@@ -8,6 +8,12 @@ public class UI_Scripts : UI_Popup
 {
     public Sprite[] _npcSprites;
     public Sprite[] _cutSceneSprites;
+    string[] _endingName = { null, "어쨌든 백마탄 왕자 엔딩", "백마탄 왕자가 되고 싶었던 엔딩",
+                                "진심이 담긴 명찰의 의미 엔딩", "절교 엔딩",
+                                "청력 손실 엔딩", "이 표는 이제 제 겁니다 엔딩",
+                                "어쨌든 고백 성공 엔딩", "조금 특이한 해바라기 엔딩",
+                                "국가대표 공식 1호 커플 엔딩", "불협화음 공식 1호 커플 엔딩",
+                                "인형탈 알바 엔딩", "교내봉사 엔딩" };
 
     int _scriptIndex = 0;
     int _cutSceneIndex;
@@ -19,18 +25,25 @@ public class UI_Scripts : UI_Popup
     int _index;
     bool _isType;
 
+    enum Buttons
+    {
+        OkayButton,
+    }
+
     enum Images
     {
         Panel,
         CursurImage,
         NpcImage,
         CutScene,
+        Blocker,
     }
 
     enum Texts
     {
         ScriptText,
         NameText,
+        EndingText,
     }
 
     void Start()
@@ -46,15 +59,26 @@ public class UI_Scripts : UI_Popup
         Managers.Data.EndingDict.TryGetValue(PlayerPrefs.GetInt("endingId"), out _ending);
         _cutSceneIndex = _ending.index;
 
+        PlayEndingBgm();
+
+        Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
 
+        GetButton((int)Buttons.OkayButton).gameObject.BindEvent(OkayButtonClicked);
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
+        GetImage((int)Images.Blocker).gameObject.SetActive(false);
 
         GetImage((int)Images.CutScene).sprite = _cutSceneSprites[_ending.endingId]; // 컷씬
         GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_scriptIndex].npcId]; // npc 이름
         SetLine(_ending.scripts[_scriptIndex]); // 대사, npc 이미지
+    }
+
+    public void OkayButtonClicked(PointerEventData data)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Scene.LoadScene(Define.Scene.Lobby);
     }
 
     public void PanelImageClicked(PointerEventData data)
@@ -71,7 +95,8 @@ public class UI_Scripts : UI_Popup
         }
         else
         {
-            Managers.UI.ShowPopupUI<UI_Ending>();
+            GetImage((int)Images.Blocker).gameObject.SetActive(true);
+            GetText((int)Texts.EndingText).text = GetEndingName();
         }
     }
 
@@ -135,5 +160,23 @@ public class UI_Scripts : UI_Popup
     {
         GetImage((int)Images.CursurImage).gameObject.SetActive(true);
         _isType = false;
+    }
+
+    void PlayEndingBgm()
+    {
+        if (PlayerPrefs.GetInt("endingId") % 2 == 0)
+        {
+            Managers.Sound.Play("BadEnding", Define.Sound.Bgm);
+        }
+        else
+        {
+            Managers.Sound.Play("HappyEnding", Define.Sound.Bgm);
+        }
+    }
+
+    string GetEndingName()
+    {
+        string endingName = (PlayerPrefs.GetInt("endingId") % 2 == 0) ? "<BadEnding>" : "<HappyEnding>";
+        return _endingName[PlayerPrefs.GetInt("endingId")] + "\n" + endingName;
     }
 }

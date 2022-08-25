@@ -32,5 +32,11 @@ public class LobbyScene : BaseScene
 
     private void Update()
     {
+        #if UNITY_ANDROID
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        #endif
     }
 }

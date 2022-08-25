@@ -169,7 +169,7 @@ public class UI_SelectNpc : UI_Popup
         {
             // 모범생 : sta1 > sta2 > stat3
             case 1:
-                if (_stat1 > _stat2 && _stat1 > _stat3)
+                if (_stat1 >= _stat2 && _stat1 > _stat3)
                 {
                     if (_stat2 > _stat3)
                     {
@@ -192,7 +192,7 @@ public class UI_SelectNpc : UI_Popup
 
             //  소꿉친구 : stat3 > stat1 > stat2
             case 2:
-                if (_stat3 > _stat1 && _stat3 > _stat2)
+                if (_stat3 >= _stat1 && _stat3 > _stat2)
                 {
                     if (_stat1 > _stat2)
                     {
@@ -214,7 +214,7 @@ public class UI_SelectNpc : UI_Popup
 
             //  후배 : stat2 > stat3 > stat1
             case 3:
-                if (_stat2 > _stat1 && _stat2 > _stat3)
+                if (_stat2 >= _stat3 && _stat2 > _stat1)
                 {
                     if (_stat3 > _stat1)
                     {
@@ -236,7 +236,7 @@ public class UI_SelectNpc : UI_Popup
 
             // 학생회장 : stat1 > stat2 > stat3
             case 4:
-                if (_stat1 > _stat2 && _stat1 > _stat3)
+                if (_stat1 >= _stat2 && _stat1 > _stat3)
                 {
                     if (_stat2 > _stat3)
                     {
@@ -258,7 +258,7 @@ public class UI_SelectNpc : UI_Popup
 
             // 체육부장 : stat3 > stat1 > stat2
             case 5:
-                if (_stat3 > _stat1 && _stat3 > _stat2)
+                if (_stat3 >= _stat1 && _stat3 > _stat2)
                 {
                     if (_stat1 > _stat2)
                     {
@@ -281,7 +281,7 @@ public class UI_SelectNpc : UI_Popup
 
             // 선도부장 : stat2 > stat3 > stat1
             case 6:
-                if (_stat2 > _stat1 && _stat2 > _stat3)
+                if (_stat2 >= _stat3 && _stat2 > _stat1)
                 {
                     if (_stat3 > _stat1)
                     {

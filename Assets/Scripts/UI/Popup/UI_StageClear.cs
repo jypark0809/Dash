@@ -167,7 +167,6 @@ public class UI_StageClear : UI_Popup
             }
 
             Managers.Data.UserData.user.extraStat--;
-            // Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
             Managers.Sound.Play("Button", Define.Sound.Effect);
             UpdateUserStat();
             GetImage((int)Images.CheckPanel).gameObject.SetActive(false);
