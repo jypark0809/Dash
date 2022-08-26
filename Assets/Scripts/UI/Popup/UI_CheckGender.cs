@@ -52,7 +52,7 @@ public class UI_CheckGender : UI_Popup
         Managers.UI.CloseAllPopupUI();
         if (PlayerPrefs.GetInt("round") == 0)
         {
-            Managers.UI.ShowPopupUI<UI_Nickname>();
+            Managers.UI.ShowPopupUI<UI_Nickname>("UI_Nickname");
         }
         else
         {

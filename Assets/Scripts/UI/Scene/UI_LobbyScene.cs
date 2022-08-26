@@ -48,7 +48,7 @@ public class UI_LobbyScene : UI_Scene
     public void OptionButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Debug.Log("OptionButtonClicked");
+        Managers.UI.ShowPopupUI<UI_Option>();
     }
 
     public void TargetButtonClicked(PointerEventData data)

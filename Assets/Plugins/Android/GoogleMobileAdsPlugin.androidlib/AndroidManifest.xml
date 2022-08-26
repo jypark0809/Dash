@@ -4,4 +4,5 @@
     <uses-library android:required="false" android:name="org.apache.http.legacy" />
     <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-1206779307721674~3025315400" />
   </application>
+  <uses-permission android:name="android.permission.VIBRATE" />
 </manifest>
