@@ -11,6 +11,7 @@ public class Teacher : BaseObstacle
     public override void Init()
     {
         _anim = GetComponent<Animator>();
+        _anim.Play("Teacher");
     }
 
     void Update()
@@ -18,7 +19,7 @@ public class Teacher : BaseObstacle
         if (transform.position.x - Managers.Game._player.transform.position.x < _range && isFight == false)
         {
             transform.Translate(Vector2.left * _speed * Time.deltaTime);
-            _anim.Play("Teacher");
+            _anim.speed = 1;
         }
     }
 
@@ -27,6 +28,7 @@ public class Teacher : BaseObstacle
         if (collision.gameObject.tag == "Player")
         {
             isFight = true;
+            _anim.speed = 0;
         }
     }
 }

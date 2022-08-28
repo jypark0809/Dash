@@ -54,7 +54,7 @@ public class UI_Teacher : UI_Popup
     {
         if (_curPos == _maxPos)
         {
-            _playerController._isFight = false;
+            _playerController.recovereDamage();
             ClosePopupUI();
         }
 

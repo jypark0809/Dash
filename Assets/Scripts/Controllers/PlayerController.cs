@@ -9,8 +9,6 @@ public class PlayerController : BaseController
     public int _health;
     int _maxHealth;
     public bool _isFight = false;
-    [SerializeField]
-    int _teacherCount = 1;
 
     public GameObject _shieldObj;
     bool _shield = false;
@@ -82,8 +80,6 @@ public class PlayerController : BaseController
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            OnDamaged();
-
             // 표지판
             if (collision.gameObject.name == "Signage")
             {
@@ -128,14 +124,16 @@ public class PlayerController : BaseController
             }
 
             // 학주
-            if (collision.gameObject.name == "Teacher" && _teacherCount == 1)
+            if (collision.gameObject.name == "Teacher")
             {
+                gameObject.layer = 8; // PlayerDamaged
+                _sprite.color = new Color(1, 1, 1, 0.4f);
                 Managers.UI.ShowPopupUI<UI_Teacher>();
-                _isFight = true;
+                // _isFight = true;
                 _state = Define.PlayerState.Fight;
-                _teacherCount--;
                 _teacher = collision.transform.GetComponent<Teacher>();
 
+                // 점프 중일 때 바닥에 닿아도 _jumpCount가 갱신되지 않음
                 if (_isJump)
                 {
                     _jumpCount = 2;
@@ -176,6 +174,10 @@ public class PlayerController : BaseController
 
     void DecreaseHealth(int count)
     {
+        gameObject.layer = 8; // PlayerDamaged
+        _sprite.color = new Color(1, 1, 1, 0.4f);
+        StartCoroutine("DamageRecovered");
+
         if (_shield == false)
         {
             _health -= count;
@@ -190,17 +192,6 @@ public class PlayerController : BaseController
             _shieldObj.SetActive(false);
             _shield = false;
         }
-        
-    }
-
-    void OnDamaged()
-    {
-        gameObject.layer = 8; // PlayerDamaged
-        _sprite.color = new Color(1, 1, 1, 0.4f);
-
-        // animation
-
-        StartCoroutine("DamageRecovered");
     }
 
     void UpdateRun()
@@ -210,17 +201,7 @@ public class PlayerController : BaseController
 
     void UpdateFight()
     {
-        if (_isFight == true)
-        {
-            StopGame();
-        }
-        else
-        {
-            _state = Define.PlayerState.Run;
-            rewindSpeed();
-            _teacher.isFight = false;
-            _teacherCount++;
-        }
+        StopGame();
     }
 
     void UpdateJump()
@@ -240,6 +221,16 @@ public class PlayerController : BaseController
         _anim.SetBool("isJump", false);
         transform.position += Vector3.right * 6.0f * Time.deltaTime;
         StartCoroutine("StageClearUI");
+    }
+
+    public void recovereDamage()
+    {
+        // _isFight = false;
+        StartCoroutine("DamageRecovered");
+        _state = Define.PlayerState.Run;
+        rewindSpeed();
+        _teacher.isFight = false;
+        _teacher.GetComponent<Animator>().speed = 1;
     }
 
     IEnumerator SpeedUp()

@@ -17,7 +17,6 @@ public class UI_TitleScene : UI_Scene
     void Start()
     {
         Init();
-        StartCoroutine(BlinkImage());
     }
 
     public override void Init()
@@ -32,24 +31,15 @@ public class UI_TitleScene : UI_Scene
     public void OnImageClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
+
         if (PlayerPrefs.GetInt("isAccessFirst") == 0)
         {
+            Managers.Data.InitData();
             Managers.Scene.LoadScene(Define.Scene.Game);
         }
         else
         {
             Managers.Scene.LoadScene(Define.Scene.Lobby);
-        }
-    }
-
-    IEnumerator BlinkImage()
-    {
-        while (true)
-        {
-            GetImage((int)Images.TextImage).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
-            GetImage((int)Images.TextImage).gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.5f);
         }
     }
 }

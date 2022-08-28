@@ -140,6 +140,7 @@ public class UI_Shop : UI_Popup
                 Managers.Data.UserData.user.amber -= 80;                        // Decrease Amber
                 GetButton((int)Buttons.Item_Letter2).interactable = false;      // Lock another Button
                 PlayerPrefs.SetInt("extrahealth", 1);                           // Set Character Health
+                UpdateData();
             }
             else
             {
@@ -164,6 +165,7 @@ public class UI_Shop : UI_Popup
                 Managers.Sound.Play("Button", Define.Sound.Effect);
                 Managers.Data.UserData.user.ruby -= 90;
                 PlayerPrefs.SetInt("extrahealth", 2);
+                UpdateData();
             }
             else
             {
@@ -195,8 +197,8 @@ public class UI_Shop : UI_Popup
         {
             Managers.Data.UserData.user.ruby -= 50;
             Managers.Data.UserData.user.amber += 100;
-            UpdateData();
             Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            UpdateData();
         }
         else
         {

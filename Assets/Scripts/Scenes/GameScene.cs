@@ -39,6 +39,7 @@ public class GameScene : BaseScene
         // Load Stage
         if (PlayerPrefs.GetInt("isAccessFirst") == 0)
         {
+            // Æ©Åä¸®¾ó
             stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_0");
         }
         else
@@ -77,8 +78,6 @@ public class GameScene : BaseScene
             mc2 = GameObject.Find("SubMap_Stage3").GetComponent<MapController>();
         }
 
-        // mc1 = GameObject.Find("MainMap Group").GetComponent<MapController>();
-        // mc2 = GameObject.Find("SubMap Group").GetComponent<MapController>();
         pc.stageController = stage.GetComponent<StageController>();
         pc.mapControllers[0] = mc1;
         pc.mapControllers[1] = mc2;

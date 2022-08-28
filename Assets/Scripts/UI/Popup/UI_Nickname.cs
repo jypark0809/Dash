@@ -43,6 +43,9 @@ public class UI_Nickname : UI_Popup
     public void CancleButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Data.UserData.user.gender = "unselected";
+        Managers.Data.UserData.user.nickname = "ÁÖÀÎ°ø";
+        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         ClosePopupUI();
     }
 }
