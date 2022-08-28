@@ -28,7 +28,6 @@ public class DataManager
         else
         {
             UserData = new UserData();
-            PlayerPrefs.SetInt("round", 0);
             InitData();
         }
     }
@@ -86,9 +85,13 @@ public class DataManager
         for (int i = 0; i < 12; i++)
             UserData.user.ending[i] = false;
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("isAccessFirst", 0);
         PlayerPrefs.SetInt("extrahealth", 0);
         PlayerPrefs.SetInt("round", 0);
+        PlayerPrefs.SetInt("vibrate", 1);
         PlayerPrefs.SetInt("isAccessFirst", 0);
+        PlayerPrefs.SetFloat("BgmVolume", 0.5f);
+        PlayerPrefs.SetFloat("EffectVolume", 0.5f);
 
         SaveUserDataToJson(UserData);
         Debug.Log(JsonUtility.ToJson(UserData, true));

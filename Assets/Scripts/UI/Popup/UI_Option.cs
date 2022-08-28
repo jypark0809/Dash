@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UI_Option : UI_Popup
 {
     public Slider _bgmSlider, _effectSlider;
+    public Toggle _vibrateOn, _vibrateOff;
 
     enum Buttons
     {
@@ -14,6 +15,12 @@ public class UI_Option : UI_Popup
         DeveloperButton,
         InstagramButton,
         ChangeNicknameButton
+    }
+
+    void Awake()
+    {
+        _vibrateOn.onValueChanged.AddListener(OnToggleValueChangedEvent);
+        _vibrateOff.onValueChanged.AddListener(OffToggleValueChangedEvent);
     }
 
     void Start()
@@ -35,6 +42,18 @@ public class UI_Option : UI_Popup
         GetButton((int)Buttons.ChangeNicknameButton).gameObject.BindEvent(ChangeNicknameButtonClicked);
         _bgmSlider.value = PlayerPrefs.GetFloat("BgmVolume");
         _effectSlider.value = PlayerPrefs.GetFloat("EffectVolume");
+    }
+
+    public void OnToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        PlayerPrefs.SetInt("vibrate", 1);
+    }
+
+    public void OffToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        PlayerPrefs.SetInt("vibrate", 0);
     }
 
     public void BgmValueChangeCheck()

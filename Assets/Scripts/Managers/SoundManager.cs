@@ -26,19 +26,8 @@ public class SoundManager
             _audioSources[(int)Define.Sound.Bgm].loop = true;
         }
 
-        // 소리 초기화 및 저장
-        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
-        {
-            PlayerPrefs.SetFloat("BgmVolume", 0.5f);
-            PlayerPrefs.SetFloat("EffectVolume", 0.5f);
-            Managers.Sound.SetVolume((int)Define.Sound.Bgm, PlayerPrefs.GetFloat("BgmVolume"));
-            Managers.Sound.SetVolume((int)Define.Sound.Effect, PlayerPrefs.GetFloat("EffectVolume"));
-        }
-        else
-        {
-            Managers.Sound.SetVolume((int)Define.Sound.Bgm, PlayerPrefs.GetFloat("BgmVolume"));
-            Managers.Sound.SetVolume((int)Define.Sound.Effect, PlayerPrefs.GetFloat("EffectVolume"));
-        }
+        SetVolume((int)Define.Sound.Bgm, PlayerPrefs.GetFloat("BgmVolume"));
+        SetVolume((int)Define.Sound.Effect, PlayerPrefs.GetFloat("EffectVolume"));
     }
 
     public void Clear()

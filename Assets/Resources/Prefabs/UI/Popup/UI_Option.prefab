@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 4697963167221294776}
   - component: {fileID: 2422222485567769036}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: OnToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,7 +251,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &599078051315277465
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bgmSlider: {fileID: 1307494104052217790}
   _effectSlider: {fileID: 7319125384994952782}
+  _vibrateOn: {fileID: 2422222485567769036}
+  _vibrateOff: {fileID: 2978585239381984647}
 --- !u!1 &1699514062042150438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,7 +1676,7 @@ GameObject:
   - component: {fileID: 1338568419550346713}
   - component: {fileID: 2978585239381984647}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: OffToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1749,7 +1751,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &6178481615006623846
 GameObject:
   m_ObjectHideFlags: 0

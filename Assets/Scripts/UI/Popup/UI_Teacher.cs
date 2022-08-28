@@ -80,11 +80,17 @@ public class UI_Teacher : UI_Popup
 
     public void RightTabButtonClicked(PointerEventData data)
     {
+        if (PlayerPrefs.GetInt("vibrate") == 1)
+            Vibration.Vibrate((long)50);
+
         _curPos++;
     }
 
     public void LeftTabButtonClicked(PointerEventData data)
     {
+        if (PlayerPrefs.GetInt("vibrate") == 1)
+            Vibration.Vibrate((long)50);
+
         _curPos++;
     }
 }

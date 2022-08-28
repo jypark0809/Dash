@@ -174,6 +174,9 @@ public class PlayerController : BaseController
 
     void DecreaseHealth(int count)
     {
+        if (PlayerPrefs.GetInt("vibrate") == 1)
+            Vibration.Vibrate((long)200);
+
         gameObject.layer = 8; // PlayerDamaged
         _sprite.color = new Color(1, 1, 1, 0.4f);
         StartCoroutine("DamageRecovered");

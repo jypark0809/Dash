@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class UI_Shop : UI_Popup
 {
     private RewardedAd rewardedAd;
-    // string adUnitTestId = "ca-app-pub-3940256099942544/5224354917";
+    // Å×½ºÆ® ±¤°í = "ca-app-pub-3940256099942544/5224354917";
+    // Àü¸é ±¤°í = "ca-app-pub-1206779307721674/3264417737";
     string adUnitId = "ca-app-pub-3940256099942544/5224354917";
     public Toggle _toggleLoveLetter, _toggleRuby;
 
@@ -185,8 +186,8 @@ public class UI_Shop : UI_Popup
     public void CloseRubyItem1Clicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        // this.GetComponent<Canvas>().sortingOrder = -1;
-        // UserChoseToWatchAd();
+        this.GetComponent<Canvas>().sortingOrder = -1;
+        UserChoseToWatchAd();
     }
 
     public void CloseRubyItem2Clicked(PointerEventData data)
