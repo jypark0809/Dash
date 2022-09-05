@@ -27,18 +27,12 @@ public class UI_StageClear : UI_Popup
         StatValue1,
         StatValue2,
         StatValue3,
-        StatButtonText1,
-        StatButtonText2,
-        StatButtonText3,
         RemainStatText,
         PrevStatText,
     }
 
     enum Images
     {
-        StatImage1,
-        StatImage2,
-        StatImage3,
         CheckPanel,
     }
 
@@ -69,33 +63,27 @@ public class UI_StageClear : UI_Popup
         if (Managers.Data.UserData.user.gender == "male")
         {
             GetText((int)Texts.Stat1).text = Define.maleStat[0];
-            GetText((int)Texts.StatButtonText1).text = Define.maleStat[0];
             GetText((int)Texts.Stat2).text = Define.maleStat[1];
-            GetText((int)Texts.StatButtonText2).text = Define.maleStat[1];
             GetText((int)Texts.Stat3).text = Define.maleStat[2];
-            GetText((int)Texts.StatButtonText3).text = Define.maleStat[2];
-            GetImage((int)Images.StatImage1).sprite = _sprites[0];
-            GetImage((int)Images.StatImage1).SetNativeSize();
-            GetImage((int)Images.StatImage2).sprite = _sprites[1];
-            GetImage((int)Images.StatImage2).SetNativeSize();
-            GetImage((int)Images.StatImage3).sprite = _sprites[2];
-            GetImage((int)Images.StatImage3).SetNativeSize();
+            GetButton((int)Buttons.StatButton1).GetComponent<Image>().sprite = _sprites[0];
+            GetButton((int)Buttons.StatButton1).GetComponent<Image>().SetNativeSize();
+            GetButton((int)Buttons.StatButton2).GetComponent<Image>().sprite = _sprites[1];
+            GetButton((int)Buttons.StatButton2).GetComponent<Image>().SetNativeSize();
+            GetButton((int)Buttons.StatButton3).GetComponent<Image>().sprite = _sprites[2];
+            GetButton((int)Buttons.StatButton3).GetComponent<Image>().SetNativeSize();
 
         }
         else if (Managers.Data.UserData.user.gender == "female")
         {
             GetText((int)Texts.Stat1).text = Define.femaleStat[0];
-            GetText((int)Texts.StatButtonText1).text = Define.femaleStat[0];
             GetText((int)Texts.Stat2).text = Define.femaleStat[1];
-            GetText((int)Texts.StatButtonText2).text = Define.femaleStat[1];
             GetText((int)Texts.Stat3).text = Define.femaleStat[2];
-            GetText((int)Texts.StatButtonText3).text = Define.femaleStat[2];
-            GetImage((int)Images.StatImage1).sprite = _sprites[3];
-            GetImage((int)Images.StatImage1).SetNativeSize();
-            GetImage((int)Images.StatImage2).sprite = _sprites[4];
-            GetImage((int)Images.StatImage2).SetNativeSize();
-            GetImage((int)Images.StatImage3).sprite = _sprites[5];
-            GetImage((int)Images.StatImage3).SetNativeSize();
+            GetButton((int)Buttons.StatButton1).GetComponent<Image>().sprite = _sprites[3];
+            GetButton((int)Buttons.StatButton1).GetComponent<Image>().SetNativeSize();
+            GetButton((int)Buttons.StatButton2).GetComponent<Image>().sprite = _sprites[4];
+            GetButton((int)Buttons.StatButton2).GetComponent<Image>().SetNativeSize();
+            GetButton((int)Buttons.StatButton3).GetComponent<Image>().sprite = _sprites[5];
+            GetButton((int)Buttons.StatButton3).GetComponent<Image>().SetNativeSize();
         }
         else
             Debug.Log("Failed to bind Text : UI_StageClear.cs");
@@ -252,7 +240,7 @@ public class UI_StageClear : UI_Popup
         GetText((int)Texts.StatValue1).text = Managers.Data.UserData.user.stat1.ToString();
         GetText((int)Texts.StatValue2).text = Managers.Data.UserData.user.stat2.ToString();
         GetText((int)Texts.StatValue3).text = Managers.Data.UserData.user.stat3.ToString();
-        GetText((int)Texts.PrevStatText).text = GetText((int)Texts.RemainStatText).text = "남은 스텟 포인트 : " + Managers.Data.UserData.user.extraStat;
+        GetText((int)Texts.PrevStatText).text = GetText((int)Texts.RemainStatText).text = Managers.Data.UserData.user.extraStat.ToString();
     }
 
     int StatSum()

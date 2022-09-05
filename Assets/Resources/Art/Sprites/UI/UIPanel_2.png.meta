@@ -143,19 +143,19 @@ TextureImporter:
       name: UIPanel_2_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 9
+        x: 0
+        y: 0
         width: 740
-        height: 73
+        height: 72
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 29, y: 5, z: 19, w: 5}
+      border: {x: 178, y: 18, z: 19, w: 20}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02a889d022a5f674491fd0b70ec06233
-      internalID: -217893802
+      spriteID: daab57a8877f35743abfa0e6be9d0643
+      internalID: 879479085
       vertices: []
       indices: 
       edges: []
@@ -171,7 +171,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UIPanel_2_0: -217893802
+      UIPanel_2_0: 879479085
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

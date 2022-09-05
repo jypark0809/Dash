@@ -7,7 +7,7 @@ public class UIManager
     int _order = 10;
 
     Stack<UI_Popup> _popupStack = new Stack<UI_Popup>();
-    UI_Scene _sceneUI = null;
+    public UI_Scene _sceneUI = null;
 
     public GameObject Root
     {

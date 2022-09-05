@@ -41,6 +41,9 @@ public class UI_Ticket : UI_Popup
 
         GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
         GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
+
+        UI_LobbyScene lobbyUI = (UI_LobbyScene)Managers.UI._sceneUI;
+        lobbyUI.SetActiveGoodsUI(false);
     }
 
     public void CloseButtonClicked(PointerEventData data)

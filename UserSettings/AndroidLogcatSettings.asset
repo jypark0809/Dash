@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "10160a9925223302",
         "name": "com.eveni1st.dash",
-        "processId": 16226,
+        "processId": 2150,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -24,6 +24,24 @@
             "deviceId": "10160a9925223302",
             "name": "com.eveni1st.dash",
             "processId": 16226,
+            "exited": false
+        },
+        {
+            "deviceId": "10160a9925223302",
+            "name": "com.eveni1st.dash",
+            "processId": 13405,
+            "exited": false
+        },
+        {
+            "deviceId": "10160a9925223302",
+            "name": "com.eveni1st.dash",
+            "processId": 17387,
+            "exited": false
+        },
+        {
+            "deviceId": "10160a9925223302",
+            "name": "com.eveni1st.dash",
+            "processId": 2150,
             "exited": false
         }
     ],

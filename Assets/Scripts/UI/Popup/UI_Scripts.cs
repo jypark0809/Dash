@@ -8,12 +8,13 @@ public class UI_Scripts : UI_Popup
 {
     public Sprite[] _npcSprites;
     public Sprite[] _cutSceneSprites;
-    string[] _endingName = { null, "어쨌든 백마탄 왕자 엔딩", "백마탄 왕자가 되고 싶었던 엔딩",
-                                "진심이 담긴 명찰의 의미 엔딩", "절교 엔딩",
-                                "청력 손실 엔딩", "이 표는 이제 제 겁니다 엔딩",
-                                "어쨌든 고백 성공 엔딩", "조금 특이한 해바라기 엔딩",
-                                "국가대표 공식 1호 커플 엔딩", "불협화음 공식 1호 커플 엔딩",
-                                "인형탈 알바 엔딩", "교내봉사 엔딩" };
+    public Sprite[] _endingTextImage;
+    string[] _endingName = { null, "어쨌든 백마탄 왕자", "백마탄 왕자가 되고 싶었던",
+                                "진심이 담긴 명찰의 의미", "절교 엔딩",
+                                "청력 손실 엔딩", "집중이 부족한 탓",
+                                "어쨌든 고백 성공", "조금 특이한 해바라기",
+                                "국가대표 공식 1호 커플", "불협화음 공식 1호 커플",
+                                "인형탈 알바", "교내봉사" };
 
     int _scriptIndex = 0;
     int _cutSceneIndex;
@@ -37,6 +38,7 @@ public class UI_Scripts : UI_Popup
         NpcImage,
         CutScene,
         Blocker,
+        EndingImage,
     }
 
     enum Texts
@@ -96,6 +98,16 @@ public class UI_Scripts : UI_Popup
         else
         {
             GetImage((int)Images.Blocker).gameObject.SetActive(true);
+            if (PlayerPrefs.GetInt("endingId") % 2 == 0)
+            {
+                GetImage((int)Images.EndingImage).sprite = _endingTextImage[1];
+                GetImage((int)Images.EndingImage).SetNativeSize();
+            }
+            else
+            {
+                GetImage((int)Images.EndingImage).sprite = _endingTextImage[0];
+                GetImage((int)Images.EndingImage).SetNativeSize();
+            }
             GetText((int)Texts.EndingText).text = GetEndingName();
         }
     }
@@ -176,7 +188,6 @@ public class UI_Scripts : UI_Popup
 
     string GetEndingName()
     {
-        string endingName = (PlayerPrefs.GetInt("endingId") % 2 == 0) ? "<BadEnding>" : "<HappyEnding>";
-        return _endingName[PlayerPrefs.GetInt("endingId")] + "\n" + endingName;
+        return _endingName[PlayerPrefs.GetInt("endingId")];
     }
 }

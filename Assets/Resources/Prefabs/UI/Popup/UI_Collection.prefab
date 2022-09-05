@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1732617006, guid: d4076e0ebbae14649bf9a5d4992b5d88, type: 3}
+  m_Sprite: {fileID: 964476823, guid: d4076e0ebbae14649bf9a5d4992b5d88, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4500,15 +4500,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bea9fbbe6d88c6439554481ada2dab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _toggleCostume: {fileID: 0}
-  _toggleCollection: {fileID: 0}
   _toggleMale: {fileID: 7580476090510622662}
   _toggleFemale: {fileID: 7580476091017096431}
-  _toggleMale2: {fileID: 0}
-  _toggleFemale2: {fileID: 0}
   _Textsprites:
-  - {fileID: 1732617006, guid: d4076e0ebbae14649bf9a5d4992b5d88, type: 3}
-  - {fileID: -2126302701, guid: 60b0772c252374346a59dafa74f2722f, type: 3}
+  - {fileID: 964476823, guid: d4076e0ebbae14649bf9a5d4992b5d88, type: 3}
+  - {fileID: 1023497618, guid: 60b0772c252374346a59dafa74f2722f, type: 3}
 --- !u!1 &7580476090921699787
 GameObject:
   m_ObjectHideFlags: 0

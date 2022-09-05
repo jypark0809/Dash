@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d58c4225579ab3b42a6e2233844c7ca6
-      internalID: 1732617006
+      spriteID: 647dc4665dc76574789188b8f237891e
+      internalID: 964476823
       vertices: []
       indices: 
       edges: []
@@ -171,8 +171,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Collection_HappyEnding_1: 1732617006
-      Collection_HappyEnding_0: 162105784
+      Collection_HappyEnding_1: 964476823
+      Collection_HappyEnding_0: 323691650
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

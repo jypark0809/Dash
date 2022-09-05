@@ -9,6 +9,7 @@ public class PlayerController : BaseController
     public int _health;
     int _maxHealth;
     public bool _isFight = false;
+    bool _isArrive = false;
 
     public GameObject _shieldObj;
     bool _shield = false;
@@ -129,7 +130,6 @@ public class PlayerController : BaseController
                 gameObject.layer = 8; // PlayerDamaged
                 _sprite.color = new Color(1, 1, 1, 0.4f);
                 Managers.UI.ShowPopupUI<UI_Teacher>();
-                // _isFight = true;
                 _state = Define.PlayerState.Fight;
                 _teacher = collision.transform.GetComponent<Teacher>();
 
@@ -169,6 +169,7 @@ public class PlayerController : BaseController
         {
             Managers.Data.PrintLog();
             _state = Define.PlayerState.Clear;
+            _isArrive = true;
         }
     }
 
@@ -223,7 +224,11 @@ public class PlayerController : BaseController
     {
         _anim.SetBool("isJump", false);
         transform.position += Vector3.right * 6.0f * Time.deltaTime;
-        StartCoroutine("StageClearUI");
+        if(_isArrive)
+        {
+            StartCoroutine("StageClearUI");
+            _isArrive = false;
+        }
     }
 
     public void recovereDamage()

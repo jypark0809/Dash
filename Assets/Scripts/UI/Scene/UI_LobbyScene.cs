@@ -17,6 +17,17 @@ public class UI_LobbyScene : UI_Scene
         InitButton,
     }
 
+    enum Texts
+    {
+        AmberText,
+        RubyText,
+    }
+
+    enum GameObjects
+    {
+        GoodsGroup,
+    }
+
     void Start()
     {
         Init();
@@ -27,6 +38,8 @@ public class UI_LobbyScene : UI_Scene
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
+        Bind<GameObject>(typeof(GameObjects));
 
         GetButton((int)Buttons.TipButton).gameObject.BindEvent(TipButtonClicked);
         GetButton((int)Buttons.OptionButton).gameObject.BindEvent(OptionButtonClicked);
@@ -35,6 +48,9 @@ public class UI_LobbyScene : UI_Scene
         GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(CollectionButtonClicked);
         GetButton((int)Buttons.PlayButton).gameObject.BindEvent(PlayButtonClicked);
         GetButton((int)Buttons.InitButton).gameObject.BindEvent(InitButtonClicked);
+
+        GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
+        GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
 
         Debug.Log(PlayerPrefs.GetInt("round"));
     }
@@ -61,6 +77,7 @@ public class UI_LobbyScene : UI_Scene
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Shop>();
+        SetActiveGoodsUI(false);
     }
 
     public void CollectionButtonClicked(PointerEventData data)
@@ -96,5 +113,15 @@ public class UI_LobbyScene : UI_Scene
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.PrintLog();
         Managers.UI.ShowPopupUI<UI_Test>();
+    }
+
+    public void SetActiveGoodsUI(bool boolean)
+    {
+        GetObject((int)GameObjects.GoodsGroup).SetActive(boolean);
+        if (boolean)
+        {
+            GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
+            GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
+        }
     }
 }
