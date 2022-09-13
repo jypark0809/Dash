@@ -69,7 +69,7 @@ SpriteAtlas:
   - Target
   - Option
   - Hourglass
-  - tip
+  - Tip
   - Collection
   m_RenderDataMap: {}
   m_Tag: UI_LobbyScene
