@@ -10,8 +10,8 @@ public class UI_Goal : UI_Popup
 {
     private RewardedAd rewardedAd;
 
-    // Å×½ºÆ® ±¤°í = "ca-app-pub-3940256099942544/5224354917";
-    // Àü¸é ±¤°í = "ca-app-pub-1206779307721674/3264417737";
+    // í…ŒìŠ¤íŠ¸ = "ca-app-pub-3940256099942544/5224354917";
+    // Admob = "ca-app-pub-1206779307721674/3264417737";
     string adUnitId = "ca-app-pub-3940256099942544/5224354917";
 
     enum Buttons
@@ -67,8 +67,12 @@ public class UI_Goal : UI_Popup
 
     public void OnRewardButtonClicked(PointerEventData data)
     {
-        this.GetComponent<Canvas>().sortingOrder = -1;
-        UserChoseToWatchAd();
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        if (GetButton((int)Buttons.AdRewardButton).interactable)
+        {
+            this.GetComponent<Canvas>().sortingOrder = -1;
+            UserChoseToWatchAd();
+        }
     }
 
     public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
@@ -77,17 +81,18 @@ public class UI_Goal : UI_Popup
             "HandleRewardedAdFailedToLoad event received");
     }
 
-    // ±¤°í°¡ Á¾·áµÇ¾úÀ» ¶§
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         ReloadAd();
     }
 
-    // ±¤°í¸¦ ³¡±îÁö ½ÃÃ»ÇÏ¿´À» ¶§
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½
     public void HandleUserEarnedReward(object sender, Reward args)
     {
         Managers.Data.UserData.user.ruby += 15;
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.UI.ShowPopupUI<UI_ConfirmAdReward>();
     }
 
     private void UserChoseToWatchAd()
@@ -112,5 +117,10 @@ public class UI_Goal : UI_Popup
         AdRequest request = new AdRequest.Builder().Build();
         rewardedAd.LoadAd(request);
         return rewardedAd;
+    }
+
+    public void disableAdReward()
+    {
+        GetButton((int)Buttons.AdRewardButton).interactable = false;
     }
 }

@@ -85,23 +85,33 @@ public class Define
 
     public enum NpcId
     {
-        Self, // ÁÖÀÎ°ø
-        Npc1, // ¸ğ¹ü»ı(¹é¼³)
-        Npc2, // ¼Ò²ßÄ£±¸(Â÷°¡¿î)
-        Npc3, // ÈÄ¹è(°íÀ¯¹Ì)
-        Npc4, // ÇĞ»ıÈ¸Àå(¼­»õÇÑ)
-        Npc5, // Ã¼À°ºÎÀå(Ã¤´ë¼º)
-        Npc6, // ¼±µµºÎÀå(¼±µµÁø)
-        Nerd, // ¿ÀÅ¸Äí
-        Npc7, // ³²ÇĞ»ı
-        Npc8, // ¿©ÇĞ»ı
-        Teacher, // ÇĞÁÖ
+        Self, // Player
+        Npc1, // ë°±ì„¤
+        Npc2, // ì°¨ê°€ìœ¤
+        Npc3, // ê³ ìœ ë¯¸
+        Npc4, // ì„œìƒˆí•œ
+        Npc5, // ì±„ëŒ€ì„±
+        Npc6, // ì„ ë„ì§„
+        Nerd, // ì˜¤íƒí›„
+        Npc7, // ë‚¨í•™ìƒ
+        Npc8, // ì—¬í•™ìƒ
+        Teacher, // ì„ ìƒë‹˜
     }
 
-    public static string[] maleStat = { "¿Ü¸ğ", "ÁıÁß·Â", "Áø½Ç" };
-    public static string[] femaleStat = { "¼¶¼¼ÇÔ", "¾Ö±³", "Ã¼·Â" };
-    public static string[] maleTarget = { "¹é¼³", "Â÷°¡À±", "°íÀ¯¹Ì" };
-    public static string[] femaleTarget = { "¼­»õÇÑ", "Ã¤´ë¼º", "¼±µµÁø" };
+    public enum ShopItemId
+    {
+        none,
+        loveletter1,
+        loveletter2,
+        amber100,
+        maleCostume,
+        femaleCostume,
+    }
+
+    public static string[] maleStat = { "ì™¸ëª¨", "ì§„ì‹¤", "ì§‘ì¤‘" };
+    public static string[] femaleStat = { "ì„¬ì„¸í•¨", "ì• êµ", "ì²´ë ¥" };
+    public static string[] maleTarget = { "ë°±ì„¤", "ì°¨ê°€ìœ¤", "ê³ ìœ ë¯¸" };
+    public static string[] femaleTarget = { "ì„œìƒˆí•œ", "ì±„ëŒ€ì„±", "ì„ ë„ì§„" };
     public static string[] npcName = { Managers.Data.UserData.user.nickname, 
-        "¹é¼³", "Â÷°¡À±", "°íÀ¯¹Ì", "¼­»õÇÑ", "Ã¤´ë¼º", "¼±µµÁø", "¿ÀÅ¹ÈÄ", "³²ÇĞ»ı", "¿©ÇĞ»ı", "ÇĞÁÖ½Ü" };
+        "ë°±ì„¤", "ì°¨ê°€ìœ¤", "ê³ ìœ ë¯¸", "ì„œìƒˆí•œ", "ì±„ëŒ€ì„±", "ì„ ë„ì§„", "ì˜¤íƒí›„", "ë‚¨í•™ìƒ", "ì—¬í•™ìƒ", "ì„ ìƒë‹˜" };
 }

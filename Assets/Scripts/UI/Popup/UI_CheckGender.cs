@@ -34,12 +34,12 @@ public class UI_CheckGender : UI_Popup
 
         if (Managers.Data.UserData.user.gender == "male")
         {
-            GetText((int)Texts.GenderText).text = "³²ÀÚ";
+            GetText((int)Texts.GenderText).text = "ë‚¨ì";
             GetText((int)Texts.GenderText).color = new Color(0, 0, 1);
         }
         else if (Managers.Data.UserData.user.gender == "female")
         {
-            GetText((int)Texts.GenderText).text = "¿©ÀÚ";
+            GetText((int)Texts.GenderText).text = "ì—¬ì";
             GetText((int)Texts.GenderText).color = new Color(1, 0, 0);
         }
         else
@@ -56,8 +56,7 @@ public class UI_CheckGender : UI_Popup
         }
         else
         {
-            // µ¹ÆÄ±Ç UI
-            Managers.UI.ShowPopupUI<UI_Ticket>();
+            Managers.UI.ShowPopupUI<UI_Difficulty>();
         }
     }
 

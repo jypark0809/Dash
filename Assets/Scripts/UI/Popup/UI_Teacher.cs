@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class UI_Teacher : UI_Popup
 {
     float _timer;
-    public float _reduce; // nÃÊ ¸¶´Ù °ÔÀÌÁö °¨¼Ò
+    public float _reduce; // nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public int _maxPos;
     public int _minPos;
-    int _curPos; // ÇöÀç Position
+    int _curPos; // ï¿½ï¿½ï¿½ï¿½ Position
     PlayerController _playerController;
 
     public Sprite[] _sprites;

@@ -44,7 +44,7 @@ public class UI_Nickname : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Data.UserData.user.gender = "unselected";
-        Managers.Data.UserData.user.nickname = "ÁÖÀÎ°ø";
+        Managers.Data.UserData.user.nickname = "ï¿½ï¿½ï¿½Î°ï¿½";
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         ClosePopupUI();
     }

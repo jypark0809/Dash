@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class UI_Swipe : MonoBehaviour
 {
     [SerializeField]
-    private Scrollbar       scrollBar;                      // ScrollbarÀÇ À§Ä¡¸¦ ¹ÙÅÁÀ¸·Î ÇöÀç ÆäÀÌÁö °Ë»ç
+    private Scrollbar       scrollBar;                      // Scrollbarï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
     [SerializeField]
     private Transform[]     circleContents;
     [SerializeField]
-    private float           swipeTime;                      // ÆäÀÌÁö°¡ Swipe µÇ´Â ½Ã°£
+    private float           swipeTime;                      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Swipe ï¿½Ç´ï¿½ ï¿½Ã°ï¿½
     [SerializeField]
-    private float           swipeDistance = 50.0f;          // ÆäÀÌÁö°¡ SwipeµÇ±â À§ÇØ ¿òÁ÷¿©¾ß ÇÏ´Â ÃÖ¼Ò °Å¸®
+    private float           swipeDistance = 50.0f;          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Swipeï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ö¼ï¿½ ï¿½Å¸ï¿½
 
-    private float[]         scrollPageValues;               // °¢ ÆäÀÌÁöÀÇ À§Ä¡ °ª [0.0 ~ 1.0]
-    private float           valueDistance = 0;              // °¢ ÆäÀÌÁö »çÀÌÀÇ °Å¸®
+    private float[]         scrollPageValues;               // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ [0.0 ~ 1.0]
+    private float           valueDistance = 0;              // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½
     private int             currentPage = 0;
     private int             maxPage;
     private float           startTouchX;
@@ -25,19 +25,19 @@ public class UI_Swipe : MonoBehaviour
 
     void Awake()
     {
-        // ½ºÅ©·Ñ µÇ´Â ÆäÀÌÁöÀÇ °¢ value °ªÀ» ÀúÀåÇÏ´Â ¹è¿­ ¸Þ¸ð¸® ÇÒ´ç
+        // ï¿½ï¿½Å©ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ value ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½è¿­ ï¿½Þ¸ï¿½ ï¿½Ò´ï¿½
         scrollPageValues = new float[transform.childCount];
 
-        // ½ºÅ©·Ñ µÇ´Â ÆäÀÌÁö »çÀÌÀÇ °Å¸®
+        // ï¿½ï¿½Å©ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½
         valueDistance = 1f / (scrollPageValues.Length -1f);
 
-        // ½ºÅ©·ÑµÇ´Â ÆäÀÌÁöÀÇ °¢ value À§Ä¡ ¼³Á¤
+        // ï¿½ï¿½Å©ï¿½ÑµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ value ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < scrollPageValues.Length; i++)
         {
             scrollPageValues[i] = valueDistance * i;
         }
         
-        // ÃÖ´ë ÆäÀÌÁö ¼ö
+        // ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         maxPage = transform.childCount;
     }
 
@@ -60,7 +60,7 @@ public class UI_Swipe : MonoBehaviour
 
     void UpdateInput()
     {
-        // ÇöÀç Swipe¸¦ ÁøÇàÁßÀÌ¸é ÅÍÄ¡ ºÒ°¡
+        // ï¿½ï¿½ï¿½ï¿½ Swipeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½Ä¡ ï¿½Ò°ï¿½
         if (isSwipeMode == true)
             return;
 
@@ -98,17 +98,17 @@ public class UI_Swipe : MonoBehaviour
 
     void UpdateSwipe()
     {
-        // ³Ê¹« ÀÛÀº °Å¸®¸¦ ¿òÁ÷¿´À» ¶§´Â Swipe X
+        // ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Swipe X
         if (Mathf.Abs(startTouchX - endTouchX) < swipeDistance)
         {
             StartCoroutine(OnSwipeOneStep(currentPage));
             return;
         }
 
-        // Swipe ¹æÇâ
+        // Swipe ï¿½ï¿½ï¿½ï¿½
         bool isLeft = startTouchX < endTouchX ? true : false;
 
-        // ÀÌµ¿ ¹æÇâÀÌ ¿ÞÂÊÀÏ ¶§
+        // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         if (isLeft)
         {
             if (currentPage == 0)
@@ -125,7 +125,7 @@ public class UI_Swipe : MonoBehaviour
         StartCoroutine(OnSwipeOneStep(currentPage));
     }
 
-    // ÆäÀÌÁö¸¦ ¿·À¸·Î ³Ñ±â´Â Swipe È¿°ú Àç»ý
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½ï¿½ Swipe È¿ï¿½ï¿½ ï¿½ï¿½ï¿½
     private IEnumerator OnSwipeOneStep(int index)
     {
         float start = scrollBar.value;

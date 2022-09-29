@@ -101,7 +101,7 @@ public class UI_LobbyScene : UI_Scene
         }
         else
         {
-            // ½ºÅÝÀÌ 9 ÀÌ»óÀÌ¸é ¹Ù·Î EndingScene
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9 ï¿½Ì»ï¿½ï¿½Ì¸ï¿½ ï¿½Ù·ï¿½ EndingScene
             Managers.Data.PrintLog();
             Managers.Scene.LoadScene(Define.Scene.Ending);
             Managers.Sound.Play("Button", Define.Sound.Effect);

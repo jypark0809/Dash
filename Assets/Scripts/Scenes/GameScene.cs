@@ -24,29 +24,39 @@ public class GameScene : BaseScene
         // Load UI
         gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
 
-        // Load Player
-        // TODO : ´Ù¸¥ ÇÔ¼ö·Î »©±â
+        // Load Player Prefabs
         if (Managers.Data.UserData.user.gender == "male")
-            player = Managers.Game.Spawn(Define.WorldObject.Player, "male");
+        {
+            switch (PlayerPrefs.GetInt("maleCostume"))
+            {
+                case 0:
+                    player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Male");
+                    break;
+                case 1:
+                    player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Male_Custume1");
+                    break;
+            }
+        }
         else if (Managers.Data.UserData.user.gender == "female")
-            player = Managers.Game.Spawn(Define.WorldObject.Player, "female");
+        {
+            switch (PlayerPrefs.GetInt("femaleCostume"))
+            {
+                case 0:
+                    player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Female");
+                    break;
+                case 1:
+                    player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Female_Custume1");
+                    break;
+            }
+        }
         else
-            player = Managers.Game.Spawn(Define.WorldObject.Player, "male");
-        player.name = "Player";
+            player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Male"); // Tutorial
 
+        player.name = "Player";
         pc = player.GetOrAddComponent<PlayerController>();
 
         // Load Stage
-        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
-        {
-            // Æ©Åä¸®¾ó
-            stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_0");
-        }
-        else
-        {
-            stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_{Managers.Data.UserData.user.stage}");
-        }
-        
+        LoadStage();
 
         // Load Finish Object
         GameObject finishObj = GameObject.Find("Finish");
@@ -111,7 +121,7 @@ public class GameScene : BaseScene
         }
         else
         {
-            // Background ¹× Stage Àå¾Ö¹° ½ºÅ©·Ñ¸µ Á¤Áö
+            // Background ï¿½ï¿½ Stage ï¿½ï¿½Ö¹ï¿½ ï¿½ï¿½Å©ï¿½Ñ¸ï¿½ ï¿½ï¿½ï¿½ï¿½
             StopScrolling();
         }
     }
@@ -133,5 +143,28 @@ public class GameScene : BaseScene
         mc1._speed = 4;
         mc2._speed = 3;
         pc.stageController._speed = 4;
+    }
+
+    void LoadStage()
+    {
+        if (PlayerPrefs.GetInt("isAccessFirst") == 0)
+        {
+            stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_0");
+        }
+        else
+        {
+            switch(PlayerPrefs.GetInt("difficulty"))
+            {
+                case 0:
+                    stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Easy_Stage_{Managers.Data.UserData.user.stage}");
+                    break;
+                case 1:
+                    stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Normal_Stage_{Managers.Data.UserData.user.stage}");
+                    break;
+                case 2:
+                    stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Hard_Stage_{Managers.Data.UserData.user.stage}");
+                    break;
+            }
+        }
     }
 }

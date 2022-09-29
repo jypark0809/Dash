@@ -167,7 +167,7 @@ public class UI_SelectNpc : UI_Popup
 
         switch (_npcId)
         {
-            // ¸ğ¹ü»ı : sta1 > sta2 > stat3
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ : sta1 > sta2 > stat3
             case 1:
                 if (_stat1 >= _stat2 && _stat1 > _stat3)
                 {
@@ -190,7 +190,7 @@ public class UI_SelectNpc : UI_Popup
                 }
                 break;
 
-            //  ¼Ò²ßÄ£±¸ : stat3 > stat1 > stat2
+            //  ï¿½Ò²ï¿½Ä£ï¿½ï¿½ : stat3 > stat1 > stat2
             case 2:
                 if (_stat3 >= _stat1 && _stat3 > _stat2)
                 {
@@ -212,7 +212,7 @@ public class UI_SelectNpc : UI_Popup
                 }
                 break;
 
-            //  ÈÄ¹è : stat2 > stat3 > stat1
+            //  ï¿½Ä¹ï¿½ : stat2 > stat3 > stat1
             case 3:
                 if (_stat2 >= _stat3 && _stat2 > _stat1)
                 {
@@ -234,7 +234,7 @@ public class UI_SelectNpc : UI_Popup
                 }
                 break;
 
-            // ÇĞ»ıÈ¸Àå : stat1 > stat2 > stat3
+            // ï¿½Ğ»ï¿½È¸ï¿½ï¿½ : stat1 > stat2 > stat3
             case 4:
                 if (_stat1 >= _stat2 && _stat1 > _stat3)
                 {
@@ -256,7 +256,7 @@ public class UI_SelectNpc : UI_Popup
                 }
                 break;
 
-            // Ã¼À°ºÎÀå : stat3 > stat1 > stat2
+            // Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : stat3 > stat1 > stat2
             case 5:
                 if (_stat3 >= _stat1 && _stat3 > _stat2)
                 {
@@ -279,7 +279,7 @@ public class UI_SelectNpc : UI_Popup
 
                 break;
 
-            // ¼±µµºÎÀå : stat2 > stat3 > stat1
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : stat2 > stat3 > stat1
             case 6:
                 if (_stat2 >= _stat3 && _stat2 > _stat1)
                 {

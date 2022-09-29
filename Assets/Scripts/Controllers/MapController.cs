@@ -33,10 +33,10 @@ public class MapController : BaseController
         // end [0] [] [] [] [] [] [] [7] start
         if (spritesPosition[endIndex].position.x < -30.4)
         {
-            // Sprite Àç»ç¿ë
+            // Sprite ï¿½ï¿½ï¿½ï¿½
             spritesPosition[endIndex].localPosition = spritesPosition[endIndex].localPosition + respawnPos;
 
-            // Ä¿¼­ ÀÎµ¦½º °»½Å
+            // í•œê¸€ë¡œ
             startIndex = endIndex;
             endIndex = (endIndex + 1) % count;
         }

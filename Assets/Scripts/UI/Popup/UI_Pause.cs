@@ -29,7 +29,7 @@ public class UI_Pause : UI_Popup
 
     public void KeepGoingButtonClicked(PointerEventData data)
     {
-        // °ÔÀÓÀ¸·Î µ¹¾Æ°¡±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.Sound.RePlay();
         ClosePopupUI();
@@ -38,7 +38,7 @@ public class UI_Pause : UI_Popup
 
     public void StopButtonClicked(PointerEventData data)
     {
-        // °ÔÀÓ ±×¸¸ÇÏ±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½Ï±ï¿½
         Time.timeScale = 1;
         Managers.Scene.LoadScene(Define.Scene.Lobby);
         Managers.Sound.Play("Button", Define.Sound.Effect);

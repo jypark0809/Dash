@@ -14,11 +14,6 @@ public class Finish : MonoBehaviour
         _stageDistance = _startPos - _playerPos;
     }
 
-    void Update()
-    {
-        
-    }
-
     public float CalculateDistance()
     {
         float remainDistance = transform.position.x - _playerPos;

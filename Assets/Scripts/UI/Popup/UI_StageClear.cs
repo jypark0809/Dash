@@ -115,7 +115,7 @@ public class UI_StageClear : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
-        // 9 ½ºÅ×ÀÌÁö Å¬¸®¾î ÇßÀ» ¶§
+        // 9 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         if (Managers.Data.UserData.user.stage == 9 && StatSum() == 8 && _isTicket == false)
         {
             switch (PlayerPrefs.GetInt("prevStat"))
@@ -132,13 +132,13 @@ public class UI_StageClear : UI_Popup
             }
 
             Managers.Data.UserData.user.extraStat--;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // ÃÖÁ¾ ½ºÅÝ ÀúÀå
+            Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Managers.Sound.Play("Button", Define.Sound.Effect);
             ClosePopupUI();
             Time.timeScale = 1;
             Managers.Scene.LoadScene(Define.Scene.Ending);
         }
-        // 1~8 ½ºÅ×ÀÌÁö Å¬¸®¾î ÇßÀ» ¶§
+        // 1~8 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         else if (Managers.Data.UserData.user.stage < 9)
         {
             switch (PlayerPrefs.GetInt("prevStat"))
@@ -165,7 +165,7 @@ public class UI_StageClear : UI_Popup
                 Managers.UI.ShowPopupUI<UI_NextStage>();
             }
         }
-        // µ¹ÆÄ±Ç ½èÀ» ¶§
+        // ï¿½ï¿½ï¿½Ä±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         else if (Managers.Data.UserData.user.stage == 9 && _isTicket)
         {
             switch (PlayerPrefs.GetInt("prevStat"))

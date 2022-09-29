@@ -12,15 +12,15 @@ using Unity.Services.Core.Environments;
 
 public class UI_Shop : UI_Popup
 {
-    public string environment = "production";
+    const string environment = "production";
     public IAPButton _ruby100Btn, _ruby300Btn;
     private RewardedAd rewardedAd;
 
-    // Å×½ºÆ® ±¤°í = "ca-app-pub-3940256099942544/5224354917";
-    // Àü¸é ±¤°í = "ca-app-pub-1206779307721674/3264417737";
-    string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    // í…ŒìŠ¤íŠ¸ : "ca-app-pub-3940256099942544/5224354917";
+    // ì•± = "ca-app-pub-1206779307721674/3264417737";
+    const string adUnitId = "ca-app-pub-3940256099942544/5224354917";
 
-    public Toggle _toggleLoveLetter, _toggleRuby;
+    public Toggle _toggleLoveLetter, _toggleRuby, _toggleCostume;
 
     enum Buttons
     {
@@ -31,8 +31,8 @@ public class UI_Shop : UI_Popup
         Item_Ruby2,
         Item_Ruby3,
         Item_Ruby4,
-        AmberButton,
-        RubyButton,
+        Item_Male_Cutume,
+        Item_Female_Cutume,
     }
 
     enum Texts
@@ -45,21 +45,20 @@ public class UI_Shop : UI_Popup
     {
         LoveLetterPanel,
         RubyPanel,
-        AmberBlocker,
-        RubyBlocker,
+        CostumePanel,
     }
 
     void Awake()
     {
         _toggleLoveLetter.onValueChanged.AddListener(OnLoveLetterToggleValueChangedEvent);
         _toggleRuby.onValueChanged.AddListener(OnRubyToggleValueChangedEvent);
+        _toggleCostume.onValueChanged.AddListener(OnCostumeToggleValueChangedEvent);
     }
 
     async void Start()
     {
         Init();
         #region IAP
-        // ÀÎ¾Û °áÁ¦
         try
         {
             var options = new InitializationOptions()
@@ -129,10 +128,8 @@ public class UI_Shop : UI_Popup
         GetButton((int)Buttons.Item_Ruby2).gameObject.BindEvent(CloseRubyItem2Clicked);
         GetButton((int)Buttons.Item_Ruby3).gameObject.BindEvent(CloseRubyItem3Clicked);
         GetButton((int)Buttons.Item_Ruby4).gameObject.BindEvent(CloseRubyItem4Clicked);
-        GetButton((int)Buttons.AmberButton).gameObject.BindEvent(AmberPopupClicked);
-        GetButton((int)Buttons.RubyButton).gameObject.BindEvent(RubyPopupClicked);
-        GetImage((int)Images.AmberBlocker).gameObject.SetActive(false);
-        GetImage((int)Images.RubyBlocker).gameObject.SetActive(false);
+        GetButton((int)Buttons.Item_Male_Cutume).gameObject.BindEvent(OnMaleCostumeButtonClicked);
+        GetButton((int)Buttons.Item_Female_Cutume).gameObject.BindEvent(OnFemaleCostumeButtonClicked);
 
         if (PlayerPrefs.GetInt("extrahealth") == 1)
             GetButton((int)Buttons.Item_Letter2).interactable = false;
@@ -150,18 +147,6 @@ public class UI_Shop : UI_Popup
         ClosePopupUI();
     }
 
-    public void AmberPopupClicked(PointerEventData data)
-    {
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        GetImage((int)Images.AmberBlocker).gameObject.SetActive(false);
-    }
-
-    public void RubyPopupClicked(PointerEventData data)
-    {
-        Managers.Sound.Play("Button", Define.Sound.Effect);
-        GetImage((int)Images.RubyBlocker).gameObject.SetActive(false);
-    }
-
     #region Tab Toggle
     public void OnLoveLetterToggleValueChangedEvent(bool boolean)
     {
@@ -174,6 +159,12 @@ public class UI_Shop : UI_Popup
         Managers.Sound.Play("Button", Define.Sound.Effect);
         GetImage((int)Images.RubyPanel).gameObject.SetActive(boolean);
     }
+
+    public void OnCostumeToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        GetImage((int)Images.CostumePanel).gameObject.SetActive(boolean);
+    }
     #endregion
 
     #region LoveLetter
@@ -183,18 +174,9 @@ public class UI_Shop : UI_Popup
         Managers.Sound.Play("Button", Define.Sound.Effect);
         if (GetButton((int)Buttons.Item_Letter1).interactable == true)
         {
-            if (Managers.Data.UserData.user.amber >= 80)
-            {
-                Managers.Sound.Play("Button", Define.Sound.Effect);
-                Managers.Data.UserData.user.amber -= 80;                        // Decrease Amber
-                GetButton((int)Buttons.Item_Letter2).interactable = false;      // Lock another Button
-                PlayerPrefs.SetInt("extrahealth", 1);                           // Set Character Health
-                UpdateData();
-            }
-            else
-            {
-                GetImage((int)Images.AmberBlocker).gameObject.SetActive(true);
-            }
+            Managers.Sound.Play("Button", Define.Sound.Effect);
+            PlayerPrefs.SetInt("itemId", 1);
+            Managers.UI.ShowPopupUI<UI_ConfirmPurchase>();
         }
         else
         {
@@ -203,23 +185,15 @@ public class UI_Shop : UI_Popup
         
     }
 
+    // +2 letter
     public void LetterItem2Clicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
         if (GetButton((int)Buttons.Item_Letter2).interactable == true)
         {
-            if (Managers.Data.UserData.user.ruby >= 90)
-            {
-                GetButton((int)Buttons.Item_Letter1).interactable = false;
-                Managers.Sound.Play("Button", Define.Sound.Effect);
-                Managers.Data.UserData.user.ruby -= 90;
-                PlayerPrefs.SetInt("extrahealth", 2);
-                UpdateData();
-            }
-            else
-            {
-                GetImage((int)Images.RubyBlocker).gameObject.SetActive(true);
-            }
+            Managers.Sound.Play("Button", Define.Sound.Effect);
+            PlayerPrefs.SetInt("itemId", 2);
+            Managers.UI.ShowPopupUI<UI_ConfirmPurchase>();
         }
         else
         {
@@ -231,6 +205,7 @@ public class UI_Shop : UI_Popup
 
     #region Ruby Panel
 
+    // Ad
     public void CloseRubyItem1Clicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
@@ -238,33 +213,42 @@ public class UI_Shop : UI_Popup
         UserChoseToWatchAd();
     }
 
+    // +100 Amber
     public void CloseRubyItem2Clicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-
-        if(Managers.Data.UserData.user.ruby >= 50)
-        {
-            Managers.Data.UserData.user.ruby -= 50;
-            Managers.Data.UserData.user.amber += 100;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
-            UpdateData();
-        }
-        else
-        {
-            GetImage((int)Images.AmberBlocker).gameObject.SetActive(true);
-        }
+        PlayerPrefs.SetInt("itemId", 3);
+        Managers.UI.ShowPopupUI<UI_ConfirmPurchase>();
     }
 
+    // In App Purchase
     public void CloseRubyItem3Clicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        // ÀÎ¾Û °áÁ¦
     }
 
+    // In App Purchase
     public void CloseRubyItem4Clicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        // ÀÎ¾Û °áÁ¦
+    }
+
+    #endregion
+
+    #region Costume
+
+    public void OnMaleCostumeButtonClicked(PointerEventData data)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        PlayerPrefs.SetInt("itemId", 4);
+        Managers.UI.ShowPopupUI<UI_ConfirmPurchase>();
+    }
+
+    public void OnFemaleCostumeButtonClicked(PointerEventData data)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+        PlayerPrefs.SetInt("itemId", 5);
+        Managers.UI.ShowPopupUI<UI_ConfirmPurchase>();
     }
 
     #endregion
@@ -277,13 +261,13 @@ public class UI_Shop : UI_Popup
             "HandleRewardedAdFailedToLoad event received");
     }
 
-    // ±¤°í°¡ Á¾·áµÇ¾úÀ» ¶§
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         ReloadAd();
     }
 
-    // ±¤°í¸¦ ³¡±îÁö ½ÃÃ»ÇÏ¿´À» ¶§
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½
     public void HandleUserEarnedReward(object sender, Reward args)
     {
         Managers.Data.UserData.user.ruby += 30;
@@ -317,10 +301,23 @@ public class UI_Shop : UI_Popup
 
     #endregion
 
-    void UpdateData()
+    public void PurchaseLetterItem1()
+    {
+        GetButton((int)Buttons.Item_Letter2).interactable = false;
+        PlayerPrefs.SetInt("extrahealth", 1);
+    }
+
+    public void PurchaseLetterItem2()
+    {
+        GetButton((int)Buttons.Item_Letter1).interactable = false;
+        PlayerPrefs.SetInt("extrahealth", 2);
+    }
+
+    public void UpdateData()
     {
         GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
         GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
+        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
     }
 
     private void OnDestroy()

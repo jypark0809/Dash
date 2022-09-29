@@ -76,8 +76,8 @@ public class UI_Hint : UI_Popup
                 break;
         }
         _npcName = new string[]{
-            Managers.Data.UserData.user.nickname, 
-        "¹é¼³", "Â÷°¡À±", "°íÀ¯¹Ì", "¼­»õÇÑ", "Ã¤´ë¼º", "¼±µµÁø", "¿ÀÅ¹ÈÄ", "³²ÇĞ»ı", "¿©ÇĞ»ı", "ÇĞÁÖ½Ü" };
+            Managers.Data.UserData.user.nickname,
+        "ë°±ì„¤", "ì°¨ê°€ìœ¤", "ê³ ìœ ë¯¸", "ì„œìƒˆí•œ", "ì±„ëŒ€ì„±", "ì„ ë„ì§„", "ì˜¤íƒí›„", "ë‚¨í•™ìƒ", "ì—¬í•™ìƒ", "ì„ ìƒë‹˜" };
 
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
@@ -85,8 +85,8 @@ public class UI_Hint : UI_Popup
         GetImage((int)Images.Panel).gameObject.BindEvent(PanelImageClicked);
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
 
-        GetText((int)Texts.NameText).text = _npcName[_hint.scripts[_scriptIndex].npcId]; // npc ÀÌ¸§
-        SetLine(_hint.scripts[_scriptIndex]); // ´ë»ç, npc ÀÌ¹ÌÁö
+        GetText((int)Texts.NameText).text = _npcName[_hint.scripts[_scriptIndex].npcId];
+        SetLine(_hint.scripts[_scriptIndex]);
 
         Managers.Game._player.GetComponent<Animator>().speed = 0;
         _gameScene.StopScrolling();
@@ -101,12 +101,11 @@ public class UI_Hint : UI_Popup
 
         if (_scriptIndex < _hint.scripts.Length)
         {
-            GetText((int)Texts.NameText).text = _npcName[_hint.scripts[_scriptIndex].npcId]; // npc ÀÌ¸§
+            GetText((int)Texts.NameText).text = _npcName[_hint.scripts[_scriptIndex].npcId];
             SetLine(_hint.scripts[_scriptIndex]);
         }
         else
         {
-            // ÈùÆ® ½ºÅ©¸³Æ® ³¡³µÀ» ¶§
             Managers.Game._player.GetComponent<Animator>().speed = 1;
             _gameScene.StartScrolling();
             ClosePopupUI();
@@ -115,11 +114,9 @@ public class UI_Hint : UI_Popup
 
     void SetLine(Script script)
     {
-        // npc ÀÌ¹ÌÁö
         GetImage((int)Images.NpcImage).sprite = _npcSprites[script.imageId];
         GetImage((int)Images.NpcImage).SetNativeSize();
 
-        // ½ºÅ©¸³Æ®
         if (_isType)
         {
             StopCoroutine(Typing());
@@ -128,7 +125,6 @@ public class UI_Hint : UI_Popup
         }
         else
         {
-            // script string º¸°£
             _targetLine = string.Format(script.line, Managers.Data.UserData.user.nickname);
             StartCoroutine(StartTyping());
         }

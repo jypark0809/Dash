@@ -9,12 +9,12 @@ public class UI_Scripts : UI_Popup
     public Sprite[] _npcSprites;
     public Sprite[] _cutSceneSprites;
     public Sprite[] _endingTextImage;
-    string[] _endingName = { null, "¾îÂ·µç ¹é¸¶Åº ¿ÕÀÚ", "¹é¸¶Åº ¿ÕÀÚ°¡ µÇ°í ½Í¾ú´ø",
-                                "Áø½ÉÀÌ ´ã±ä ¸íÂûÀÇ ÀÇ¹Ì", "Àı±³ ¿£µù",
-                                "Ã»·Â ¼Õ½Ç ¿£µù", "ÁıÁßÀÌ ºÎÁ·ÇÑ Å¿",
-                                "¾îÂ·µç °í¹é ¼º°ø", "Á¶±İ Æ¯ÀÌÇÑ ÇØ¹Ù¶ó±â",
-                                "±¹°¡´ëÇ¥ °ø½Ä 1È£ Ä¿ÇÃ", "ºÒÇùÈ­À½ °ø½Ä 1È£ Ä¿ÇÃ",
-                                "ÀÎÇüÅ» ¾Ë¹Ù", "±³³»ºÀ»ç" };
+    string[] _endingName = { null, "ì–´ì¨Œë“  ë°±ë§ˆíƒ„ ì™•ì", "ì´ë£¨ì§€ ëª»í•œ ë°±ë§ˆíƒ„ ì™•ì",
+                                "ì§„ì‹¬ì´ ë‹´ê¸´ ëª…ì°°ì˜ ì˜ë¯¸", "ì ˆêµ ì—”ë”©",
+                                "ì²­ë ¥ ì†ì‹¤", "ì§‘ì¤‘ì´ ë¶€ì¡±í•œ íƒ“",
+                                "ì–´ì¨Œë“  ê³ ë°± ì„±ê³µ", "ì¡°ê¸ˆ íŠ¹ì´í•œ í•´ë°”ë¼ê¸°",
+                                "êµ­ê°€ëŒ€í‘œ ê³µì‹ ì»¤í”Œ 1í˜¸", "ë¶ˆí˜‘í™”ìŒ ê³µì‹ ì»¤í”Œ 1í˜¸",
+                                "ì¸í˜•íƒˆ ì•Œë°”", "êµë‚´ ë´‰ì‚¬ ì—”ë”©" };
 
     int _scriptIndex = 0;
     int _cutSceneIndex;
@@ -72,9 +72,9 @@ public class UI_Scripts : UI_Popup
         GetImage((int)Images.CursurImage).gameObject.SetActive(false);
         GetImage((int)Images.Blocker).gameObject.SetActive(false);
 
-        GetImage((int)Images.CutScene).sprite = _cutSceneSprites[_ending.endingId]; // ÄÆ¾À
-        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_scriptIndex].npcId]; // npc ÀÌ¸§
-        SetLine(_ending.scripts[_scriptIndex]); // ´ë»ç, npc ÀÌ¹ÌÁö
+        GetImage((int)Images.CutScene).sprite = _cutSceneSprites[_ending.endingId];
+        GetText((int)Texts.NameText).text = Define.npcName[_ending.scripts[_scriptIndex].npcId];
+        SetLine(_ending.scripts[_scriptIndex]);
     }
 
     public void OkayButtonClicked(PointerEventData data)
@@ -114,15 +114,12 @@ public class UI_Scripts : UI_Popup
 
     void SetLine(Script script)
     {
-        // ÄÆ¾À
         if (_scriptIndex == _cutSceneIndex)
             GetImage((int)Images.CutScene).GetComponent<Animator>().Play("CutSceneFadeIn");
 
-        // npc ÀÌ¹ÌÁö
         GetImage((int)Images.NpcImage).sprite = _npcSprites[script.imageId];
         GetImage((int)Images.NpcImage).SetNativeSize();
 
-        // ½ºÅ©¸³Æ®
         if (_isType)
         {
             StopCoroutine(Typing());
@@ -131,7 +128,6 @@ public class UI_Scripts : UI_Popup
         }
         else
         {
-            // script string º¸°£
             _targetLine = string.Format(script.line, Managers.Data.UserData.user.nickname);
             StartCoroutine(StartTyping());
         }

@@ -8,6 +8,8 @@ public class UI_Collection : UI_Popup
 {
     int _curPage = 1;
     public Toggle _toggleMale, _toggleFemale;
+    public Toggle _toggleCostume, _toggleEnding;
+    public Toggle _toggleMaleCostume1, _toggleFemaleCostume1;
     public Sprite[] _Textsprites;
 
     enum Buttons
@@ -42,6 +44,8 @@ public class UI_Collection : UI_Popup
 
     enum GameObjects
     {
+        CostumePanel,
+        CollectionPanel,
         MaleHappyEnding,
         MaleBadEnding,
         FemaleHappyEnding,
@@ -58,12 +62,18 @@ public class UI_Collection : UI_Popup
         LockGroup10,
         LockGroup11,
         LockGroup12,
+        MaleBlockPanel,
+        FemaleBlockPanel
     }
 
     void Awake()
     {
         _toggleMale.onValueChanged.AddListener(OnMaleToggleValueChangedEvent);
         _toggleFemale.onValueChanged.AddListener(OnFemaleToggleValueChangedEvent);
+        _toggleCostume.onValueChanged.AddListener(OnCostumeToggleValueChangedEvent);
+        _toggleEnding.onValueChanged.AddListener(OnEndingToggleValueChangedEvent);
+        _toggleMaleCostume1.onValueChanged.AddListener(OnMaleCostume1ToggleValueChangedEvent);
+        _toggleFemaleCostume1.onValueChanged.AddListener(OnFemaleCostume1ToggleValueChangedEvent);
     }
 
     void Start()
@@ -84,9 +94,10 @@ public class UI_Collection : UI_Popup
         GetObject((int)GameObjects.FemaleHappyEnding).SetActive(false);
         GetObject((int)GameObjects.FemaleBadEnding).SetActive(false);
 
-        BindUserEndingData();
+        BindUserEndingData();       // ì–´ë–¤ ì—”ë”©ì„ ë´¤ëŠ”ì§€
+        BindUserCostumeData();      // ìƒì ì—ì„œ ì½”ìŠ¤íŠ¬ì„ ìƒ€ëŠ”ì§€
+        InitCostumeItemToggle();    // ë¬´ìŠ¨ ì½”ìŠ¤íŠ¬ì„ ì¥ì°©í•˜ê³  ìˆëŠ”ì§€
 
-        // ¿£µù ¹öÆ° ÃÊ±âÈ­
         GetButton((int)Buttons.EndingButton1).gameObject.BindEvent(EndingButton1Clicked);
         GetButton((int)Buttons.EndingButton2).gameObject.BindEvent(EndingButton2Clicked);
         GetButton((int)Buttons.EndingButton3).gameObject.BindEvent(EndingButton3Clicked);
@@ -100,13 +111,27 @@ public class UI_Collection : UI_Popup
         GetButton((int)Buttons.EndingButton11).gameObject.BindEvent(EndingButton11Clicked);
         GetButton((int)Buttons.EndingButton12).gameObject.BindEvent(EndingButton12Clicked);
 
-        // È­»ìÇ¥ ¹öÆ° ÃÊ±âÈ­
         GetButton((int)Buttons.CloseButton).gameObject.BindEvent(CloseButtonClicked);
         GetButton((int)Buttons.RightButton).gameObject.BindEvent(RightButtonClicked);
         GetButton((int)Buttons.LeftButton).gameObject.BindEvent(LeftButtonClicked);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
     }
 
+    public void OnCostumeToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+
+        GetObject((int)GameObjects.CostumePanel).gameObject.SetActive(boolean);
+    }
+
+    public void OnEndingToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+
+        GetObject((int)GameObjects.CollectionPanel).gameObject.SetActive(boolean);
+    }
+
+    #region Collection Gender Toggle
     // Collection Male Toggle
     public void OnMaleToggleValueChangedEvent(bool boolean)
     {
@@ -115,11 +140,10 @@ public class UI_Collection : UI_Popup
         GetObject((int)GameObjects.MaleHappyEnding).gameObject.SetActive(boolean);
         GetObject((int)GameObjects.FemaleBadEnding).gameObject.SetActive(false);
 
-        // TextImage º¯°æ
+        // TextImage
         GetImage((int)Images.TextImage).sprite = _Textsprites[0];
         GetImage((int)Images.TextImage).SetNativeSize();
 
-        // ÆäÀÌÁö ¼³Á¤ ¹× È­»ìÇ¥ ¹öÆ° È°¼º
         _curPage = 1;
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
         GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
@@ -134,16 +158,17 @@ public class UI_Collection : UI_Popup
         GetObject((int)GameObjects.FemaleHappyEnding).gameObject.SetActive(boolean);
         GetObject((int)GameObjects.MaleBadEnding).gameObject.SetActive(false);
 
-        // TextImage º¯°æ
+        // TextImage ï¿½ï¿½ï¿½ï¿½
         GetImage((int)Images.TextImage).sprite = _Textsprites[0];
         GetImage((int)Images.TextImage).SetNativeSize();
 
-        // ÆäÀÌÁö ¼³Á¤ ¹× È­»ìÇ¥ ¹öÆ° È°¼º
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È­ï¿½ï¿½Ç¥ ï¿½ï¿½Æ° È°ï¿½ï¿½
         _curPage = 1;
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
         GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
     }
+    #endregion
 
     public void CloseButtonClicked(PointerEventData data)
     {
@@ -151,20 +176,56 @@ public class UI_Collection : UI_Popup
         ClosePopupUI();
     }
 
-    // Collection ¿À¸¥ÂÊ È­»ìÇ¥
+    #region Costume Item Toggle
+
+    public void OnMaleCostume1ToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+
+        if(boolean)
+        {
+            PlayerPrefs.SetInt("maleCostume", 1);
+            Debug.Log(PlayerPrefs.GetInt("maleCostume"));
+        }
+        else
+        {
+            PlayerPrefs.SetInt("maleCostume", 0);
+            Debug.Log(PlayerPrefs.GetInt("maleCostume"));
+        }
+    }
+
+    public void OnFemaleCostume1ToggleValueChangedEvent(bool boolean)
+    {
+        Managers.Sound.Play("Button", Define.Sound.Effect);
+
+        if (boolean)
+        {
+            PlayerPrefs.SetInt("femaleCostume", 1);
+            Debug.Log(PlayerPrefs.GetInt("femaleCostume"));
+        }
+        else
+        {
+            PlayerPrefs.SetInt("femaleCostume", 0);
+            Debug.Log(PlayerPrefs.GetInt("femaleCostume"));
+        }
+    }
+
+    #endregion
+
+    // Collection Arrow Group
     public void RightButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
 
-        // ÆäÀÌÁö ÅØ½ºÆ® º¯°æ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         _curPage++;
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
 
-        // TextImage º¯°æ
+        // TextImage ï¿½ï¿½ï¿½ï¿½
         GetImage((int)Images.TextImage).sprite = _Textsprites[1];
         GetImage((int)Images.TextImage).SetNativeSize();
 
-        // È­»ìÇ¥ ¹öÆ° È°¼º/ºñÈ°¼ºÈ­
+        // È­ï¿½ï¿½Ç¥ ï¿½ï¿½Æ° È°ï¿½ï¿½/ï¿½ï¿½È°ï¿½ï¿½È­
         GetButton((int)Buttons.RightButton).gameObject.SetActive(false);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(true);
 
@@ -181,20 +242,20 @@ public class UI_Collection : UI_Popup
         Managers.Sound.Play("Button", Define.Sound.Effect);
     }
 
-    // Collection ¿ŞÂÊ È­»ìÇ¥
+    // Collection ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½Ç¥
     public void LeftButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
 
-        // ÆäÀÌÁö ÅØ½ºÆ® º¯°æ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         _curPage--;
         GetText((int)Texts.PageText).text = _curPage.ToString() + " / 2";
 
-        // TextImage º¯°æ
+        // TextImage ï¿½ï¿½ï¿½ï¿½
         GetImage((int)Images.TextImage).sprite = _Textsprites[0];
         GetImage((int)Images.TextImage).SetNativeSize();
 
-        // È­»ìÇ¥ ¹öÆ° È°¼º/ºñÈ°¼ºÈ­
+        // È­ï¿½ï¿½Ç¥ ï¿½ï¿½Æ° È°ï¿½ï¿½/ï¿½ï¿½È°ï¿½ï¿½È­
         GetButton((int)Buttons.RightButton).gameObject.SetActive(true);
         GetButton((int)Buttons.LeftButton).gameObject.SetActive(false);
 
@@ -297,5 +358,35 @@ public class UI_Collection : UI_Popup
         GetObject((int)GameObjects.LockGroup10).SetActive(!Managers.Data.UserData.user.ending[9]);
         GetObject((int)GameObjects.LockGroup11).SetActive(!Managers.Data.UserData.user.ending[10]);
         GetObject((int)GameObjects.LockGroup12).SetActive(!Managers.Data.UserData.user.ending[11]);
+    }
+
+    void BindUserCostumeData()
+    {
+        GetObject((int)GameObjects.MaleBlockPanel).SetActive(!Managers.Data.UserData.user.maleCostume[1]);
+        GetObject((int)GameObjects.FemaleBlockPanel).SetActive(!Managers.Data.UserData.user.femaleCostume[1]);
+    }
+
+    void InitCostumeItemToggle()
+    {
+        // Init
+        switch (PlayerPrefs.GetInt("maleCostume"))
+        {
+            case 0:
+                _toggleMaleCostume1.isOn = false;
+                break;
+            case 1:
+                _toggleMaleCostume1.isOn = true;
+                break;
+        }
+
+        switch (PlayerPrefs.GetInt("femaleCostume"))
+        {
+            case 0:
+                _toggleFemaleCostume1.isOn = false;
+                break;
+            case 1:
+                _toggleFemaleCostume1.isOn = true;
+                break;
+        }
     }
 }

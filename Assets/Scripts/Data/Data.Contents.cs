@@ -10,15 +10,18 @@ public class User
 {
     public string id;
     public string nickname;
-    public string gender; // 캐릭터 성별
+    public string gender;
     public int stat1;
     public int stat2;
     public int stat3;
     public int extraStat;
-    public int stage; // 지금까지 클리어한 스테이지
-    public int amber; // 무료 재화
-    public int ruby; // 유료 재화
-    public bool[] ending; // 엔딩
+    public int stage;
+    public int amber;
+    public int ruby;
+    public int curCostume;
+    public bool[] ending;
+    public bool[] maleCostume;
+    public bool[] femaleCostume;
 }
 
 [Serializable]
@@ -42,7 +45,7 @@ public class Hint
 public class Ending
 {
     public int endingId;
-    public int index; // 컷씬 나오는 index
+    public int index;
     public Script[] scripts;
 }
 
@@ -87,3 +90,32 @@ public class HintData : ILoader<int, Hint>
 }
 
 #endregion Script
+
+#region ShopItem
+
+[Serializable]
+public class Item
+{
+    public int itemId;
+    public string itemName;
+    public string type;
+    public int price;
+}
+
+[Serializable]
+public class ItemData : ILoader<int, Item>
+{
+    public List<Item> items = new List<Item>();
+
+    public Dictionary<int, Item> MakeDictionary()
+    {
+        Dictionary<int, Item> dict = new Dictionary<int, Item>();
+
+        foreach (Item item in items)
+            dict.Add(item.itemId, item);
+
+        return dict;
+    }
+}
+
+#endregion

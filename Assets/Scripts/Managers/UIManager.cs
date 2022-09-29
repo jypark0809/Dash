@@ -20,7 +20,6 @@ public class UIManager
         }
     }
 
-    // 나(UI) 이제 켜질껀데 기존 UI와 우선 순위좀 정해줘!
     public void SetCanvas(GameObject go, bool sort = true)
     {
         Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
@@ -36,6 +35,15 @@ public class UIManager
         {
             canvas.sortingOrder = -10;
         }
+    }
+
+    public T Get<T>(string name = null, bool recursive = false) where T : UI_Base
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            name = typeof(T).Name;
+        }
+        return Util.FindChild<T>(Root, name, recursive);
     }
 
     public T MakeSubItem<T>(Transform parent = null, string name = null) where T : UI_Base

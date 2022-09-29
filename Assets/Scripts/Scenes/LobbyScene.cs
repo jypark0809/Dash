@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,9 +16,9 @@ public class LobbyScene : BaseScene
         Managers.Sound.Play("LobbyScene", Define.Sound.Bgm);
 
         // Set Characters
-        _male = Managers.Game.Spawn(Define.WorldObject.Player, "male");
+        _male = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Male");
         _male.transform.Translate(1f, 0, 0);
-        _female = Managers.Game.Spawn(Define.WorldObject.Player, "female");
+        _female = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Female");
         _female.transform.Translate(-0.5f, 0, 0);
 
         // TODO : 테스트

@@ -6,7 +6,7 @@ public class PlayerController : BaseController
     public float _jumpCount = 2;
     public float _jumpPower = 10.0f;
     public bool _isJump = false;
-    public int _health;
+    public int _health = 3;
     int _maxHealth;
     public bool _isFight = false;
     bool _isArrive = false;
@@ -69,7 +69,7 @@ public class PlayerController : BaseController
         {
             if (_state != Define.PlayerState.Die && _state != Define.PlayerState.Clear && _state != Define.PlayerState.Fight)
             {
-                // ¹ßÆÇ Ãæµ¹·ÎÁ÷
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½
                 _state = Define.PlayerState.Run;
                 _jumpCount = 2;
                 _isJump = false;
@@ -81,50 +81,42 @@ public class PlayerController : BaseController
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            // Ç¥ÁöÆÇ
             if (collision.gameObject.name == "Signage")
             {
                 DecreaseHealth(1);
             }
 
-            // ¹ú
             if (collision.gameObject.name == "Bee")
             {
                 DecreaseHealth(2);
             }
 
-            // ¶ÜÆ²
             if (collision.gameObject.name == "VaultingHorse")
             {
                 DecreaseHealth(1);
             }
 
-            // »ç¹°ÇÔ
             if (collision.gameObject.name == "Locker")
             {
                 DecreaseHealth(1);
             }
 
-            // ¾ÐÁ¤
             if (collision.gameObject.name == "Pin")
             {
                 StartCoroutine("SpeedDown");
                 DecreaseHealth(1);
             }
 
-            // Ã¥
             if (collision.gameObject.name == "Books")
             {
                 DecreaseHealth(1);
             }
 
-            // °Å¹Ì
             if (collision.gameObject.name == "Spider")
             {
                 DecreaseHealth(1);
             }
 
-            // ÇÐÁÖ
             if (collision.gameObject.name == "Teacher")
             {
                 gameObject.layer = 8; // PlayerDamaged
@@ -133,7 +125,6 @@ public class PlayerController : BaseController
                 _state = Define.PlayerState.Fight;
                 _teacher = collision.transform.GetComponent<Teacher>();
 
-                // Á¡ÇÁ ÁßÀÏ ¶§ ¹Ù´Ú¿¡ ´ê¾Æµµ _jumpCount°¡ °»½ÅµÇÁö ¾ÊÀ½
                 if (_isJump)
                 {
                     _jumpCount = 2;
@@ -152,8 +143,7 @@ public class PlayerController : BaseController
 
             if (collision.gameObject.name == "Coffee")
             {
-                _shield = true;
-                _shieldObj.SetActive(true);
+                StartCoroutine("ActiveShield");
                 StartCoroutine("SpeedUp");
             }
 
@@ -178,24 +168,17 @@ public class PlayerController : BaseController
         if (PlayerPrefs.GetInt("vibrate") == 1)
             Vibration.Vibrate((long)200);
 
+        _health -= count;
+        if (_health <= 0)
+        {
+            _health = 0;
+            _state = Define.PlayerState.Die;
+        }
+
         gameObject.layer = 8; // PlayerDamaged
         _sprite.color = new Color(1, 1, 1, 0.4f);
-        StartCoroutine("DamageRecovered");
 
-        if (_shield == false)
-        {
-            _health -= count;
-            if (_health <= 0)
-            {
-                _health = 0;
-                _state = Define.PlayerState.Die;
-            }
-        }
-        else
-        {
-            _shieldObj.SetActive(false);
-            _shield = false;
-        }
+        StartCoroutine("DamageRecovered");
     }
 
     void UpdateRun()
@@ -306,6 +289,19 @@ public class PlayerController : BaseController
         Managers.Sound.Clear();
         Managers.Sound.Play("GameOver", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_GameOver>();
+    }
+
+    IEnumerator ActiveShield()
+    {
+        _shield = true;
+        _shieldObj.SetActive(true);
+        gameObject.layer = 8; // PlayerDamaged
+
+        yield return new WaitForSeconds(2f);
+
+        gameObject.layer = 7;
+        _shield = false;
+        _shieldObj.SetActive(false);
     }
 
     void StopGame()

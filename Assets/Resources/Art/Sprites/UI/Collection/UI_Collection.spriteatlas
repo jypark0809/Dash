@@ -65,17 +65,17 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0f0d47cfd5761604c9c1c79bbc3bb4f1, type: 3}
   m_PackedSpriteNamesToIndex:
   - Npc2_Happy
-  - Npc6_Bad
+  - Npc5_Bad
   - Npc4_Happy
   - Npc2_Bad
   - Npc1_Bad
   - Npc3_Bad
   - Npc4_Bad
-  - Npc5_Happy
+  - Npc6_Happy
   - Npc3_Happy
   - Npc1_Happy
-  - Npc5_Bad
-  - Npc6_Happy
+  - Npc6_Bad
+  - Npc5_Happy
   - Lock
   m_RenderDataMap: {}
   m_Tag: UI_Collection

@@ -9,9 +9,4 @@ public class JumpingShoes : BaseItem
         _anim = GetComponent<Animator>();
         _anim.Play("Item_Fly");
     }
-
-    void Update()
-    {
-        
-    }
 }

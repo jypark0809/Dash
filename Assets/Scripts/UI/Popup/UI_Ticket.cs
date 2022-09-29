@@ -49,6 +49,7 @@ public class UI_Ticket : UI_Popup
     public void CloseButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Data.UserData.user.gender = "unselected";
         ClosePopupUI();
     }
 
@@ -95,7 +96,7 @@ public class UI_Ticket : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
 
-        if (Managers.Data.UserData.user.amber >= 100)
+        if (Managers.Data.UserData.user.ruby >= 100)
         {
             Managers.Data.UserData.user.ruby -= 100;
             Managers.Data.UserData.user.extraStat = 8;
@@ -113,6 +114,7 @@ public class UI_Ticket : UI_Popup
     public void TicketItem4ButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
+        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         Managers.Scene.LoadScene(Define.Scene.Game);
         ClosePopupUI();
     }

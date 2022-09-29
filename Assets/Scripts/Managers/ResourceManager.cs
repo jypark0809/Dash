@@ -6,7 +6,7 @@ public class ResourceManager
 {
     public T Load<T>(string path) where T : Object
     {
-        return Resources.Load<T>(path); // wrapping ÇÔ¼ö
+        return Resources.Load<T>(path); // wrapping
     }
 
     public GameObject Instantiate(string path, Transform parent = null)
