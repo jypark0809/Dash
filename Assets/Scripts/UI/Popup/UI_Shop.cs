@@ -18,7 +18,7 @@ public class UI_Shop : UI_Popup
 
     // 테스트 : "ca-app-pub-3940256099942544/5224354917";
     // 앱 = "ca-app-pub-1206779307721674/3264417737";
-    const string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    const string adUnitId = "ca-app-pub-1206779307721674/3264417737";
 
     public Toggle _toggleLoveLetter, _toggleRuby, _toggleCostume;
 

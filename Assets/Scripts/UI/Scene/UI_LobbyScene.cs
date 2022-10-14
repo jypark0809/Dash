@@ -14,7 +14,7 @@ public class UI_LobbyScene : UI_Scene
         CollectionButton,
         OptionButton,
         PlayButton,
-        InitButton,
+        //InitButton,
     }
 
     enum Texts
@@ -47,7 +47,7 @@ public class UI_LobbyScene : UI_Scene
         GetButton((int)Buttons.ShopButton).gameObject.BindEvent(ShopButtonClicked);
         GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(CollectionButtonClicked);
         GetButton((int)Buttons.PlayButton).gameObject.BindEvent(PlayButtonClicked);
-        GetButton((int)Buttons.InitButton).gameObject.BindEvent(InitButtonClicked);
+        //GetButton((int)Buttons.InitButton).gameObject.BindEvent(InitButtonClicked);
 
         GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
         GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();

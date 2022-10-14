@@ -12,7 +12,7 @@ public class UI_Goal : UI_Popup
 
     // 테스트 = "ca-app-pub-3940256099942544/5224354917";
     // Admob = "ca-app-pub-1206779307721674/3264417737";
-    string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+    string adUnitId = "ca-app-pub-1206779307721674/3264417737";
 
     enum Buttons
     {
