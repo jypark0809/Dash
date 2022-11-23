@@ -13,6 +13,10 @@ public class UI_Goal : UI_Popup
     // 테스트 = "ca-app-pub-3940256099942544/5224354917";
     // Admob = "ca-app-pub-1206779307721674/3264417737";
     string adUnitId = "ca-app-pub-1206779307721674/3264417737";
+    enum Texts
+    {
+        AmberText,
+    }
 
     enum Buttons
     {
@@ -51,14 +55,38 @@ public class UI_Goal : UI_Popup
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+        Bind<Text>(typeof(Texts));
 
         GetButton((int)Buttons.OkayButton).gameObject.BindEvent(OkayButtonClicked);
         GetButton((int)Buttons.AdRewardButton).gameObject.BindEvent(OnRewardButtonClicked);
+        switch (PlayerPrefs.GetInt("difficulty"))
+        {
+            case 0:
+                GetText((int)Texts.AmberText).text = "10개";
+                break;
+            case 1:
+                GetText((int)Texts.AmberText).text = "15개";
+                break;
+            case 2:
+                GetText((int)Texts.AmberText).text = "20개";
+                break;
+        }
     }
 
     public void OkayButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.amber += 20;
+        switch(PlayerPrefs.GetInt("difficulty"))
+        {
+            case 0:
+                Managers.Data.UserData.user.amber += 10;
+                break;
+            case 1:
+                Managers.Data.UserData.user.amber += 15;
+                break;
+            case 2:
+                Managers.Data.UserData.user.amber += 20;
+                break;
+        }
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
@@ -81,16 +109,14 @@ public class UI_Goal : UI_Popup
             "HandleRewardedAdFailedToLoad event received");
     }
 
-    // ����� ����Ǿ��� ��
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         ReloadAd();
     }
 
-    // ����� ������ ��û�Ͽ��� ��
     public void HandleUserEarnedReward(object sender, Reward args)
     {
-        Managers.Data.UserData.user.ruby += 15;
+        Managers.Data.UserData.user.ruby += 5;
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         Managers.UI.ShowPopupUI<UI_ConfirmAdReward>();
     }

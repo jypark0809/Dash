@@ -261,16 +261,14 @@ public class UI_Shop : UI_Popup
             "HandleRewardedAdFailedToLoad event received");
     }
 
-    // ����� ����Ǿ��� ��
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         ReloadAd();
     }
 
-    // ����� ������ ��û�Ͽ��� ��
     public void HandleUserEarnedReward(object sender, Reward args)
     {
-        Managers.Data.UserData.user.ruby += 30;
+        Managers.Data.UserData.user.ruby += 5;
         UpdateData();
         Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
     }

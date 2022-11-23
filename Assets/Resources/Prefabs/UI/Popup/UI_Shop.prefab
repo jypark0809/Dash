@@ -978,7 +978,7 @@ GameObject:
   - component: {fileID: 6445892168173348204}
   - component: {fileID: 1122439806360901995}
   m_Layer: 5
-  m_Name: PriceText1
+  m_Name: PriceText_FemaleCostume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1045,7 +1045,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 150
+  m_Text: 300
 --- !u!1 &2483491107386117957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,7 +1478,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 90
+  m_Text: 70
 --- !u!1 &3152554344347072025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,7 +2355,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 150
+  m_Text: 300
 --- !u!1 &4230622277007517016
 GameObject:
   m_ObjectHideFlags: 0
@@ -2990,7 +2990,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 80
+  m_Text: 60
 --- !u!1 &5147309844521005238
 GameObject:
   m_ObjectHideFlags: 0
