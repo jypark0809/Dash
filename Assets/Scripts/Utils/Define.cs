@@ -7,7 +7,8 @@ public class Define
     public enum WorldObject
     {
         Unknown,
-        Map,
+        MainBG,
+        SubBG,
         Player,
         Stage,
         Obstacle,
@@ -26,6 +27,7 @@ public class Define
     public enum Scene
     {
         Unknown,
+        Tutorial,
         Title,
         Lobby,
         Game,

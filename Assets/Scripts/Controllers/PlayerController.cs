@@ -30,7 +30,6 @@ public class PlayerController : BaseController
 
     public Define.PlayerState _state;
     public MapController[] mapControllers;
-    public StageController stageController;
 
     Teacher _teacher;
     Animator _anim;
@@ -243,13 +242,13 @@ public class PlayerController : BaseController
         StopCoroutine("SpeedDown");
         mapControllers[0]._speed = 8;
         mapControllers[1]._speed = 6;
-        stageController._speed = 8;
+        Managers.Game.Stage.Speed = 8;
 
         yield return new WaitForSeconds(2f);
 
         mapControllers[0]._speed = 4;
         mapControllers[1]._speed = 3;
-        stageController._speed = 4;
+        Managers.Game.Stage.Speed = 4;
     }
 
     IEnumerator SpeedDown()
@@ -257,13 +256,13 @@ public class PlayerController : BaseController
         StopCoroutine("SpeedUp");
         mapControllers[0]._speed = 2;
         mapControllers[1]._speed = 1.5f;
-        stageController._speed = 2;
+        Managers.Game.Stage.Speed = 2;
 
         yield return new WaitForSeconds(1.5f);
 
         mapControllers[0]._speed = 4;
         mapControllers[1]._speed = 3;
-        stageController._speed = 4;
+        Managers.Game.Stage.Speed = 4;
     }
 
     IEnumerator DamageRecovered()
@@ -322,7 +321,7 @@ public class PlayerController : BaseController
     {
         mapControllers[0]._speed = 0;
         mapControllers[1]._speed = 0;
-        stageController._speed = 0;
+        Managers.Game.Stage.Speed = 0;
         _anim.speed = 0f;
     }
 
@@ -330,7 +329,7 @@ public class PlayerController : BaseController
     {
         mapControllers[0]._speed = 4;
         mapControllers[1]._speed = 3;
-        stageController._speed = 4;
+        Managers.Game.Stage.Speed = 4;
         _anim.speed = 1f;
     }
 }

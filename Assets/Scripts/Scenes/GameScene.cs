@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameScene : BaseScene
 {
-    UI_GameScene gameScene;
+    UI_GameScene _gameSceneUI;
     GameObject _player;
-    GameObject stage;
-    PlayerController pc;
-    MapController mc1;
-    MapController mc2;
+    PlayerController _playerController;
+    GameObject _stage;
+    MapController _bgMain;
+    MapController _bgSub;
     Finish finish;
 
     protected override void Init()
@@ -22,7 +22,7 @@ public class GameScene : BaseScene
         Managers.Sound.Play("GameScene", Define.Sound.Bgm);
 
         // Load UI
-        gameScene = Managers.UI.ShowSceneUI<UI_GameScene>();
+        _gameSceneUI = Managers.UI.ShowSceneUI<UI_GameScene>();
 
         // Load Player Prefabs
         if (Managers.Data.UserData.user.gender == "male")
@@ -53,7 +53,7 @@ public class GameScene : BaseScene
             _player = Managers.Game.SpawnPlayer("Player/Male");
 
         _player.name = "Player";
-        pc = _player.GetOrAddComponent<PlayerController>();
+        _playerController = Managers.Game.Player;
 
         // Load Stage
         LoadStage();
@@ -66,31 +66,24 @@ public class GameScene : BaseScene
         if (Managers.Data.UserData.user.stage == 0 || Managers.Data.UserData.user.stage == 1 ||
             Managers.Data.UserData.user.stage == 2 || Managers.Data.UserData.user.stage == 3)
         {
-            Managers.Resource.Instantiate("BackGround/MainMap_Stage1");
-            Managers.Resource.Instantiate("BackGround/SubMap_Stage1");
-            mc1 = GameObject.Find("MainMap_Stage1").GetComponent<MapController>();
-            mc2 = GameObject.Find("SubMap_Stage1").GetComponent<MapController>();
+            _bgMain = Managers.Game.SpawnBackgroundMap("BackGround/MainMap_Stage1", Define.WorldObject.MainBG).GetComponent<MapController>();
+            _bgSub = Managers.Game.SpawnBackgroundMap("BackGround/SubMap_Stage1", Define.WorldObject.SubBG).GetComponent<MapController>();
         }
         else if ((Managers.Data.UserData.user.stage == 4 || Managers.Data.UserData.user.stage == 5 ||
             Managers.Data.UserData.user.stage == 6))
         {
-            Managers.Resource.Instantiate("BackGround/MainMap_Stage2");
-            Managers.Resource.Instantiate("BackGround/SubMap_Stage2");
-            mc1 = GameObject.Find("MainMap_Stage2").GetComponent<MapController>();
-            mc2 = GameObject.Find("SubMap_Stage2").GetComponent<MapController>();
+            _bgMain = Managers.Game.SpawnBackgroundMap("BackGround/MainMap_Stage2", Define.WorldObject.MainBG).GetComponent<MapController>();
+            _bgSub = Managers.Game.SpawnBackgroundMap("BackGround/SubMap_Stage2", Define.WorldObject.SubBG).GetComponent<MapController>();
         }
         else if ((Managers.Data.UserData.user.stage == 7 || Managers.Data.UserData.user.stage == 8 ||
             Managers.Data.UserData.user.stage == 9))
         {
-            Managers.Resource.Instantiate("BackGround/MainMap_Stage3");
-            Managers.Resource.Instantiate("BackGround/SubMap_Stage3");
-            mc1 = GameObject.Find("MainMap_Stage3").GetComponent<MapController>();
-            mc2 = GameObject.Find("SubMap_Stage3").GetComponent<MapController>();
+            _bgMain = Managers.Game.SpawnBackgroundMap("BackGround/MainMap_Stage3", Define.WorldObject.MainBG).GetComponent<MapController>();
+            _bgSub = Managers.Game.SpawnBackgroundMap("BackGround/SubMap_Stage3", Define.WorldObject.SubBG).GetComponent<MapController>();
         }
 
-        pc.stageController = stage.GetComponent<StageController>();
-        pc.mapControllers[0] = mc1;
-        pc.mapControllers[1] = mc2;
+        _playerController.mapControllers[0] = _bgMain;
+        _playerController.mapControllers[1] = _bgSub;
 
         
 
@@ -115,9 +108,9 @@ public class GameScene : BaseScene
 
     private void Update()
     {
-        if(pc._state != Define.PlayerState.Clear)
+        if(_playerController._state != Define.PlayerState.Clear)
         {
-            gameScene.Ratio = finish.CalculateDistance();
+            _gameSceneUI.Ratio = finish.CalculateDistance();
         }
         else
         {
@@ -133,36 +126,36 @@ public class GameScene : BaseScene
 
     public void StopScrolling()
     {
-        mc1._speed = 0;
-        mc2._speed = 0;
-        pc.stageController._speed = 0;
+        _bgMain._speed = 0;
+        _bgSub._speed = 0;
+        Managers.Game.Stage.Speed = 0;
     }
 
     public void StartScrolling()
     {
-        mc1._speed = 4;
-        mc2._speed = 3;
-        pc.stageController._speed = 4;
+        _bgMain._speed = 4;
+        _bgSub._speed = 3;
+        Managers.Game.Stage.Speed = 4;
     }
 
     void LoadStage()
     {
         if (PlayerPrefs.GetInt("isAccessFirst") == 0)
         {
-            stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Stage_0");
+            _stage = Managers.Game.SpawnStage($"Stages/Stage_0");
         }
         else
         {
             switch(PlayerPrefs.GetInt("difficulty"))
             {
                 case 0:
-                    stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Easy_Stage_{Managers.Data.UserData.user.stage}");
+                    _stage = Managers.Game.SpawnStage($"Stages/Easy_Stage_{Managers.Data.UserData.user.stage}");
                     break;
                 case 1:
-                    stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Normal_Stage_{Managers.Data.UserData.user.stage}");
+                    _stage = Managers.Game.SpawnStage($"Stages/Normal_Stage_{Managers.Data.UserData.user.stage}");
                     break;
                 case 2:
-                    stage = Managers.Game.Spawn(Define.WorldObject.Stage, $"Stages/Hard_Stage_{Managers.Data.UserData.user.stage}");
+                    _stage = Managers.Game.SpawnStage($"Stages/Hard_Stage_{Managers.Data.UserData.user.stage}");
                     break;
             }
         }

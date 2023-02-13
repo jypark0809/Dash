@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StageController : BaseController
 {
-    public float _speed = 4;
+    float _speed = 4;
+    public float Speed { get { return _speed; } set { _speed = value; } }
 
     void Start()
     {

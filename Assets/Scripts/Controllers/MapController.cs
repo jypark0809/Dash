@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapController : BaseController
 {
     public float _speed;
+    public float Speed { get { return _speed; } set { _speed = value; } }
     public int startIndex;
     public int endIndex;
     public int count;
@@ -18,7 +19,6 @@ public class MapController : BaseController
 
     public override void Init()
     {
-        WorldObjectType = Define.WorldObject.Map;
         respawnPos = new Vector3(count * 15.2f, 0, 0);
     }
 

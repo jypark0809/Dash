@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,14 @@ public class GameManagerEx
     PlayerController _player;
     public PlayerController Player { get { return _player; } set { _player = value; } }
 
-    public GameObject _stage;
+    StageController _stage;
+    public StageController Stage { get { return _stage; } set { _stage = value; } }
+
+    MapController _bgMain;
+    public MapController MainBG { get { return _bgMain; } set { _bgMain = value; } }
+
+    MapController _bgSub;
+    public MapController SubBG { get { return _bgSub; } set { _bgSub = value; } }
 
     public GameObject SpawnPlayer(string path, Transform parent = null)
     {
@@ -17,20 +25,26 @@ public class GameManagerEx
         return go;
     }
 
-    public GameObject Spawn(Define.WorldObject type, string path, Transform parent = null)
+    public GameObject SpawnStage(string path, Transform parent = null)
+    {
+        GameObject go = Managers.Resource.Instantiate(path, parent);
+        _stage = go.GetOrAddComponent<StageController>();
+        return go;
+    }
+
+    public GameObject SpawnBackgroundMap(string path, Define.WorldObject type, Transform parent = null)
     {
         GameObject go = Managers.Resource.Instantiate(path, parent);
 
-        switch (type)
+        if (type == Define.WorldObject.MainBG)
         {
-            case Define.WorldObject.Stage:
-                _stage = go;
-                break;
-            case Define.WorldObject.Map:
-                // TODO
-                break;
+            _bgMain = go.GetOrAddComponent<MapController>();
         }
-
+        else if (type == Define.WorldObject.SubBG)
+        {
+            _bgSub = go.GetOrAddComponent<MapController>();
+        }
+        
         return go;
     }
 
@@ -56,5 +70,10 @@ public class GameManagerEx
                 break;
         }
         Managers.Resource.Destroy(go);
+    }
+
+    public void StopMapScrolling(MapController mc)
+    {
+        mc.Speed = 0;
     }
 }
