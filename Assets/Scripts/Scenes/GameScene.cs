@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameScene : BaseScene
 {
     UI_GameScene gameScene;
-    GameObject player;
+    GameObject _player;
     GameObject stage;
     PlayerController pc;
     MapController mc1;
@@ -30,10 +30,10 @@ public class GameScene : BaseScene
             switch (PlayerPrefs.GetInt("maleCostume"))
             {
                 case 0:
-                    player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Male");
+                    _player = Managers.Game.SpawnPlayer("Player/Male");
                     break;
                 case 1:
-                    player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Male_Custume1");
+                    _player = Managers.Game.SpawnPlayer("Player/Male_Custume1");
                     break;
             }
         }
@@ -42,18 +42,18 @@ public class GameScene : BaseScene
             switch (PlayerPrefs.GetInt("femaleCostume"))
             {
                 case 0:
-                    player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Female");
+                    _player = Managers.Game.SpawnPlayer("Player/Female");
                     break;
                 case 1:
-                    player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Female_Custume1");
+                    _player = Managers.Game.SpawnPlayer("Player/Female_Custume1");
                     break;
             }
         }
         else
-            player = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Male"); // Tutorial
+            _player = Managers.Game.SpawnPlayer("Player/Male");
 
-        player.name = "Player";
-        pc = player.GetOrAddComponent<PlayerController>();
+        _player.name = "Player";
+        pc = _player.GetOrAddComponent<PlayerController>();
 
         // Load Stage
         LoadStage();

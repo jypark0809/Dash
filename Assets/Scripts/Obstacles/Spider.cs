@@ -15,7 +15,7 @@ public class Spider : BaseObstacle
 
     void Update()
     {
-        if (transform.position.x - Managers.Game._player.transform.position.x < _range)
+        if (transform.position.x - Managers.Game.Player.transform.position.x < _range)
         {
             _anim.Play("Spider");
         }

@@ -88,7 +88,7 @@ public class UI_Hint : UI_Popup
         GetText((int)Texts.NameText).text = _npcName[_hint.scripts[_scriptIndex].npcId];
         SetLine(_hint.scripts[_scriptIndex]);
 
-        Managers.Game._player.GetComponent<Animator>().speed = 0;
+        Managers.Game.Player.GetComponent<Animator>().speed = 0;
         _gameScene.StopScrolling();
     }
 
@@ -106,7 +106,7 @@ public class UI_Hint : UI_Popup
         }
         else
         {
-            Managers.Game._player.GetComponent<Animator>().speed = 1;
+            Managers.Game.Player.GetComponent<Animator>().speed = 1;
             _gameScene.StartScrolling();
             ClosePopupUI();
         }

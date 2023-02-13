@@ -16,9 +16,9 @@ public class LobbyScene : BaseScene
         Managers.Sound.Play("LobbyScene", Define.Sound.Bgm);
 
         // Set Characters
-        _male = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Male");
+        _male = Managers.Game.SpawnPlayer("Player/Male");
         _male.transform.Translate(1f, 0, 0);
-        _female = Managers.Game.Spawn(Define.WorldObject.Player, "Player/Female");
+        _female = Managers.Game.SpawnPlayer("Player/Female");
         _female.transform.Translate(-0.5f, 0, 0);
 
         // TODO : 테스트

@@ -16,7 +16,7 @@ public class Teacher : BaseObstacle
 
     void Update()
     {
-        if (transform.position.x - Managers.Game._player.transform.position.x < _range && isFight == false)
+        if (transform.position.x - Managers.Game.Player.transform.position.x < _range && isFight == false)
         {
             transform.Translate(Vector2.left * _speed * Time.deltaTime);
             _anim.speed = 1;

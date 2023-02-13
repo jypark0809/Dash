@@ -14,7 +14,7 @@ public class Bee : BaseObstacle
 
     void Update()
     {
-        if (transform.position.x - Managers.Game._player.transform.position.x < _range)
+        if (transform.position.x - Managers.Game.Player.transform.position.x < _range)
         {
             transform.Translate(Vector2.left * _speed * Time.deltaTime);
             _anim.Play("Bee");

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UI_GameScene : UI_Scene
 {
-    PlayerController pc;
+    PlayerController _player;
     public float Ratio { get; set; }
 
     enum Buttons
@@ -21,6 +21,8 @@ public class UI_GameScene : UI_Scene
         Letter1,
         Letter2,
         Letter3,
+        Letter4,
+        Letter5,
         Bar_Position,
         MalePinImage,
         FemalePinImage,
@@ -33,6 +35,13 @@ public class UI_GameScene : UI_Scene
 
     public Image[] healthUI;
 
+    void Awake()
+    {
+        Bind<Button>(typeof(Buttons));
+        Bind<Image>(typeof(Images));
+        Bind<Text>(typeof(Texts));
+    }
+
     void Start()
     {
         Init();
@@ -42,11 +51,7 @@ public class UI_GameScene : UI_Scene
     {
         base.Init();
 
-        pc = Managers.Game._player.GetComponent<PlayerController>();
-
-        Bind<Button>(typeof(Buttons));
-        Bind<Image>(typeof(Images));
-        Bind<Text>(typeof(Texts));
+        _player = Managers.Game.Player;
 
         GetButton((int)Buttons.JumpButton).gameObject.BindEvent(JumpButtonClicked, Define.UIEvent.PointerDown);
         GetButton((int)Buttons.PauseButton).gameObject.BindEvent(PauseButtonClicked);
@@ -75,52 +80,6 @@ public class UI_GameScene : UI_Scene
 
     void Update()
     {
-        switch (pc._health)
-        {
-            case 0:
-                healthUI[0].gameObject.SetActive(false);
-                healthUI[1].gameObject.SetActive(false);
-                healthUI[2].gameObject.SetActive(false);
-                healthUI[3].gameObject.SetActive(false);
-                healthUI[4].gameObject.SetActive(false);
-                break;
-            case 1:
-                healthUI[0].gameObject.SetActive(true);
-                healthUI[1].gameObject.SetActive(false);
-                healthUI[2].gameObject.SetActive(false);
-                healthUI[3].gameObject.SetActive(false);
-                healthUI[4].gameObject.SetActive(false);
-                break;
-            case 2:
-                healthUI[0].gameObject.SetActive(true);
-                healthUI[1].gameObject.SetActive(true);
-                healthUI[2].gameObject.SetActive(false);
-                healthUI[3].gameObject.SetActive(false);
-                healthUI[4].gameObject.SetActive(false);
-                break;
-            case 3:
-                healthUI[0].gameObject.SetActive(true);
-                healthUI[1].gameObject.SetActive(true);
-                healthUI[2].gameObject.SetActive(true);
-                healthUI[3].gameObject.SetActive(false);
-                healthUI[4].gameObject.SetActive(false);
-                break;
-            case 4:
-                healthUI[0].gameObject.SetActive(true);
-                healthUI[1].gameObject.SetActive(true);
-                healthUI[2].gameObject.SetActive(true);
-                healthUI[3].gameObject.SetActive(true);
-                healthUI[4].gameObject.SetActive(false);
-                break;
-            case 5:
-                healthUI[0].gameObject.SetActive(true);
-                healthUI[1].gameObject.SetActive(true);
-                healthUI[2].gameObject.SetActive(true);
-                healthUI[3].gameObject.SetActive(true);
-                healthUI[4].gameObject.SetActive(true);
-                break;
-        }
-
         GetImage((int)Images.Bar_Position).rectTransform.sizeDelta = new Vector2(Ratio * 400, 30);
         GetImage((int)Images.MalePinImage).rectTransform.anchoredPosition = new Vector2(Ratio * 400 - 200, 0);
         GetImage((int)Images.FemalePinImage).rectTransform.anchoredPosition = new Vector2(Ratio * 400 - 200, 0);
@@ -128,14 +87,14 @@ public class UI_GameScene : UI_Scene
 
     public void JumpButtonClicked(PointerEventData data)
     {
-        if ( pc._state != Define.PlayerState.Clear && pc._state != Define.PlayerState.Die)
+        if (_player._state != Define.PlayerState.Clear && _player._state != Define.PlayerState.Die)
         {
-            pc._isJump = true;
-            pc._state = Define.PlayerState.Jump;
-            if (pc._jumpCount > 0)
+            _player._isJump = true;
+            _player._state = Define.PlayerState.Jump;
+            if (_player._jumpCount > 0)
             {
-                pc._jumpCount--;
-                pc.GetComponent<Rigidbody2D>().velocity = Vector2.up * pc._jumpPower;
+                _player._jumpCount--;
+                _player.GetComponent<Rigidbody2D>().velocity = Vector2.up * _player._jumpPower;
                 Managers.Sound.Play("Jump", Define.Sound.Effect);
             }
         }
@@ -157,5 +116,54 @@ public class UI_GameScene : UI_Scene
         int upperStage = (Managers.Data.UserData.user.stage + 2) / 3;
         int lowerStage = (Managers.Data.UserData.user.stage + 2) % 3 + 1;
         return upperStage.ToString() + "-" + lowerStage.ToString();
+    }
+
+    public void SetHeartUI(int hp)
+    {
+        switch (hp)
+        {
+            case 5:
+                GetImage((int)Images.Letter1).gameObject.SetActive(true);
+                GetImage((int)Images.Letter2).gameObject.SetActive(true);
+                GetImage((int)Images.Letter3).gameObject.SetActive(true);
+                GetImage((int)Images.Letter4).gameObject.SetActive(true);
+                GetImage((int)Images.Letter5).gameObject.SetActive(true);
+                break;
+            case 4:
+                GetImage((int)Images.Letter1).gameObject.SetActive(true);
+                GetImage((int)Images.Letter2).gameObject.SetActive(true);
+                GetImage((int)Images.Letter3).gameObject.SetActive(true);
+                GetImage((int)Images.Letter4).gameObject.SetActive(true);
+                GetImage((int)Images.Letter5).gameObject.SetActive(false); 
+                break;
+            case 3:
+                GetImage((int)Images.Letter1).gameObject.SetActive(true);
+                GetImage((int)Images.Letter2).gameObject.SetActive(true);
+                GetImage((int)Images.Letter3).gameObject.SetActive(true);
+                GetImage((int)Images.Letter4).gameObject.SetActive(false);
+                GetImage((int)Images.Letter5).gameObject.SetActive(false);
+                break;
+            case 2:
+                GetImage((int)Images.Letter1).gameObject.SetActive(true);
+                GetImage((int)Images.Letter2).gameObject.SetActive(true);
+                GetImage((int)Images.Letter3).gameObject.SetActive(false);
+                GetImage((int)Images.Letter4).gameObject.SetActive(false);
+                GetImage((int)Images.Letter5).gameObject.SetActive(false);
+                break;
+            case 1:
+                GetImage((int)Images.Letter1).gameObject.SetActive(true);
+                GetImage((int)Images.Letter2).gameObject.SetActive(false);
+                GetImage((int)Images.Letter3).gameObject.SetActive(false);
+                GetImage((int)Images.Letter4).gameObject.SetActive(false);
+                GetImage((int)Images.Letter5).gameObject.SetActive(false);
+                break;
+            case 0:
+                GetImage((int)Images.Letter1).gameObject.SetActive(false);
+                GetImage((int)Images.Letter2).gameObject.SetActive(false);
+                GetImage((int)Images.Letter3).gameObject.SetActive(false);
+                GetImage((int)Images.Letter4).gameObject.SetActive(false);
+                GetImage((int)Images.Letter5).gameObject.SetActive(false);
+                break;
+        }
     }
 }

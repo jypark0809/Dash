@@ -318,14 +318,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Male_Custume1_Run_1: -1680827599
       Male_Custume1_Run_5: 1408348972
-      Male_Custume1_Run_7: -331315497
       Male_Custume1_Run_0: 1554456408
       Male_Custume1_Run_3: 430244278
       Male_Custume1_Run_6: -505173338
       Male_Custume1_Run_2: -1096926451
       Male_Custume1_Run_4: 1401888546
-      Male_Custume1_Run_1: -1680827599
+      Male_Custume1_Run_7: -331315497
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

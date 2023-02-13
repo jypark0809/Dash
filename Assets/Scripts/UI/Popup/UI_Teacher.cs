@@ -37,7 +37,7 @@ public class UI_Teacher : UI_Popup
     {
         base.Init();
 
-        _playerController = Managers.Game._player.GetComponent<PlayerController>();
+        _playerController = Managers.Game.Player;
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
 

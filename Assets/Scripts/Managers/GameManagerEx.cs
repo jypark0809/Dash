@@ -5,8 +5,17 @@ using UnityEngine.UI;
 
 public class GameManagerEx
 {
-    public GameObject _player;
+    PlayerController _player;
+    public PlayerController Player { get { return _player; } set { _player = value; } }
+
     public GameObject _stage;
+
+    public GameObject SpawnPlayer(string path, Transform parent = null)
+    {
+        GameObject go = Managers.Resource.Instantiate(path, parent);
+        _player = go.GetOrAddComponent<PlayerController>();
+        return go;
+    }
 
     public GameObject Spawn(Define.WorldObject type, string path, Transform parent = null)
     {
@@ -14,9 +23,6 @@ public class GameManagerEx
 
         switch (type)
         {
-            case Define.WorldObject.Player:
-                _player = go;
-                break;
             case Define.WorldObject.Stage:
                 _stage = go;
                 break;

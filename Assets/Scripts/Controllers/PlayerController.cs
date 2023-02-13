@@ -6,8 +6,22 @@ public class PlayerController : BaseController
     public float _jumpCount = 2;
     public float _jumpPower = 10.0f;
     public bool _isJump = false;
-    public int _health = 3;
-    int _maxHealth;
+    int _hp = 3;
+    public int Hp
+    {
+        get { return _hp;}
+        set
+        {
+            _hp = value;
+
+            if (_hp > _maxHp)
+                _hp = _maxHp;
+
+            if (Managers.Scene.CurrentScene as GameScene)
+                (Managers.UI.SceneUI as UI_GameScene).SetHeartUI(_hp);
+        }
+    }
+    int _maxHp;
     public bool _isFight = false;
     bool _isArrive = false;
 
@@ -29,14 +43,14 @@ public class PlayerController : BaseController
         _state = Define.PlayerState.Run;
         _anim = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
-        _maxHealth = _health + PlayerPrefs.GetInt("extrahealth");
+        _maxHp = Hp + PlayerPrefs.GetInt("extrahealth");
         if (PlayerPrefs.GetInt("isAccessFirst") == 0)
         {
-            _health = 99;
+            Hp = 5;
         }
         else
         {
-            _health = _maxHealth;
+            Hp = _maxHp;
         }
         
     }
@@ -137,8 +151,8 @@ public class PlayerController : BaseController
         {
             if (collision.gameObject.name == "Letter")
             {
-                if (_health < _maxHealth && _state != Define.PlayerState.Die)
-                    _health++;
+                if (Hp < _maxHp && _state != Define.PlayerState.Die)
+                    Hp++;
             }
 
             if (collision.gameObject.name == "Coffee")
@@ -168,10 +182,10 @@ public class PlayerController : BaseController
         if (PlayerPrefs.GetInt("vibrate") == 1)
             Vibration.Vibrate((long)200);
 
-        _health -= count;
-        if (_health <= 0)
+        Hp -= count;
+        if (Hp <= 0)
         {
-            _health = 0;
+            Hp = 0;
             _state = Define.PlayerState.Die;
         }
 

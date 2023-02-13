@@ -320,7 +320,7 @@ public class UI_Shop : UI_Popup
 
     private void OnDestroy()
     {
-        UI_LobbyScene lobbyUI = (UI_LobbyScene)Managers.UI._sceneUI;
+        UI_LobbyScene lobbyUI = (UI_LobbyScene)Managers.UI.SceneUI;
         lobbyUI.SetActiveGoodsUI(true);
     }
 }
