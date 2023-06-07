@@ -114,7 +114,6 @@ public class GameScene : BaseScene
         }
         else
         {
-            // Background �� Stage ��ֹ� ��ũ�Ѹ� ����
             StopScrolling();
         }
     }

@@ -82,7 +82,6 @@ public class PlayerController : BaseController
         {
             if (_state != Define.PlayerState.Die && _state != Define.PlayerState.Clear && _state != Define.PlayerState.Fight)
             {
-                // ���� �浹����
                 _state = Define.PlayerState.Run;
                 _jumpCount = 2;
                 _isJump = false;
