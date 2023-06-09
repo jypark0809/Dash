@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseController : MonoBehaviour
+public class BaseController : MonoBehaviour
 {
-    public Define.WorldObject WorldObjectType { get; protected set; } = Define.WorldObject.Unknown;
+    public Define.ObjectType ObjectType { get; protected set; } = Define.ObjectType.Unknown;
 
     void Awake()
     {
         Init();
     }
 
-    public abstract void Init();
+    public virtual void Init() { }
 }

@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class UI_Teacher : UI_Popup
 {
     float _timer;
-    public float _reduce; // n�� ���� ������ ����
+    public float _reduce;
     public int _maxPos;
     public int _minPos;
-    int _curPos; // ���� Position
-    PlayerController _playerController;
+    int _curPos;
+    PlayerController _player;
+    Teacher _teacher;
 
     public Sprite[] _sprites;
 
@@ -37,34 +38,43 @@ public class UI_Teacher : UI_Popup
     {
         base.Init();
 
-        _playerController = Managers.Game.Player;
+        _player = Managers.Object.Player;
         Bind<Button>(typeof(Buttons));
         Bind<Image>(typeof(Images));
 
-        GetButton((int)Buttons.RightTabButton).gameObject.BindEvent(RightTabButtonClicked);
-        GetButton((int)Buttons.LeftTabButton).gameObject.BindEvent(LeftTabButtonClicked);
+        GetButton((int)Buttons.RightTabButton).gameObject.BindEvent(OnTouchButtonClicked);
+        GetButton((int)Buttons.LeftTabButton).gameObject.BindEvent(OnTouchButtonClicked);
 
-        if (Managers.Data.UserData.user.gender == "male")
+        if (Managers.Game.SaveData.gender == "male")
             GetImage((int)Images.CutScene).sprite = _sprites[0];
-        if (Managers.Data.UserData.user.gender == "female")
+        if (Managers.Game.SaveData.gender == "female")
             GetImage((int)Images.CutScene).sprite = _sprites[1];
+
+        Time.timeScale = 0;
+    }
+
+    public void SetInfo(Teacher teacher)
+    {
+        _teacher = teacher;
     }
 
     void Update()
     {
         if (_curPos == _maxPos)
         {
-            _playerController.recovereDamage();
+            _player.OnDamaged(_teacher, 0);
             ClosePopupUI();
+            Time.timeScale = 1;
         }
 
         if (_curPos == _minPos)
         {
-            _playerController._state = Define.PlayerState.Die;
+            Managers.Object.Player.State = Define.PlayerState.Die;
             ClosePopupUI();
+            Time.timeScale = 1;
         }
 
-        _timer += Time.deltaTime;
+        _timer += Time.unscaledDeltaTime;
         if (_timer > _reduce)
         {
             _curPos--;
@@ -78,15 +88,7 @@ public class UI_Teacher : UI_Popup
         GetImage((int)Images.PinImage).rectTransform.anchoredPosition = new Vector2((float)566/distance * _curPos, 0);
     }
 
-    public void RightTabButtonClicked(PointerEventData data)
-    {
-        if (PlayerPrefs.GetInt("vibrate") == 1)
-            Vibration.Vibrate((long)50);
-
-        _curPos++;
-    }
-
-    public void LeftTabButtonClicked(PointerEventData data)
+    void OnTouchButtonClicked(PointerEventData evt)
     {
         if (PlayerPrefs.GetInt("vibrate") == 1)
             Vibration.Vibrate((long)50);

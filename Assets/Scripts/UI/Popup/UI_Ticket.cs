@@ -39,8 +39,8 @@ public class UI_Ticket : UI_Popup
         GetButton((int)Buttons.TicketItem3).gameObject.BindEvent(TicketItem3ButtonClicked);
         GetButton((int)Buttons.TicketItem4).gameObject.BindEvent(TicketItem4ButtonClicked);
 
-        GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
-        GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
+        GetText((int)Texts.AmberText).text = Managers.Game.SaveData.amber.ToString();
+        GetText((int)Texts.RubyText).text = Managers.Game.SaveData.ruby.ToString();
 
         UI_LobbyScene lobbyUI = (UI_LobbyScene)Managers.UI.SceneUI;
         lobbyUI.SetActiveGoodsUI(false);
@@ -49,7 +49,7 @@ public class UI_Ticket : UI_Popup
     public void CloseButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.gender = "unselected";
+        Managers.Game.SaveData.gender = "unselected";
         ClosePopupUI();
     }
 
@@ -57,12 +57,12 @@ public class UI_Ticket : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
 
-        if (Managers.Data.UserData.user.amber >= 120)
+        if (Managers.Game.SaveData.amber >= 120)
         {
-            Managers.Data.UserData.user.amber -= 120;
-            Managers.Data.UserData.user.extraStat = 3;
-            Managers.Data.UserData.user.stage = 4;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            Managers.Game.SaveData.amber -= 120;
+            Managers.Game.SaveData.extraStat = 3;
+            Managers.Game.SaveData.stage = 4;
+            Managers.Game.SaveGame();
             Managers.Scene.LoadScene(Define.Scene.Game);
             ClosePopupUI();
         }
@@ -76,12 +76,12 @@ public class UI_Ticket : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
 
-        if (Managers.Data.UserData.user.amber >= 240)
+        if (Managers.Game.SaveData.amber >= 240)
         {
-            Managers.Data.UserData.user.amber -= 240;
-            Managers.Data.UserData.user.extraStat = 6;
-            Managers.Data.UserData.user.stage = 7;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            Managers.Game.SaveData.amber -= 240;
+            Managers.Game.SaveData.extraStat = 6;
+            Managers.Game.SaveData.stage = 7;
+            Managers.Game.SaveGame();
             Managers.Scene.LoadScene(Define.Scene.Game);
             ClosePopupUI();
         }
@@ -96,12 +96,12 @@ public class UI_Ticket : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
 
-        if (Managers.Data.UserData.user.ruby >= 100)
+        if (Managers.Game.SaveData.ruby >= 100)
         {
-            Managers.Data.UserData.user.ruby -= 100;
-            Managers.Data.UserData.user.extraStat = 8;
-            Managers.Data.UserData.user.stage = 9;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            Managers.Game.SaveData.ruby -= 100;
+            Managers.Game.SaveData.extraStat = 8;
+            Managers.Game.SaveData.stage = 9;
+            Managers.Game.SaveGame();
             Managers.Scene.LoadScene(Define.Scene.Ending);
             ClosePopupUI();
         }
@@ -114,7 +114,7 @@ public class UI_Ticket : UI_Popup
     public void TicketItem4ButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveGame();
         Managers.Scene.LoadScene(Define.Scene.Game);
         ClosePopupUI();
     }

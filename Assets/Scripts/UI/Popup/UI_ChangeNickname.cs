@@ -35,8 +35,8 @@ public class UI_ChangeNickname : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.nickname = GetText((int)Texts.NicknameText).text;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveData.nickname = GetText((int)Texts.NicknameText).text;
+        Managers.Game.SaveGame();
         ClosePopupUI();
     }
 

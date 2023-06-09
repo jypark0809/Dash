@@ -35,17 +35,17 @@ public class UI_Nickname : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.nickname = GetText((int)Texts.NicknameText).text;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveData.nickname = GetText((int)Texts.NicknameText).text;
         Managers.Scene.LoadScene(Define.Scene.Game);
+        Managers.Game.SaveGame();
     }
 
     public void CancleButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.gender = "unselected";
-        Managers.Data.UserData.user.nickname = "���ΰ�";
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveData.gender = "unselected";
+        Managers.Game.SaveData.nickname = "";
+        Managers.Game.SaveGame();
         ClosePopupUI();
     }
 }

@@ -346,24 +346,24 @@ public class UI_Collection : UI_Popup
 
     void BindUserEndingData()
     {
-        GetObject((int)GameObjects.LockGroup1).SetActive(!Managers.Data.UserData.user.ending[0]);
-        GetObject((int)GameObjects.LockGroup2).SetActive(!Managers.Data.UserData.user.ending[1]);
-        GetObject((int)GameObjects.LockGroup3).SetActive(!Managers.Data.UserData.user.ending[2]);
-        GetObject((int)GameObjects.LockGroup4).SetActive(!Managers.Data.UserData.user.ending[3]);
-        GetObject((int)GameObjects.LockGroup5).SetActive(!Managers.Data.UserData.user.ending[4]);
-        GetObject((int)GameObjects.LockGroup6).SetActive(!Managers.Data.UserData.user.ending[5]);
-        GetObject((int)GameObjects.LockGroup7).SetActive(!Managers.Data.UserData.user.ending[6]);
-        GetObject((int)GameObjects.LockGroup8).SetActive(!Managers.Data.UserData.user.ending[7]);
-        GetObject((int)GameObjects.LockGroup9).SetActive(!Managers.Data.UserData.user.ending[8]);
-        GetObject((int)GameObjects.LockGroup10).SetActive(!Managers.Data.UserData.user.ending[9]);
-        GetObject((int)GameObjects.LockGroup11).SetActive(!Managers.Data.UserData.user.ending[10]);
-        GetObject((int)GameObjects.LockGroup12).SetActive(!Managers.Data.UserData.user.ending[11]);
+        GetObject((int)GameObjects.LockGroup1).SetActive(!Managers.Game.SaveData.ending[0]);
+        GetObject((int)GameObjects.LockGroup2).SetActive(!Managers.Game.SaveData.ending[1]);
+        GetObject((int)GameObjects.LockGroup3).SetActive(!Managers.Game.SaveData.ending[2]);
+        GetObject((int)GameObjects.LockGroup4).SetActive(!Managers.Game.SaveData.ending[3]);
+        GetObject((int)GameObjects.LockGroup5).SetActive(!Managers.Game.SaveData.ending[4]);
+        GetObject((int)GameObjects.LockGroup6).SetActive(!Managers.Game.SaveData.ending[5]);
+        GetObject((int)GameObjects.LockGroup7).SetActive(!Managers.Game.SaveData.ending[6]);
+        GetObject((int)GameObjects.LockGroup8).SetActive(!Managers.Game.SaveData.ending[7]);
+        GetObject((int)GameObjects.LockGroup9).SetActive(!Managers.Game.SaveData.ending[8]);
+        GetObject((int)GameObjects.LockGroup10).SetActive(!Managers.Game.SaveData.ending[9]);
+        GetObject((int)GameObjects.LockGroup11).SetActive(!Managers.Game.SaveData.ending[10]);
+        GetObject((int)GameObjects.LockGroup12).SetActive(!Managers.Game.SaveData.ending[11]);
     }
 
     void BindUserCostumeData()
     {
-        GetObject((int)GameObjects.MaleBlockPanel).SetActive(!Managers.Data.UserData.user.maleCostume[1]);
-        GetObject((int)GameObjects.FemaleBlockPanel).SetActive(!Managers.Data.UserData.user.femaleCostume[1]);
+        GetObject((int)GameObjects.MaleBlockPanel).SetActive(!Managers.Game.SaveData.maleCostume[1]);
+        GetObject((int)GameObjects.FemaleBlockPanel).SetActive(!Managers.Game.SaveData.femaleCostume[1]);
     }
 
     void InitCostumeItemToggle()

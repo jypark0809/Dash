@@ -32,12 +32,12 @@ public class UI_CheckGender : UI_Popup
         GetButton((int)Buttons.OkayButton).gameObject.BindEvent(OkayButtonClicked);
         GetButton((int)Buttons.CancleButton).gameObject.BindEvent(CancleButtonClicked);
 
-        if (Managers.Data.UserData.user.gender == "male")
+        if (Managers.Game.SaveData.gender == "male")
         {
             GetText((int)Texts.GenderText).text = "남자";
             GetText((int)Texts.GenderText).color = new Color(0, 0, 1);
         }
-        else if (Managers.Data.UserData.user.gender == "female")
+        else if (Managers.Game.SaveData.gender == "female")
         {
             GetText((int)Texts.GenderText).text = "여자";
             GetText((int)Texts.GenderText).color = new Color(1, 0, 0);
@@ -50,7 +50,7 @@ public class UI_CheckGender : UI_Popup
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.CloseAllPopupUI();
-        if (PlayerPrefs.GetInt("round") == 0)
+        if (Managers.Game.SaveData.round == 0)
         {
             Managers.UI.ShowPopupUI<UI_Nickname>("UI_Nickname");
         }
@@ -63,7 +63,7 @@ public class UI_CheckGender : UI_Popup
     public void CancleButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.gender = "unselected";
+        Managers.Game.SaveData.gender = "unselected";
         ClosePopupUI();
     }
 }

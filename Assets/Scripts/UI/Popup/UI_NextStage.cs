@@ -29,8 +29,8 @@ public class UI_NextStage : UI_Popup
 
     public void OkayButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.stage++;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveData.stage++;
+        Managers.Game.SaveGame();
         Time.timeScale = 1;
         Managers.Scene.LoadScene(Define.Scene.Game);
         Managers.Sound.Play("Button", Define.Sound.Effect);
@@ -38,7 +38,7 @@ public class UI_NextStage : UI_Popup
 
     public void CancleButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.stage++;
+        Managers.Game.SaveData.stage++;
         Time.timeScale = 1;
         ClosePopupUI();
         Managers.Scene.LoadScene(Define.Scene.Lobby);

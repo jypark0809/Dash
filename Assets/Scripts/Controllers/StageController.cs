@@ -14,7 +14,7 @@ public class StageController : BaseController
 
     public override void Init()
     {
-        WorldObjectType = Define.WorldObject.Stage;
+        ObjectType = Define.ObjectType.Stage;
     }
 
     void Update()

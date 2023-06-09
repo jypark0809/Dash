@@ -66,13 +66,13 @@ public class UI_ConfirmPurchase : UI_Popup
 
         if (_itemData.type == "Ruby")
         {
-            if(_itemData.price > Managers.Data.UserData.user.ruby)
+            if(_itemData.price > Managers.Game.SaveData.ruby)
             {
                 Managers.UI.ShowPopupUI<UI_NotEnoughGoods>();
             }
             else
             {
-                Managers.Data.UserData.user.ruby -= _itemData.price;
+                Managers.Game.SaveData.ruby -= _itemData.price;
 
                 if (_itemData.itemId == 2)
                 {
@@ -80,29 +80,29 @@ public class UI_ConfirmPurchase : UI_Popup
                 }
                 if (_itemData.itemId == 3)
                 {
-                    Managers.Data.UserData.user.amber += 100;
+                    Managers.Game.SaveData.amber += 100;
                 }
 
                 if (_itemData.itemId == 4)
                 {
-                    Managers.Data.UserData.user.maleCostume[1] = true;
+                    Managers.Game.SaveData.maleCostume[1] = true;
                 }
 
                 else if(_itemData.itemId == 5)
                 {
-                    Managers.Data.UserData.user.femaleCostume[1] = true;
+                    Managers.Game.SaveData.femaleCostume[1] = true;
                 }
             }
         }
         else if (_itemData.type == "Amber")
         {
-            if (_itemData.price > Managers.Data.UserData.user.amber)
+            if (_itemData.price > Managers.Game.SaveData.amber)
             {
                 Managers.UI.ShowPopupUI<UI_NotEnoughGoods>();
             }
             else
             {
-                Managers.Data.UserData.user.amber -= _itemData.price;
+                Managers.Game.SaveData.amber -= _itemData.price;
 
                 if (_itemData.itemId == 1)
                 {
@@ -111,7 +111,7 @@ public class UI_ConfirmPurchase : UI_Popup
             }
         }
         Managers.UI.Get<UI_Shop>().UpdateData();
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveGame();
     }
 
     public void OnCancleButtonClicked(PointerEventData data)

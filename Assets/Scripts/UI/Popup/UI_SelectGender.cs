@@ -32,14 +32,14 @@ public class UI_SelectGender : UI_Popup
     public void MaleButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.gender = "male";
+        Managers.Game.SaveData.gender = "male";
         Managers.UI.ShowPopupUI<UI_CheckGender>();
     }
 
     public void FemaleButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.gender = "female";
+        Managers.Game.SaveData.gender = "female";
         Managers.UI.ShowPopupUI<UI_CheckGender>();
     }
 

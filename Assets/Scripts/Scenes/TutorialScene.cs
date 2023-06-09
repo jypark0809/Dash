@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TutorialScene : BaseScene
 {
-    GameObject _player;
+    PlayerController _player;
     MapController _bgMain;
     MapController _bgSub;
     Finish finish;
@@ -24,9 +24,9 @@ public class TutorialScene : BaseScene
         Managers.Sound.Play("GameScene", Define.Sound.Bgm);
 
         // Spawn Object
-        _player = Managers.Game.SpawnPlayer("Player/Male");
-        _bgMain = Managers.Game.SpawnBackgroundMap("BackGround/MainMap_Stage1", Define.WorldObject.MainBG).GetComponent<MapController>();
-        _bgSub = Managers.Game.SpawnBackgroundMap("BackGround/SubMap_Stage1", Define.WorldObject.SubBG).GetComponent<MapController>();
+        _player = Managers.Object.SpawnPlayer("Player/Male");
+        _bgMain = Managers.Object.SpawnBackgroundMap("BackGround/MainMap_Stage1", Define.ObjectType.MainBG).GetComponent<MapController>();
+        _bgSub = Managers.Object.SpawnBackgroundMap("BackGround/SubMap_Stage1", Define.ObjectType.SubBG).GetComponent<MapController>();
 
         // Popup Script UI
         PlayerPrefs.SetInt("Tutorial", 0);

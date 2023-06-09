@@ -73,9 +73,8 @@ public class UI_Shop : UI_Popup
 
         this._ruby100Btn.onPurchaseComplete.AddListener(new UnityAction<Product> ((product) =>
         {
-            Managers.Data.UserData.user.ruby += 100;
+            Managers.Game.SaveData.ruby += 100;
             UpdateData();
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         }));
 
         this._ruby100Btn.onPurchaseFailed.AddListener(new UnityAction<Product, PurchaseFailureReason>((product, reason) =>
@@ -85,9 +84,8 @@ public class UI_Shop : UI_Popup
 
         this._ruby300Btn.onPurchaseComplete.AddListener(new UnityAction<Product>((product) =>
         {
-            Managers.Data.UserData.user.ruby += 300;
+            Managers.Game.SaveData.ruby += 300;
             UpdateData();
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
         }));
 
         this._ruby300Btn.onPurchaseFailed.AddListener(new UnityAction<Product, PurchaseFailureReason>((product, reason) =>
@@ -136,8 +134,8 @@ public class UI_Shop : UI_Popup
         if (PlayerPrefs.GetInt("extrahealth") == 2)
             GetButton((int)Buttons.Item_Letter1).interactable = false;
 
-        GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
-        GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
+        GetText((int)Texts.AmberText).text = Managers.Game.SaveData.amber.ToString();
+        GetText((int)Texts.RubyText).text = Managers.Game.SaveData.ruby.ToString();
         GetImage((int)Images.RubyPanel).gameObject.SetActive(false);
     }
 
@@ -268,9 +266,8 @@ public class UI_Shop : UI_Popup
 
     public void HandleUserEarnedReward(object sender, Reward args)
     {
-        Managers.Data.UserData.user.ruby += 5;
+        Managers.Game.SaveData.ruby += 5;
         UpdateData();
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
     }
 
     private void UserChoseToWatchAd()
@@ -313,9 +310,9 @@ public class UI_Shop : UI_Popup
 
     public void UpdateData()
     {
-        GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
-        GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        GetText((int)Texts.AmberText).text = Managers.Game.SaveData.amber.ToString();
+        GetText((int)Texts.RubyText).text = Managers.Game.SaveData.ruby.ToString();
+        Managers.Game.SaveGame();
     }
 
     private void OnDestroy()

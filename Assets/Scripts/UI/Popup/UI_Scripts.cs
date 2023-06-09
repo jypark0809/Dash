@@ -128,7 +128,7 @@ public class UI_Scripts : UI_Popup
         }
         else
         {
-            _targetLine = string.Format(script.line, Managers.Data.UserData.user.nickname);
+            _targetLine = string.Format(script.line, Managers.Game.SaveData.nickname);
             StartCoroutine(StartTyping());
         }
     }

@@ -10,7 +10,7 @@ public class EndingScene : BaseScene
 
         SceneType = Define.Scene.Ending;
 
-        if (Managers.Data.UserData.user.extraStat == 8)
+        if (Managers.Game.SaveData.extraStat == 8)
         {
             Managers.UI.ShowPopupUI<UI_StageClear>();
         }

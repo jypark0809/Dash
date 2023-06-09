@@ -26,14 +26,14 @@ public class UI_Prologue : UI_Popup
         GetButton((int)Buttons.CloseButton).gameObject.BindEvent(OnCloseButtonClicked);
 
         _gameScene = (GameScene)Managers.Scene.CurrentScene;
-        _gameScene.StopScrolling();
+        _gameScene.StopGame();
     }
 
     public void OnCloseButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
-        _gameScene.StartScrolling();
+        _gameScene.RestartGame();
         PlayerPrefs.SetInt("Tutorial", 0);
         Managers.UI.ShowPopupUI<UI_Hint>();
     }

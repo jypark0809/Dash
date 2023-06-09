@@ -78,16 +78,16 @@ public class UI_Goal : UI_Popup
         switch(PlayerPrefs.GetInt("difficulty"))
         {
             case 0:
-                Managers.Data.UserData.user.amber += 10;
+                Managers.Game.SaveData.amber += 10;
                 break;
             case 1:
-                Managers.Data.UserData.user.amber += 15;
+                Managers.Game.SaveData.amber += 15;
                 break;
             case 2:
-                Managers.Data.UserData.user.amber += 20;
+                Managers.Game.SaveData.amber += 20;
                 break;
         }
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveGame();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
         Managers.UI.ShowPopupUI<UI_StageClear>();
@@ -116,8 +116,8 @@ public class UI_Goal : UI_Popup
 
     public void HandleUserEarnedReward(object sender, Reward args)
     {
-        Managers.Data.UserData.user.ruby += 5;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveData.ruby += 5;
+        Managers.Game.SaveGame();
         Managers.UI.ShowPopupUI<UI_ConfirmAdReward>();
     }
 

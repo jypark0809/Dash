@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LobbyScene : BaseScene
 {
-    GameObject _male;
-    GameObject _female;
+    PlayerController _male;
+    PlayerController _female;
 
     protected override void Init()
     {
@@ -16,18 +16,10 @@ public class LobbyScene : BaseScene
         Managers.Sound.Play("LobbyScene", Define.Sound.Bgm);
 
         // Set Characters
-        _male = Managers.Game.SpawnPlayer("Player/Male");
+        _male = Managers.Object.SpawnPlayer("Player/Male");
         _male.transform.Translate(1f, 0, 0);
-        _female = Managers.Game.SpawnPlayer("Player/Female");
+        _female = Managers.Object.SpawnPlayer("Player/Female");
         _female.transform.Translate(-0.5f, 0, 0);
-
-        // TODO : 테스트
-        // Dictionary<int, Script> dict = Managers.Data.EndingDict;
-    }
-
-    public override void Clear()
-    {
-
     }
 
     private void Update()
@@ -38,5 +30,12 @@ public class LobbyScene : BaseScene
             Application.Quit();
         }
         #endif
+    }
+
+
+
+    public override void Clear()
+    {
+
     }
 }

@@ -57,7 +57,7 @@ public class UI_SelectNpc : UI_Popup
         GetButton((int)Buttons.NpcButton2).gameObject.BindEvent(NpcButton2ButtonClicked);
         GetButton((int)Buttons.NpcButton3).gameObject.BindEvent(NpcButton3ButtonClicked);
 
-        if (Managers.Data.UserData.user.gender == "male")
+        if (Managers.Game.SaveData.gender == "male")
         {
             GetText((int)Texts.Stat1).text = Define.maleStat[0];
             GetText((int)Texts.Stat2).text = Define.maleStat[1];
@@ -73,7 +73,7 @@ public class UI_SelectNpc : UI_Popup
             GetImage((int)Images.NpcImage3).SetNativeSize();
 
         }
-        else if (Managers.Data.UserData.user.gender == "female")
+        else if (Managers.Game.SaveData.gender == "female")
         {
             GetText((int)Texts.Stat1).text = Define.femaleStat[0];
             GetText((int)Texts.Stat2).text = Define.femaleStat[1];
@@ -91,27 +91,28 @@ public class UI_SelectNpc : UI_Popup
         else
             Debug.Log("Failed to bind Text : UI_SelectNpc.cs");
 
-        GetText((int)Texts.StatValue1).text = Managers.Data.UserData.user.stat1.ToString();
-        GetText((int)Texts.StatValue2).text = Managers.Data.UserData.user.stat2.ToString();
-        GetText((int)Texts.StatValue3).text = Managers.Data.UserData.user.stat3.ToString();
+        GetText((int)Texts.StatValue1).text = Managers.Game.SaveData.stat1.ToString();
+        GetText((int)Texts.StatValue2).text = Managers.Game.SaveData.stat2.ToString();
+        GetText((int)Texts.StatValue3).text = Managers.Game.SaveData.stat3.ToString();
     }
 
     public void NpcButton1ButtonClicked(PointerEventData data)
     {
-        if (Managers.Data.UserData.user.gender == "male")
+        if (Managers.Game.SaveData.gender == "male")
         {
             PlayerPrefs.SetInt("npcId", 1);
             _npcId = 1;
         }
-        else if (Managers.Data.UserData.user.gender == "female")
+        else if (Managers.Game.SaveData.gender == "female")
         {
             PlayerPrefs.SetInt("npcId", 4);
             _npcId = 4;
         }
         else
             Debug.Log("Failed to save PlayerPrefs of npcId : UI_SelectNpc.cs");
+
         branchEnding();
-        Managers.Data.ClearAllStage();
+        Managers.Game.ClearAllStage();
         ClosePopupUI();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Scripts>();
@@ -119,12 +120,12 @@ public class UI_SelectNpc : UI_Popup
 
     public void NpcButton2ButtonClicked(PointerEventData data)
     {
-        if (Managers.Data.UserData.user.gender == "male")
+        if (Managers.Game.SaveData.gender == "male")
         {
             PlayerPrefs.SetInt("npcId", 2);
             _npcId = 2;
         }
-        else if (Managers.Data.UserData.user.gender == "female")
+        else if (Managers.Game.SaveData.gender == "female")
         {
             PlayerPrefs.SetInt("npcId", 5);
             _npcId = 5;
@@ -132,7 +133,7 @@ public class UI_SelectNpc : UI_Popup
         else
             Debug.Log("Failed to save PlayerPrefs of npcId : UI_SelectNpc.cs");
         branchEnding();
-        Managers.Data.ClearAllStage();
+        Managers.Game.ClearAllStage();
         ClosePopupUI();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Scripts>();
@@ -140,12 +141,12 @@ public class UI_SelectNpc : UI_Popup
 
     public void NpcButton3ButtonClicked(PointerEventData data)
     {
-        if (Managers.Data.UserData.user.gender == "male")
+        if (Managers.Game.SaveData.gender == "male")
         {
             PlayerPrefs.SetInt("npcId", 3);
             _npcId = 3;
         }
-        else if (Managers.Data.UserData.user.gender == "female")
+        else if (Managers.Game.SaveData.gender == "female")
         {
             PlayerPrefs.SetInt("npcId", 6);
             _npcId = 6;
@@ -153,7 +154,7 @@ public class UI_SelectNpc : UI_Popup
         else
             Debug.Log("Failed to save PlayerPrefs of npcId : UI_SelectNpc.cs");
         branchEnding();
-        Managers.Data.ClearAllStage();
+        Managers.Game.ClearAllStage();
         ClosePopupUI();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         Managers.UI.ShowPopupUI<UI_Scripts>();
@@ -161,9 +162,9 @@ public class UI_SelectNpc : UI_Popup
 
     void branchEnding()
     {
-        _stat1 = Managers.Data.UserData.user.stat1;
-        _stat2 = Managers.Data.UserData.user.stat2;
-        _stat3 = Managers.Data.UserData.user.stat3;
+        _stat1 = Managers.Game.SaveData.stat1;
+        _stat2 = Managers.Game.SaveData.stat2;
+        _stat3 = Managers.Game.SaveData.stat3;
 
         switch (_npcId)
         {
@@ -319,7 +320,7 @@ public class UI_SelectNpc : UI_Popup
 
     void SaveCollection(int endingIndex)
     {
-        Managers.Data.UserData.user.ending[endingIndex - 1] = true;
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveData.ending[endingIndex - 1] = true;
+        Managers.Game.SaveGame();
     }
 }

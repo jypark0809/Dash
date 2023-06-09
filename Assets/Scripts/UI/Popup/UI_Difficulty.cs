@@ -58,7 +58,7 @@ public class UI_Difficulty : UI_Popup
     public void OnCloseButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.UserData.user.gender = "unselected";
+        Managers.Game.SaveData.gender = "unselected";
         ClosePopupUI();
     }
 }

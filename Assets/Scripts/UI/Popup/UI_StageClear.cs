@@ -49,8 +49,8 @@ public class UI_StageClear : UI_Popup
         Bind<Text>(typeof(Texts));
         Bind<Image>(typeof(Images));
 
-        Managers.Data.UserData.user.extraStat++;
-        _isTicket = (Managers.Data.UserData.user.extraStat == 9);
+        Managers.Game.SaveData.extraStat++;
+        _isTicket = (Managers.Game.SaveData.extraStat == 9);
 
         GetButton((int)Buttons.StatButton1).gameObject.BindEvent(StatButton1Clicked);
         GetButton((int)Buttons.StatButton2).gameObject.BindEvent(StatButton2Clicked);
@@ -60,7 +60,7 @@ public class UI_StageClear : UI_Popup
         GetImage((int)Images.CheckPanel).gameObject.SetActive(false);
         UpdateUserStat();
 
-        if (Managers.Data.UserData.user.gender == "male")
+        if (Managers.Game.SaveData.gender == "male")
         {
             GetText((int)Texts.Stat1).text = Define.maleStat[0];
             GetText((int)Texts.Stat2).text = Define.maleStat[1];
@@ -73,7 +73,7 @@ public class UI_StageClear : UI_Popup
             GetButton((int)Buttons.StatButton3).GetComponent<Image>().SetNativeSize();
 
         }
-        else if (Managers.Data.UserData.user.gender == "female")
+        else if (Managers.Game.SaveData.gender == "female")
         {
             GetText((int)Texts.Stat1).text = Define.femaleStat[0];
             GetText((int)Texts.Stat2).text = Define.femaleStat[1];
@@ -116,78 +116,78 @@ public class UI_StageClear : UI_Popup
     public void OkayButtonClicked(PointerEventData data)
     {
         // 9 �������� Ŭ���� ���� ��
-        if (Managers.Data.UserData.user.stage == 9 && StatSum() == 8 && _isTicket == false)
+        if (Managers.Game.SaveData.stage == 9 && StatSum() == 8 && _isTicket == false)
         {
             switch (PlayerPrefs.GetInt("prevStat"))
             {
                 case 1:
-                    Managers.Data.UserData.user.stat1++;
+                    Managers.Game.SaveData.stat1++;
                     break;
                 case 2:
-                    Managers.Data.UserData.user.stat2++;
+                    Managers.Game.SaveData.stat2++;
                     break;
                 case 3:
-                    Managers.Data.UserData.user.stat3++;
+                    Managers.Game.SaveData.stat3++;
                     break;
             }
 
-            Managers.Data.UserData.user.extraStat--;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData); // ���� ���� ����
+            Managers.Game.SaveData.extraStat--;
+            Managers.Game.SaveGame();
             Managers.Sound.Play("Button", Define.Sound.Effect);
             ClosePopupUI();
             Time.timeScale = 1;
             Managers.Scene.LoadScene(Define.Scene.Ending);
         }
         // 1~8 �������� Ŭ���� ���� ��
-        else if (Managers.Data.UserData.user.stage < 9)
+        else if (Managers.Game.SaveData.stage < 9)
         {
             switch (PlayerPrefs.GetInt("prevStat"))
             {
                 case 1:
-                    Managers.Data.UserData.user.stat1++;
+                    Managers.Game.SaveData.stat1++;
                     break;
                 case 2:
-                    Managers.Data.UserData.user.stat2++;
+                    Managers.Game.SaveData.stat2++;
                     break;
                 case 3:
-                    Managers.Data.UserData.user.stat3++;
+                    Managers.Game.SaveData.stat3++;
                     break;
             }
 
-            Managers.Data.UserData.user.extraStat--;
+            Managers.Game.SaveData.extraStat--;
             Managers.Sound.Play("Button", Define.Sound.Effect);
             UpdateUserStat();
             GetImage((int)Images.CheckPanel).gameObject.SetActive(false);
             
-            if (Managers.Data.UserData.user.extraStat == 0)
+            if (Managers.Game.SaveData.extraStat == 0)
             {
                 ClosePopupUI();
                 Managers.UI.ShowPopupUI<UI_NextStage>();
             }
         }
         // ���ı� ���� ��
-        else if (Managers.Data.UserData.user.stage == 9 && _isTicket)
+        else if (Managers.Game.SaveData.stage == 9 && _isTicket)
         {
             switch (PlayerPrefs.GetInt("prevStat"))
             {
                 case 1:
-                    Managers.Data.UserData.user.stat1++;
+                    Managers.Game.SaveData.stat1++;
                     break;
                 case 2:
-                    Managers.Data.UserData.user.stat2++;
+                    Managers.Game.SaveData.stat2++;
                     break;
                 case 3:
-                    Managers.Data.UserData.user.stat3++;
+                    Managers.Game.SaveData.stat3++;
                     break;
             }
 
-            Managers.Data.UserData.user.extraStat--;
-            Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+            Managers.Game.SaveData.extraStat--;
+            Managers.Game.SaveGame();
             Managers.Sound.Play("Button", Define.Sound.Effect);
             UpdateUserStat();
             GetImage((int)Images.CheckPanel).gameObject.SetActive(false);
 
-            if (Managers.Data.UserData.user.extraStat == 0)
+            if (Managers.Game.SaveData.extraStat == 0)
             {
                 ClosePopupUI();
                 Managers.UI.ShowPopupUI<UI_SelectNpc>();
@@ -206,25 +206,25 @@ public class UI_StageClear : UI_Popup
         switch (prevStat)
         {
             case 1:
-                if (Managers.Data.UserData.user.gender == "male")
+                if (Managers.Game.SaveData.gender == "male")
                     GetText((int)Texts.PrevStatText).text = Define.maleStat[0];
-                else if (Managers.Data.UserData.user.gender == "female")
+                else if (Managers.Game.SaveData.gender == "female")
                     GetText((int)Texts.PrevStatText).text = Define.femaleStat[0];
                 else
                     Debug.Log("Failed to load Userdata : UI_CheckStat.cs");
                 break;
             case 2:
-                if (Managers.Data.UserData.user.gender == "male")
+                if (Managers.Game.SaveData.gender == "male")
                     GetText((int)Texts.PrevStatText).text = Define.maleStat[1];
-                else if (Managers.Data.UserData.user.gender == "female")
+                else if (Managers.Game.SaveData.gender == "female")
                     GetText((int)Texts.PrevStatText).text = Define.femaleStat[1];
                 else
                     Debug.Log("Failed to load Userdata : UI_CheckStat.cs");
                 break;
             case 3:
-                if (Managers.Data.UserData.user.gender == "male")
+                if (Managers.Game.SaveData.gender == "male")
                     GetText((int)Texts.PrevStatText).text = Define.maleStat[2];
-                else if (Managers.Data.UserData.user.gender == "female")
+                else if (Managers.Game.SaveData.gender == "female")
                     GetText((int)Texts.PrevStatText).text = Define.femaleStat[2];
                 else
                     Debug.Log("Failed to load Userdata : UI_CheckStat.cs");
@@ -237,14 +237,14 @@ public class UI_StageClear : UI_Popup
 
     void UpdateUserStat()
     {
-        GetText((int)Texts.StatValue1).text = Managers.Data.UserData.user.stat1.ToString();
-        GetText((int)Texts.StatValue2).text = Managers.Data.UserData.user.stat2.ToString();
-        GetText((int)Texts.StatValue3).text = Managers.Data.UserData.user.stat3.ToString();
-        GetText((int)Texts.PrevStatText).text = GetText((int)Texts.RemainStatText).text = Managers.Data.UserData.user.extraStat.ToString();
+        GetText((int)Texts.StatValue1).text = Managers.Game.SaveData.stat1.ToString();
+        GetText((int)Texts.StatValue2).text = Managers.Game.SaveData.stat2.ToString();
+        GetText((int)Texts.StatValue3).text = Managers.Game.SaveData.stat3.ToString();
+        GetText((int)Texts.PrevStatText).text = GetText((int)Texts.RemainStatText).text = Managers.Game.SaveData.extraStat.ToString();
     }
 
     int StatSum()
     {
-        return Managers.Data.UserData.user.stat1 + Managers.Data.UserData.user.stat2 + Managers.Data.UserData.user.stat3;
+        return Managers.Game.SaveData.stat1 + Managers.Game.SaveData.stat2 + Managers.Game.SaveData.stat3;
     }
 }

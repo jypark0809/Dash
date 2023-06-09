@@ -41,21 +41,21 @@ public class UI_Test : UI_Popup
 
     public void SaveButtonClicked(PointerEventData data)
     {
-        Managers.Data.UserData.user.stage = int.Parse(GetText((int)Texts.StageText).text);
-        Managers.Data.UserData.user.gender = GetText((int)Texts.GenderText).text;
-        Managers.Data.UserData.user.stat1 = int.Parse(GetText((int)Texts.StatText1).text);
-        Managers.Data.UserData.user.stat2 = int.Parse(GetText((int)Texts.StatText2).text);
-        Managers.Data.UserData.user.stat3 = int.Parse(GetText((int)Texts.StatText3).text);
-        Managers.Data.UserData.user.amber = int.Parse(GetText((int)Texts.AmberText).text);
-        Managers.Data.UserData.user.ruby = int.Parse(GetText((int)Texts.RubyText).text);
-        Managers.Data.SaveUserDataToJson(Managers.Data.UserData);
+        Managers.Game.SaveData.stage = int.Parse(GetText((int)Texts.StageText).text);
+        Managers.Game.SaveData.gender = GetText((int)Texts.GenderText).text;
+        Managers.Game.SaveData.stat1 = int.Parse(GetText((int)Texts.StatText1).text);
+        Managers.Game.SaveData.stat2 = int.Parse(GetText((int)Texts.StatText2).text);
+        Managers.Game.SaveData.stat3 = int.Parse(GetText((int)Texts.StatText3).text);
+        Managers.Game.SaveData.amber = int.Parse(GetText((int)Texts.AmberText).text);
+        Managers.Game.SaveData.ruby = int.Parse(GetText((int)Texts.RubyText).text);
+        Managers.Game.SaveGame();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
     }
 
     public void InitButtonClicked(PointerEventData data)
     {
-        Managers.Data.InitData();
+        Managers.Game.InitData();
         Managers.Sound.Play("Button", Define.Sound.Effect);
         ClosePopupUI();
     }

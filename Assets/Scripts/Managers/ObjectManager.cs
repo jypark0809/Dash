@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class GameManagerEx
+public class ObjectManager
 {
     PlayerController _player;
     public PlayerController Player { get { return _player; } set { _player = value; } }
@@ -18,51 +16,56 @@ public class GameManagerEx
     MapController _bgSub;
     public MapController SubBG { get { return _bgSub; } set { _bgSub = value; } }
 
-    public GameObject SpawnPlayer(string path, Transform parent = null)
+    Finish _finish;
+    public Finish Finish { get { return _finish; } set { _finish = value; } }
+
+    public PlayerController SpawnPlayer(string path, Transform parent = null)
     {
         GameObject go = Managers.Resource.Instantiate(path, parent);
         _player = go.GetOrAddComponent<PlayerController>();
-        return go;
+        return _player;
     }
 
-    public GameObject SpawnStage(string path, Transform parent = null)
+    public StageController SpawnStage(string path, Transform parent = null)
     {
         GameObject go = Managers.Resource.Instantiate(path, parent);
         _stage = go.GetOrAddComponent<StageController>();
-        return go;
+        return _stage;
     }
 
-    public GameObject SpawnBackgroundMap(string path, Define.WorldObject type, Transform parent = null)
+    public MapController SpawnBackgroundMap(string path, Define.ObjectType type, Transform parent = null)
     {
         GameObject go = Managers.Resource.Instantiate(path, parent);
 
-        if (type == Define.WorldObject.MainBG)
+        if (type == Define.ObjectType.MainBG)
         {
             _bgMain = go.GetOrAddComponent<MapController>();
+            return _bgMain;
         }
-        else if (type == Define.WorldObject.SubBG)
+        else if (type == Define.ObjectType.SubBG)
         {
             _bgSub = go.GetOrAddComponent<MapController>();
+            return _bgSub;
         }
-        
-        return go;
+
+        return null;
     }
 
-    public Define.WorldObject GetWorldObjectType(GameObject go)
+    public Define.ObjectType GetWorldObjectType(GameObject go)
     {
         BaseController bc = go.GetComponent<BaseController>();
         if (bc == null)
-            return Define.WorldObject.Unknown;
+            return Define.ObjectType.Unknown;
 
-        return bc.WorldObjectType;
+        return bc.ObjectType;
     }
 
     public void Despawn(GameObject go)
     {
-        Define.WorldObject type = GetWorldObjectType(go);
+        Define.ObjectType type = GetWorldObjectType(go);
         switch (type)
         {
-            case Define.WorldObject.Player:
+            case Define.ObjectType.Player:
                 {
                     if (_player == go)
                         _player = null;
@@ -70,10 +73,5 @@ public class GameManagerEx
                 break;
         }
         Managers.Resource.Destroy(go);
-    }
-
-    public void StopMapScrolling(MapController mc)
-    {
-        mc.Speed = 0;
     }
 }

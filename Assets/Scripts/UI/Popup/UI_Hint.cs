@@ -76,7 +76,7 @@ public class UI_Hint : UI_Popup
                 break;
         }
         _npcName = new string[]{
-            Managers.Data.UserData.user.nickname,
+            Managers.Game.SaveData.nickname,
         "백설", "차가윤", "고유미", "서새한", "채대성", "선도진", "오탁후", "남학생", "여학생", "선생님" };
 
         Bind<Text>(typeof(Texts));
@@ -88,8 +88,8 @@ public class UI_Hint : UI_Popup
         GetText((int)Texts.NameText).text = _npcName[_hint.scripts[_scriptIndex].npcId];
         SetLine(_hint.scripts[_scriptIndex]);
 
-        Managers.Game.Player.GetComponent<Animator>().speed = 0;
-        _gameScene.StopScrolling();
+        Managers.Object.Player.GetComponent<Animator>().speed = 0;
+        _gameScene.StopGame();
     }
 
     public void PanelImageClicked(PointerEventData data)
@@ -106,8 +106,7 @@ public class UI_Hint : UI_Popup
         }
         else
         {
-            Managers.Game.Player.GetComponent<Animator>().speed = 1;
-            _gameScene.StartScrolling();
+            _gameScene.RestartGame();
             ClosePopupUI();
         }
     }
@@ -125,7 +124,7 @@ public class UI_Hint : UI_Popup
         }
         else
         {
-            _targetLine = string.Format(script.line, Managers.Data.UserData.user.nickname);
+            _targetLine = string.Format(script.line, Managers.Game.SaveData.nickname);
             StartCoroutine(StartTyping());
         }
     }
@@ -169,112 +168,112 @@ public class UI_Hint : UI_Popup
 
     void GetHintId()
     {
-        switch(Managers.Data.UserData.user.stage)
+        switch(Managers.Game.SaveData.stage)
         {
             case 0:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = 0;
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = 0;
                 }
                 break;
             case 1:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(44, 47); // 44~46
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(14, 17); // 14~16
                 }
                 break;
 
             case 2:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(54, 58); // 54~57
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(25, 28); // 25~27
                 }
                 break;
 
             case 3:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(31, 34); // 31~33
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(1, 5); // 1~4
                 }
                 break;
 
             case 4:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(34, 37); // 34~36
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(28, 31); // 28~30
                 }
                 break;
 
             case 5:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(58, 61); // 58~60
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(5, 8); // 5~7
                 }
                 break;
 
             case 6:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(41, 44); // 41~43
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(11, 14); // 11~13
                 }
                 break;
 
             case 7:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(37, 41); // 37~40
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(8, 11); // 8~10
                 }
                 break;
 
             case 8:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(47, 51); // 47~50
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(17, 21); // 17~20
                 }
                 break;
 
             case 9:
-                if (Managers.Data.UserData.user.gender == "female")
+                if (Managers.Game.SaveData.gender == "female")
                 {
                     hintId = Random.Range(51, 54); // 51~53
                 }
-                else if (Managers.Data.UserData.user.gender == "male")
+                else if (Managers.Game.SaveData.gender == "male")
                 {
                     hintId = Random.Range(21, 25); // 21~24
                 }

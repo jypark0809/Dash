@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Define
 {
-    public enum WorldObject
+    public enum ObjectType
     {
         Unknown,
         MainBG,
@@ -19,9 +19,8 @@ public class Define
     { 
         Run,
         Jump,
-        Fight,
         Die,
-        Clear,
+        Arrive,
     }
 
     public enum Scene
@@ -114,6 +113,6 @@ public class Define
     public static string[] femaleStat = { "섬세함", "애교", "체력" };
     public static string[] maleTarget = { "백설", "차가윤", "고유미" };
     public static string[] femaleTarget = { "서새한", "채대성", "선도진" };
-    public static string[] npcName = { Managers.Data.UserData.user.nickname, 
+    public static string[] npcName = { Managers.Game.SaveData.nickname, 
         "백설", "차가윤", "고유미", "서새한", "채대성", "선도진", "오탁후", "남학생", "여학생", "선생님" };
 }

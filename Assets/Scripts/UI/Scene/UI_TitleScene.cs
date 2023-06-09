@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class UI_TitleScene : UI_Scene
 {
-    float time;
-
     enum Images
     {
         MainImage,
@@ -34,7 +32,7 @@ public class UI_TitleScene : UI_Scene
 
         if (PlayerPrefs.GetInt("isAccessFirst") == 0)
         {
-            Managers.Data.InitData();
+            Managers.Game.InitData();
             Managers.Scene.LoadScene(Define.Scene.Game);
         }
         else

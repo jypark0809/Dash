@@ -49,10 +49,8 @@ public class UI_LobbyScene : UI_Scene
         GetButton((int)Buttons.PlayButton).gameObject.BindEvent(PlayButtonClicked);
         GetButton((int)Buttons.InitButton).gameObject.BindEvent(InitButtonClicked);
 
-        GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
-        GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
-
-        Debug.Log(PlayerPrefs.GetInt("round"));
+        GetText((int)Texts.AmberText).text = Managers.Game.SaveData.amber.ToString();
+        GetText((int)Texts.RubyText).text = Managers.Game.SaveData.ruby.ToString();
     }
 
     public void TipButtonClicked(PointerEventData data)
@@ -88,9 +86,9 @@ public class UI_LobbyScene : UI_Scene
 
     public void PlayButtonClicked(PointerEventData data)
     {
-        if (Managers.Data.UserData.user.stat1 + Managers.Data.UserData.user.stat2 + Managers.Data.UserData.user.stat3 < 9)
+        if (Managers.Game.SaveData.stat1 + Managers.Game.SaveData.stat2 + Managers.Game.SaveData.stat3 < 9)
         {
-            if (Managers.Data.UserData.user.gender == "unselected")
+            if (Managers.Game.SaveData.gender == "unselected")
                 Managers.UI.ShowPopupUI<UI_SelectGender>();
             else
             {
@@ -101,8 +99,6 @@ public class UI_LobbyScene : UI_Scene
         }
         else
         {
-            // ������ 9 �̻��̸� �ٷ� EndingScene
-            Managers.Data.PrintLog();
             Managers.Scene.LoadScene(Define.Scene.Ending);
             Managers.Sound.Play("Button", Define.Sound.Effect);
         }
@@ -111,7 +107,6 @@ public class UI_LobbyScene : UI_Scene
     public void InitButtonClicked(PointerEventData data)
     {
         Managers.Sound.Play("Button", Define.Sound.Effect);
-        Managers.Data.PrintLog();
         Managers.UI.ShowPopupUI<UI_Test>();
     }
 
@@ -120,8 +115,8 @@ public class UI_LobbyScene : UI_Scene
         GetObject((int)GameObjects.GoodsGroup).SetActive(boolean);
         if (boolean)
         {
-            GetText((int)Texts.AmberText).text = Managers.Data.UserData.user.amber.ToString();
-            GetText((int)Texts.RubyText).text = Managers.Data.UserData.user.ruby.ToString();
+            GetText((int)Texts.AmberText).text = Managers.Game.SaveData.amber.ToString();
+            GetText((int)Texts.RubyText).text = Managers.Game.SaveData.ruby.ToString();
         }
     }
 }

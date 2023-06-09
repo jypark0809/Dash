@@ -51,7 +51,7 @@ public class UI_GameScene : UI_Scene
     {
         base.Init();
 
-        _player = Managers.Game.Player;
+        _player = Managers.Object.Player;
 
         GetButton((int)Buttons.JumpButton).gameObject.BindEvent(JumpButtonClicked, Define.UIEvent.PointerDown);
         GetButton((int)Buttons.PauseButton).gameObject.BindEvent(PauseButtonClicked);
@@ -67,12 +67,12 @@ public class UI_GameScene : UI_Scene
         }
         else
         {
-            GetText((int)Texts.StegeDigitText).text = CalStage();
+            GetText((int)Texts.StegeDigitText).text = SetStageNumber();
         }
 
-        if (Managers.Data.UserData.user.gender == "male")
+        if (Managers.Game.SaveData.gender == "male")
             GetImage((int)Images.FemalePinImage).gameObject.SetActive(false);
-        else if (Managers.Data.UserData.user.gender == "female")
+        else if (Managers.Game.SaveData.gender == "female")
             GetImage((int)Images.MalePinImage).gameObject.SetActive(false);
         else
             GetImage((int)Images.FemalePinImage).gameObject.SetActive(false);
@@ -80,6 +80,11 @@ public class UI_GameScene : UI_Scene
 
     void Update()
     {
+        if(Managers.Object.Finish != null && Managers.Object.Player.State != Define.PlayerState.Arrive)
+        {
+            Ratio = Managers.Object.Finish.CalculateDistance();
+        }
+
         GetImage((int)Images.Bar_Position).rectTransform.sizeDelta = new Vector2(Ratio * 400, 30);
         GetImage((int)Images.MalePinImage).rectTransform.anchoredPosition = new Vector2(Ratio * 400 - 200, 0);
         GetImage((int)Images.FemalePinImage).rectTransform.anchoredPosition = new Vector2(Ratio * 400 - 200, 0);
@@ -87,10 +92,10 @@ public class UI_GameScene : UI_Scene
 
     public void JumpButtonClicked(PointerEventData data)
     {
-        if (_player._state != Define.PlayerState.Clear && _player._state != Define.PlayerState.Die)
+        if (_player.State != Define.PlayerState.Arrive && _player.State != Define.PlayerState.Die)
         {
             _player._isJump = true;
-            _player._state = Define.PlayerState.Jump;
+            _player.State = Define.PlayerState.Jump;
             if (_player._jumpCount > 0)
             {
                 _player._jumpCount--;
@@ -111,10 +116,10 @@ public class UI_GameScene : UI_Scene
         Managers.UI.ShowPopupUI<UI_Pause>();
     }
 
-    string CalStage()
+    string SetStageNumber()
     {
-        int upperStage = (Managers.Data.UserData.user.stage + 2) / 3;
-        int lowerStage = (Managers.Data.UserData.user.stage + 2) % 3 + 1;
+        int upperStage = (Managers.Game.SaveData.stage + 2) / 3;
+        int lowerStage = (Managers.Game.SaveData.stage + 2) % 3 + 1;
         return upperStage.ToString() + "-" + lowerStage.ToString();
     }
 

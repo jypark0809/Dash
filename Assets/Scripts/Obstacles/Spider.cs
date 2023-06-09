@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spider : BaseObstacle
+public class Spider : ObstacleController
 {
     public int _range = 7;
     float screenRightWorldPos;
@@ -15,7 +15,7 @@ public class Spider : BaseObstacle
 
     void Update()
     {
-        if (transform.position.x - Managers.Game.Player.transform.position.x < _range)
+        if (transform.position.x - Managers.Object.Player.transform.position.x < _range)
         {
             _anim.Play("Spider");
         }
