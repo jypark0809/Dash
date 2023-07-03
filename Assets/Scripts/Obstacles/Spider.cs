@@ -9,6 +9,7 @@ public class Spider : ObstacleController
 
     public override void Init()
     {
+        base.Init();
         _anim = GetComponent<Animator>();
         screenRightWorldPos = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x;
     }

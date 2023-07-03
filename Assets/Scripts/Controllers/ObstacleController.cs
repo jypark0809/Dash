@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleController : BaseController
 {
     protected Animator _anim;
-    int _damage;
+    protected int _damage;
     Coroutine _coDamage;
 
     public override void Init()
